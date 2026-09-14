@@ -3,7 +3,7 @@
 ## What this is
 
 Master's thesis project (NTNU, Industrial Economics) by Jørgen Holt and Save.
-Supervised by Anne Neumann.
+Supervised by Franziska Holz.
 
 We are building LLM-based agents (Python, Claude API) that wrap around the
 Global Gas Model (GGM) — a Julia partial equilibrium model for global natural
