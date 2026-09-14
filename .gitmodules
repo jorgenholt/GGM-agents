@@ -1,0 +1,3 @@
+[submodule "ggm"]
+	path = ggm
+	url = git@github.com:jorgenholt/GGM_public.git
