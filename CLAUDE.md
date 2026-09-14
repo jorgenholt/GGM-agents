@@ -2,7 +2,7 @@
 
 ## What this is
 
-Master's thesis project (NTNU, Industrial Economics) by Jørgen Holt and Save.
+Master's thesis project (NTNU, Industrial Economics) by Jørgen Holt and Save Brautaset.
 Supervised by Franziska Holz.
 
 We are building LLM-based agents (Python, Claude API) that wrap around the
