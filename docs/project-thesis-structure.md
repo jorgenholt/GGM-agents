@@ -203,11 +203,40 @@ points. Closest to your discipline, and a model for how to argue about where the
 
 ### The gap to claim
 
-None of the above addresses a **global gas market equilibrium model with market power**, where
-parameters are economic assumptions requiring defence rather than physical constants, and where
-calibration is explicitly documented as expert-judgment-intensive. That is a narrow, honest,
-defensible gap — better than claiming novelty for the general idea, which the literature above
-clearly establishes is not novel.
+**Headline: the tuned quantities are contestable, not measurable.**
+
+In every close paper found so far, the calibration target is an observable fact — a measured
+incidence rate, a metered building load. GGM's calibration tunes **market power values and
+willingness to pay**: economic judgments that two competent analysts could defend differently. There
+is no ground truth to score an agent against, only whether its reasoning is defensible.
+
+That has consequences the existing literature does not address. Evaluation cannot be error-against-
+target. Human oversight cannot be justified merely as a safety margin that shrinks as models improve,
+because the thing being decided is an argument rather than a measurement.
+
+Two supporting points, both narrower than they first appear:
+
+- **Domain.** Nothing found addresses a global gas market equilibrium model with market power.
+  True, but weak on its own — novelty of application is thin ground.
+- **Workflow breadth.** Most prior work automates *one* task: input generation, or calibration, or
+  dispatch. A systematic suitability analysis across a whole modelling workflow is less common.
+  Frame this as appropriate scope for an exploratory thesis, **not** as novelty — claiming breadth as
+  a contribution invites the question of what, specifically, is contributed.
+
+What **not** to claim: that using agents to configure or calibrate an existing model is new. The
+literature above establishes clearly that it is not. Distinguishing yourself from the
+"LLM writes an optimisation model from scratch" cluster (OptiMUS, Chain-of-Experts) is worth doing,
+but it places you inside the configure-an-existing-model cluster rather than outside all of them.
+
+### A practical contribution is also a contribution
+
+DIW Berlin wants this to work and would use it. For an applied discipline that is a genuine strength,
+and a live institutional stakeholder with a real burden is a legitimate framing at IØT.
+
+Keep the two ideas distinct, though. **Practical contribution:** reducing a real burden for a real
+institute. **Academic contribution:** what is learned that generalises beyond DIW. A thesis needs
+both — the second is what separates it from a consulting deliverable — but the first is not
+second-best, and it should be stated confidently rather than apologised for.
 
 ---
 
