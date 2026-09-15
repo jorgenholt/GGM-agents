@@ -84,6 +84,39 @@ One row per node, one column per year. So:
 The heavy *modelling* math is inside and fixed. The *data preparation* math is outside, and is what an
 agent pipeline would have to cover.
 
+### The preparation math lives in spreadsheets
+
+It is not done by hand, and it is not code. The documentation names **three further Excel workbooks**
+upstream of `data_proj.xlsx` (PDF p. 24):
+
+- `WEO_Scenarios_Input_data.xlsx` — all countries outside the EU28
+- `gas_demand_production_europe.xlsx` — EU28 countries
+- `regional_split.xlsx` — the five countries split into multiple nodes (USA, Canada, Russia, India,
+  China), where country-level figures are broken down using each region's 2015 share
+
+So the pipeline is: **proprietary sources → three internal spreadsheets → `data_proj.xlsx` → model.**
+The splitting logic lives in spreadsheet formulas.
+
+### Why it isn't inside the model
+
+Reasonable to ask, since interpolation and share-splitting are simple operations. Several reasons,
+and *scenario specificity is not one of them*:
+
+- **The source data cannot be shipped.** Parts are proprietary (IEA WEO, PRIMES, GIIGNL, Cedigaz), so
+  the model is distributed with reference values already derived. The split has to happen upstream of
+  what can be published.
+- **The rules differ per country and embed judgment.** US regional shares use *marketed* production;
+  Russian consumption is allocated by regional GDP share; China uses the Statistical Yearbook. That is
+  not one formula, it is five country-specific procedures with documented traps (PDF pp. 26–27).
+- **The splits are scenario-independent.** Shares are computed once from 2015 data and reused across
+  every scenario — so there is nothing per-run for the model to recompute.
+- **Separation of concerns.** The model has no business knowing the structure of an EIA report.
+
+**This is good thesis material.** A spreadsheet-based preparation pipeline is the documented current
+state, and it is fragile in well-understood ways: hard to version, hard to audit, easy to break
+silently, and the knowledge lives in formulas nobody remembers writing. Worth confirming it is still
+how things work — the 2023 Julia workflow may have moved on.
+
 ### Design principle: judgment in, arithmetic out
 
 That preparation math is deterministic and documented — the same every time. So the agent should
@@ -101,6 +134,26 @@ This is defensible as a safety property, not just an implementation preference: 
 generated workbook traces to either a cited source or a deterministic function, never to a language
 model's output. That makes the pipeline auditable — which matters for results that end up in
 published research.
+
+**The principle generalises to layer 4, but the mechanism changes.** In calibration the needed
+transformations are not known in advance, so fixed functions do not cover the space. Two options,
+and the right one depends on the layer:
+
+| | Layer 1–2 | Layer 4 |
+|---|---|---|
+| Transformations | Known in advance | Exploratory, varying |
+| Mechanism | **Pre-written deterministic functions.** The agent chooses inputs, never writes the math | **Agent-written code**, inspectable and re-runnable |
+| Guarantee | Strongest — the math was reviewed once and never changes | Weaker — generated code can be subtly wrong, so it must be visible and testable |
+
+Note the agent mostly does not need arithmetic in layer 4 anyway. The model already computes the
+residuals in its calibration reports; the agent's job is to read them and reason about *direction and
+magnitude* — which is exactly what the grey-box calibration paper does, feeding the LLM signed
+residuals and receiving a proposed parameter vector with a written rationale, no computation
+involved.
+
+Use the strongest guarantee available for each case: never generated code where a fixed function
+would do. But in both cases the invariant holds — **no number originates from the model's token
+stream.** Either a reviewed function or visible, re-runnable code produced it.
 
 ### Why this splits the automation argument
 
