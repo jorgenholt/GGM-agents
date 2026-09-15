@@ -15,26 +15,60 @@ Move answered items to **Resolved** with the answer, so the reasoning is preserv
 
 ## Now — project thesis
 
-### 1. What does the calibration workflow actually look like in practice?
+### 1. Does the four-layer view of the inputs hold?
 
 **For:** Franziska Holz, Lukas Barner · **Feeds:** GGM section, task-suitability analysis
 
-The documentation says calibration takes an experienced analyst days to weeks (PDF p. 28), but not
-what the analyst actually *does*. The whole thesis premise rests on this, and it cannot be answered
-from the documentation.
+From the documentation, GGM's inputs appear to divide into four kinds. **Ask whether this is right
+before building on it** — full version in
+[`workflow-task-inventory.md`](workflow-task-inventory.md#the-four-layers-of-input):
 
-Worth asking concretely:
+1. **Physical facts** — pipeline, LNG, storage capacities; distances. Collected from ENTSOG, EIA,
+   GIIGNL, GIE, IEA. Change when the world changes.
+2. **Projections** — reference production and consumption, read off a chosen WEO or PRIMES outlook,
+   then split regionally and interpolated.
+3. **Literature parameters** — elasticities, base costs, discount rates. Set once, rarely touched.
+4. **Calibrated quantities** — production costs, reference prices, market power, `GlobLoss`. Not
+   collected at all: inferred by tuning until the model reproduces observed reality.
 
-- Walk through calibrating one new scenario, start to finish. What are the actual steps?
-- Which steps are mechanical — checking, adjusting, re-running, comparing against reference values?
-- Which require genuine judgment, where the right move depends on market knowledge?
-- How do you decide a run is "close enough" and stop?
-- How many iterations does a typical calibration take?
+Is this how you think about it? Is anything misplaced, or missing?
 
-This is the highest-value question on the list. It produces material for the GGM section *and* the
-evidence base for which tasks suit an agent.
+### 2. How is layer 4 actually done? — **the key question**
 
-### 2. Where does it go wrong?
+**For:** Lukas Barner (weekly) · **Feeds:** the core chapter
+
+Layers 1–3 are collection and arithmetic — the optimisation target there is speed. Layer 4 is
+reasoning, and it is where the thesis claim lives. The documentation says calibration takes days to
+weeks (PDF p. 28) but not what the analyst *does*. This cannot be answered from documentation.
+
+Concretely:
+
+- **Walk through tuning one parameter.** What do you look at, what do you change, how do you know it
+  worked?
+- **Where do you start?** Which parameter first, and why that one?
+- The documentation lists three candidate causes when a country under-produces — costs too high,
+  willingness to pay too low, market power too high (PDF p. 28). **How do you decide which it is?**
+- **One node at a time, or globally?** Given that the market behaves as communicating vessels.
+- **How do you know when to stop** — what does "close enough" mean in practice?
+- **What does a failed calibration look like**, and how do you recognise it?
+- **Is there any record of past calibrations** — old files, notes, working spreadsheets? Would be
+  extremely valuable: a trace of expert reasoning to evaluate an agent against.
+
+### 3. Which layer actually eats the most time?
+
+**For:** Lukas Barner, Franziska Holz · **Feeds:** scoping, and the motivation argument
+
+The documentation points at calibration, but routine data updating may quietly dominate in ordinary
+use. Rough proportions are enough.
+
+This changes what is worth building first. Layers 1–2 are high volume and low risk; layer 4 is low
+volume and high risk. If most hours go to updating data, that is the better first target even though
+layer 4 is the more interesting problem.
+
+Related: **how do you find out what has changed?** When a new EIA or GIIGNL report comes out, is it
+re-read from scratch, or is there a diffing process against last year?
+
+### 4. Where does it go wrong?
 
 **For:** Franziska Holz, Lukas Barner · **Feeds:** task-suitability analysis, validation argument
 
@@ -45,7 +79,7 @@ rather than speculation.
 - Has a run ever produced plausible-looking but wrong results? How was it caught?
 - What do you check first when output looks off?
 
-### 3. Has anyone already tried to automate parts of this?
+### 5. Has anyone already tried to automate parts of this?
 
 **For:** Lukas Barner (best placed — wrote the port) · **Feeds:** related work, scoping
 
@@ -55,14 +89,14 @@ acknowledge, and it marks which problems are already solved and not worth claimi
 Also worth asking what he found repetitive while porting the model — that is a direct read on where
 the friction lives.
 
-### 4. Who else uses GGM, and how? **(open)**
+### 6. Who else uses GGM, and how? **(open)**
 
 **For:** Franziska Holz · **Feeds:** motivation, scope
 
 How many people run this model, at DIW / NTNU / elsewhere? A workflow burden shared by many people
 is a stronger motivation than one researcher's inconvenience.
 
-### 5. Scope and expectations for the project thesis itself
+### 7. Scope and expectations for the project thesis itself
 
 **For:** both supervisors · **Feeds:** everything
 
