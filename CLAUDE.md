@@ -2,13 +2,19 @@
 
 ## What this is
 
-Master's thesis project (NTNU, Industrial Economics) by Jørgen Holt and Save Brautaset.
-Supervised by Franziska Holz.
+NTNU Industrial Economics, by Jørgen Holt and Save Brautaset.
+Supervised by Franziska Holz; Lukas Barner (TU Berlin, wrote the Julia port of
+GGM) advises and meets weekly.
 
-We are building LLM-based agents (Python, Claude API) that wrap around the
-Global Gas Model (GGM) — a Julia partial equilibrium model for global natural
-gas markets. The agents automate scenario generation, parameter curation,
-result interpretation, and validation. GGM itself stays untouched.
+The end goal is LLM-based agents (Python, Claude API) wrapping the Global Gas
+Model (GGM) — a Julia partial equilibrium model for global natural gas markets —
+automating scenario generation, parameter curation, result interpretation, and
+validation. GGM itself stays untouched.
+
+**Current phase: project thesis (autumn 2026) — exploration and writing, not
+building.** The implementation is the master's thesis, spring 2027. See
+`docs/thesis-scope.md` before proposing work: code written this semester should
+be illustrative and disposable, and the deliverable is a written argument.
 
 ## GGM
 

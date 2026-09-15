@@ -51,10 +51,15 @@ wrong by the `c(r)` term — small for R1, large for the steep R3 tail that does
 
 ---
 
-### 2. Input data access — **high priority**
+### 2. Input data access — **not urgent this semester**
 
-**For:** Franziska Holz · **Raised:** 2026-09-15 · **Blocks:** scenario generation, parameter
-curation, validation agents
+**For:** Franziska Holz · **Raised:** 2026-09-15 · **Needed for:** the master's thesis build; helpful
+for a proof of concept
+
+**Priority revised 2026-09-15** after the two-phase structure became clear (see
+[`thesis-scope.md`](thesis-scope.md)). The project thesis is exploration and writing, so nothing this
+semester is blocked on having the data. It remains worth requesting early — lead time is unknown and
+it is a hard prerequisite for spring — but it is not on the critical path right now.
 
 `ggm/data_2023/` ships with only a note to contact the authors. We need one complete scenario set:
 
