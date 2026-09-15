@@ -45,12 +45,12 @@ wrong by the `c(r)` term — small for R1, large for the steep R3 tail that does
 
 ---
 
-### 2. Input data access
+### 2. Input data access — **high priority**
 
-**For:** Franziska Holz · **Raised:** 2026-09-15
+**For:** Franziska Holz · **Raised:** 2026-09-15 · **Blocks:** scenario generation, parameter
+curation, validation agents
 
-`ggm/data_2023/` ships with only a note to contact the authors. We need one complete scenario set to
-calibrate and validate against:
+`ggm/data_2023/` ships with only a note to contact the authors. We need one complete scenario set:
 
 - `general_data_<scen>.xlsx`
 - `projected_data_<scen>.xlsx`
@@ -58,6 +58,24 @@ calibrate and validate against:
 
 A real scenario is more useful than a constructed example, and less work to provide. `STEPS_NENO` is
 the scenario named in `ggm_2023.jl`.
+
+**Why this is higher priority than it first appeared.** The workbook *schema* is recoverable from
+`data_load.jl`, so the bridge and parsing code can be built without the data. But the agents that
+make judgment calls cannot: their job is knowing what values are plausible, and that requires having
+seen real ones. Specifically, the following are not derivable from the code or the 2019 PDF:
+
+- **Actual node / arc / resource identifiers in the 2023 set.** The doc shows 2019-era codes
+  (`USA_2`, `RUS_W`, `CAN_E`); the current set is unknown. A scenario generator emitting invalid
+  identifiers fails on the first run.
+- **Real parameter distributions.** The PDF gives literature ranges and two worked examples, not the
+  spread of base costs across ~93 production nodes — so there is no basis for judging whether a
+  proposed value is ordinary or absurd.
+- **What analysts actually tuned, and by how much.** The calibration workbooks are a record of expert
+  judgment and are the closest available thing to ground truth for a curation agent.
+- **Real-world messiness** — merged cells, `EPS` entries, blank rows, inconsistent node spellings.
+  Synthetic fixtures are too clean and will make the parser look more robust than it is.
+- **What a plausible result looks like** (price levels, utilisation rates), which a validation agent
+  needs as its reference.
 
 Also worth confirming: which scenarios exist in the 2023 dataset, and whether the naming still splits
 on `_` into (projection scenario, general-data variant) the way `data_load.jl` assumes.
