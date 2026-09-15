@@ -28,6 +28,52 @@ literature, and it gives a much more concrete task description than "configuring
 
 ---
 
+## The four layers of input
+
+Not all GGM input is the same kind of thing. Most of it is simply collected; only one layer involves
+real judgment. Getting this straight matters, because it is where the automation argument divides.
+
+| Layer | What it is | Where it comes from | Changes when | Workbook |
+|---|---|---|---|---|
+| **1. Physical facts** | Pipeline capacities and lengths, LNG terminal capacities, storage working gas and withdrawal rates, shipping distances, node definitions | ENTSOG, EIA, GIIGNL, GIE, IEA, Cedigaz, port distances | The world changes — a terminal is built | `general_data_*` |
+| **2. Projections** | Reference production and consumption per year, sector shares, seasonality | IEA WEO, PRIMES — read off a chosen outlook | A different outlook is chosen | `projected_data_*` |
+| **3. Literature parameters** | Elasticities, base pipeline/LNG/storage costs and loss rates, inflators, discount rate | Published studies; the Table 6 block (PDF p. 14) | Almost never | `general_data_*` (Other Assumptions) |
+| **4. Calibrated quantities** | Production costs, production capacity slack, reference prices, market power values, `GlobLoss` | **Nothing. They are inferred** by tuning until the model reproduces observed reality | Every scenario | `calibrated_data_*` |
+
+**Layers 1–3 are collected and used nearly as-is.** Effort there is volume, not difficulty: find the
+current report, extract the table, convert units, map to nodes, paste in. Tedious, repetitive,
+error-prone in a *loud* way — a wrong unit conversion usually shows up as an absurd number.
+
+**Layer 4 is not collected at all.** The documentation is explicit that detailed production cost and
+capacity data is unavailable, so values are derived from assumptions supported by limited information
+(PDF p. 29). Market power values are likewise tuned, not observed. This layer is *inferred by making
+the model match the world* — and it is where every hard judgment lives.
+
+Two of the three workbooks are therefore largely mechanical. One is entirely judgment.
+
+### A scenario is a specified departure from layers 1 and 2
+
+This is a useful way to describe scenario design. Layers 1–2 describe the world as it is and as some
+outlook expects it to become. A scenario says: *hold all that, except these specified changes* —
+these arcs lose capacity, this demand path replaces that one. Then layer 4 usually has to be
+re-tuned, because the calibration that reproduced the old world may not hold in the new one.
+
+### Why this splits the automation argument
+
+The two layers point at different agent designs, and they are worth treating as separate
+contributions rather than one:
+
+- **Layers 1–3 — high volume, low risk.** Heterogeneous sources including annual report PDFs, exactly
+  the extraction work LLMs are strong at, with mistakes that are relatively easy to catch
+  automatically. This is where most of the *hours* probably go, and the safest place to start.
+- **Layer 4 — low volume, high risk.** Small number of numbers, enormous consequence, quiet failure.
+  This is where the *difficulty* is, and where the interesting thesis claim lives.
+
+Worth confirming against practice which layer actually consumes the days-to-weeks. The documentation
+suggests calibration, but data updating may quietly dominate in ordinary use.
+
+---
+
 ## The inventory
 
 Legend for **Verdict**: **Code** = deterministic, belongs in ordinary software · **Agent** = benefits
