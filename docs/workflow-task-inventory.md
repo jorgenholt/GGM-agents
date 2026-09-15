@@ -58,6 +58,50 @@ outlook expects it to become. A scenario says: *hold all that, except these spec
 these arcs lose capacity, this demand path replaces that one. Then layer 4 usually has to be
 re-tuned, because the calibration that reproduced the old world may not hold in the new one.
 
+### Where the math happens — inside or outside the model
+
+**Verified from the code, 2026-09-15.** Worth knowing precisely, because it determines what an agent
+pipeline would be responsible for.
+
+The model reads reference quantities that are **already per-node and per-year**
+([`data_load.jl:99`](../ggm/GlobalGasModel/src/SubModules/data_load.jl#L99)):
+
+```julia
+ref_prod = projected_quantities[..., "Reference Production $y"] * BCMA_TO_MCMD
+```
+
+One row per node, one column per year. So:
+
+| Done **outside** the model, during workbook preparation | Done **inside** the model, never touched |
+|---|---|
+| Source extraction from reports and databases | bcma → mcm/day conversion |
+| Unit conversion to bcma | Demand curve intercepts and slopes from price, elasticity, sector shares, seasonality |
+| Splitting regional totals across nodes | Production cost curves from base cost and multipliers |
+| Interpolating and extrapolating missing years | Loss rates from pipeline length and shipping distance |
+| Mapping figures to the right node | Arc operating and investment costs from distance and base fees |
+| | Discounting and cost/price inflation |
+
+The heavy *modelling* math is inside and fixed. The *data preparation* math is outside, and is what an
+agent pipeline would have to cover.
+
+### Design principle: judgment in, arithmetic out
+
+That preparation math is deterministic and documented — the same every time. So the agent should
+**do no arithmetic at all**. Not because the math is hard, but because LLMs are unreliable at it and
+the errors are silent.
+
+The division that follows:
+
+- **Agent decides:** which source, which edition, which table, which node a figure maps to, whether
+  a figure is marketed or gross, whether something looks anomalous
+- **Deterministic code computes:** unit conversion, regional splitting by share, interpolation,
+  aggregation
+
+This is defensible as a safety property, not just an implementation preference: every number in a
+generated workbook traces to either a cited source or a deterministic function, never to a language
+model's output. That makes the pipeline auditable — which matters for results that end up in
+published research.
+
 ### Why this splits the automation argument
 
 The two layers point at different agent designs, and they are worth treating as separate
