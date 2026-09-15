@@ -34,3 +34,15 @@ result interpretation, and validation. GGM itself stays untouched.
 - Feature branches off `main`, merge via PR
 - API keys in `.env`, never committed
 - Large data files go in `data/` (gitignored)
+
+## Documenting findings
+
+When something non-obvious about GGM is worked out — a unit convention, a
+discrepancy between the docs and the code, why a parameter behaves unexpectedly
+— **write it down, don't just say it in chat.** Chat is lost next session.
+
+- Findings about how GGM actually works → `docs/ggm-model.md`, in the relevant
+  section, with a pointer to the source line or PDF page that proves it
+- Questions that need a human → `docs/questions-for-weekly-meeting.md`
+- State what was *verified* vs. what is still *assumed* — an unresolved
+  discrepancy is worth recording as unresolved, not silently smoothed over
