@@ -16,6 +16,11 @@ result interpretation, and validation. GGM itself stays untouched.
 - Included here as a git submodule in `ggm/`
 - Do not modify GGM source — our work is the agent layer around it
 - Julia↔Python bridge: subprocess calls with JSON files, keep it thin
+- **Model reference: `docs/ggm-model.md`** — sets, variables, constraints, input
+  files, calibration, and parameter defaults, with page pointers into
+  `docs/ggm-documentation-v3.0.pdf`. Read it before touching model parameters.
+- Input data is NOT in the repo (`ggm/data_2023/` is empty) — must be requested
+  from the GGM authors
 
 ## Stack
 
