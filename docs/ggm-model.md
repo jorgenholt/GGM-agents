@@ -216,10 +216,34 @@ Key points:
 - Calibration adjusts **production costs and capacities, reference prices, and market power**.
   Elasticities are *not* adjusted.
 - Base year is calibrated first and alone; future years afterwards.
-- Budget realistically: *"several days"* for an experienced analyst, *"several weeks"* after a major
-  data revision (PDF p. 28).
 - The global market behaves as communicating vessels — changing one country's production cost spills
   over into consumption everywhere.
+
+### Calibration effort — citable evidence of manual burden
+
+**Location: PDF p. 28 (printed p. 26), §5.1 "Calibration", third paragraph.**
+
+The authors state that calibrating GGM for a new scenario takes an experienced analyst **at least
+several days**, extending to **several weeks** after a major revision of the input data set. The
+sentence immediately before gives the reason: multi-country oligopolistic models are much harder to
+calibrate than perfectly competitive ones.
+
+This is the strongest available evidence for the project thesis's premise — the model's own authors
+documenting that the manual burden is real and substantial, rather than us asserting it. It belongs
+in the GGM section as motivation (see [`thesis-scope.md`](thesis-scope.md)).
+
+Two notes if quoting directly:
+
+- The published text reads *"an experiences analyst"* — a typo for "experienced" in the original.
+  Quote with `[sic]`, or paraphrase.
+- Citation: Egging & Holz (2019), *Global Gas Model: Model and Data Documentation v3.0*,
+  DIW Data Documentation 100, p. 26.
+
+The surrounding pages (PDF pp. 28–32) reinforce the point: calibration is described as requiring
+combined market knowledge and model expertise, with the explicit warning that a wrongly calibrated
+model produces biased results that stem from invalid parameter choices rather than market logic.
+That is a good framing for *which* parts of the workflow an agent could and could not safely take
+over — directly relevant to the task-suitability analysis in the AI agents section.
 
 **Production cost curve** (PDF pp. 29–30, 33–34): the older logarithmic Golombek function was replaced
 by a piecewise-linear approximation over three resources. Capacity shares are fixed globally at
