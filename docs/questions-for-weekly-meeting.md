@@ -11,7 +11,13 @@ Move answered items to **Resolved** at the bottom with the answer, so the reason
 
 ### 1. Production cost curve — does the Julia port redefine `q(r)`?
 
-**For:** Lukas Barner (wrote the Julia port) · **Raised:** 2026-09-15 · **Blocks:** calibration work
+**For:** Lukas Barner (wrote the Julia port) · **Raised:** 2026-09-15 · **Priority:** low for now —
+ask before we generate or modify any production cost parameter
+
+**Not urgent, because:** calibration data received from the authors was tuned against the Julia code,
+so it is already internally consistent whichever convention the port uses. This only bites if we
+re-calibrate from scratch, or if a curation agent starts proposing `base cost` / `q(r)` values of its
+own — at which point the agent needs to know what marginal cost a given input actually produces.
 
 The documentation and the Julia code appear to produce different production cost curves for the same
 calibration inputs.
