@@ -262,14 +262,52 @@ table looks like, and for the utilisation-rate definitions.
 
 Both solvers are commercial. Gurobi has a free academic licence — relevant for NTNU.
 
-### Two things to verify against the code rather than trusting either source
+### Flow units — resolved: mcm/day
 
-1. **Flow units.** The doc says flows and capacities are in mcm/d (PDF p. 9). The Julia variable
-   comments say `mcm/yr` ([`Model.jl:31–40`](../ggm/GlobalGasModel/src/SubModules/Model.jl#L31)), but
-   the objective multiplies by `days_d[d]`, which implies per-day. The comments are probably stale —
-   confirm before interpreting any result magnitudes.
-2. **Quadratic cost coefficient.** The doc writes production cost as `c·q + d·q²` (PDF p. 49); the
-   Julia code uses `cost_pl·Q_P + 0.5·cost_pq·Q_P²`. The factor of ½ changes what `cost_pq` means.
+The Julia variable comments say `mcm/yr`
+([`Model.jl:31–40`](../ggm/GlobalGasModel/src/SubModules/Model.jl#L31)). **They are wrong.** The
+model works in **mcm/day**, matching the doc (PDF p. 9).
+
+`BCMA_TO_MCMD = 1000/365` is applied to every capacity and reference quantity on load —
+`cap_a` ([data_load.jl:125](../ggm/GlobalGasModel/src/SubModules/data_load.jl#L125)), `ref_prod`
+([:99](../ggm/GlobalGasModel/src/SubModules/data_load.jl#L99)), `sectoral_reference_consumption`
+([:172](../ggm/GlobalGasModel/src/SubModules/data_load.jl#L172)), `d_a_max` ([:127](../ggm/GlobalGasModel/src/SubModules/data_load.jl#L127)).
+Annual figures are then recovered as `Σ_d days_d[d] · Q / 1000` → bcm
+([Model.jl:137](../ggm/GlobalGasModel/src/SubModules/Model.jl#L137)).
+
+So: **workbook inputs are bcma, internal units are mcm/day, reported annuals are bcm.**
+
+### Production cost curve — open discrepancy with the doc
+
+The Julia code builds the quadratic term as
+([data_load.jl:104](../ggm/GlobalGasModel/src/SubModules/data_load.jl#L104)):
+
+```
+cost_pq[n,r,y] = base_cost · q(r) · year_factor · inflator / cap_p[n,r,y]
+```
+
+and the objective uses `cost_pl·Q_P + ½·cost_pq·Q_P²`, giving marginal cost
+
+```
+MC(Q) = cost_pl + cost_pq·Q      ⇒  MC at full capacity = base · (c(r) + q(r)) · factors
+```
+
+The doc's worked example (PDF pp. 33–34) instead gives **MC at full capacity = base · q(r)**: with
+`base = 12`, `c = 1`, `q = 5` it states 12 at the first unit and **60** at capacity. The Julia
+formulation yields **72** for the same inputs.
+
+Either the port redefined `q(r)` as an increment above `c(r)`, or the curves genuinely differ. This
+changes the steepness of every production cost curve, so **confirm with the port author before
+calibrating anything**. The port is by Lukas Barner (TU Berlin) per
+[`GlobalGasModel/Project.toml`](../ggm/GlobalGasModel/Project.toml).
+
+### Workbook schemas are recoverable without the data
+
+`data_load.jl` references every workbook column by literal string, so the full expected schema of all
+three files can be read straight out of the source even though `data_2023/` is empty — e.g.
+`"Reference Production <year>"`, `"<year> Capacity (bcma)"`, `"Length (1000 km)"`,
+`"Base Cost (EUR/kcm)"`, `"c(<resource>)"`, `"Maximum Expansion First Period"`. Enough to build
+synthetic fixtures and develop against them before the real data arrives.
 
 ---
 
