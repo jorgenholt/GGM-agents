@@ -9,6 +9,42 @@ A structure to propose to supervisors and argue around, plus the prior work it s
 
 ---
 
+# The short version
+
+**The argument, in one sentence:**
+
+> GGM's workflow carries a documented expert burden. Some of it suits an LLM agent, some belongs in
+> ordinary code, and some should not be automated at all. This thesis works out which is which.
+
+**Six chapters:**
+
+| # | Chapter | In one line |
+|---|---|---|
+| 1 | Introduction | The problem, the question, and what this thesis does and doesn't do |
+| 2 | The Global Gas Model | What it is, and where the manual work actually goes |
+| 3 | LLM agents | What they are good at, what they are bad at |
+| 4 | Related work | Who has tried this on other models, and how it went |
+| 5 | **Which GGM tasks fit** | The core chapter — the mapping, and the reasoning behind it |
+| 6 | Conclusion | What we'd build in the master's thesis |
+
+Optionally a small **proof of concept** between 5 and 6, if the supervisors want one.
+
+**Why this order:** chapters 2 and 3 are the two halves of the problem. Chapter 4 shows we know the
+field. Chapter 5 is where they meet, and it is the actual contribution. Everything else supports it.
+
+**Three things to decide with supervisors:**
+
+1. How narrow should the research question be?
+2. Is a proof of concept wanted, or is a well-argued exploration enough?
+3. How much related work is enough — a section, or a full chapter?
+
+---
+
+*Everything below is supporting detail for the six chapters above. Skip it unless you want the
+reasoning or the reading list.*
+
+---
+
 ## 1. The argument the thesis should make
 
 Before structure, the spine. A weak version of this thesis says *"AI agents are promising, and GGM
