@@ -161,9 +161,11 @@ That constraint is a finding, not a limitation to apologise for. It is worth sta
 
 ## Open questions this raises
 
-- How does an analyst actually create a new scenario today — edit a copy of the workbooks, or is
-  there existing tooling?
-- How often is a genuinely new scenario built, versus re-running variations?
-- Has a scenario ever gone wrong in the "solved cleanly, wrong question" way? *This is the most
-  valuable single anecdote available for the thesis.*
-- Where does the time actually go — the tedious steps, or the judgment ones?
+Carried into [`questions-for-weekly-meeting.md`](questions-for-weekly-meeting.md) — see questions 2,
+3 and 4 there. The one worth pushing hardest:
+
+> **Has a scenario ever gone wrong in the "solved cleanly, wrong question" way?**
+
+That anecdote, if it exists, is the single most valuable piece of evidence available for the thesis.
+It is the failure mode the whole argument turns on, and one real example beats any amount of
+reasoning about what could happen in principle.

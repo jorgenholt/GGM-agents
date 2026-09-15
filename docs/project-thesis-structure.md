@@ -65,7 +65,19 @@ error class an LLM is worst at catching.
 
 ---
 
-## 2. Proposed section structure
+## 2. Proposed section structure — expanded form
+
+**This is the six-chapter outline above, split finer.** Chapters 6–8 here are what the short version
+folds into its chapter 6. Use whichever granularity the supervisors prefer:
+
+| Short version | Expanded form |
+|---|---|
+| 1 Introduction | 1 Introduction |
+| 2 The Global Gas Model | 2 Background: the Global Gas Model |
+| 3 LLM agents | 3 LLM agents |
+| 4 Related work | 4 Related work |
+| 5 Which GGM tasks fit | 5 Task suitability analysis |
+| 6 Conclusion | 6 Design sketch · 7 Proof of concept · 8 Discussion · 9 Conclusion |
 
 Sections 3 and 4 are the two Jørgen and Save already identified. The rest is scaffolding around them.
 
@@ -266,52 +278,28 @@ grey-box paper flags this as an open limitation — engaging with it seriously i
 
 ---
 
-## 5. Catching errors before a run — a worked example
+## 5. Source material for chapter 5
 
-Jørgen asked *how* an agent would catch errors before running. Working this through makes a good
-worked example for section 5, because it shows the classification doing real work rather than
-being asserted.
+The analysis itself lives in **[`workflow-task-inventory.md`](workflow-task-inventory.md)** — that is
+the working document for this chapter, and it should not be restated here. It contains:
 
-**Tier 1 — structural consistency. Ordinary code, not an LLM.**
-Node identifiers in the Arcs sheet exist in the Nodes sheet; every liquefaction and regasification
-node appears in the Vessel Distances matrix; nodes flagged for storage in Nodes appear in Storages;
-required columns present with correct types. One correct answer, cheap to check, loud failure. An
-LLM here is slower, costlier and less reliable than fifty lines of Python — **a clean example of a
-task that is better coded.**
+- The **four layers of input** — physical facts, projections, literature parameters, calibrated
+  quantities — and why only the last involves judgment
+- An **eleven-stage decomposition** of the workflow with a Code / Agent / Human / Mixed verdict and
+  reasoning for each
+- **Where the processing happens**, inside versus outside the model, verified from the code
+- The **judgment in, arithmetic out** design principle
+- Why calibration resists a clean verdict, and why that makes it the interesting case
 
-**Tier 2 — numerical feasibility. Code detects, LLM explains.**
-Does global reference production match global reference consumption after `GlobLoss`? Is production
-capacity 3–5% above reference production, per the calibration guidance? Is export capacity adequate
-for projected net exports?
+Two findings from it are worth carrying into the thesis as headline points:
 
-Note that **GGM already does some of this**: `data_load.jl` emits `"Insufficient export capacity
-detected"` and `"Insufficient import capacity detected"` warnings during loading
-([data_load.jl:245](../ggm/GlobalGasModel/src/SubModules/data_load.jl#L245)). That is existing prior
-art inside the model, and it is worth citing — it shows the model's own authors saw the need for
-pre-run checks. The gap is not detection but *interpretation and repair*, which is where an agent
-earns its place.
+**GGM already performs some pre-run checks.** `data_load.jl` emits insufficient import/export
+capacity warnings during loading. The authors saw the need. That reframes the contribution from
+"add validation" to *interpretation and repair* — a sharper and more defensible claim.
 
-**Tier 3 — narrative coherence. Genuinely an LLM.**
-Does the scenario's parameters match the story it claims to tell? A decarbonisation scenario with
-rising gas demand in 2050 is internally incoherent in a way no schema check catches. Are market power
-assumptions consistent with the stated geopolitical premise? Have two changes been made that interact
-badly — raising an exporter's market power while also cutting its export capacity? This needs world
-knowledge and inference about intent. No amount of ordinary code substitutes.
-
-**Tier 4 — diagnostic interpretation. The strongest case, and a ready-made benchmark.**
-After a run, output deviates from reference values. Why?
-
-The DIW documentation contains **explicit expert diagnostic reasoning** (PDF p. 28): if Russia
-under-produces while consuming enough, its exports are too low, which could be (1) production costs
-too high, (2) willingness to pay in export markets too low, or (3) Russian market power too high. A
-parallel worked example is given for Chinese consumption with six candidate causes.
-
-This is unusually valuable for a thesis, because those heuristics are **written down**. That gives
-you a ground truth to evaluate an agent against, rather than only subjective judgement — a documented
-expert reasoning chain, and a measurable question: does the agent reproduce it?
-
-The tiering also *is* the contribution in miniature: the same workflow spans tasks that should be
-plain code, tasks where code detects and an agent explains, and tasks that only an agent can attempt.
+**The documentation contains written-down expert diagnostic reasoning** (PDF p. 28). Because those
+heuristics are on paper, an agent's reasoning can be evaluated against them rather than only judged
+subjectively — rare, and the basis for a proof of concept.
 
 ---
 

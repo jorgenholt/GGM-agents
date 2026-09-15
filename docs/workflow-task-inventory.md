@@ -58,7 +58,26 @@ outlook expects it to become. A scenario says: *hold all that, except these spec
 these arcs lose capacity, this demand path replaces that one. Then layer 4 usually has to be
 re-tuned, because the calibration that reproduced the old world may not hold in the new one.
 
-### Where the math happens — inside or outside the model
+### Why this splits the automation argument
+
+The layers point at two different agent designs, worth treating as separate contributions rather
+than one:
+
+- **Layers 1–3 — high volume, low risk.** Heterogeneous sources including annual report PDFs, exactly
+  the extraction work LLMs are strong at, with mistakes that are relatively easy to catch
+  automatically. This is where most of the *hours* probably go, and the safest place to start.
+  **The optimisation target here is speed.**
+- **Layer 4 — low volume, high risk.** Few numbers, enormous consequence, quiet failure. This is where
+  the *difficulty* is, and where the interesting thesis claim lives. **The optimisation target here is
+  judgment quality.**
+
+Worth confirming against practice which layer actually consumes the days-to-weeks
+([question 3](questions-for-weekly-meeting.md)). The documentation suggests calibration, but data
+updating may quietly dominate in ordinary use.
+
+---
+
+## Where the processing happens
 
 **Verified from the code, 2026-09-15.** Worth knowing precisely, because it determines what an agent
 pipeline would be responsible for.
@@ -117,7 +136,9 @@ state, and it is fragile in well-understood ways: hard to version, hard to audit
 silently, and the knowledge lives in formulas nobody remembers writing. Worth confirming it is still
 how things work — the 2023 Julia workflow may have moved on.
 
-### Design principle: judgment in, arithmetic out
+---
+
+## Design principle: judgment in, arithmetic out
 
 That preparation math is deterministic and documented — the same every time. So the agent should
 **do no arithmetic at all**. Not because the math is hard, but because LLMs are unreliable at it and
@@ -154,20 +175,6 @@ involved.
 Use the strongest guarantee available for each case: never generated code where a fixed function
 would do. But in both cases the invariant holds — **no number originates from the model's token
 stream.** Either a reviewed function or visible, re-runnable code produced it.
-
-### Why this splits the automation argument
-
-The two layers point at different agent designs, and they are worth treating as separate
-contributions rather than one:
-
-- **Layers 1–3 — high volume, low risk.** Heterogeneous sources including annual report PDFs, exactly
-  the extraction work LLMs are strong at, with mistakes that are relatively easy to catch
-  automatically. This is where most of the *hours* probably go, and the safest place to start.
-- **Layer 4 — low volume, high risk.** Small number of numbers, enormous consequence, quiet failure.
-  This is where the *difficulty* is, and where the interesting thesis claim lives.
-
-Worth confirming against practice which layer actually consumes the days-to-weeks. The documentation
-suggests calibration, but data updating may quietly dominate in ordinary use.
 
 ---
 

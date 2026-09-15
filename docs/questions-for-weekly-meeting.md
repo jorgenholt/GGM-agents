@@ -75,9 +75,19 @@ re-read from scratch, or is there a diffing process against last year?
 Failure modes are where an automated check would earn its place, and they are concrete evidence
 rather than speculation.
 
+- **Has a scenario ever "solved cleanly but answered the wrong question"** — a run that completed
+  fine and produced plausible numbers, but the configuration did not match what was intended?
+  *Push hardest on this one.* It is the failure mode the whole thesis argument turns on, and one
+  real example beats any amount of reasoning about what could happen in principle.
 - What mistakes recur during calibration or scenario setup?
-- Has a run ever produced plausible-looking but wrong results? How was it caught?
 - What do you check first when output looks off?
+- How was a bad run caught, when it was caught?
+
+Also on scenario mechanics, relevant to
+[`how-it-would-work.md`](how-it-would-work.md):
+
+- How is a new scenario actually created — edit a copy of the workbooks, or is there tooling?
+- How often is a genuinely new scenario built, versus re-running variations of an existing one?
 
 ### 5. Has anyone already tried to automate parts of this?
 
