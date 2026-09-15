@@ -21,12 +21,13 @@ be illustrative and disposable, and the deliverable is a written argument.
 - Source: https://github.com/Franziska-Holz/GGM_public (MIT, Julia/JuMP)
 - Included here as a git submodule in `ggm/`
 - Do not modify GGM source — our work is the agent layer around it
-- Julia↔Python bridge: subprocess calls with JSON files, keep it thin
-- **Model reference: `docs/ggm-model.md`** — sets, variables, constraints, input
-  files, calibration, and parameter defaults, with page pointers into
-  `docs/ggm-documentation-v3.0.pdf`. Read it before touching model parameters.
+- **A scenario *is* three Excel workbooks.** There is no config layer, so a
+  bridge must read and write `.xlsx` — not JSON
+- Solving requires **Gurobi** (free academic licence)
 - Input data is NOT in the repo (`ggm/data_2023/` is empty) — must be requested
   from the GGM authors
+- **Model reference: `docs/ggm-model.md`** — read before touching model
+  parameters. `docs/README.md` indexes the rest
 
 ## Stack
 
@@ -47,8 +48,8 @@ When something non-obvious about GGM is worked out — a unit convention, a
 discrepancy between the docs and the code, why a parameter behaves unexpectedly
 — **write it down, don't just say it in chat.** Chat is lost next session.
 
-- Findings about how GGM actually works → `docs/ggm-model.md`, in the relevant
-  section, with a pointer to the source line or PDF page that proves it
-- Questions that need a human → `docs/questions-for-weekly-meeting.md`
-- State what was *verified* vs. what is still *assumed* — an unresolved
-  discrepancy is worth recording as unresolved, not silently smoothed over
+- `docs/README.md` says which file it belongs in
+- Always cite the source line or PDF page that proves it
+- State what was *verified* vs. what is still *assumed* — record an unresolved
+  discrepancy as unresolved rather than smoothing it over
+- Keep the analysis in one place and link to it; don't restate it across files
