@@ -117,14 +117,28 @@ Jørgen and Save have flagged that scope is still being negotiated. Worth pinnin
 - Expected length, structure, and deadline
 - Is there existing literature they would point to on LLM agents in modelling workflows?
 
+### 8. Questions about the 2023 dataset
+
+**For:** Lukas Barner · **Raised:** 2026-09-30 · **Background:**
+[`ggm-data-2023.md`](ggm-data-2023.md)
+
+Things that came up when reading through the data. None of them block anything; they're about
+understanding it correctly.
+
+- **What do the codes stand for?** Scenarios `FFF`, `MCA`, `NCA`, `TZE`; general variants `NENO`,
+  `SQAB`, `EUSD`. Which combination is the usual reference run?
+- **Is market power meant to stay constant?** The minimum ratio is 1 for every trader, which switches
+  off the 0.7-per-period decay entirely.
+- **Storage OPEX is labelled USD** but used as EUR without conversion. Stale label, or a real mismatch?
+- **FFF and TZE have zero demand from 2050.** The loader handles it by replacing infinities with a
+  fallback value. Intended, and do those runs solve cleanly?
+- **`DistCutOff` is in the sheet but never read by the code.** Deliberate?
+- **Three defaults lie outside the ranges listed next to them** — most notably shipping loss at 1 % per
+  1,000 sea miles against a stated 0.25–0.4 %. Calibrated on purpose?
+
 ---
 
 ## Parked — for the build phase (spring 2027)
-
-**Input data access.** `ggm/data_2023/` ships empty; one complete scenario set
-(`general_data_*`, `projected_data_*`, `calibrated_data_*`) is a hard prerequisite for the master's
-thesis and would help any proof of concept. Not blocking this semester, but lead time is unknown, so
-worth requesting early. `STEPS_NENO` is the scenario named in `ggm_2023.jl`.
 
 **Production cost curve — does the Julia port redefine `q(r)`?** For Lukas. The doc's worked example
 (base 12, `c=1`, `q=5`) gives marginal cost 60 at full capacity; the Julia formulation
@@ -133,10 +147,18 @@ above `c(r)` in the port, or the curves genuinely differ. Only matters once we g
 production cost parameters ourselves — calibration data received from the authors is already
 self-consistent with the code. Full derivation:
 [`ggm-model.md` §9](ggm-model.md#production-cost-curve--open-discrepancy-with-the-doc).
+*Update 2026-09-30:* the 2023 data uses `q = 1, 5, 8` exactly as in 2019, so `q` was not redefined —
+the curves really are steeper than documented. The question is now whether that was intended.
 
 ---
 
 ## Resolved
+
+### Input data received — *2026-09-30*
+
+The GGM authors provided the full 2023 dataset, and are fine with it being kept in our private repo.
+It lives in [`data_2023/`](../data_2023/): 11 workbooks, 4 scenarios × 3 general variants. What is
+in it is described in [`ggm-data-2023.md`](ggm-data-2023.md).
 
 ### Literature review goes second — *recorded 2026-09-30*
 

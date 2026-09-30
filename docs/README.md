@@ -10,6 +10,7 @@ Working documents for the project thesis. Start here.
 | [`project-thesis-structure.md`](project-thesis-structure.md) | Proposed chapter structure, related work, open decisions | Discussing structure with supervisors. **Short version is at the top** |
 | [`workflow-task-inventory.md`](workflow-task-inventory.md) | The analysis: four input layers, eleven workflow stages, what is code vs agent vs human | Working on the core chapter. This is the analytical heart |
 | [`how-it-would-work.md`](how-it-would-work.md) | One scenario walked end to end, today versus with agents | Explaining the idea to someone concretely |
+| [`ggm-data-2023.md`](ggm-data-2023.md) | The real 2023 dataset in `../data_2023/`: scenarios, network, what gets calibrated, oddities | Working with or describing the data |
 | [`ggm-model.md`](ggm-model.md) | Model reference — sets, variables, constraints, parameters, calibration, with PDF page pointers | Looking up how GGM actually works |
 | [`questions-for-weekly-meeting.md`](questions-for-weekly-meeting.md) | Things needing a human answer, and answers already resolved | Before each weekly meeting |
 | [`ggm-documentation-v3.0.pdf`](ggm-documentation-v3.0.pdf) | Egging & Holz (2019), DIW Data Documentation 100 | The source of truth for GGM |

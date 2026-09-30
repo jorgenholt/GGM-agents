@@ -14,12 +14,13 @@ agent assistance. Intended to make the idea discussable without hand-waving.
 Small and unglamorous. One command:
 
 ```
-julia ggm_2023.jl STEPS_NENO
+julia ggm_2023.jl FFF_NENO
 ```
 
-The scenario name splits on `_`. `STEPS` selects the projection and calibration workbooks, `NENO`
-the general data workbook. The model reads three Excel files from `data_2023/`, builds a quadratic
-program in JuMP, solves it with Gurobi, and writes result tables to `results/outputs/`.
+The scenario name splits on `_`. `FFF` selects the projection and calibration workbooks, `NENO`
+the general data workbook. The model reads three Excel files, builds a quadratic program in JuMP,
+solves it with Gurobi, and writes result tables to `results/outputs/`. (The script's own example,
+`STEPS_NENO`, is not in the dataset we have — see [`ggm-data-2023.md`](ggm-data-2023.md).)
 
 **A "scenario" is not a script or a config flag. It is a set of Excel workbooks.** Creating a new
 scenario means producing new workbooks — or editing copies of existing ones.
@@ -33,7 +34,11 @@ That is the whole interface, and it is why the interesting work is entirely in w
 > *What happens if the EU bans Russian pipeline imports from 2030, while Russia is permitted to
 > expand export capacity eastward?*
 
-A question DIW plausibly cares about, and one that touches most of the workflow.
+A question DIW plausibly cares about, and one that touches most of the workflow. It turns out they
+do: the 2023 dataset already contains close relatives of it. `NENO` has Russian pipelines to Europe at
+zero, `SQAB` restores them, and `EUSD` bans Russian gas sales to Europe outright from 2025 — see
+[`ggm-data-2023.md` §3](ggm-data-2023.md#3-the-three-general-variants). Those files show what DIW's
+own version of this edit looks like: capacities in the Arcs sheet, or a sales limit in its own sheet.
 
 ---
 

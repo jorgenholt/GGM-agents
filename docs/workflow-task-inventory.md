@@ -38,7 +38,7 @@ real judgment. Getting this straight matters, because it is where the automation
 | **1. Physical facts** | Pipeline capacities and lengths, LNG terminal capacities, storage working gas and withdrawal rates, shipping distances, node definitions | ENTSOG, EIA, GIIGNL, GIE, IEA, Cedigaz, port distances | The world changes — a terminal is built | `general_data_*` |
 | **2. Projections** | Reference production and consumption per year, sector shares, seasonality | IEA WEO, PRIMES — read off a chosen outlook | A different outlook is chosen | `projected_data_*` |
 | **3. Literature parameters** | Elasticities, base pipeline/LNG/storage costs and loss rates, inflators, discount rate | Published studies; the Table 6 block (PDF p. 14) | Almost never | `general_data_*` (Other Assumptions) |
-| **4. Calibrated quantities** | Production costs, production capacity slack, reference prices, market power values, `GlobLoss` | **Nothing. They are inferred** by tuning until the model reproduces observed reality | Every scenario | `calibrated_data_*` |
+| **4. Calibrated quantities** | Production costs, production capacity slack, reference prices, arc cost factors | **Nothing. They are inferred** by tuning until the model reproduces observed reality | Every scenario | `calibrated_data_*` (plus arc factors in `general_data_*`) |
 
 **Layers 1–3 are collected and used nearly as-is.** Effort there is volume, not difficulty: find the
 current report, extract the table, convert units, map to nodes, paste in. Tedious, repetitive,
@@ -50,6 +50,19 @@ capacity data is unavailable, so values are derived from assumptions supported b
 the model match the world* — and it is where every hard judgment lives.
 
 Two of the three workbooks are therefore largely mechanical. One is entirely judgment.
+
+### Checked against the 2023 data — *2026-09-30*
+
+The layers hold up when counted in the real workbooks
+([`ggm-data-2023.md` §6](ggm-data-2023.md#6-the-size-of-each-input-layer)): about 15,200 physical
+facts, 9,400 projected values, 26 literature parameters and 7,050 calibrated values, of which about
+2,630 are actually tuned. Three corrections to the table above:
+
+- **A fifth kind of input: scenario settings.** Expansion limits, market power and sales restrictions
+  are neither collected nor calibrated. They are choices about which world is being modelled.
+- **Market power is not re-tuned per scenario** in 2023. It sits in the general workbook and is
+  identical across all four scenarios, so it belongs with scenario settings rather than layer 4.
+- **`GlobLoss` is unused** — zero everywhere — so that calibration lever is switched off.
 
 ### A scenario is a specified departure from layers 1 and 2
 
@@ -67,9 +80,10 @@ than one:
   the extraction work LLMs are strong at, with mistakes that are relatively easy to catch
   automatically. This is where most of the *hours* probably go, and the safest place to start.
   **The optimisation target here is speed.**
-- **Layer 4 — low volume, high risk.** Few numbers, enormous consequence, quiet failure. This is where
-  the *difficulty* is, and where the interesting thesis claim lives. **The optimisation target here is
-  judgment quality.**
+- **Layer 4 — lower volume, high risk.** Fewer numbers than layers 1–2 but not few: in the 2023
+  data about 2,630 values are tuned, and a new scenario re-tunes roughly 1,700–2,050 of them. Large
+  consequence, quiet failure. This is where the *difficulty* is, and where the interesting thesis
+  claim lives. **The optimisation target here is judgment quality.**
 
 Worth confirming against practice which layer actually consumes the days-to-weeks
 ([question 3](questions-for-weekly-meeting.md)). The documentation suggests calibration, but data
@@ -247,7 +261,8 @@ lives in analysts' heads. Capturing it is a tractable and worthwhile target.
 ## What this inventory needs before it can be trusted
 
 - **Validation against practice.** Built from documentation describing the 2019 GAMS workflow. The
-  real 2023 Julia workflow may differ substantially.
+  input layers have now been checked against the real 2023 workbooks, but the *workflow* — who does
+  what, in which order, how long it takes — still has not been observed.
 - **Time weighting.** No idea which stages consume the days-to-weeks. Automating a stage that takes
   an afternoon is not worth much. Ask for rough proportions.
 - **Frequency.** A stage repeated every scenario is worth far more than one done once per dataset

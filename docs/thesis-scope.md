@@ -80,9 +80,9 @@ a working system.
   explanation matter more than architecture.
 - **Don't build ahead of the argument.** Infrastructure that would be right for the master's thesis
   is premature now. If code is written this semester it should be illustrative and disposable.
-- **Real GGM input data is not urgent this semester.** It is needed for the master's, and would help
-  a proof of concept, but exploration does not require a full calibrated dataset. This revises an
-  earlier assessment made before the two-phase structure was known.
+- **The real 2023 input data arrived on 2026-09-30** ([`ggm-data-2023.md`](ggm-data-2023.md)). This
+  semester it is useful for describing the model accurately and for putting numbers on the
+  calibration burden. Running the model is still for spring.
 - **Citations matter more than usual.** The literature review is now chapter 2 — the first
   substantive chapter a reader meets, so it sets the tone for everything after it. Worth accumulating
   sources as we go rather than reconstructing them at the end.

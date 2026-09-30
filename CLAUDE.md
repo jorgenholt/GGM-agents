@@ -24,8 +24,9 @@ be illustrative and disposable, and the deliverable is a written argument.
 - **A scenario *is* three Excel workbooks.** There is no config layer, so a
   bridge must read and write `.xlsx` — not JSON
 - Solving requires **Gurobi** (free academic licence)
-- Input data is NOT in the repo (`ggm/data_2023/` is empty) — must be requested
-  from the GGM authors
+- **Real 2023 input data is in `data_2023/`** — from the GGM authors, kept here
+  with their permission. Private repo only; never copy it into `ggm/`. What's in
+  it: `docs/ggm-data-2023.md`
 - **Model reference: `docs/ggm-model.md`** — read before touching model
   parameters. `docs/README.md` indexes the rest
 
@@ -40,7 +41,7 @@ be illustrative and disposable, and the deliverable is a written argument.
 - Code and comments in English
 - Feature branches off `main`, merge via PR
 - API keys in `.env`, never committed
-- Large data files go in `data/` (gitignored)
+- Scratch data goes in `data/` (gitignored); `data_2023/` is tracked on purpose
 
 ## Documenting findings
 

@@ -185,8 +185,14 @@ Model units are **kcm / mcm / mcm-per-day**, costs and prices in **€/kcm**. In
 
 ## 6. Input data
 
-The Julia port reads **three Excel workbooks** from `ggm/data_2023/`, selected by scenario name.
-The scenario string is split on `_`: for `STEPS_NENO`, `scens[1] = "STEPS"` and `scens[2] = "NENO"`.
+**The real 2023 dataset is in this repo at [`data_2023/`](../data_2023/)** — received from the GGM
+authors on 2026-09-30 and committed with their permission. **Private repo only: never copy it into
+the `ggm/` submodule or anywhere public.** The submodule's own `ggm/data_2023/` stays empty (just a
+`message.txt` asking people to contact the authors).
+
+Each run reads **three Excel workbooks**, chosen by a scenario string split on `_`: `scens[1]` picks
+the projected and calibrated workbooks, `scens[2]` picks the general one. So `FFF_NENO` reads
+`projected_data_FFF`, `calibrated_data_FFF` and `general_data_NENO`.
 
 | Workbook | Sheets | Doc equivalent |
 |---|---|---|
@@ -196,12 +202,14 @@ The scenario string is split on `_`: for `STEPS_NENO`, `scens[1] = "STEPS"` and 
 
 Loading code: [`data_load.jl:21–38`](../ggm/GlobalGasModel/src/SubModules/data_load.jl#L21).
 
-**The data is not in the repo.** `ggm/data_2023/` contains only `message.txt`: *"please contact the
-authors to receive the data for this run."* Getting it is a prerequisite for any actual model run.
+**What is actually in the 2023 files — scenarios, network size, what gets calibrated, and the
+oddities — is in [`ggm-data-2023.md`](ggm-data-2023.md).** In short: 4 scenarios (`FFF`, `MCA`, `NCA`,
+`TZE`) × 3 general variants (`NENO`, `SQAB`, `EUSD`) = 12 possible runs. `STEPS_NENO`, the example in
+`ggm_2023.jl`, is not one of them.
 
-Scenario naming: the 2019 doc uses IEA WEO scenarios `NPS` (New Policies) and `SDS` (Sustainable
-Development), combined with SET-Nav EU pathways (`Ref`, `Vision`). The 2023 data uses `STEPS`, the
-IEA's rename of NPS.
+Scenario naming history: the 2019 doc uses IEA WEO scenarios `NPS` (New Policies) and `SDS`
+(Sustainable Development), combined with SET-Nav EU pathways (`Ref`, `Vision`). The 2023 codes are
+different and not yet explained.
 
 ---
 
@@ -280,7 +288,7 @@ table looks like, and for the utilisation-rate definitions.
 | Horizon | 2015–2060 | **2020–2060** ([`ggm_2023.jl:7`](../ggm/ggm_2023.jl#L7)) |
 | Input files | `data.xlsx`, `data_proj.xlsx`, `data_calib.xlsx` | `general_data_*`, `projected_data_*`, `calibrated_data_*` |
 | Sheet names | `O`, `N`, `A`, `V`, `W`, `M` | Full words — see §6 |
-| Scenarios | `NPS-Ref`, `SDS-Vision` | `STEPS_*` — underscore-separated, split into two parts |
+| Scenarios | `NPS-Ref`, `SDS-Vision` | `<scenario>_<general>`, e.g. `FFF_NENO` — see §6 |
 | Sales restrictions | absent | `eq_lim_sales` constraint + "Sales Restrictions" sheet |
 | Resources, seasons | hardcoded in sheet O | own sheets, so configurable |
 
@@ -322,16 +330,21 @@ formulation yields **72** for the same inputs.
 
 Either the port redefined `q(r)` as an increment above `c(r)`, or the curves genuinely differ. This
 changes the steepness of every production cost curve, so **confirm with the port author before
-calibrating anything**. The port is by Lukas Barner (TU Berlin) per
+calibrating anything**.
+
+**Checked against the 2023 data (2026-09-30):** the workbooks use `q(R1) = 1`, `q(R2) = 5`,
+`q(R3) = 8` with `c(R)` mostly 1 — the 2019 values exactly. So `q` was *not* redefined as an
+increment (that would need `q(R1) = 0`), and the curves really are steeper than the documentation
+describes: R1's marginal cost runs from 1× to 2× base cost instead of staying flat. The base costs
+were tuned against the Julia model, so runs are internally consistent — but the documented reading
+of `q` does not match what the code does. The port is by Lukas Barner (TU Berlin) per
 [`GlobalGasModel/Project.toml`](../ggm/GlobalGasModel/Project.toml).
 
-### Workbook schemas are recoverable without the data
+### Discrepancies specific to the 2023 dataset
 
-`data_load.jl` references every workbook column by literal string, so the full expected schema of all
-three files can be read straight out of the source even though `data_2023/` is empty — e.g.
-`"Reference Production <year>"`, `"<year> Capacity (bcma)"`, `"Length (1000 km)"`,
-`"Base Cost (EUR/kcm)"`, `"c(<resource>)"`, `"Maximum Expansion First Period"`. Enough to build
-synthetic fixtures and develop against them before the real data arrives.
+Storage costs labelled in USD but used as EUR, an unused shipping cut-off, market power that never
+fades, and a few defaults outside their own stated ranges — all in
+[`ggm-data-2023.md` §7](ggm-data-2023.md#7-oddities-worth-knowing).
 
 ---
 
