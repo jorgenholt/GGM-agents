@@ -136,6 +136,29 @@ understanding it correctly.
 - **Three defaults lie outside the ranges listed next to them** — most notably shipping loss at 1 % per
   1,000 sea miles against a stated 0.25–0.4 %. Calibrated on purpose?
 
+### 9. What we still need in order to design agents
+
+**For:** Lukas Barner · **Raised:** 2026-09-30
+
+Reading the code and the 2023 data tells us *what* the configuration looks like, but not how it is
+produced or used. These three gaps can only be filled by someone who works with the model.
+
+- **Where does each number in the 2023 data come from?** For each sheet, which report, database or
+  outlook it was built from, and what was done to it on the way. The files themselves don't say. An
+  agent that updates data needs to know where to look and what to do with what it finds.
+- **How do you calibrate, and did you start automating it?** This extends question 2. Beyond the
+  step-by-step procedure (what you compare, which values you adjust and in what order, when you stop),
+  the Julia code contains an unused calibration hook: a `GGM_CalibrationTargets` structure with
+  target sales per country and a step size
+  ([GlobalGasModel.jl:76](../ggm/GlobalGasModel/src/GlobalGasModel.jl#L76)), and a `calib_int` input
+  that scales demand per node, season and year
+  ([Model.jl:7](../ggm/GlobalGasModel/src/SubModules/Model.jl#L7)). Neither is ever called. Is there
+  a calibration script outside the public repo, or was this started and dropped? Also, since the model
+  produces no calibration report, how do you compare results with the reference values today?
+- **What does a finished run look like, and how do you read it?** We can't run the model ourselves
+  yet. An example set of output files from one run, and a quick walkthrough of what you look at
+  first, would show what an agent interpreting results would actually be working with.
+
 ---
 
 ## Parked — for the build phase (spring 2027)
