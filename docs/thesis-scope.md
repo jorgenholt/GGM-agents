@@ -14,7 +14,7 @@ items marked **(open)** are not settled.*
 | **When** | Autumn 2026 — current | Spring 2027 |
 | **Nature** | Exploration and argument | Implementation |
 | **Deliverable** | A written thesis | Working agent system + thesis |
-| **Code** | None required; small proof of concept possible | The main contribution |
+| **Code** | None — no proof of concept this semester | The main contribution |
 
 The two are continuous — the project thesis is groundwork that the master's builds on. But they have
 different outputs, and conflating them leads to premature engineering.
@@ -29,9 +29,12 @@ An **exploratory argument**, not a build. The thesis being advanced is roughly:
 The work is establishing *whether* that is true, *where* it is true, and *what it would take* — not
 doing it yet. Success is a well-argued, well-evidenced case, not running software.
 
+The contribution is **a broad map of how and where AI can be used across the GGM workflow**, written
+so that it can serve as the starting point for building the agents in the master's thesis.
+
 ## Known structure
 
-Three sections are certain, in this order after the introduction. The rest is **(open)** and being
+Four sections are settled, in this order after the introduction. The rest is **(open)** and being
 worked out with supervisors. Full proposal: [`project-thesis-structure.md`](project-thesis-structure.md).
 
 ### Literature review — chapter 2
@@ -57,20 +60,46 @@ that there is real manual burden worth automating.
 
 ### AI agents — chapter 4
 
-Current thinking on what this covers — drawing on the literature review rather than re-surveying it:
+A **general** chapter on LLMs and agents — it does not need to tie every point back to GGM, since
+chapter 5 does that. Where the literature review has covered something, cite back to it. Current
+thinking on what it covers:
 
-- Why agents are a plausible fit for this problem specifically
-- Which models, and on what basis to choose
-- Token usage and cost analysis
-- **Which tasks genuinely suit an LLM, and which are better as ordinary code** — this looks like the
-  most substantive contribution of the section. It is a real question with a non-obvious answer, and
-  answering it well requires understanding both the model and the tooling.
+- What agents are, and how they differ from a single prompt
+- What LLMs are good and bad at
+- Which models to use, and what they cost
+- **Which kinds of tasks suit an LLM, and which are better as ordinary code** — chapter 5 builds on
+  this at each step of the workflow
 
-### Proof of concept **(open)**
+### Where AI fits — chapter 5
 
-Possible, not committed. If it happens, deliberately small: agents against a very simple
-configuration, or against one part of a configuration — enough to demonstrate feasibility, not to be
-a working system.
+Approach agreed 2026-09-30: a general, step-by-step walk through the GGM workflow — get source data,
+prepare it, set up the scenario, calibrate, run, read the results — asking of each step what happens
+today, what it needs, what an agent could do, and where a person stays involved. Short examples from
+the 2023 data as evidence; a summary figure (format open) and a job description per proposed agent at
+the end. Details in
+[`project-thesis-structure.md`](project-thesis-structure.md#5-where-ai-fits-in-the-ggm-workflow).
+
+### Proof of concept — not this semester
+
+Dropped from the project thesis on 2026-09-30 and left for the master's. A starting idea for spring
+is kept in [`project-thesis-structure.md` §6](project-thesis-structure.md#6-proof-of-concept--left-for-the-masters-thesis).
+
+---
+
+## Plan for October — first draft by 31 October
+
+A first version of the plan, as shown in the week 40 slides. One focus per week, nothing overlapping,
+so it is easy to see whether we are on track:
+
+| Week | Focus | Done by the end of the week |
+|---|---|---|
+| 40 (28 Sep) | Scope, outline and literature review | Outline and literature review drafted |
+| 41 (5 Oct) | Chapter 3: the Global Gas Model | Chapter 3 drafted |
+| 42 (12 Oct) | Chapter 4: LLM agents | Chapter 4 drafted |
+| 43 (19 Oct) | Chapter 5: where AI fits | Chapter 5 drafted |
+| 44 (26 Oct) | Closing chapters and introduction | First full draft, 31 October |
+
+Reading it through and sending it to the supervisors comes after this plan ends.
 
 ---
 
@@ -87,11 +116,12 @@ a working system.
   substantive chapter a reader meets, so it sets the tone for everything after it. Worth accumulating
   sources as we go rather than reconstructing them at the end.
 - **Understanding GGM deeply is directly productive**, not preparation for productive work. It feeds
-  the GGM chapter directly and grounds the task-suitability analysis.
+  the GGM chapter directly and grounds the walk-through in chapter 5. The point is to understand how
+  the model and its configuration *work* — well enough to design agents — not to audit the values.
 
 ## Open items
 
 - Precise scope and research question — in discussion with supervisors
-- Whether a proof of concept is in scope, and how small
-- Full thesis structure beyond the three known sections
-- Deadlines for both theses — not yet recorded here
+- Chapters 6–8 (design sketch, discussion, conclusion) — proposed, not yet confirmed by supervisors
+- The format of chapter 5's summary figure
+- Final hand-in dates for both theses — not yet recorded here

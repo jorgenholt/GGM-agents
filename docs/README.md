@@ -8,7 +8,7 @@ Working documents for the project thesis. Start here.
 |---|---|---|
 | [`thesis-scope.md`](thesis-scope.md) | The two-phase structure — project thesis now, master's in spring | Orienting, or when someone proposes building something |
 | [`project-thesis-structure.md`](project-thesis-structure.md) | Proposed chapter structure, related work, open decisions | Discussing structure with supervisors. **Short version is at the top** |
-| [`workflow-task-inventory.md`](workflow-task-inventory.md) | The analysis: four input layers, eleven workflow stages, what is code vs agent vs human | Working on the core chapter. This is the analytical heart |
+| [`workflow-task-inventory.md`](workflow-task-inventory.md) | Working material for chapter 5: the input layers, the workflow broken into stages, and a provisional read on code vs agent vs human | Working on chapter 5 |
 | [`how-it-would-work.md`](how-it-would-work.md) | One scenario walked end to end, today versus with agents | Explaining the idea to someone concretely |
 | [`ggm-data-2023.md`](ggm-data-2023.md) | The real 2023 dataset in `../data_2023/`: scenarios, network, what gets calibrated, oddities | Working with or describing the data |
 | [`ggm-model.md`](ggm-model.md) | Model reference — sets, variables, constraints, parameters, calibration, with PDF page pointers | Looking up how GGM actually works |

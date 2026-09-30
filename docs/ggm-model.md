@@ -251,7 +251,7 @@ The surrounding pages (PDF pp. 28–32) reinforce the point: calibration is desc
 combined market knowledge and model expertise, with the explicit warning that a wrongly calibrated
 model produces biased results that stem from invalid parameter choices rather than market logic.
 That is a good framing for *which* parts of the workflow an agent could and could not safely take
-over — directly relevant to the task-suitability analysis in the AI agents section.
+over — directly relevant to the "calibrate" step in chapter 5, and to where a person stays involved.
 
 **Production cost curve** (PDF pp. 29–30, 33–34): the older logarithmic Golombek function was replaced
 by a piecewise-linear approximation over three resources. Capacity shares are fixed globally at

@@ -7,8 +7,22 @@ automated and where human judgment is likely irreducible.
 performed. Treat every "automatable" verdict as a hypothesis to test against Franziska and Lukas —
 see [`questions-for-weekly-meeting.md`](questions-for-weekly-meeting.md) Q1.*
 
-This is intended as the backbone of chapter 5 in
-[`project-thesis-structure.md`](project-thesis-structure.md).
+This is the working material behind chapter 5 in
+[`project-thesis-structure.md`](project-thesis-structure.md). Chapter 5 walks through the workflow in
+six steps and asks the same four questions of each; the eleven stages in [the inventory](#the-inventory)
+below are the finer breakdown that feeds those steps:
+
+| Chapter 5 step | Inventory stages |
+|---|---|
+| Get source data | 1 Source acquisition |
+| Prepare the data | 2 Unit conversion · 3 Spatial aggregation · 4 Temporal interpolation |
+| Set up the scenario | 7 Scenario definition · 5 Structural validation · 6 Feasibility checks |
+| Calibrate | 8 Calibration |
+| Run the model | 9 Execution |
+| Read the results | 10 Result checking · 11 Interpretation and write-up |
+
+The Code / Agent / Human / Mixed verdicts below are provisional input to the chapter's four questions,
+not a framework the chapter commits to.
 
 ---
 

@@ -25,22 +25,26 @@ feedback. Everything else here is still a proposal, not a decision.*
 | 2 | Literature review | What has been done with agents on large domain models — and the gap left open |
 | 3 | The Global Gas Model | What it is, and where the manual work actually goes |
 | 4 | LLM agents | What they are good at, what they are bad at |
-| 5 | **Which GGM tasks fit** | The core chapter — the mapping, and the reasoning behind it |
+| 5 | **Where AI fits** | The core chapter — a step-by-step walk through the workflow, and where AI could help at each step |
 | 6 | Conclusion | What we'd build in the master's thesis |
 
-Optionally a small **proof of concept** between 5 and 6, if the supervisors want one.
+No proof of concept this semester — that is left for the master's thesis.
+
+The detailed outline, and the slides shown in week 40, split chapter 6 into three: 6 Design sketch,
+7 Discussion, 8 Conclusion and plan for spring.
 
 **Why this order:** chapter 2 places the thesis in the field and ends by stating the gap. Chapters 3
 and 4 are the two halves of the problem — the model and the tool. Chapter 5 is where they meet, and
 it is the actual contribution. Everything else supports it.
 
-**Two things to decide with supervisors:**
+**Still to decide with supervisors:** how narrow the research question should be.
 
-1. How narrow should the research question be?
-2. Is a proof of concept wanted, or is a well-argued exploration enough?
+**Decided:**
 
-**Decided:** the literature review is its own chapter, placed second — supervisor feedback, recorded
-2026-09-30.
+- The literature review is its own chapter, placed second — supervisor feedback, recorded 2026-09-30.
+- No proof of concept this semester; it moves to the master's thesis — our decision, 2026-09-30.
+- Chapter 4 is a general chapter on LLMs; the link to GGM is made in chapter 5 — 2026-09-30.
+- Chapter 5 is a step-by-step walk through the workflow (details below) — agreed 2026-09-30.
 
 ---
 
@@ -57,10 +61,12 @@ exists, so let's combine them."* A strong version says:
 > The GGM workflow contains a documented, substantial expert burden. That burden decomposes into
 > tasks with different properties. Some are mechanical and belong in ordinary code. Some require
 > judgment over unstructured context and are a genuine fit for an LLM. Some should not be automated
-> at all, because the failure mode is a plausible-looking wrong answer. Here is the mapping, and here
-> is what it implies for a system design.
+> at all, because the failure mode is a plausible-looking wrong answer. Here is a map of how and where
+> AI can be used, and what it implies for the system we build next.
 
-The contribution is **the mapping and its justification** — not enthusiasm, and not a build.
+The contribution this semester is **a broad map of how and where AI can be used across the GGM
+workflow**, and the reasoning behind it — not just a sorting of tasks into boxes, not enthusiasm, and
+not a build. It is meant to be the starting point for building the agents in the master's thesis.
 
 Arguing that parts of the workflow *should not* be automated is what will make this credible rather
 than promotional. The GGM documentation hands you the argument: it warns that a wrongly calibrated
@@ -80,8 +86,8 @@ folds into its chapter 6. Use whichever granularity the supervisors prefer:
 | 2 Literature review | 2 Literature review |
 | 3 The Global Gas Model | 3 Background: the Global Gas Model |
 | 4 LLM agents | 4 LLM agents |
-| 5 Which GGM tasks fit | 5 Task suitability analysis |
-| 6 Conclusion | 6 Design sketch · 7 Proof of concept · 8 Discussion · 9 Conclusion |
+| 5 Where AI fits | 5 Where AI fits in the GGM workflow |
+| 6 Conclusion | 6 Design sketch · 7 Discussion · 8 Conclusion |
 
 Chapters 3 and 4 (GGM and LLM agents) are the two Jørgen and Save first identified; chapter 2's
 position was set by supervisor feedback. The rest is scaffolding around them.
@@ -112,65 +118,83 @@ The reader does not know what GGM is and cannot be assumed to.
 
 - What the model is and what question it answers — partial equilibrium, multi-period, market power
 - Structure: nodes, arcs, suppliers, seasons; the LNG and pipeline value chains
-- Inputs: the three workbooks and what they contain
+- Inputs: the input workbooks and what they contain
 - **The workflow around the model** — this is the part that matters, and it is what the documentation
-  covers least. Fill it from the weekly meetings (see
-  [`questions-for-weekly-meeting.md`](questions-for-weekly-meeting.md) Q1).
+  covers least
 - Where the effort goes: calibration takes an experienced analyst days to weeks
   ([`ggm-model.md` §7](ggm-model.md#calibration-effort--citable-evidence-of-manual-burden))
-
 - Read against the gap from chapter 2: make explicit *why* GGM is a case the literature doesn't
   cover — its calibrated parameters are contestable economic judgments, not measurements
 
 Source material is largely assembled in [`ggm-model.md`](ggm-model.md).
 
 ### 4. LLM agents: what they are and where they hold up
-Written **toward the problem**, not as a general survey. Every capability discussed should earn its
-place by mapping onto something in chapter 3.
-
-**Main overlap risk with the new order:** chapter 2 has already covered what agents have done
-elsewhere. This chapter should not re-survey — where a capability or limit has been shown in the
-literature, cite back to chapter 2 and spend the space on what it means for GGM.
+A **general** chapter on what LLMs and agents are, and what they are good and bad at. It does not
+need to tie every point back to GGM — that happens in chapter 5. Where the literature review has
+already covered something, cite back to chapter 2 rather than repeating it.
 
 - What distinguishes an agent from a prompt: tool use, iteration, feedback from execution
-- Capabilities that matter here: reading unstructured documentation, applying written heuristics,
-  proposing and revising under numeric feedback, explaining reasoning
-- Limits that matter here: hallucination, no ground truth about physical reality, weak arithmetic,
+- What they are good at: reading unstructured documentation, applying written rules of thumb,
+  proposing and revising under numeric feedback, explaining their reasoning
+- What they are bad at: hallucination, no ground truth about physical reality, weak arithmetic,
   non-determinism, context limits
-- Model selection and cost — see §4 below for how to keep this concrete
-- **Which tasks suit an LLM and which are better as ordinary code** — the analytical core; develop it
-  here, apply it in chapter 5
+- Which model to use, and what it costs
+- **Which tasks suit an LLM and which are better as ordinary code** — developed here, and used in
+  chapter 5 to answer "what could an agent do" at each step
 
-### 5. Task suitability analysis for the GGM workflow
-**The core contribution.** Take the workflow from chapter 3, decompose it, and classify each task
-against the criteria from chapter 4.
+### 5. Where AI fits in the GGM workflow
+**The core contribution.** *Approach agreed 2026-09-30.*
 
-Suggested axes for classification:
+Written **generally**, so it holds for any GGM configuration rather than one dataset. The chapter walks
+through the workflow from chapter 3 in the order the work happens:
 
-| Axis | Question |
-|---|---|
-| Determinism | Is there one correct answer, checkable by rule? |
-| Context | Structured data, or does it need documentation and intent? |
-| Failure visibility | Does a mistake announce itself, or does it look plausible? |
-| Reversibility | Cheap to catch and redo, or does it contaminate downstream results? |
-| Verifiability | Can the output be checked automatically, or only by an expert? |
+> Get source data → Prepare the data → Set up the scenario → Calibrate → Run the model → Read the
+> results
 
-Tasks where the answer is *deterministic, structured, loud failure* belong in code. Tasks that are
-*judgment-based, unstructured, quiet failure* are where an agent may help — but exactly where it needs
-a human gate. That tension is the interesting finding, and it should be stated as one.
+Each step gets the same four questions:
+
+1. **What happens today** — the step as the modellers do it now
+2. **What the step needs** — reading, arithmetic, judgment or checking
+3. **What an agent could do** — using what chapter 4 sets out
+4. **Where a person stays involved** — judgment calls and sign-offs
+
+**Along the way:** short examples from the 2023 data back up the points, so the chapter stays general
+without being vague — for example, that restoring the Russian pipelines is a handful of capacity edits
+in one sheet, or that a new demand scenario means re-tuning around 1,700 calibrated values. They
+illustrate; they are not the backbone.
+
+**At the end:**
+
+- **A figure that sums it up** — where each step lands, from "automate" to "keep with a person".
+  *Format not settled.* One candidate is a map with each step placed by how well it suits an LLM
+  against how much judgment it needs and how quietly mistakes slip through.
+- **A job description for each proposed agent** — what it gets, what it produces, which tools it
+  uses, what it must never do (arithmetic in its head, changing calibrated values without sign-off),
+  and how you would know it worked. This is the hand-over to the master's thesis.
+
+**Why this approach:** it ties chapters 3 and 4 together one step at a time; it mirrors how the agents
+would be built in spring, step by step; and it does not depend on details of the 2023 scenarios that
+we don't know yet.
+
+**Considered and set aside:**
+
+- *Rating every task on a set of dimensions* — too granular, and too early to commit to a framework.
+- *Using DIW's 2023 variants as case studies* — needs detailed knowledge of those scenarios. The
+  variants can still serve as test cases for spring's agents (chapter 6 or 8).
+- *Organising the chapter around design decisions and costs* — the most abstract option, resting on
+  estimates. A short cost comparison can still be added if there is time.
+- *Other layouts for a step-by-step chapter* — a table of steps against properties, or organising by
+  kind of input. The walk-through reads most naturally and carries over best to the master's.
 
 ### 6. Design sketch for the master's thesis
 What a system implied by section 5 would look like — component responsibilities, where humans sit in
 the loop, what gets verified and how. A sketch establishing feasibility, not a specification.
 
-### 7. Proof of concept **(if in scope)**
-See §6 of this document for a scoping suggestion.
-
-### 8. Discussion
+### 7. Discussion
 Risks, limitations, and what the analysis does not settle. Include what should *not* be automated and
 why — this is a feature of the argument, not a hedge.
 
-### 9. Conclusion and plan for the master's thesis
+### 8. Conclusion and plan for the master's thesis
 What was established, what remains open, and what spring should build. This section is partly a
 project plan, and supervisors will read it as one.
 
@@ -276,29 +300,13 @@ second-best, and it should be stated confidently rather than apologised for.
 
 ---
 
-## 4. Making the AI section concrete rather than generic
+## 4. Ideas for making chapter 4 GGM-specific — set aside
 
-The risk in chapter 4 is writing a generic explainer on LLMs. Anchor every claim to GGM. Some
-concrete angles:
-
-**Context budget as a real design constraint.** GGM produces results across ~109 consumption nodes,
-~93 production nodes, 9 years and 3 seasons. A full result set does not fit in a context window, and
-would be expensive and error-prone even if it did. So *what gets summarised, and by what?* That is a
-genuine architectural question with a defensible answer, not a survey topic.
-
-**Cost modelling tied to the workflow.** Calibration is iterative. The grey-box paper converged in
-~16 evaluations. If GGM calibration takes N agent iterations, each carrying model description,
-parameter bounds, and residual history — what does that cost, and how does it compare to days of
-analyst time? That comparison is the argument for the thesis's premise, in numbers.
-
-**Model tiering as a finding.** Structural validation, diagnostic reasoning, and prose generation
-have very different difficulty and very different cost. Arguing that a system should use different
-models for different stages is more interesting and more useful than benchmarking models against
-each other.
-
-**Determinism and reproducibility.** A thesis result must be reproducible. An LLM in the loop is
-non-deterministic. How do you make agent-assisted calibration reproducible enough to publish? The
-grey-box paper flags this as an open limitation — engaging with it seriously is a real contribution.
+*Set aside 2026-09-30.* Chapter 4 is a general chapter; the link to GGM is made in chapter 5. An
+earlier draft suggested tying chapter 4 to GGM through four angles — how much of GGM's output fits in
+a model's context window, token cost against analyst time, using different models for different
+jobs, and making agent-assisted calibration reproducible. They are not planned for chapter 4, but may
+be useful in chapter 5 or in the master's thesis.
 
 ---
 
@@ -309,8 +317,9 @@ the working document for this chapter, and it should not be restated here. It co
 
 - The **four layers of input** — physical facts, projections, literature parameters, calibrated
   quantities — and why only the last involves judgment
-- An **eleven-stage decomposition** of the workflow with a Code / Agent / Human / Mixed verdict and
-  reasoning for each
+- An **eleven-stage breakdown** of the workflow, which groups into the chapter's six steps (mapping in
+  the inventory), with a provisional Code / Agent / Human / Mixed read on each — raw material for the
+  four questions, not the chapter's framework
 - **Where the processing happens**, inside versus outside the model, verified from the code
 - The **judgment in, arithmetic out** design principle
 - Why calibration resists a clean verdict, and why that makes it the interesting case
@@ -323,13 +332,14 @@ capacity warnings during loading. The authors saw the need. That reframes the co
 
 **The documentation contains written-down expert diagnostic reasoning** (PDF p. 28). Because those
 heuristics are on paper, an agent's reasoning can be evaluated against them rather than only judged
-subjectively — rare, and the basis for a proof of concept.
+subjectively — rare, and useful for testing agents in the master's thesis.
 
 ---
 
-## 6. Proof of concept — scoping suggestion **(if in scope)**
+## 6. Proof of concept — left for the master's thesis
 
-If a PoC happens, diagnostic interpretation — explaining why a run deviates from reference values,
+*Dropped from the project thesis on 2026-09-30.* Kept here as a starting idea for spring: if a small
+first agent is built, diagnostic interpretation — explaining why a run deviates from reference values,
 using the documentation's written heuristics — is the strongest candidate. Reasons:
 
 - It is where an LLM is least replaceable by ordinary code, so it tests the real hypothesis
@@ -346,6 +356,5 @@ it tests the part of the problem that is *not* the interesting claim.
 ## 7. Open decisions for the supervisors
 
 - Research question wording, and how narrow to go
-- Whether a proof of concept is in scope, and whether diagnostic interpretation is the right target
 - Whether the master's design sketch belongs in this thesis or is deferred
 - Whether workflow interviews with Franziska and Lukas can be cited as a source, and if so how

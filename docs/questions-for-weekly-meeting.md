@@ -17,7 +17,7 @@ Move answered items to **Resolved** with the answer, so the reasoning is preserv
 
 ### 1. Does the four-layer view of the inputs hold?
 
-**For:** Franziska Holz, Lukas Barner · **Feeds:** GGM section, task-suitability analysis
+**For:** Franziska Holz, Lukas Barner · **Feeds:** GGM chapter, chapter 5
 
 From the documentation, GGM's inputs appear to divide into four kinds. **Ask whether this is right
 before building on it** — full version in
@@ -70,7 +70,7 @@ re-read from scratch, or is there a diffing process against last year?
 
 ### 4. Where does it go wrong?
 
-**For:** Franziska Holz, Lukas Barner · **Feeds:** task-suitability analysis, validation argument
+**For:** Franziska Holz, Lukas Barner · **Feeds:** chapter 5, "where a person stays involved"
 
 Failure modes are where an automated check would earn its place, and they are concrete evidence
 rather than speculation.
@@ -113,7 +113,7 @@ is a stronger motivation than one researcher's inconvenience.
 Jørgen and Save have flagged that scope is still being negotiated. Worth pinning down:
 
 - What does a strong project thesis look like here — how much breadth versus depth?
-- Is a proof of concept wanted, or is a well-argued exploration sufficient on its own?
+- *(Decided 2026-09-30: no proof of concept this semester — no need to ask.)*
 - Expected length, structure, and deadline
 - Is there existing literature they would point to on LLM agents in modelling workflows?
 
