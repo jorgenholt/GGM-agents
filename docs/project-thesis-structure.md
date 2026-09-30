@@ -2,7 +2,8 @@
 
 A structure to propose to supervisors and argue around, plus the prior work it should sit on.
 
-*Drafted 2026-09-15. Everything here is a proposal, not a decision.*
+*Drafted 2026-09-15. Revised 2026-09-30: literature review moved to chapter 2 on supervisor
+feedback. Everything else here is still a proposal, not a decision.*
 
 > **On the references:** found by literature search and skimmed, not read in full. Verify every claim
 > against the source before citing. Treat this as a reading list with reasons, not a literature review.
@@ -21,22 +22,25 @@ A structure to propose to supervisors and argue around, plus the prior work it s
 | # | Chapter | In one line |
 |---|---|---|
 | 1 | Introduction | The problem, the question, and what this thesis does and doesn't do |
-| 2 | The Global Gas Model | What it is, and where the manual work actually goes |
-| 3 | LLM agents | What they are good at, what they are bad at |
-| 4 | Related work | Who has tried this on other models, and how it went |
+| 2 | Literature review | What has been done with agents on large domain models — and the gap left open |
+| 3 | The Global Gas Model | What it is, and where the manual work actually goes |
+| 4 | LLM agents | What they are good at, what they are bad at |
 | 5 | **Which GGM tasks fit** | The core chapter — the mapping, and the reasoning behind it |
 | 6 | Conclusion | What we'd build in the master's thesis |
 
 Optionally a small **proof of concept** between 5 and 6, if the supervisors want one.
 
-**Why this order:** chapters 2 and 3 are the two halves of the problem. Chapter 4 shows we know the
-field. Chapter 5 is where they meet, and it is the actual contribution. Everything else supports it.
+**Why this order:** chapter 2 places the thesis in the field and ends by stating the gap. Chapters 3
+and 4 are the two halves of the problem — the model and the tool. Chapter 5 is where they meet, and
+it is the actual contribution. Everything else supports it.
 
-**Three things to decide with supervisors:**
+**Two things to decide with supervisors:**
 
 1. How narrow should the research question be?
 2. Is a proof of concept wanted, or is a well-argued exploration enough?
-3. How much related work is enough — a section, or a full chapter?
+
+**Decided:** the literature review is its own chapter, placed second — supervisor feedback, recorded
+2026-09-30.
 
 ---
 
@@ -73,19 +77,37 @@ folds into its chapter 6. Use whichever granularity the supervisors prefer:
 | Short version | Expanded form |
 |---|---|
 | 1 Introduction | 1 Introduction |
-| 2 The Global Gas Model | 2 Background: the Global Gas Model |
-| 3 LLM agents | 3 LLM agents |
-| 4 Related work | 4 Related work |
+| 2 Literature review | 2 Literature review |
+| 3 The Global Gas Model | 3 Background: the Global Gas Model |
+| 4 LLM agents | 4 LLM agents |
 | 5 Which GGM tasks fit | 5 Task suitability analysis |
 | 6 Conclusion | 6 Design sketch · 7 Proof of concept · 8 Discussion · 9 Conclusion |
 
-Sections 3 and 4 are the two Jørgen and Save already identified. The rest is scaffolding around them.
+Chapters 3 and 4 (GGM and LLM agents) are the two Jørgen and Save first identified; chapter 2's
+position was set by supervisor feedback. The rest is scaffolding around them.
 
 ### 1. Introduction
 Problem, research question(s), scope boundary (exploration, not implementation), contribution,
 and structure. State plainly that building is the master's thesis — it frames expectations.
 
-### 2. Background: the Global Gas Model
+**Extra job now that the literature review comes second:** the introduction has to give just enough
+GGM for chapter 2 to be readable — a paragraph on what the model is, and why operating it takes
+expert effort. The full treatment waits for chapter 3.
+
+### 2. Literature review
+Agents applied to configuring, calibrating, and operating large domain models. See §3 of this
+document for candidates.
+
+- Organise by *what the agent was asked to do*, not by application domain — it keeps the chapter
+  pointed at the problem instead of drifting into an energy-AI survey.
+- **Write for a reader who has only had the introduction's sketch of GGM.** Frame the chapter around
+  the general problem class; GGM specifics belong in chapter 3.
+- **End by stating the gap** (§3, "The gap to claim"). Chapters 3–5 then address it, which gives the
+  thesis a clean line: here is the field, here is what's missing, here is how we tackle it.
+- Introduce each paper once, here, and cite back to it later. The grey-box calibration paper, for
+  instance, matters again in chapter 5 — describe it here, reference it there.
+
+### 3. Background: the Global Gas Model
 The reader does not know what GGM is and cannot be assumed to.
 
 - What the model is and what question it answers — partial equilibrium, multi-period, market power
@@ -97,11 +119,18 @@ The reader does not know what GGM is and cannot be assumed to.
 - Where the effort goes: calibration takes an experienced analyst days to weeks
   ([`ggm-model.md` §7](ggm-model.md#calibration-effort--citable-evidence-of-manual-burden))
 
+- Read against the gap from chapter 2: make explicit *why* GGM is a case the literature doesn't
+  cover — its calibrated parameters are contestable economic judgments, not measurements
+
 Source material is largely assembled in [`ggm-model.md`](ggm-model.md).
 
-### 3. LLM agents: what they are and where they hold up
+### 4. LLM agents: what they are and where they hold up
 Written **toward the problem**, not as a general survey. Every capability discussed should earn its
-place by mapping onto something in section 2.
+place by mapping onto something in chapter 3.
+
+**Main overlap risk with the new order:** chapter 2 has already covered what agents have done
+elsewhere. This chapter should not re-survey — where a capability or limit has been shown in the
+literature, cite back to chapter 2 and spend the space on what it means for GGM.
 
 - What distinguishes an agent from a prompt: tool use, iteration, feedback from execution
 - Capabilities that matter here: reading unstructured documentation, applying written heuristics,
@@ -110,18 +139,11 @@ place by mapping onto something in section 2.
   non-determinism, context limits
 - Model selection and cost — see §4 below for how to keep this concrete
 - **Which tasks suit an LLM and which are better as ordinary code** — the analytical core; develop it
-  here, apply it in section 5
-
-### 4. Related work
-Agents applied to configuring, calibrating, and operating large domain models. See §3 of this
-document for candidates.
-
-Organise by *what the agent was asked to do*, not by application domain — it keeps the section
-pointed at your problem instead of drifting into an energy-AI survey.
+  here, apply it in chapter 5
 
 ### 5. Task suitability analysis for the GGM workflow
-**The core contribution.** Take the workflow from section 2, decompose it, and classify each task
-against the criteria from section 3.
+**The core contribution.** Take the workflow from chapter 3, decompose it, and classify each task
+against the criteria from chapter 4.
 
 Suggested axes for classification:
 
@@ -142,7 +164,7 @@ What a system implied by section 5 would look like — component responsibilitie
 the loop, what gets verified and how. A sketch establishing feasibility, not a specification.
 
 ### 7. Proof of concept **(if in scope)**
-See §5 of this document for a scoping suggestion.
+See §6 of this document for a scoping suggestion.
 
 ### 8. Discussion
 Risks, limitations, and what the analysis does not settle. Include what should *not* be automated and
@@ -154,9 +176,9 @@ project plan, and supervisors will read it as one.
 
 ---
 
-## 3. Related work — candidates
+## 3. Literature review — candidates
 
-Three clusters, from closest to your problem outward.
+Source material for chapter 2. Three clusters, from closest to your problem outward.
 
 ### Closest: agents that configure or calibrate domain models
 
@@ -215,6 +237,8 @@ points. Closest to your discipline, and a model for how to argue about where the
 
 ### The gap to claim
 
+*This is how chapter 2 should end — the rest of the thesis answers it.*
+
 **Headline: the tuned quantities are contestable, not measurable.**
 
 In every close paper found so far, the calibration target is an observable fact — a measured
@@ -254,7 +278,7 @@ second-best, and it should be stated confidently rather than apologised for.
 
 ## 4. Making the AI section concrete rather than generic
 
-The risk in section 3 is writing a generic explainer on LLMs. Anchor every claim to GGM. Some
+The risk in chapter 4 is writing a generic explainer on LLMs. Anchor every claim to GGM. Some
 concrete angles:
 
 **Context budget as a real design constraint.** GGM produces results across ~109 consumption nodes,
@@ -305,7 +329,8 @@ subjectively — rare, and the basis for a proof of concept.
 
 ## 6. Proof of concept — scoping suggestion **(if in scope)**
 
-If a PoC happens, Tier 4 is the strongest candidate. Reasons:
+If a PoC happens, diagnostic interpretation — explaining why a run deviates from reference values,
+using the documentation's written heuristics — is the strongest candidate. Reasons:
 
 - It is where an LLM is least replaceable by ordinary code, so it tests the real hypothesis
 - Ground truth exists in the documentation, so success is assessable
@@ -321,7 +346,6 @@ it tests the part of the problem that is *not* the interesting claim.
 ## 7. Open decisions for the supervisors
 
 - Research question wording, and how narrow to go
-- Whether a proof of concept is in scope, and whether Tier 4 is the right target
-- How much weight the related-work section carries relative to the analysis
+- Whether a proof of concept is in scope, and whether diagnostic interpretation is the right target
 - Whether the master's design sketch belongs in this thesis or is deferred
 - Whether workflow interviews with Franziska and Lukas can be cited as a source, and if so how

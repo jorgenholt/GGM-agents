@@ -31,9 +31,20 @@ doing it yet. Success is a well-argued, well-evidenced case, not running softwar
 
 ## Known structure
 
-Two sections are certain. The rest **(open)** and being worked out with supervisors.
+Three sections are certain, in this order after the introduction. The rest is **(open)** and being
+worked out with supervisors. Full proposal: [`project-thesis-structure.md`](project-thesis-structure.md).
 
-### 1. The Global Gas Model
+### Literature review — chapter 2
+
+Settled by supervisor feedback (recorded 2026-09-30): its own chapter, placed directly after the
+introduction. It covers what has been done with agents on large domain models and ends by stating
+the gap this thesis addresses — which the following chapters then answer.
+
+Because it now comes *before* the GGM chapter, it has to be readable with only the introduction's
+short sketch of the model. Candidates and the gap argument are in
+[`project-thesis-structure.md` §3](project-thesis-structure.md#3-literature-review--candidates).
+
+### The Global Gas Model — chapter 3
 
 The reader cannot be assumed to know what GGM is. This section has to explain it from scratch: what
 the model does, how it is structured, what the workflow around it looks like, and — critically —
@@ -44,9 +55,9 @@ The calibration discussion (PDF pp. 28–32) is especially relevant — the docu
 that calibration takes an experienced analyst days to weeks. That is the strongest available evidence
 that there is real manual burden worth automating.
 
-### 2. AI agents
+### AI agents — chapter 4
 
-Current thinking on what this covers:
+Current thinking on what this covers — drawing on the literature review rather than re-surveying it:
 
 - Why agents are a plausible fit for this problem specifically
 - Which models, and on what basis to choose
@@ -55,7 +66,7 @@ Current thinking on what this covers:
   most substantive contribution of the section. It is a real question with a non-obvious answer, and
   answering it well requires understanding both the model and the tooling.
 
-### 3. Proof of concept **(open)**
+### Proof of concept **(open)**
 
 Possible, not committed. If it happens, deliberately small: agents against a very simple
 configuration, or against one part of a configuration — enough to demonstrate feasibility, not to be
@@ -72,15 +83,15 @@ a working system.
 - **Real GGM input data is not urgent this semester.** It is needed for the master's, and would help
   a proof of concept, but exploration does not require a full calibrated dataset. This revises an
   earlier assessment made before the two-phase structure was known.
-- **Citations matter more than usual.** A thesis needs a literature base — on gas market modelling,
-  on LLM agents, on automation of scientific workflows. Worth accumulating as we go rather than
-  reconstructing at the end.
+- **Citations matter more than usual.** The literature review is now chapter 2 — the first
+  substantive chapter a reader meets, so it sets the tone for everything after it. Worth accumulating
+  sources as we go rather than reconstructing them at the end.
 - **Understanding GGM deeply is directly productive**, not preparation for productive work. It feeds
-  section 1 and grounds the task-suitability analysis in section 2.
+  the GGM chapter directly and grounds the task-suitability analysis.
 
 ## Open items
 
 - Precise scope and research question — in discussion with supervisors
 - Whether a proof of concept is in scope, and how small
-- Full thesis structure beyond the two known sections
+- Full thesis structure beyond the three known sections
 - Deadlines for both theses — not yet recorded here

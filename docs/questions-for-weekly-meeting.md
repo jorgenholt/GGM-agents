@@ -138,6 +138,16 @@ self-consistent with the code. Full derivation:
 
 ## Resolved
 
+### Literature review goes second — *recorded 2026-09-30*
+
+Supervisor feedback on the proposed structure: the literature review should be its own chapter,
+placed directly after the introduction. This settles the earlier open question of whether related
+work should be a section inside the LLM-agents chapter or a chapter of its own.
+
+Knock-on changes are in [`project-thesis-structure.md`](project-thesis-structure.md): GGM moves to
+chapter 3 and LLM agents to chapter 4; the introduction now carries a short GGM sketch so chapter 2
+is readable; and chapter 2 ends by stating the gap the rest of the thesis addresses.
+
 ### Flow units — mcm/day, not mcm/year — *2026-09-15*
 
 The Julia variable comments say `mcm/yr`; they are wrong. `BCMA_TO_MCMD = 1000/365` is applied to
