@@ -348,7 +348,60 @@ fades, and a few defaults outside their own stated ranges — all in
 
 ---
 
-## 10. Quick page index
+## 10. Cross-check: NTNU course slides (TIØ4557/IØ8305, 2026)
+
+**Source:** `TIØ4557_IØ8305_session_4_natural_gas_preliminary.pdf`, slides 59–66, "A Numerical Model
+of the Global Gas Market" — course material for IØ8305 & TIØ4557 *Energy Resource Markets* (NTNU,
+2026). **Not** the DIW documentation — cited below as "Slide N" to avoid confusion with "PDF p.",
+which always refers to [`ggm-documentation-v3.0.pdf`](ggm-documentation-v3.0.pdf). Not yet in this
+repo; the file lives outside the project on the local machine.
+
+### What it confirms
+
+- **Player roles match the documentation** (Slide 60): producers, traders, LNG liquefiers, LNG
+  regasifiers, pipeline/transmission operators, storage operators, final demand — the same value
+  chain as PDF p. 10, Figure 1, with liquefaction/shipping/regasification drawn as explicit steps
+  between producer and final demand.
+- **Market power sits only with traders** (Slide 61) — every other player type is assumed to behave
+  competitively. Matches §3 above: `cv` is a trader-level parameter.
+- **Producers' problem** (Slide 62): maximise profit from sales to traders,
+  `Σ_m γ_m Σ_d days_d [π^P_n(p)dm · SALES^P_pdm − c^P_pm(SALES^P_pdm)]`, subject to (a) daily sales ≤
+  daily production capacity `CAP^PR_pm`, and (b) sales summed over seasons and years ≤ total capacity
+  `CAP^P_p` (a "reserves" constraint). The example KKTs (Slide 63) are: marginal profit of sales,
+  the daily capacity constraint, the reserves constraint, and market clearing (sales = purchases) —
+  the producer-level instance of the general formulation in §2.
+- **Why the model is solved as an optimization problem, not a raw MCP** (Slides 64–65) — useful
+  context not previously recorded here. The *original* GGM is a mixed complementarity problem: every
+  player's KKTs stacked with market-clearing conditions, the natural formulation once one player type
+  (traders) has market power. Model size made that too slow to solve well, so it was reformulated as
+  a **convex optimization problem** — maximise social welfare subject to the same capacity constraints
+  and demand function — mathematically equivalent (same KKTs) but faster to solve. Cited to
+  Egging-Bratseth et al. (2020, *EJOR*) and Egging & Ansari (2019, SET-Nav Discussion Paper).
+  - This matches §2 above: the Julia objective `REV + CS − TC − MPA` **is** the convex-optimization
+    reformulation, not a literal stack of per-player KKT blocks — worth keeping in mind when reading
+    `Model.jl`, since it is written as one aggregate objective rather than per-player problems.
+
+### What it adds — model interpretation caveats
+
+Slide 66, "How to interpret a model's results" — limitations independent of calibration quality:
+
+- Only the natural gas market is modelled; fuel substitution (e.g. coal/gas switching) is captured
+  only *indirectly*, through the shape of the inverse demand curves, not as a competing fuel.
+- No institutional friction: no oil-price linkage, no long-term contracts.
+- Production capacities are exogenous assumptions (§2 above) — relevant both to how fast short-term
+  production could plausibly ramp up, and to the long-run (to 2050) outlook. A result that leans on a
+  capacity assumption is only as good as that assumption.
+- No intra-country pipeline network, so intra-country bottlenecks cannot appear in results.
+- No short-term (within-1-year) reaction via capacity expansion or reverse flows — seasonal/annual
+  granularity cannot capture a supply shock absorbed within the same year.
+
+**Status: verified by reading the slides directly; not yet cross-checked with Franziska or Lukas.**
+The interpretation caveats are worth raising in a weekly meeting if they bear on how confidently the
+thesis can describe what GGM's output does and doesn't show.
+
+---
+
+## 11. Quick page index
 
 | Topic | PDF pages |
 |---|---|
