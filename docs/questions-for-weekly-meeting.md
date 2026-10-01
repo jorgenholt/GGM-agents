@@ -91,7 +91,7 @@ Also on scenario mechanics, relevant to
 
 ### 5. Has anyone already tried to automate parts of this?
 
-**For:** Lukas Barner (best placed — wrote the port) · **Feeds:** related work, scoping
+**For:** Lukas Barner (best placed — helped develop the port) · **Feeds:** related work, scoping
 
 Scripts, helper tooling, spreadsheet macros, anything. Two uses: it is prior art the thesis should
 acknowledge, and it marks which problems are already solved and not worth claiming.

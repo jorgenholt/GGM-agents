@@ -3,8 +3,8 @@
 ## What this is
 
 NTNU Industrial Economics, by Jørgen Holt and Save Brautaset.
-Supervised by Franziska Holz; Lukas Barner (TU Berlin, wrote the Julia port of
-GGM) advises and meets weekly.
+Supervised by Franziska Holz; Lukas Barner (TU Berlin, helped develop the
+Julia port of GGM) advises and meets weekly.
 
 The end goal is LLM-based agents (Python, Claude API) wrapping the Global Gas
 Model (GGM) — a Julia partial equilibrium model for global natural gas markets —
