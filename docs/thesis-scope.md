@@ -86,20 +86,26 @@ is kept in [`project-thesis-structure.md` §6](project-thesis-structure.md#6-pro
 
 ---
 
-## Plan for October — first draft by 31 October
+## Plan — hand-in 13 December
 
-A first version of the plan, as shown in the week 40 slides. One focus per week, nothing overlapping,
-so it is easy to see whether we are on track:
+Revised 2026-10-05 (slides: `supervisor-meetings/week41-revised-plan.pptx`). The week 40 plan gave
+each chapter one week and aimed for a draft by 31 October; that was too tight. Now each chapter gets
+about two weeks, consecutive chapters overlap by a week (one is being finished while the next is
+started), and chapter 5 — the core — gets three. The literature review comes first: it sets out the
+gap chapters 3–5 answer, and chapter 4 cites back to it. The introduction is written last.
 
-| Week | Focus | Done by the end of the week |
+| Weeks | Focus | Done by the end |
 |---|---|---|
-| 40 (28 Sep) | Scope, outline and literature review | Outline and literature review drafted |
-| 41 (5 Oct) | Chapter 3: the Global Gas Model | Chapter 3 drafted |
-| 42 (12 Oct) | Chapter 4: LLM agents | Chapter 4 drafted |
-| 43 (19 Oct) | Chapter 5: where AI fits | Chapter 5 drafted |
-| 44 (26 Oct) | Closing chapters and introduction | First full draft, 31 October |
+| 40 (28 Sep) | Scope and outline | Outline done |
+| 41–42 | Chapter 2: literature review | Chapter 2 drafted |
+| 42–43 | Chapter 3: the Global Gas Model | Chapter 3 drafted |
+| 43–44 | Chapter 4: LLM agents | Chapter 4 drafted |
+| 45–47 | Chapter 5: where AI fits | Chapter 5 drafted |
+| 47–48 | Chapters 6–8: closing chapters | — |
+| 48 | Introduction and abstract | Full draft to supervisors, 29 November |
+| 49–50 | Supervisor feedback, revise, hand in | **Hand-in, 13 December** |
 
-Reading it through and sending it to the supervisors comes after this plan ends.
+Hand-in date 13 December as stated by Jørgen (2026-10-05).
 
 ---
 
@@ -124,4 +130,4 @@ Reading it through and sending it to the supervisors comes after this plan ends.
 - Precise scope and research question — in discussion with supervisors
 - Chapters 6–8 (design sketch, discussion, conclusion) — proposed, not yet confirmed by supervisors
 - The format of chapter 5's summary figure
-- Final hand-in dates for both theses — not yet recorded here
+- Final hand-in date for the master's thesis — not yet recorded here
