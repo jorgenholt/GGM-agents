@@ -572,6 +572,79 @@
   .card-accent{background:var(--accent);border:0;color:var(--accent-on)}
   .card-accent .t-meta,.card-accent .t-cat{color:var(--accent-on)}
 
+
+  /* ===== Line chart (slide 8): geometry in SVG, every label in HTML ===== */
+  .lc{display:flex;flex-direction:column;gap:0;min-height:0}
+  .lc-plot{position:relative;height:30vh;border-bottom:1px solid var(--ink)}
+  .lc-grid{position:absolute;left:0;right:0;height:0;border-top:1px solid var(--grey-2)}
+  .lc-grid > span{position:absolute;left:0;bottom:.5vh;font-family:var(--mono);font-size:max(14px,.78vw);letter-spacing:.08em;color:var(--grey-3)}
+  .lc-grid.parity{border-top:1px dashed var(--ink);opacity:.8}
+  .lc-grid.parity > span{left:auto;right:0;color:var(--ink);letter-spacing:.14em;text-transform:uppercase}
+  .lc-mark{position:absolute;top:0;bottom:0;width:0;border-left:1px dashed var(--grey-3)}
+  .lc-mark > span{position:absolute;top:0;left:.5vw;white-space:nowrap;font-family:var(--mono);font-size:max(14px,.78vw);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-3)}
+  .lc-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .lc-path{fill:none;stroke:var(--accent);stroke-width:3;stroke-linejoin:miter;stroke-dasharray:1;stroke-dashoffset:0}
+  .lc-pt{position:absolute;width:12px;height:12px;background:var(--ink);translate:-50% -50%;z-index:2}
+  .lc-pt.accent{background:var(--accent)}
+  .lc-val{position:absolute;translate:-50% calc(-100% - 1.4vh);font-family:var(--sans);font-weight:200;font-size:min(2.8vw,5vh);line-height:1;letter-spacing:-.03em;white-space:nowrap;font-feature-settings:"tnum"}
+  .lc-val.below{translate:-50% 1.6vh}
+  .lc-val.accent{color:var(--accent)}
+  .lc-val .unit{font-size:.4em;font-weight:300;opacity:.6;margin-left:.1em;vertical-align:.9em}
+  .lc-axis{position:relative;height:9.4vh}
+  .lc-lab{position:absolute;top:0;padding-top:1.1vh;display:flex;flex-direction:column;gap:.3vh;font-size:max(16px,.92vw);line-height:1.3;white-space:nowrap}
+  .lc-lab::before{content:"";position:absolute;top:0;height:.8vh;width:0;border-left:1px solid var(--ink)}
+  .lc-lab.c{translate:-50% 0;text-align:center;align-items:center}
+  .lc-lab.c::before{left:50%}
+  .lc-lab.r{translate:-100% 0;text-align:right;align-items:flex-end}
+  .lc-lab.r::before{right:0}
+  .lc-lab.l{text-align:left;align-items:flex-start}
+  .lc-lab.l::before{left:0}
+  .lc-lab .d{font-family:var(--mono);font-size:max(14px,.78vw);letter-spacing:.06em;color:var(--grey-3)}
+  .lc-lab b{font-weight:600}
+  .lc-lab .n{color:var(--text-secondary)}
+  .lc-armed .lc-path{stroke-dashoffset:1}
+  .lc-armed .lc-pt,.lc-armed .lc-val,.lc-armed .lc-lab{opacity:0}
+  #overview .lc-path{stroke-dashoffset:0!important}
+  #overview .lc-pt,#overview .lc-val,#overview .lc-lab{opacity:1!important}
+
+  /* ===== Flip cards (slide 13): a second click turns both cards over ===== */
+  .flip-card{perspective:2000px}
+  .flip-inner{position:relative;display:grid;flex:1;transform-style:preserve-3d;transition:rotate .9s cubic-bezier(.6,0,.2,1)}
+  .flip-card + .vrule + .flip-card .flip-inner{transition-delay:.14s}
+  .flip-face{grid-area:1/1;display:flex;flex-direction:column;gap:1.6vh;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-width:0}
+  .flip-face.back{rotate:y 180deg;padding:2.6vh 1.8vw;justify-content:space-between}
+  .flip-face.back .col-tag{color:inherit;opacity:.8}
+  .flip-face.back .col-tag .num{color:inherit;border-color:currentColor}
+  .flip-face.back .who{font-family:var(--sans);font-weight:200;font-size:min(4vw,7vh);line-height:1;letter-spacing:-.03em}
+  .flip-face.back .what{font-size:max(17px,1.08vw);line-height:1.5;max-width:34vw}
+  .flip-face.back .when{font-family:var(--mono);font-size:max(14px,.8vw);letter-spacing:.14em;text-transform:uppercase;padding-top:1.4vh;border-top:1px solid currentColor}
+  .card-accent.flip-face .when{border-color:rgba(255,255,255,.45)}
+  .card-fill.flip-face .when{border-color:var(--grey-2)}
+  .revealed .flip-inner{rotate:y 180deg}
+  .settled .flip-face.front{position:absolute;left:0;top:0;width:100%}
+  .swap{display:grid}
+  .swap > *{grid-area:1/1;transition:opacity .45s ease,translate .55s cubic-bezier(.2,0,.3,1)}
+  .swap > .after{opacity:0;translate:0 1.2vh;pointer-events:none}
+  .revealed .swap > .before{opacity:0;translate:0 -1.2vh}
+  .revealed .swap > .after{opacity:1;translate:0 0;transition-delay:.35s}
+  .swap.grow{display:block;position:relative;overflow:hidden}
+  .swap.grow > .after{position:absolute;left:0;right:0;top:0}
+  .settled .swap.grow > .before{position:absolute;left:0;right:0;top:0}
+  .settled .swap.grow > .after{position:static}
+  .revealed:not(.settled) .swap.grow > .after{opacity:0;translate:0 1.2vh}
+  .settled .swap.grow > .after{transition-delay:.1s}
+  .reveal-in{opacity:0;translate:0 3vh;transition:opacity .5s ease,translate .7s cubic-bezier(.2,0,.3,1)}
+  .revealed .reveal-in{opacity:1;translate:0 0;transition-delay:.7s}
+  .revealed .reveal-in.late{transition-delay:1s}
+  .hide-on-reveal{transition:opacity .3s ease}
+  .swap > .vote-cue{justify-self:start;align-self:center}
+  .vote-cue{display:inline-flex;align-items:center;gap:.9vw;background:var(--accent);color:var(--accent-on);padding:1vh 1.3vw;font-family:var(--mono);font-size:max(15px,.92vw);font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+  .vote-cue::before{content:"";width:10px;height:10px;background:currentColor;flex:none;animation:cue-blink 1.1s steps(1) infinite}
+  @keyframes cue-blink{50%{opacity:0}}
+  .swap.foot-swap > .after{align-self:center}
+  .revealed .hide-on-reveal{opacity:0}
+  #overview .flip-inner{rotate:none!important}
+
   /* ============ 动效 (与原模板一致) ============ */
   [data-anim]{opacity:1}
   body.motion-ready [data-anim]{opacity:0}
@@ -1020,6 +1093,7 @@
   }
   .h-bar-chart .row-fill.accent{background:var(--accent)}
   .h-bar-chart .row-fill.grey{background:var(--grey-3)}
+  .h-bar-chart .row-fill.before{background:#b4b4b1;border-right:3px solid var(--paper)}
   .h-bar-chart .row-val{
     font-family:var(--sans);font-weight:250;
     font-size:max(16px,1.5vw);
@@ -1188,7 +1262,7 @@
     <canvas class="ascii-bg" aria-hidden="true"></canvas>
     <div class="chrome-min">
       <div class="l">Paper presentation · Project thesis</div>
-      <div class="r">NTNU · Autumn 2026 · 01 / 17</div>
+      <div class="r">NTNU · Autumn 2026 · 01 / 16</div>
     </div>
     <div style="flex:1;padding:0 0 4vh;display:grid;grid-template-rows:auto 1fr auto;gap:2.6vh">
       <div data-anim="kicker" class="t-meta" style="color:rgba(255,255,255,.82);letter-spacing:.22em">Patwardhan et al. · OpenAI · ICLR 2026</div>
@@ -1211,7 +1285,7 @@
       <div class="half" style="padding:5.6vh 3.6vw 8vh;justify-content:space-between">
         <div class="chrome-min" style="margin-bottom:0">
           <div class="l">GDPval · The argument</div>
-          <div class="r">02 / 17</div>
+          <div class="r">02 / 16</div>
         </div>
         <div style="display:flex;flex-direction:column;gap:2.4vh">
           <div class="t-cat accent">In one line</div>
@@ -1236,7 +1310,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">GDPval · Context</div>
-      <div class="r">03 / 17</div>
+      <div class="r">03 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:5vh;min-height:0">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
@@ -1273,7 +1347,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">GDPval · Contribution</div>
-      <div class="r">04 / 17</div>
+      <div class="r">04 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto auto 1fr;gap:4vh;min-height:0">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
@@ -1313,7 +1387,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">GDPval · Method</div>
-      <div class="r">05 / 17</div>
+      <div class="r">05 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2vh;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
@@ -1339,7 +1413,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">GDPval · Results</div>
-      <div class="r">06 / 17</div>
+      <div class="r">06 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
@@ -1384,7 +1458,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">GDPval · Results</div>
-      <div class="r">07 / 17</div>
+      <div class="r">07 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:3.6vh;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
@@ -1418,41 +1492,38 @@
 </section>
 
 <!-- ============ One year later · timeline ============ -->
-<section class="slide" data-animate="progression" data-slide-id="since-timeline" data-layout="S02">
+<section class="slide" data-animate="line-rise" data-slide-id="since-timeline" data-layout="S02">
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">One year later · Progress</div>
-      <div class="r">08 / 17</div>
+      <div class="r">08 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:2.4vh;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.2vh">
         <div class="t-cat accent">One year later · Same expert-graded test</div>
         <h2 style="font-family:var(--sans);font-weight:200;font-size:min(4.4vw,7.8vh);line-height:1;letter-spacing:-.03em">From 48% to 85% in under nine months</h2>
       </div>
-      <div class="timeline-v" style="margin-top:0;align-self:center">
-        <div class="tl-node" style="padding:1.3vh 0;grid-template-columns:var(--tl-axis-w) minmax(0,8em) minmax(0,6.4em) 1fr">
-          <span class="dot"></span>
-          <span class="yr">Aug 2025</span>
-          <span class="multi">47.6<span class="unit">%</span></span>
-          <p class="desc"><b style="font-weight:600">Claude Opus 4.1</b>, the best model in the paper</p>
+      <div class="lc" style="margin-top:3.6vh">
+        <div class="lc-plot">
+          <div class="lc-grid" style="top:25%"><span>75%</span></div>
+          <div class="lc-grid parity" style="top:50%"><span>50% · Expert parity</span></div>
+          <div class="lc-grid" style="top:75%"><span>25%</span></div>
+          <div class="lc-mark" style="left:25.7%"><span>Paper published</span></div>
+          <svg class="lc-svg" aria-hidden="true"><polyline class="lc-path" pathLength="1" points=""/></svg>
+          <div class="lc-pt" style="left:10.4%;top:52.4%"></div>
+          <div class="lc-pt" style="left:48.7%;top:29.1%"></div>
+          <div class="lc-pt" style="left:73.7%;top:17%"></div>
+          <div class="lc-pt accent" style="left:88.4%;top:15.1%"></div>
+          <div class="lc-val below" style="left:10.4%;top:52.4%">47.6<span class="unit">%</span></div>
+          <div class="lc-val" style="left:48.7%;top:29.1%">70.9<span class="unit">%</span></div>
+          <div class="lc-val" style="left:73.7%;top:17%">83.0<span class="unit">%</span></div>
+          <div class="lc-val accent" style="left:88.4%;top:15.1%">84.9<span class="unit">%</span></div>
         </div>
-        <div class="tl-node" style="padding:1.3vh 0;grid-template-columns:var(--tl-axis-w) minmax(0,8em) minmax(0,6.4em) 1fr">
-          <span class="dot"></span>
-          <span class="yr">Dec 2025</span>
-          <span class="multi">70.9<span class="unit">%</span></span>
-          <p class="desc"><b style="font-weight:600">GPT-5.2</b>: OpenAI's first model "at or above expert level"</p>
-        </div>
-        <div class="tl-node" style="padding:1.3vh 0;grid-template-columns:var(--tl-axis-w) minmax(0,8em) minmax(0,6.4em) 1fr">
-          <span class="dot"></span>
-          <span class="yr">Mar 2026</span>
-          <span class="multi">83.0<span class="unit">%</span></span>
-          <p class="desc"><b style="font-weight:600">GPT-5.4</b>: beats the expert outright on 70.8% of tasks</p>
-        </div>
-        <div class="tl-node accent" style="padding:1.3vh 0;grid-template-columns:var(--tl-axis-w) minmax(0,8em) minmax(0,6.4em) 1fr">
-          <span class="dot"></span>
-          <span class="yr">Apr 2026</span>
-          <span class="multi">84.9<span class="unit">%</span></span>
-          <p class="desc"><b style="font-weight:600">GPT-5.5</b>: the last expert-graded score anyone has published</p>
+        <div class="lc-axis">
+          <div class="lc-lab c" style="left:10.4%"><span class="d">Aug 5, 2025</span><b>Claude Opus 4.1</b><span class="n">Best model in the paper</span></div>
+          <div class="lc-lab c" style="left:48.7%"><span class="d">Dec 11, 2025</span><b>GPT-5.2</b><span class="n">“At or above expert level”</span></div>
+          <div class="lc-lab r" style="left:73.7%"><span class="d">Mar 5, 2026</span><b>GPT-5.4</b><span class="n">Wins outright on 71%</span></div>
+          <div class="lc-lab l" style="left:88.4%"><span class="d">Apr 23, 2026</span><b style="color:var(--accent)">GPT-5.5</b><span class="n">Last published</span></div>
         </div>
       </div>
       <div class="kpi-row-4">
@@ -1470,7 +1541,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">One year later · Comparability</div>
-      <div class="r">09 / 17</div>
+      <div class="r">09 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
@@ -1507,7 +1578,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">One year later · Jobs</div>
-      <div class="r">10 / 17</div>
+      <div class="r">10 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
@@ -1515,12 +1586,12 @@
         <h2 style="font-family:var(--sans);font-weight:200;font-size:min(4.2vw,7.4vh);line-height:1.02;letter-spacing:-.03em">In about four months, accountants<br/>and engineers caught up</h2>
       </div>
       <div data-anim="up" style="display:grid;grid-template-columns:auto 1fr auto;gap:1.2vw;align-items:center;margin-top:2.6vh">
-        <span class="t-cat" style="display:flex;align-items:center;gap:.6vw"><span style="display:inline-block;width:14px;height:10px;background:var(--grey-3);opacity:.55"></span>Best model, Aug–Sep 2025 <span style="display:inline-block;width:14px;height:10px;background:var(--ink);margin-left:.8vw"></span>Best model, Dec 2025</span>
+        <span class="t-cat" style="display:flex;align-items:center;gap:.6vw"><span style="display:inline-block;width:14px;height:10px;background:#b4b4b1"></span>Best model, Aug–Sep 2025 <span style="display:inline-block;width:14px;height:10px;background:var(--ink);margin-left:.8vw"></span>Best model, Dec 2025</span>
         <div style="height:1px;background:var(--grey-2)"></div>
         <span class="t-cat">Win + tie rate · line = 50%</span>
       </div>
       <div class="h-bar-chart" style="grid-template-columns:15em minmax(0,1fr) 6.5em;gap:.55vh 1.6vw;margin-top:1.2vh">
-        <span class="row-lbl" style="font-size:max(17px,1.02vw)">Registered nurses</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:86.7%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:35.6%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">36→87<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Audio &amp; video technicians</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:68.9%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:11.4%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">11→69<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Real estate sales agents</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:77.8%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:35.6%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">36→78<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Industrial engineers</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:60.0%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:20.0%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">20→60<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw);color:var(--accent)">Accountants &amp; auditors</span><div class="row-track" style="height:2.1vh"><div class="row-fill accent" style="position:absolute;left:0;top:0;width:55.6%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:24.4%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw);color:var(--accent)">24→56<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Mechanical engineers</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:60.0%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:26.7%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">27→60<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Pharmacists</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:60.0%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:31.1%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">31→60<span class="unit">%</span></span><div style="grid-column:1/-1;display:flex;align-items:center;gap:1vw;margin:.3vh 0"><span class="t-cat">Still behind</span><div style="flex:1;height:1px;background:var(--grey-2)"></div></div><span class="row-lbl" style="font-size:max(17px,1.02vw)">Film &amp; video editors</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:40.0%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:15.2%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">15→40<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Financial managers</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:51.1%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:31.1%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">31→51<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Concierges</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:42.2%"></div><div class="row-fill grey" style="position:absolute;left:0;top:0;width:28.9%;opacity:.55"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">29→42<span class="unit">%</span></span>
+        <span class="row-lbl" style="font-size:max(17px,1.02vw)">Registered nurses</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:86.7%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:35.6%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">36→87<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Audio &amp; video technicians</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:68.9%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:11.4%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">11→69<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Real estate sales agents</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:77.8%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:35.6%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">36→78<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Industrial engineers</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:60.0%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:20.0%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">20→60<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw);color:var(--accent)">Accountants &amp; auditors</span><div class="row-track" style="height:2.1vh"><div class="row-fill accent" style="position:absolute;left:0;top:0;width:55.6%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:24.4%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw);color:var(--accent)">24→56<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Mechanical engineers</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:60.0%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:26.7%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">27→60<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Pharmacists</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:60.0%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:31.1%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">31→60<span class="unit">%</span></span><div style="grid-column:1/-1;display:flex;align-items:center;gap:1vw;margin:.3vh 0"><span class="t-cat">Still behind</span><div style="flex:1;height:1px;background:var(--grey-2)"></div></div><span class="row-lbl" style="font-size:max(17px,1.02vw)">Film &amp; video editors</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:40.0%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:15.2%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">15→40<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Financial managers</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:51.1%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:31.1%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">31→51<span class="unit">%</span></span><span class="row-lbl" style="font-size:max(17px,1.02vw)">Concierges</span><div class="row-track" style="height:2.1vh"><div class="row-fill" style="position:absolute;left:0;top:0;width:42.2%"></div><div class="row-fill before" style="position:absolute;left:0;top:0;width:28.9%"></div><div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--paper);opacity:.9"></div></div><span class="row-val" style="font-weight:400;font-size:max(16px,1.2vw)">29→42<span class="unit">%</span></span>
       </div>
       <div style="margin-top:auto;padding-top:1.6vh;display:flex;flex-direction:column;gap:.8vh"><div style="display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--ink);font-size:max(15px,.85vw);line-height:1.3"><div style="padding-top:.8vh;color:var(--text-secondary)"><b style="color:var(--text-primary);font-weight:600">Aug 5</b><br/>Claude Opus 4.1</div><div style="padding-top:.8vh;color:var(--text-secondary)"><b style="color:var(--text-primary);font-weight:600">Aug 7</b><br/>GPT-5</div><div style="padding-top:.8vh;color:var(--text-secondary)"><b style="color:var(--accent);font-weight:600">Sep 29</b><br/>Sonnet 4.5 takes the lead</div><div style="padding-top:.8vh;color:var(--text-secondary)"><b style="color:var(--text-primary);font-weight:600">Nov 18</b><br/>Gemini 3 Pro</div><div style="padding-top:.8vh;color:var(--text-secondary)"><b style="color:var(--text-primary);font-weight:600">Nov 24</b><br/>Claude Opus 4.5</div><div style="padding-top:.8vh;color:var(--text-secondary)"><b style="color:var(--text-primary);font-weight:600">Dec 11</b><br/>GPT-5.2</div></div><div style="font-size:max(15px,.85vw);line-height:1.4;color:var(--text-secondary)">Grey: the Opus 4.1 era (Aug 5 to Sep 28), when the paper's models were the frontier; any date in that window gives the same bars. Black: the frontier after GPT-5.2. Source: OpenAI's expert-graded GDPval leaderboard (Dec 2025, since taken offline; recovered via the Internet Archive). 5 tasks per occupation.</div></div>
     </div>
@@ -1532,37 +1603,37 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">One year later · Kinds of work</div>
-      <div class="r">11 / 17</div>
+      <div class="r">11 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:4vh;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
         <div class="t-cat accent">One year later · Did the type of work change?</div>
         <h2 style="font-family:var(--sans);font-weight:200;font-size:min(4.4vw,7.8vh);line-height:1;letter-spacing:-.03em">The 2025 weak spots are now selling points</h2>
       </div>
-      <div data-anim="up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3vw;align-items:start">
-        <div style="display:flex;flex-direction:column;justify-content:flex-start;gap:2.6vh;border-top:1px solid var(--ink);padding-top:2vh">
-          <div style="display:flex;flex-direction:column;gap:1.2vh">
+      <div data-anim="up" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,auto);column-gap:3vw;row-gap:0;align-items:start;align-content:start">
+        <div style="display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:1.2vh;border-top:1px solid var(--ink);padding-top:2vh">
+          <div style="display:contents">
             <div class="t-cat">Spreadsheets &amp; finance</div>
             <div style="font-size:max(20px,1.45vw);font-weight:500;line-height:1.25">Financial models went from shaky to routine</div>
             <div style="font-size:max(16px,.98vw);line-height:1.5;color:var(--text-secondary)">OpenAI's internal test of junior investment-banking models (three-statement, LBO). GPT-5.1 → GPT-5.5. Not GDPval.</div>
           </div>
-          <div style="font-family:var(--sans);font-weight:200;font-size:min(5.6vw,10vh);line-height:.95;letter-spacing:-.04em">59→89<span style="font-size:.4em">%</span></div>
+          <div style="font-family:var(--sans);font-weight:200;font-size:min(5.6vw,10vh);line-height:.95;letter-spacing:-.04em;margin-top:1.6vh">59→89<span style="font-size:.4em">%</span></div>
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:flex-start;gap:2.6vh;border-top:1px solid var(--ink);padding-top:2vh">
-          <div style="display:flex;flex-direction:column;gap:1.2vh">
+        <div style="display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:1.2vh;border-top:1px solid var(--ink);padding-top:2vh">
+          <div style="display:contents">
             <div class="t-cat">Math &amp; calculation</div>
             <div style="font-size:max(20px,1.45vw);font-weight:500;line-height:1.25">Hard math went from 31% to 52%</div>
             <div style="font-size:max(16px,.98vw);line-height:1.5;color:var(--text-secondary)">FrontierMath tiers 1–3, GPT-5.1 → GPT-5.5. In 2025, miscalculation was a named failure mode. Not GDPval.</div>
           </div>
-          <div style="font-family:var(--sans);font-weight:200;font-size:min(5.6vw,10vh);line-height:.95;letter-spacing:-.04em">31→52<span style="font-size:.4em">%</span></div>
+          <div style="font-family:var(--sans);font-weight:200;font-size:min(5.6vw,10vh);line-height:.95;letter-spacing:-.04em;margin-top:1.6vh">31→52<span style="font-size:.4em">%</span></div>
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:flex-start;gap:2.6vh;border-top:2px solid var(--accent);padding-top:2vh">
-          <div style="display:flex;flex-direction:column;gap:1.2vh">
+        <div style="display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:1.2vh;border-top:2px solid var(--accent);padding-top:2vh">
+          <div style="display:contents">
             <div class="t-cat accent">GDPval itself</div>
             <div style="font-size:max(20px,1.45vw);font-weight:500;line-height:1.25">Beating experts, not just tying</div>
             <div style="font-size:max(16px,.98vw);line-height:1.5;color:var(--text-secondary)">Share of GDPval tasks where experts rated the model strictly better. GPT-5.2 → GPT-5.4.</div>
           </div>
-          <div style="font-family:var(--sans);font-weight:200;font-size:min(5.6vw,10vh);line-height:.95;letter-spacing:-.04em;color:var(--accent)">50→71<span style="font-size:.4em">%</span></div>
+          <div style="font-family:var(--sans);font-weight:200;font-size:min(5.6vw,10vh);line-height:.95;letter-spacing:-.04em;color:var(--accent);margin-top:1.6vh">50→71<span style="font-size:.4em">%</span></div>
         </div>
       </div>
       <div style="font-size:max(17px,1.05vw);line-height:1.5;border-left:3px solid var(--accent);padding:1.4vh 1.4vw;background:var(--grey-1)">Inside GDPval, accountants went from 24% to 56% by December 2025. Columns one and two are adjacent, vendor-reported signals; no per-job GDPval data exists after OpenAI took its leaderboard down.</div>
@@ -1575,7 +1646,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">GDPval · Discussion</div>
-      <div class="r">12 / 17</div>
+      <div class="r">12 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:4vh;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
@@ -1619,71 +1690,74 @@
 </section>
 
 <!-- ============ 06 · Be the grader (vote) ============ -->
-<section class="slide" data-animate="duo-mirror" data-slide-id="vote" data-layout="S08">
+<section class="slide" data-animate="duo-mirror" data-slide-id="vote" data-layout="S08" data-steps="1">
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">Live test · Your turn</div>
-      <div class="r">13 / 17</div>
+      <div class="r">13 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:flex;flex-direction:column;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
         <div class="t-cat accent">Live test · Today's Claude vs. an energy economist, graded blind</div>
-        <h2 style="font-family:var(--sans);font-weight:200;font-size:min(3.8vw,6.6vh);line-height:1;letter-spacing:-.03em">One is an energy economist. One is an AI.</h2>
-        <div style="margin-top:1.4vh;padding:1.1vh 1.2vw;border-left:3px solid var(--accent);background:var(--grey-1);font-size:max(16px,.98vw);line-height:1.45;max-width:86vw"><b style="font-weight:600">Task, in short (exact prompt on the next slide):</b> March 2015. OPEC has just decided not to cut output, although oil prices have fallen by more than 30%. As an energy economist writing a short policy blog post on what research says about the oil market, answer in about 100 words: <b style="font-weight:600">does OPEC actually act as a cartel?</b></div>
+        <div class="swap">
+          <h2 class="before" style="font-family:var(--sans);font-weight:200;font-size:min(3.8vw,6.6vh);line-height:1;letter-spacing:-.03em">One is an energy economist. One is an AI.</h2>
+          <h2 class="after" style="font-family:var(--sans);font-weight:200;font-size:min(3.8vw,6.6vh);line-height:1;letter-spacing:-.03em">A is Claude. B is our supervisor.</h2>
+        </div>
+        <div class="swap grow" style="margin-top:1.4vh">
+          <div class="before" style="padding:1.1vh 1.2vw;border-left:3px solid var(--accent);background:var(--grey-1);font-size:max(16px,.98vw);line-height:1.45"><b style="font-weight:600">Task, in short:</b> March 2015. OPEC has just decided not to cut output, although oil prices have fallen by more than 30%. As an energy economist writing a short policy blog post on what research says about the oil market, answer in about 100 words: <b style="font-weight:600">does OPEC actually act as a cartel?</b></div>
+          <div class="after" style="padding:1.1vh 1.2vw;border-left:3px solid var(--accent);background:var(--grey-1);font-size:max(16px,.92vw);line-height:1.42;color:var(--text-secondary)"><b style="font-weight:600;color:var(--text-primary)">Exact prompt given to Claude:</b> “It is March 2015. In late November 2014, OPEC decided not to cut its production quota despite a fall in crude oil prices of more than 30 percent since the summer. You are an energy economist at an economic research institute in Berlin, writing a short policy blog post that reviews what economic research says about the structure of the crude oil market. Write one paragraph of about 100 words addressing the question: does OPEC actually act as a cartel? Write plain academic prose for an informed non-specialist audience, with no headings, bullet points or references.”</div>
+        </div>
       </div>
-      <div class="duo-compare" style="margin-top:2.4vh">
-        <div class="col">
-          <div class="col-tag"><span class="num">A</span>Deliverable</div>
-          <p class="col-desc" style="opacity:1;max-width:none;font-size:max(16px,1.06vw);line-height:1.5;color:var(--text-primary)">Whether OPEC behaves as a true cartel is less settled than its reputation suggests. Most empirical studies find little evidence that members coordinate output in the textbook sense. Quotas are routinely exceeded, and national production often follows budget needs and capacity rather than collective agreement. A better description is a loose cartel, or a dominant producer surrounded by smaller ones. In that picture Saudi Arabia, which holds most of the world’s spare capacity, sometimes absorbs price swings while other members free-ride. November’s decision fits this pattern. Riyadh saw its own cuts subsidise rivals in the mid-1980s, and it now seems unwilling to defend prices for American shale producers, choosing to protect market share instead.</p>
+      <div class="duo-compare" style="margin-top:2.4vh;min-height:0">
+        <div class="col flip-card">
+          <div class="flip-inner">
+            <div class="flip-face front">
+              <div class="col-tag"><span class="num">A</span>Deliverable</div>
+              <p class="col-desc" style="opacity:1;max-width:none;font-size:max(16px,1.06vw);line-height:1.5;color:var(--text-primary)">Whether OPEC behaves as a true cartel is less settled than its reputation suggests. Most empirical studies find little evidence that members coordinate output in the textbook sense. Quotas are routinely exceeded, and national production often follows budget needs and capacity rather than collective agreement. A better description is a loose cartel, or a dominant producer surrounded by smaller ones. In that picture Saudi Arabia, which holds most of the world’s spare capacity, sometimes absorbs price swings while other members free-ride. November’s decision fits this pattern. Riyadh saw its own cuts subsidise rivals in the mid-1980s, and it now seems unwilling to defend prices for American shale producers, choosing to protect market share instead.</p>
+            </div>
+            <div class="flip-face back card-accent">
+              <div style="display:flex;flex-direction:column;gap:2vh">
+                <div class="col-tag"><span class="num">A</span>AI</div>
+                <div class="who">Claude</div>
+                <div class="what">Claude Opus 5.5, high reasoning, fresh chat, October 2026. First answer to the prompt above.</div>
+              </div>
+              <div class="when">Written in a few seconds</div>
+            </div>
+          </div>
         </div>
         <span class="vrule"></span>
-        <div class="col">
-          <div class="col-tag"><span class="num">B</span>Deliverable</div>
-          <p class="col-desc" style="opacity:1;max-width:none;font-size:max(16px,1.06vw);line-height:1.5;color:var(--text-primary)">Even though OPEC is sometimes used as a textbook example of a cartel, there is no clear-cut consensus in the academic community whether OPEC is indeed acting as a cartel, or rather competitively or as a non-cooperative oligopoly. On its website, the organization states its mission to “coordinate and unify the petroleum policies of its Member Countries and ensure the stabilization of oil markets […] and a fair return on capital” […]. This sounds very much like the objective of a standard cartel, namely maximizing joint profits; however, unlike a standard cartel, OPEC does not have mechanisms for internal compensation and effective enforcement to align the incentives of its members.</p>
+        <div class="col flip-card">
+          <div class="flip-inner">
+            <div class="flip-face front">
+              <div class="col-tag"><span class="num">B</span>Deliverable</div>
+              <p class="col-desc" style="opacity:1;max-width:none;font-size:max(16px,1.06vw);line-height:1.5;color:var(--text-primary)">Even though OPEC is sometimes used as a textbook example of a cartel, there is no clear-cut consensus in the academic community whether OPEC is indeed acting as a cartel, or rather competitively or as a non-cooperative oligopoly. On its website, the organization states its mission to “coordinate and unify the petroleum policies of its Member Countries and ensure the stabilization of oil markets […] and a fair return on capital” […]. This sounds very much like the objective of a standard cartel, namely maximizing joint profits; however, unlike a standard cartel, OPEC does not have mechanisms for internal compensation and effective enforcement to align the incentives of its members.</p>
+            </div>
+            <div class="flip-face back card-fill">
+              <div style="display:flex;flex-direction:column;gap:2vh">
+                <div class="col-tag"><span class="num">B</span>Expert</div>
+                <div class="who">Franziska Holz</div>
+                <div class="what">With Daniel Huppmann: “What about the OPEC Cartel?”, DIW Roundup 58, March 2015.</div>
+              </div>
+              <div class="when">Our supervisor</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="t-meta" style="margin-top:2vh">Hands up: which is better, and which is the expert?</div>
+      <div class="swap foot-swap" style="margin-top:2vh">
+        <div class="vote-cue before">Hands up: which is better, and which is the expert?</div>
+        <div class="t-meta after">Huppmann &amp; Holz (2015), DIW Roundup 58, p. 2 · excerpt, web address removed · quoted for teaching</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ The reveal ============ -->
-<section class="slide grey" data-animate="duo-mirror" data-slide-id="reveal" data-layout="S08">
-  <div class="canvas-card">
-    <div class="chrome-min">
-      <div class="l">Live test · The reveal</div>
-      <div class="r">14 / 17</div>
-    </div>
-    <div style="flex:1;padding:0;display:flex;flex-direction:column;min-height:0;padding-bottom:4vh">
-      <div data-anim="line" style="display:flex;flex-direction:column;gap:1.4vh">
-        <div class="t-cat accent">Live test · The reveal</div>
-        <h2 style="font-family:var(--sans);font-weight:200;font-size:min(3.8vw,6.6vh);line-height:1;letter-spacing:-.03em">A is Claude. B is our supervisor.</h2>
-      </div>
-      <div class="duo-compare" style="margin-top:2.6vh;flex:0 0 auto">
-        <div class="col accent">
-          <div class="col-tag"><span class="num">A</span>AI</div>
-          <div class="col-ttl" style="font-size:min(2.8vw,5vh)">A few seconds</div>
-          <p class="col-desc" style="opacity:1;color:var(--text-secondary);font-size:max(16px,1vw)">Claude Opus 5.5, high reasoning, fresh chat (Oct 2026). Exact prompt below; first answer used.</p>
-        </div>
-        <span class="vrule"></span>
-        <div class="col">
-          <div class="col-tag"><span class="num">B</span>Expert</div>
-          <div class="col-ttl" style="font-size:min(2.8vw,5vh)">Franziska Holz</div>
-          <p class="col-desc" style="opacity:1;color:var(--text-secondary);font-size:max(16px,1vw)">With Daniel Huppmann: "What about the OPEC Cartel?", DIW Roundup 58, March 2015.</p>
-        </div>
-      </div>
-      <div style="margin-top:6vh;padding:1vh 1.2vw;border-left:3px solid var(--accent);background:var(--paper);font-size:max(16px,.92vw);line-height:1.45;color:var(--text-secondary)"><b style="font-weight:600;color:var(--text-primary)">Exact prompt given to Claude:</b> “It is March 2015. In late November 2014, OPEC decided not to cut its production quota despite a fall in crude oil prices of more than 30 percent since the summer. You are an energy economist at an economic research institute in Berlin, writing a short policy blog post that reviews what economic research says about the structure of the crude oil market. Write one paragraph of about 100 words addressing the question: does OPEC actually act as a cartel? Write plain academic prose for an informed non-specialist audience, with no headings, bullet points or references.”</div>
-      <div class="t-meta" style="margin-top:auto">Huppmann &amp; Holz (2015), DIW Roundup 58, p. 2 · excerpt, web address removed · quoted for teaching</div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ 11 · Our thesis ============ -->
 <section class="slide" data-animate="system-diagram" data-slide-id="thesis" data-layout="S17">
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">Our project thesis</div>
-      <div class="r">15 / 17</div>
+      <div class="r">14 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr;gap:3.4vh;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:1.2vh">
@@ -1726,7 +1800,7 @@
   <div class="canvas-card">
     <div class="chrome-min">
       <div class="l">GDPval × GGM</div>
-      <div class="r">16 / 17</div>
+      <div class="r">15 / 16</div>
     </div>
     <div style="flex:1;padding:0;display:grid;grid-template-rows:auto 1fr auto;gap:4vh;min-height:0;padding-bottom:4vh">
       <div data-anim="line" style="display:flex;flex-direction:column;gap:2vh">
@@ -1770,7 +1844,7 @@
       <div class="half b-accent" style="padding:5.6vh 3.6vw 8vh;justify-content:space-between;position:relative;overflow:hidden">
         <canvas class="ascii-bg" aria-hidden="true"></canvas>
         <div class="chrome-min" style="margin-bottom:0;position:relative;z-index:1">
-          <div class="l">17 / 17</div>
+          <div class="l">16 / 16</div>
           <div class="r">Conclusion</div>
         </div>
         <div data-anim="manifesto" style="display:flex;flex-direction:column;gap:2vh;position:relative;z-index:1">
@@ -1983,12 +2057,47 @@ deck.style.width=(total*100)+'vw';
 slides.forEach((s,i)=>{
   const b=document.createElement('button');
   b.className='dot';b.dataset.i=i;b.setAttribute('aria-label','Page '+(i+1));
-  b.onclick=()=>go(i);
+  b.onclick=()=>go(i,{direct:true});
   nav.appendChild(b);
 });
 
+function setStep(slide,st,instant){
+  slide.dataset.step=st;
+  if(slide.querySelector('.flip-card')) flipReveal(slide, st>=1, instant || window.__lowPowerMode);
+  else slide.classList.toggle('revealed', st>=1);
+}
+/* Card flip: turn both cards, then grow the prompt box while the cards shrink.
+   Going back runs the same steps in reverse. */
+function flipReveal(slide,on,instant){
+  clearTimeout(slide._flipT);
+  const box=slide.querySelector('.swap.grow');
+  const settle=(want)=>{
+    const h0=box?box.offsetHeight:0;
+    slide.classList.toggle('settled',want);
+    if(!box||instant) return;
+    const h1=box.offsetHeight;
+    box.animate([{height:h0+'px'},{height:h1+'px'}],{duration:550,easing:'cubic-bezier(.2,0,.3,1)'});
+  };
+  if(instant){ slide.classList.toggle('revealed',on); settle(on); return; }
+  if(on){
+    slide.classList.add('revealed');
+    slide._flipT=setTimeout(()=>settle(true),1000);
+  }else{
+    settle(false);
+    slide._flipT=setTimeout(()=>slide.classList.remove('revealed'),450);
+  }
+}
 function go(n,opts={}){
   if(lock&&!opts.force)return;
+  /* Slides with data-steps take extra clicks (e.g. the card flip) before moving on */
+  const cur=slides[idx];
+  if(!opts.direct && cur && cur.dataset.steps && (n===idx+1 || n===idx-1)){
+    const st=+(cur.dataset.step||0), max=+cur.dataset.steps;
+    if(n===idx+1 && st<max){ setStep(cur,st+1); lock=true; setTimeout(()=>lock=false,1100); return; }
+    if(n===idx-1 && st>0){ setStep(cur,st-1); lock=true; setTimeout(()=>lock=false,1100); return; }
+  }
+  const target=slides[Math.max(0,Math.min(total-1,n))];
+  if(target && target!==cur && target.dataset.steps) setStep(target, n<idx && !opts.direct ? +target.dataset.steps : 0, true);
   idx=Math.max(0,Math.min(total-1,n));
   window.__currentSlideIndex = idx;
   deck.style.transform=`translateX(${-idx*100}vw)`;
@@ -1997,7 +2106,13 @@ function go(n,opts={}){
   const isDark = el.classList.contains('dark') || el.classList.contains('accent');
   document.body.classList.toggle('dark-bg', isDark);
   darkMode = isDark;
-  if(!window.__lowPowerMode && document.body.classList.contains('motion-ready')) el.querySelectorAll('.row-fill').forEach(f=>{ f.dataset.w=f.dataset.w||f.style.width; f.style.width='0%'; });
+  if(!window.__lowPowerMode && document.body.classList.contains('motion-ready')){
+    el.querySelectorAll('.row-fill').forEach(f=>{ f.dataset.w=f.dataset.w||f.style.width; f.style.width='0%'; });
+    if(el.querySelector('.lc')){
+      el.querySelectorAll('.lc-path,.lc-pt,.lc-val,.lc-lab').forEach(e=>{ e.getAnimations().forEach(a=>a.cancel()); e.style.opacity=''; e.style.strokeDashoffset=''; e.style.transform=''; });
+      el.classList.add('lc-armed');
+    }
+  }
   if(window.__playSlide) setTimeout(()=>window.__playSlide(idx), 450);
   window.__pptPresenter?.onSlideChange(idx);
   if(!opts.force){lock=true;setTimeout(()=>lock=false,700);}
@@ -2031,7 +2146,7 @@ function buildOverview(){
     label.textContent=window.__pptPresenter?.slideLabel(i) || ((i+1)+' / '+total);
     card.appendChild(wrap);
     card.appendChild(label);
-    card.onclick=()=>{toggleOverview();go(i)};
+    card.onclick=()=>{toggleOverview();go(i,{direct:true})};
     grid.appendChild(card);
   });
   ov.appendChild(grid);
@@ -2090,6 +2205,23 @@ addEventListener('touchend',e=>{
     go(idx+(dx<0?1:-1));
   }
 },{passive:true});
+
+function layoutLineCharts(){
+  document.querySelectorAll('.lc-plot').forEach(plot=>{
+    const w=plot.clientWidth, h=plot.clientHeight;
+    if(!w||!h) return;
+    const svg=plot.querySelector('.lc-svg');
+    svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+    const pts=[...plot.querySelectorAll('.lc-pt')].map(p=>[parseFloat(p.style.left)/100*w, parseFloat(p.style.top)/100*h]);
+    plot.querySelector('.lc-path').setAttribute('points', pts.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' '));
+    /* share of the line drawn when each point is reached, for the animation */
+    let acc=0; const fr=[0];
+    for(let i=1;i<pts.length;i++){ acc+=Math.hypot(pts[i][0]-pts[i-1][0], pts[i][1]-pts[i-1][1]); fr.push(acc); }
+    plot.dataset.fr=JSON.stringify(fr.map(v=>acc? v/acc : 0));
+  });
+}
+layoutLineCharts();
+addEventListener('resize', layoutLineCharts);
 
 const initialSlideParam = new URLSearchParams(location.search).get('slide');
 const initialSlide = initialSlideParam ? Number(initialSlideParam) - 1 : 0;
@@ -2194,6 +2326,37 @@ if(motion){
     });
   }
 
+  /* ---------- recipe: line-rise · line chart draws left to right ----------
+     each point, its value and its axis label appear as the line reaches it */
+  function rLineRise(slide, all){
+    const head = slide.querySelector('[data-anim="line"]');
+    if(head) fade(head, {duration:.6, y:10});
+    const plot = slide.querySelector('.lc-plot');
+    const path = slide.querySelector('.lc-path');
+    const DRAW = 1.9, START = .7;
+    const fr = JSON.parse(plot?.dataset.fr || '[]');
+    /* native WAAPI: Motion One does not animate stroke-dashoffset */
+    if(path){
+      path.getAnimations().forEach(a=>a.cancel());
+      path.animate([{strokeDashoffset:1},{strokeDashoffset:0}], {duration:DRAW*1000, delay:START*1000, easing:'linear', fill:'both'});
+    }
+    const pts = [...slide.querySelectorAll('.lc-pt')];
+    const vals = [...slide.querySelectorAll('.lc-val')];
+    const labs = [...slide.querySelectorAll('.lc-lab')];
+    pts.forEach((p, i)=>{
+      const t = START + (fr[i] ?? i/(pts.length-1||1)) * DRAW;
+      animate(p, {opacity:[0,1], scale:[0,1]}, {duration:.35, delay:t, easing:EASE_ENTRY_EXP});
+      if(vals[i]) animate(vals[i], {opacity:[0,1]}, {duration:.45, delay:t + .08, easing:EASE_PROD});
+      if(labs[i]) animate(labs[i], {opacity:[0,1]}, {duration:.45, delay:t + .12, easing:EASE_PROD});
+    });
+    const kpis = [...slide.querySelectorAll('.kpi-cell')];
+    kpis.forEach((cell, i)=>{
+      animate(cell, {opacity:[0,1], y:[8, 0]},
+        {duration:.4, delay:START + DRAW + .5 + i*.07, easing:EASE_PROD});
+    });
+    setTimeout(()=>slide.classList.remove('lc-armed'), (START + DRAW + 1) * 1000);
+  }
+
   /* ---------- recipe: statement · 大宣言 ----------
      左半屏Title逐行落下,右半屏 leaked 信息晚 600ms 进 */
   function rStatement(slide, all){
@@ -2289,19 +2452,26 @@ if(motion){
       }
     }
 
-    /* bar 行依次 width 增长 */
-    const fills = [...slide.querySelectorAll('.row-fill')];
+    /* bar 行依次 width 增长 · per row; a "before" bar grows first, then the main bar passes it */
+    const tracks = [...slide.querySelectorAll('.row-track')];
     const labels = [...slide.querySelectorAll('.row-lbl')];
     const values = [...slide.querySelectorAll('.row-val')];
-    fills.forEach((fill, i)=>{
-      const target = fill.dataset.w || (fill.dataset.w = fill.style.width);
-      fill.style.width = '0%';
+    tracks.forEach((track, i)=>{
+      const base = .95 + i*.14;
       if(labels[i]) animate(labels[i], {opacity:[0,1], x:[-12,0]},
-        {duration:.4, delay:.85 + i*.14, easing:EASE_PROD});
-      animate(fill, {width:['0%', target]},
-        {duration:.65, delay:.95 + i*.14, easing:EASE_ENTRY_EXP});
+        {duration:.4, delay:base - .1, easing:EASE_PROD});
+      const fills = [...track.querySelectorAll('.row-fill')];
+      const before = fills.filter(f=>f.classList.contains('before'));
+      const main = fills.filter(f=>!f.classList.contains('before'));
+      const grow = (fill, delay)=>{
+        const target = fill.dataset.w || (fill.dataset.w = fill.style.width);
+        fill.style.width = '0%';
+        animate(fill, {width:['0%', target]}, {duration:.65, delay, easing:EASE_ENTRY_EXP});
+      };
+      before.forEach(f=>grow(f, base));
+      main.forEach(f=>grow(f, base + (before.length ? .45 : 0)));
       if(values[i]) animate(values[i], {opacity:[0,1]},
-        {duration:.3, delay:1.5 + i*.14, easing:EASE_PROD});
+        {duration:.3, delay:base + .55 + (before.length ? .45 : 0), easing:EASE_PROD});
     });
   }
 
@@ -2323,6 +2493,16 @@ if(motion){
     if(cols[1]) animate(cols[1], {opacity:[0,1], x:[24, 0]},
       {duration:.65, delay:.7, easing:EASE_ENTRY_EXP});
 
+    /* live test: the call to vote wipes in once both answers are in
+       (animating the footer text itself would leave an inline opacity that blocks its fade-out on reveal) */
+    const cue = slide.querySelector('.vote-cue');
+    if(cue){
+      cue.getAnimations().filter(a=>a.id==='cue').forEach(a=>a.cancel());
+      const a = cue.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)'}],
+        {duration:700, delay:1500, easing:'cubic-bezier(.2,0,.3,1)', fill:'both'});
+      a.id='cue';
+      return;
+    }
     const foot = slide.querySelector('.t-meta');
     if(foot) animate(foot, {opacity:[0,1]}, {duration:.3, delay:1.3, easing:EASE_PROD});
   }
@@ -2749,6 +2929,7 @@ if(motion){
   const RECIPES = {
     'hero': rHero,
     'progression': rProgression,
+    'line-rise': rLineRise,
     'statement': rStatement,
     'grid-reveal': rGridReveal,
     'stack-build': rStackBuild,
@@ -2772,6 +2953,9 @@ if(motion){
 
   function revealStatic(slide){
     resetAnims(slide);
+    slide.classList.remove('lc-armed');
+    slide.querySelectorAll('.lc-path').forEach(p=>{ p.style.strokeDashoffset='0'; });
+    slide.querySelectorAll('.lc-pt,.lc-val,.lc-lab').forEach(e=>{ e.style.opacity='1'; e.style.transform=''; });
     slide.querySelectorAll('.row-fill').forEach(f=>{ if(f.dataset.w) f.style.width=f.dataset.w; });
     document.getAnimations?.().forEach(a=>a.cancel());
     slide.querySelectorAll('[data-anim],.row-fill,.tl-node,.stack-block,.bar-tower,.sub-card,.col,.vrule,.kpi-cell,.card-fill,.card-accent,.card-ink')

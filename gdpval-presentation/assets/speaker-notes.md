@@ -1,6 +1,6 @@
 # Speaker notes: GDPval presentation
 
-Planned time per slide in brackets. Jørgen presents slides 1–9, Save presents 10–17.
+Planned time per slide in brackets. Jørgen presents slides 1–9, Save presents 10–16.
 
 ## 1. Can AI do an expert's job? (0.3 min · Jørgen · The paper)
 *Purpose:* Name the paper and set up the one question the talk answers
@@ -69,7 +69,8 @@ Planned time per slide in brackets. Jørgen presents slides 1–9, Save presents
 *Purpose:* Show how fast the paper's headline number became outdated
 
 - Same metric as the paper, all from OpenAI's launch announcements.
-- From Opus 4.1 (released August 2025) at 47.6% to GPT-5.2 in December 2025: 70.9%. GPT-5.4 in March: 83%, and it beats the expert outright on 71% of tasks. GPT-5.5 in April: 84.9%.
+- The line draws itself: each point appears on its release date. Opus 4.1 (Aug 5, 2025) at 47.6%, GPT-5.2 (Dec 11) at 70.9%, GPT-5.4 (Mar 5, 2026) at 83%, beating the expert outright on 71% of tasks, GPT-5.5 (Apr 23) at 84.9%.
+- The dashed line is expert parity (50%); the paper was published in late September, already just after Sonnet 4.5 took the lead.
 - OpenAI also graded Claude and Gemini: Opus 4.5 at 60% and Gemini 3 at 54% in December, Opus 4.7 at 80% and Gemini 3.1 at 67% in April.
 - Then the series stops: from GPT-5.6, OpenAI reports a different version, and GPT-6 Astra reports none. xAI and DeepSeek never published this test.
 
@@ -89,7 +90,7 @@ Planned time per slide in brackets. Jørgen presents slides 1–9, Save presents
 *Purpose:* Show which kinds of work improved, using OpenAI's own per-occupation data
 
 - OpenAI ran a public GDPval leaderboard with results per occupation. It stopped updating in December 2025 and was taken offline in 2026; we recovered the data from the Internet Archive.
-- Grey is the best model of Aug–Sep 2025 (Claude Opus 4.1, GPT-5), black the best model of Dec 2025. Same expert grading, about four months apart.
+- Light grey grows first: the best model of Aug–Sep 2025 (Claude Opus 4.1, GPT-5). Then black grows past it: the best model of Dec 2025. Same expert grading, about four months apart.
 - Grey is a period, not a day: the Opus 4.1 era, Aug 5 to Sep 28, gives the same bars on any date. Opus 4.1 led for under eight weeks, until Sonnet 4.5 on Sep 29.
 - If asked about the 'four months': release to release (Aug 5 to Dec 11) and midpoint to midpoint of each model's reign both give about four months. Mixing them, e.g. the middle of Opus 4.1's reign to GPT-5.2's release, would shorten it unfairly.
 - Accountants went from 24% to 56%, engineers from around 20-27% to 60%, nurses from 36% to 87%: the precise, numbers-heavy work that was weakest in 2025.
@@ -116,29 +117,24 @@ Planned time per slide in brackets. Jørgen presents slides 1–9, Save presents
 
 *Transition:* Enough numbers: let's test today's best model live, in our own field.
 
-## 13. Live test: be the grader (0.8 min · Save · Live test)
-*Purpose:* Let the audience and Franziska grade blind, as GDPval graders did
+## 13. Live test: be the grader, then flip (1.2 min · Save · Live test)
+*Purpose:* Let the audience and Franziska grade blind, as GDPval graders did, then reveal on the same slide
 
 - Frame it: we've seen the numbers, so now we test the newest Claude live, on a question from our own field, with our supervisor as the expert grader.
 - Read the task aloud: March 2015, OPEC has just refused to cut output. Does OPEC actually act as a cartel?
 - One answer is from an energy economist, one from an AI. Don't say who.
 - Give the room about 45 seconds, then ask for hands: which is better?
 - Then ask Franziska, as our expert grader, which one she prefers and why.
-- *Interaction:* Room votes by show of hands, then Franziska gives her verdict
-- *Cue:* Ask Franziska before the talk if she is happy to judge a short text live, without saying what it is
-
-*Transition:* Then reveal
-
-## 14. Live test: the reveal (0.4 min · Save · Live test)
-*Purpose:* Connect the room's and the expert's verdicts to the paper's grading problem
-
-- A is Claude Opus 5.5 with high reasoning: fresh chat, first answer. The exact prompt is on screen: same date, role, length and question as the authors, no hints. B is Franziska, from her 2015 DIW Roundup with Daniel Huppmann.
+- **Press → once to flip the cards** (it does not change slide): A is Claude Opus 5.5 with high reasoning, fresh chat, first answer. B is Franziska, from her 2015 DIW Roundup with Daniel Huppmann. The exact prompt then slides in: same date, role, length and question as the authors, no hints.
 - Compare the room with the expert: did they agree? In the paper, experts agree with each other only 71% of the time.
 - Method, if asked: the paragraph was chosen before Claude was run, because it answers the question directly; only a web address was removed.
+- *Interaction:* Room votes by show of hands, then Franziska gives her verdict
+- *Cue:* Ask Franziska before the talk if she is happy to judge a short text live, without saying what it is
+- *Advance:* First → flips the cards; second → goes to the thesis. ← un-flips.
 
 *Transition:* This is exactly the kind of expert work our thesis is about.
 
-## 15. Our thesis (0.5 min · Save · Discussion & thesis)
+## 14. Our thesis (0.5 min · Save · Discussion & thesis)
 *Purpose:* Present the thesis title, supervisor and idea in one picture
 
 - Preliminary title: Pipelines & Prompts: AI Agents for the Global Gas Model. Supervisor: Franziska Holz.
@@ -148,7 +144,7 @@ Planned time per slide in brackets. Jørgen presents slides 1–9, Save presents
 
 *Transition:* What does GDPval teach us for that design?
 
-## 16. Four lessons for GGM (0.5 min · Save · Discussion & thesis)
+## 15. Four lessons for GGM (0.5 min · Save · Discussion & thesis)
 *Purpose:* Make the link between the paper and the thesis explicit
 
 - Decompose, because long tasks fail more. Specify, because models struggle with missing context.
@@ -157,7 +153,7 @@ Planned time per slide in brackets. Jørgen presents slides 1–9, Save presents
 
 *Transition:* To sum up
 
-## 17. Conclusion (0.3 min · Save · Discussion & thesis)
+## 16. Conclusion (0.3 min · Save · Discussion & thesis)
 *Purpose:* Close with one memorable line and three takeaways
 
 - Capable on the task, not yet on the job.

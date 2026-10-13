@@ -1,7 +1,7 @@
 # Sources: GDPval presentation
 
 All sources used for the deck so far, with what each one is used for.
-"Slide" numbers refer to the current 17-slide version (live test moved to slides 13–14). Accessed October 2026.
+"Slide" numbers refer to the current 16-slide version (the live test and its reveal are one slide, 13, with a card flip). Accessed October 2026.
 
 ## The paper
 
@@ -16,8 +16,8 @@ All sources used for the deck so far, with what each one is used for.
 | Source | Used for |
 |---|---|
 | OpenAI, [Introducing GPT-5.2](https://openai.com/index/introducing-gpt-5-2/) (Dec 2025) | GPT-5.2 at 70.9% wins or ties "according to expert human judges"; GPT-5 baseline 38.8% matches the paper (slides 8–9). Internal investment-banking spreadsheet test 59.1% → 68.4%. |
-| OpenAI, [Introducing GPT-5.4](https://openai.com/index/introducing-gpt-5-4/) (Mar 2026) | GPT-5.4 at 83.0%; wins-only split (GPT-5.4 70.8% vs. GPT-5.2 49.8%); reasoning-effort footnote (slides 8, 11). |
-| OpenAI, [Introducing GPT-5.5](https://openai.com/index/introducing-gpt-5-5/) (Apr 2026) | GPT-5.5 at 84.9%; OpenAI's grading of Claude Opus 4.7 (80.3%) and Gemini 3.1 Pro (67.3%); investment-banking test 88.5%; FrontierMath tier 1–3 at 51.7% (slides 8, 11). |
+| OpenAI, [Introducing GPT-5.4](https://openai.com/index/introducing-gpt-5-4/) (released Mar 5, 2026, per [Wikipedia](https://en.wikipedia.org/wiki/GPT-5.4)) | GPT-5.4 at 83.0%; wins-only split (GPT-5.4 70.8% vs. GPT-5.2 49.8%); reasoning-effort footnote (slides 8, 11). |
+| OpenAI, [Introducing GPT-5.5](https://openai.com/index/introducing-gpt-5-5/) (released Apr 23, 2026, per the [Box GPT-5.5 model card](https://developer.box.com/guides/box-ai/ai-models/openai-gpt-5-5-model-card)) | GPT-5.5 at 84.9%; OpenAI's grading of Claude Opus 4.7 (80.3%) and Gemini 3.1 Pro (67.3%); investment-banking test 88.5%; FrontierMath tier 1–3 at 51.7% (slides 8, 11). |
 | OpenAI, [GPT-5.6](https://openai.com/index/gpt-5-6/) | Shows OpenAI switched to reporting GDPval-AA (AI-graded, Elo) instead of the expert-graded score (slides 8–9). |
 | OpenAI, [GPT-6 Astra](https://openai.com/index/gpt-6-astra/) | Launch page has no GDPval result at all (slide 8). |
 | OpenAI GDPval leaderboard, `evals.openai.com/gdpval/leaderboard`, now [offline](https://evals.openai.com/gdpval/leaderboard). Data recovered from the [Internet Archive copy of the site code (May 2026)](https://web.archive.org/web/20260515070620/https://evals.openai.com/assets/index-DG7KYAk4.js); search for "Accountants and Auditors" | Expert-graded results per sector and occupation for the paper's models plus GPT-5.2, Claude Opus 4.5 (59.6%), Claude Sonnet 4.5 (50.3%) and Gemini 3 Pro (53.5%), last updated Dec 2025. Basis for slide 10 (accountants 24% → 56%) and the takedown point (slide 12). Extracted data: [`../data/gdpval_leaderboard_archive.csv`](../data/gdpval_leaderboard_archive.csv). Model names are inferred from internal IDs (e.g. "claude-45"). |
@@ -37,17 +37,17 @@ All sources used for the deck so far, with what each one is used for.
 | Enterprise DNA, [xAI's GDPval+ claim](https://enterprisedna.co/resources/ai-pulse/ai-pulse-2026-07-22-xai-claims-grok-4-5-plus-its-grok-build-agent-beat-gpt-5-5-a/) | Example of a "look-alike" benchmark (Snorkel's GDPval+) used in marketing (slide 9). |
 | Forbes, [OpenAI launches GPT-6 Astra](https://www.forbes.com/sites/ronschmelzer/2026/09/03/openai-announces-gpt-6-astra-or-does-it/) · VentureBeat, [GPT-6 Astra launch](https://venturebeat.com/technology/welcome-to-the-agi-era-openai-launches-gpt-6-astra) | Press noting the missing GDPval score at the Astra launch. |
 
-## The "Be the grader" comparison (slides 13–14)
+## The "Be the grader" comparison (slide 13)
 
 | Source | Used for |
 |---|---|
 | Huppmann & Holz (2015), *What about the OPEC Cartel?*, DIW Roundup: Politik im Fokus No. 58, March 11, 2015. [English PDF (EconStor)](https://www.econstor.eu/bitstream/10419/111843/1/DIW_Roundup_58_en.pdf) · [German version (DIW)](https://www.diw.de/de/diw_01.c.501073.de/publikationen/roundup/2015_0058/ist_die_opec_ein_effektives_kartell.html) | Deliverable B: the paragraph starting "Even though OPEC is sometimes used as a textbook example of a cartel" (p. 2, section "The cartel that isn't"), with only the web address removed. Chosen before Claude was run, because it answers the task's question directly. No open license (EconStor terms: scholarly use only), so it is quoted for teaching with attribution and should not be published online. |
-| Deliverable A | Claude Opus 5.5 with high reasoning, fresh chat (October 2026), first answer to the exact prompt shown on slide 14 (summarised on slide 13) (same date, role, length and question as the authors; no hints about their answer). Not a published source. A/B order decided at random. |
+| Deliverable A | Claude Opus 5.5 with high reasoning, fresh chat (October 2026), first answer to the exact prompt revealed on slide 13 after the vote (a summary is shown before) (same date, role, length and question as the authors; no hints about their answer). Not a published source. A/B order decided at random. |
 | Holz, Barner, Kemfert & von Hirschhausen (2024), DIW Weekly Report 21/2024, [doi:10.18723/diw_dwr:2024-21-1](https://doi.org/10.18723/diw_dwr:2024-21-1) (CC BY 4.0) | Earlier version of the comparison, dropped because it reported their own Global Gas Model results, which Claude could not have. Still useful background on what the GGM is used for. |
 | Bernanke (2006), [Energy and the Economy](https://www.federalreserve.gov/newsevents/speech/bernanke20060615a.htm), Federal Reserve | First version of the comparison (dropped). Public domain. |
 | Holz's CV, [DIW](https://www.diw.de/documents/dokumentenarchiv/17/diw_01.c.85299.de/diwcvlong_de_fholz.pdf) | Used to find her shorter, blog-style publications (DIW Roundup, DIW aktuell). |
 
-## Thesis (slides 15–16)
+## Thesis (slides 14–15)
 
 | Source | Used for |
 |---|---|
