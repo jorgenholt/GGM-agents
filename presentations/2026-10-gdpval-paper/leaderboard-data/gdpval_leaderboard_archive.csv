@@ -1,0 +1,919 @@
+level,model_id,model,sector,occupation,win_rate,win_or_tie_rate
+overall,claude,Claude Opus 4.1,,,.43586,.47576
+overall,claude-45,Claude Opus 4.5,,,.45505050505050504,.595959595959596
+overall,gemini-3,Gemini 3 Pro,,,.4025252525252525,.5353535353535354
+overall,gpt-4o,gpt-4o,,,.09889,.12349
+overall,gpt-5-high,GPT-5 (high),,,.34812,.37996
+overall,gpt-5p2-high,GPT-5.2 (high),,,.49747474747474746,.7085858585858585
+overall,gpt-5r-high-engprompt,gpt-5r-high-engprompt,,,.32979,.36474
+overall,human,human,,,0,0
+overall,o3-high,o3-high,,,.30777,.34057
+overall,o4-mini-high,o4-mini-high,,,.25277,.27834
+overall,gemini,Gemini 2.5 Pro,,,.2333333333333333,.2545454545454545
+overall,grok,Grok 4,,,.21060606060606063,.2429292929292929
+overall,gpt-5-low,gpt-5-low,,,.1398989898989899,.152020202020202
+overall,gpt-5-medium,gpt-5-medium,,,.148989898989899,.16161616161616163
+overall,o3-low,o3-low,,,.11717171717171718,.13636363636363633
+overall,o3-medium,o3-medium,,,.12525252525252525,.13939393939393938
+overall,claude-sonnet-45,Claude Sonnet 4.5,,,.4252525252525252,.5025252525252525
+sector,claude-45,Claude Opus 4.5,Finance and Insurance,,.43111111111111106,.5511111111111111
+sector,claude-45,Claude Opus 4.5,Government,,.511111111111111,.64
+sector,claude-45,Claude Opus 4.5,Health Care and Social Assistance,,.3422222222222222,.5288888888888889
+sector,claude-45,Claude Opus 4.5,Information,,.37333333333333335,.5244444444444444
+sector,claude-45,Claude Opus 4.5,Manufacturing,,.5466666666666665,.64
+sector,claude-45,Claude Opus 4.5,"Professional, Scientific, and Technical Services",,.5022222222222222,.7022222222222223
+sector,claude-45,Claude Opus 4.5,Real Estate and Rental and Leasing,,.4222222222222222,.5466666666666666
+sector,claude-45,Claude Opus 4.5,Retail Trade,,.3944444444444445,.5333333333333334
+sector,claude-45,Claude Opus 4.5,Wholesale Trade,,.56,.6844444444444443
+sector,claude-sonnet-45,Claude Sonnet 4.5,Finance and Insurance,,.48444444444444446,.5555555555555556
+sector,claude-sonnet-45,Claude Sonnet 4.5,Government,,.4711111111111111,.6177777777777778
+sector,claude-sonnet-45,Claude Sonnet 4.5,Health Care and Social Assistance,,.3377777777777778,.4222222222222222
+sector,claude-sonnet-45,Claude Sonnet 4.5,Information,,.3511111111111111,.39555555555555555
+sector,claude-sonnet-45,Claude Sonnet 4.5,Manufacturing,,.39555555555555555,.49777777777777776
+sector,claude-sonnet-45,Claude Sonnet 4.5,"Professional, Scientific, and Technical Services",,.3644444444444444,.4711111111111111
+sector,claude-sonnet-45,Claude Sonnet 4.5,Real Estate and Rental and Leasing,,.4177777777777778,.4355555555555556
+sector,claude-sonnet-45,Claude Sonnet 4.5,Retail Trade,,.4722222222222222,.5166666666666666
+sector,claude-sonnet-45,Claude Sonnet 4.5,Wholesale Trade,,.5422222222222222,.6133333333333333
+sector,claude,Claude Opus 4.1,Finance and Insurance,,.45333,.48
+sector,claude,Claude Opus 4.1,Government,,.45778,.52
+sector,claude,Claude Opus 4.1,Health Care and Social Assistance,,.42222,.46222
+sector,claude,Claude Opus 4.1,Information,,.33333,.34667
+sector,claude,Claude Opus 4.1,Manufacturing,,.44889,.48444
+sector,claude,Claude Opus 4.1,"Professional, Scientific, and Technical Services",,.37333,.44889
+sector,claude,Claude Opus 4.1,Real Estate and Rental and Leasing,,.44,.46667
+sector,claude,Claude Opus 4.1,Retail Trade,,.51667,.54444
+sector,claude,Claude Opus 4.1,Wholesale Trade,,.49333,.54222
+sector,gemini-3,Gemini 3 Pro,Finance and Insurance,,.4355555555555556,.528888888888889
+sector,gemini-3,Gemini 3 Pro,Government,,.43555555555555564,.588888888888889
+sector,gemini-3,Gemini 3 Pro,Health Care and Social Assistance,,.3422222222222222,.49999999999999994
+sector,gemini-3,Gemini 3 Pro,Information,,.391111111111111,.5222222222222223
+sector,gemini-3,Gemini 3 Pro,Manufacturing,,.4266666666666667,.5266666666666667
+sector,gemini-3,Gemini 3 Pro,"Professional, Scientific, and Technical Services",,.36,.4822222222222222
+sector,gemini-3,Gemini 3 Pro,Real Estate and Rental and Leasing,,.4355555555555556,.551111111111111
+sector,gemini-3,Gemini 3 Pro,Retail Trade,,.4000000000000001,.5833333333333334
+sector,gemini-3,Gemini 3 Pro,Wholesale Trade,,.3955555555555555,.5444444444444444
+sector,gemini,Gemini 2.5 Pro,Finance and Insurance,,.2577777777777778,.2577777777777778
+sector,gemini,Gemini 2.5 Pro,Government,,.29333333333333333,.3244444444444444
+sector,gemini,Gemini 2.5 Pro,Health Care and Social Assistance,,.2177777777777778,.2533333333333333
+sector,gemini,Gemini 2.5 Pro,Information,,.23555555555555555,.24
+sector,gemini,Gemini 2.5 Pro,Manufacturing,,.15555555555555556,.18666666666666665
+sector,gemini,Gemini 2.5 Pro,"Professional, Scientific, and Technical Services",,.19111111111111112,.21333333333333332
+sector,gemini,Gemini 2.5 Pro,Real Estate and Rental and Leasing,,.2711111111111111,.2888888888888889
+sector,gemini,Gemini 2.5 Pro,Retail Trade,,.27222222222222225,.3055555555555555
+sector,gemini,Gemini 2.5 Pro,Wholesale Trade,,.21333333333333332,.2311111111111111
+sector,gpt-4o,gpt-4o,Finance and Insurance,,.08225,.09957
+sector,gpt-4o,gpt-4o,Government,,.15226,.16872
+sector,gpt-4o,gpt-4o,Health Care and Social Assistance,,.09091,.11255
+sector,gpt-4o,gpt-4o,Information,,.06667,.07111
+sector,gpt-4o,gpt-4o,Manufacturing,,.06061,.09957
+sector,gpt-4o,gpt-4o,"Professional, Scientific, and Technical Services",,.08861,.13502
+sector,gpt-4o,gpt-4o,Real Estate and Rental and Leasing,,.10127,.11814
+sector,gpt-4o,gpt-4o,Retail Trade,,.11111,.13757
+sector,gpt-4o,gpt-4o,Wholesale Trade,,.13253,.16466
+sector,gpt-5-high,GPT-5 (high),Finance and Insurance,,.27684,.29379
+sector,gpt-5-high,GPT-5 (high),Government,,.38858,.4291
+sector,gpt-5-high,GPT-5 (high),Health Care and Social Assistance,,.3597,.39548
+sector,gpt-5-high,GPT-5 (high),Information,,.33524,.34857
+sector,gpt-5-high,GPT-5 (high),Manufacturing,,.29567,.35217
+sector,gpt-5-high,GPT-5 (high),"Professional, Scientific, and Technical Services",,.35196,.40037
+sector,gpt-5-high,GPT-5 (high),Real Estate and Rental and Leasing,,.32961,.34078
+sector,gpt-5-high,GPT-5 (high),Retail Trade,,.34965,.37762
+sector,gpt-5-high,GPT-5 (high),Wholesale Trade,,.44241,.47715
+sector,gpt-5-low,gpt-5-low,Finance and Insurance,,.09777777777777777,.10666666666666666
+sector,gpt-5-low,gpt-5-low,Government,,.1733333333333333,.2088888888888889
+sector,gpt-5-low,gpt-5-low,Health Care and Social Assistance,,.1288888888888889,.1288888888888889
+sector,gpt-5-low,gpt-5-low,Information,,.11555555555555555,.12
+sector,gpt-5-low,gpt-5-low,Manufacturing,,.1288888888888889,.14222222222222222
+sector,gpt-5-low,gpt-5-low,"Professional, Scientific, and Technical Services",,.1511111111111111,.17777777777777778
+sector,gpt-5-low,gpt-5-low,Real Estate and Rental and Leasing,,.14222222222222222,.14222222222222222
+sector,gpt-5-low,gpt-5-low,Retail Trade,,.15555555555555553,.16666666666666666
+sector,gpt-5-low,gpt-5-low,Wholesale Trade,,.1688888888888889,.17777777777777778
+sector,gpt-5-medium,gpt-5-medium,Finance and Insurance,,.1288888888888889,.13333333333333333
+sector,gpt-5-medium,gpt-5-medium,Government,,.16,.19555555555555554
+sector,gpt-5-medium,gpt-5-medium,Health Care and Social Assistance,,.1822222222222222,.1822222222222222
+sector,gpt-5-medium,gpt-5-medium,Information,,.09777777777777777,.10222222222222221
+sector,gpt-5-medium,gpt-5-medium,Manufacturing,,.14666666666666667,.1511111111111111
+sector,gpt-5-medium,gpt-5-medium,"Professional, Scientific, and Technical Services",,.15555555555555556,.18666666666666665
+sector,gpt-5-medium,gpt-5-medium,Real Estate and Rental and Leasing,,.14222222222222222,.14666666666666667
+sector,gpt-5-medium,gpt-5-medium,Retail Trade,,.17777777777777776,.2
+sector,gpt-5-medium,gpt-5-medium,Wholesale Trade,,.15555555555555556,.16444444444444442
+sector,gpt-5p2-high,GPT-5.2 (high),Finance and Insurance,,.49333333333333335,.6488888888888888
+sector,gpt-5p2-high,GPT-5.2 (high),Government,,.6088888888888889,.8444444444444446
+sector,gpt-5p2-high,GPT-5.2 (high),Health Care and Social Assistance,,.471111111111111,.7111111111111111
+sector,gpt-5p2-high,GPT-5.2 (high),Information,,.38222222222222224,.5955555555555556
+sector,gpt-5p2-high,GPT-5.2 (high),Manufacturing,,.4622222222222223,.7022222222222223
+sector,gpt-5p2-high,GPT-5.2 (high),"Professional, Scientific, and Technical Services",,.49333333333333335,.7111111111111111
+sector,gpt-5p2-high,GPT-5.2 (high),Real Estate and Rental and Leasing,,.44,.6044444444444445
+sector,gpt-5p2-high,GPT-5.2 (high),Retail Trade,,.5555555555555556,.8277777777777778
+sector,gpt-5p2-high,GPT-5.2 (high),Wholesale Trade,,.5822222222222222,.7555555555555558
+sector,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Finance and Insurance,,.26667,.29333
+sector,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Government,,.44,.49333
+sector,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Health Care and Social Assistance,,.34667,.38667
+sector,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Information,,.33333,.36
+sector,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Manufacturing,,.24,.30667
+sector,gpt-5r-high-engprompt,gpt-5r-high-engprompt,"Professional, Scientific, and Technical Services",,.4,.44
+sector,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Real Estate and Rental and Leasing,,.4,.42667
+sector,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Retail Trade,,.38333,.41667
+sector,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Wholesale Trade,,.16438,.16438
+sector,grok,Grok 4,Finance and Insurance,,.22666666666666666,.23555555555555555
+sector,grok,Grok 4,Government,,.2622222222222222,.3244444444444444
+sector,grok,Grok 4,Health Care and Social Assistance,,.1688888888888889,.2177777777777778
+sector,grok,Grok 4,Information,,.18666666666666665,.18666666666666665
+sector,grok,Grok 4,Manufacturing,,.14222222222222222,.17777777777777778
+sector,grok,Grok 4,"Professional, Scientific, and Technical Services",,.19555555555555554,.24
+sector,grok,Grok 4,Real Estate and Rental and Leasing,,.20444444444444443,.22666666666666666
+sector,grok,Grok 4,Retail Trade,,.28888888888888886,.32222222222222224
+sector,grok,Grok 4,Wholesale Trade,,.23555555555555555,.2711111111111111
+sector,human,human,Finance and Insurance,,0,0
+sector,human,human,Government,,0,0
+sector,human,human,Health Care and Social Assistance,,0,0
+sector,human,human,Information,,0,0
+sector,human,human,Manufacturing,,0,0
+sector,human,human,"Professional, Scientific, and Technical Services",,0,0
+sector,human,human,Real Estate and Rental and Leasing,,0,0
+sector,human,human,Retail Trade,,0,0
+sector,human,human,Wholesale Trade,,0,0
+sector,o3-high,o3-high,Finance and Insurance,,.26407,.28571
+sector,o3-high,o3-high,Government,,.31276,.34979
+sector,o3-high,o3-high,Health Care and Social Assistance,,.29437,.32035
+sector,o3-high,o3-high,Information,,.28,.29778
+sector,o3-high,o3-high,Manufacturing,,.2684,.33333
+sector,o3-high,o3-high,"Professional, Scientific, and Technical Services",,.2616,.32068
+sector,o3-high,o3-high,Real Estate and Rental and Leasing,,.31224,.31646
+sector,o3-high,o3-high,Retail Trade,,.34392,.36508
+sector,o3-high,o3-high,Wholesale Trade,,.42972,.46988
+sector,o3-low,o3-low,Finance and Insurance,,.1288888888888889,.13333333333333333
+sector,o3-low,o3-low,Government,,.12444444444444443,.16444444444444442
+sector,o3-low,o3-low,Health Care and Social Assistance,,.1111111111111111,.12444444444444443
+sector,o3-low,o3-low,Information,,.07111111111111111,.07555555555555556
+sector,o3-low,o3-low,Manufacturing,,.1111111111111111,.13333333333333333
+sector,o3-low,o3-low,"Professional, Scientific, and Technical Services",,.10222222222222221,.1288888888888889
+sector,o3-low,o3-low,Real Estate and Rental and Leasing,,.12,.13333333333333333
+sector,o3-low,o3-low,Retail Trade,,.15555555555555553,.18888888888888888
+sector,o3-low,o3-low,Wholesale Trade,,.13777777777777778,.15555555555555556
+sector,o3-medium,o3-medium,Finance and Insurance,,.1288888888888889,.13333333333333333
+sector,o3-medium,o3-medium,Government,,.1511111111111111,.18666666666666665
+sector,o3-medium,o3-medium,Health Care and Social Assistance,,.12,.1288888888888889
+sector,o3-medium,o3-medium,Information,,.10666666666666666,.1111111111111111
+sector,o3-medium,o3-medium,Manufacturing,,.1111111111111111,.12
+sector,o3-medium,o3-medium,"Professional, Scientific, and Technical Services",,.1288888888888889,.1733333333333333
+sector,o3-medium,o3-medium,Real Estate and Rental and Leasing,,.10222222222222221,.10222222222222221
+sector,o3-medium,o3-medium,Retail Trade,,.12777777777777777,.1388888888888889
+sector,o3-medium,o3-medium,Wholesale Trade,,.1511111111111111,.16
+sector,o4-mini-high,o4-mini-high,Finance and Insurance,,.21645,.22078
+sector,o4-mini-high,o4-mini-high,Government,,.25514,.2963
+sector,o4-mini-high,o4-mini-high,Health Care and Social Assistance,,.23377,.27273
+sector,o4-mini-high,o4-mini-high,Information,,.19556,.2
+sector,o4-mini-high,o4-mini-high,Manufacturing,,.27706,.32468
+sector,o4-mini-high,o4-mini-high,"Professional, Scientific, and Technical Services",,.22785,.26582
+sector,o4-mini-high,o4-mini-high,Real Estate and Rental and Leasing,,.22785,.22785
+sector,o4-mini-high,o4-mini-high,Retail Trade,,.24868,.2963
+sector,o4-mini-high,o4-mini-high,Wholesale Trade,,.38153,.39357
+occupation,claude-45,Claude Opus 4.5,Finance and Insurance,Customer Service Representatives,.6666666666666667,.711111111111111
+occupation,claude-45,Claude Opus 4.5,Finance and Insurance,Financial Managers,.17777777777777776,.2444444444444444
+occupation,claude-45,Claude Opus 4.5,Finance and Insurance,Financial and Investment Analysts,.31111111111111117,.42222222222222217
+occupation,claude-45,Claude Opus 4.5,Finance and Insurance,Personal Financial Advisors,.3111111111111111,.5777777777777777
+occupation,claude-45,Claude Opus 4.5,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.6888888888888889,.8
+occupation,claude-45,Claude Opus 4.5,Government,Administrative Services Managers,.4222222222222222,.4222222222222222
+occupation,claude-45,Claude Opus 4.5,Government,"Child, Family, and School Social Workers",.24444444444444446,.4444444444444445
+occupation,claude-45,Claude Opus 4.5,Government,Compliance Officers,.711111111111111,.888888888888889
+occupation,claude-45,Claude Opus 4.5,Government,First-Line Supervisors of Police and Detectives,.711111111111111,.7777777777777777
+occupation,claude-45,Claude Opus 4.5,Government,Recreation Workers,.4666666666666667,.6666666666666667
+occupation,claude-45,Claude Opus 4.5,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.17777777777777776,.4888888888888888
+occupation,claude-45,Claude Opus 4.5,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.22222222222222224,.3111111111111111
+occupation,claude-45,Claude Opus 4.5,Health Care and Social Assistance,Medical and Health Services Managers,.4222222222222222,.5333333333333333
+occupation,claude-45,Claude Opus 4.5,Health Care and Social Assistance,Nurse Practitioners,.37777777777777777,.4444444444444445
+occupation,claude-45,Claude Opus 4.5,Health Care and Social Assistance,Registered Nurses,.5111111111111112,.8666666666666666
+occupation,claude-45,Claude Opus 4.5,Information,Audio and Video Technicians,0,.2666666666666667
+occupation,claude-45,Claude Opus 4.5,Information,Editors,.9333333333333332,.9333333333333332
+occupation,claude-45,Claude Opus 4.5,Information,Film and Video Editors,.2,.22222222222222224
+occupation,claude-45,Claude Opus 4.5,Information,"News Analysts, Reporters, and Journalists",.48888888888888893,.7555555555555554
+occupation,claude-45,Claude Opus 4.5,Information,Producers and Directors,.24444444444444446,.4444444444444445
+occupation,claude-45,Claude Opus 4.5,Manufacturing,Buyers and Purchasing Agents,.7555555555555555,.888888888888889
+occupation,claude-45,Claude Opus 4.5,Manufacturing,First-Line Supervisors of Production and Operating Workers,.5333333333333333,.711111111111111
+occupation,claude-45,Claude Opus 4.5,Manufacturing,Industrial Engineers,.24444444444444446,.28888888888888886
+occupation,claude-45,Claude Opus 4.5,Manufacturing,Mechanical Engineers,.4222222222222222,.5111111111111111
+occupation,claude-45,Claude Opus 4.5,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.7777777777777778,.7999999999999999
+occupation,claude-45,Claude Opus 4.5,"Professional, Scientific, and Technical Services",Accountants and Auditors,.3111111111111111,.5111111111111111
+occupation,claude-45,Claude Opus 4.5,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.4,.6444444444444445
+occupation,claude-45,Claude Opus 4.5,"Professional, Scientific, and Technical Services",Lawyers,.35555555555555557,.7333333333333333
+occupation,claude-45,Claude Opus 4.5,"Professional, Scientific, and Technical Services",Project Management Specialists,.6444444444444445,.7999999999999999
+occupation,claude-45,Claude Opus 4.5,"Professional, Scientific, and Technical Services",Software Developers,.8,.8222222222222222
+occupation,claude-45,Claude Opus 4.5,Real Estate and Rental and Leasing,Concierges,.15555555555555553,.3111111111111111
+occupation,claude-45,Claude Opus 4.5,Real Estate and Rental and Leasing,Counter and Rental Clerks,.6888888888888889,.7333333333333333
+occupation,claude-45,Claude Opus 4.5,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.4444444444444445,.6888888888888888
+occupation,claude-45,Claude Opus 4.5,Real Estate and Rental and Leasing,Real Estate Brokers,.37777777777777777,.4888888888888888
+occupation,claude-45,Claude Opus 4.5,Real Estate and Rental and Leasing,Real Estate Sales Agents,.4444444444444445,.5111111111111112
+occupation,claude-45,Claude Opus 4.5,Retail Trade,First-Line Supervisors of Retail Sales Workers,.33333333333333337,.4666666666666666
+occupation,claude-45,Claude Opus 4.5,Retail Trade,General and Operations Managers,.6,.6444444444444444
+occupation,claude-45,Claude Opus 4.5,Retail Trade,Pharmacists,.31111111111111106,.5111111111111111
+occupation,claude-45,Claude Opus 4.5,Retail Trade,Private Detectives and Investigators,.3333333333333333,.5111111111111111
+occupation,claude-45,Claude Opus 4.5,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.8666666666666666,.888888888888889
+occupation,claude-45,Claude Opus 4.5,Wholesale Trade,Order Clerks,.3111111111111111,.4222222222222222
+occupation,claude-45,Claude Opus 4.5,Wholesale Trade,Sales Managers,.6222222222222223,.7333333333333332
+occupation,claude-45,Claude Opus 4.5,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.5555555555555556,.8
+occupation,claude-45,Claude Opus 4.5,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.44444444444444436,.5777777777777777
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Finance and Insurance,Customer Service Representatives,.7333333333333333,.7777777777777778
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Finance and Insurance,Financial Managers,.15555555555555556,.24444444444444446
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Finance and Insurance,Financial and Investment Analysts,.4,.48888888888888893
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Finance and Insurance,Personal Financial Advisors,.5111111111111111,.6444444444444445
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.6222222222222222,.6222222222222222
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Government,Administrative Services Managers,.5555555555555556,.6222222222222222
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Government,"Child, Family, and School Social Workers",.3333333333333333,.37777777777777777
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Government,Compliance Officers,.4666666666666667,.888888888888889
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Government,First-Line Supervisors of Police and Detectives,.7333333333333333,.7333333333333333
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Government,Recreation Workers,.26666666666666666,.4666666666666666
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.3111111111111111,.4666666666666666
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.17777777777777776,.17777777777777776
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Health Care and Social Assistance,Medical and Health Services Managers,.4888888888888888,.6
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Health Care and Social Assistance,Nurse Practitioners,.37777777777777777,.4222222222222222
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Health Care and Social Assistance,Registered Nurses,.3333333333333333,.4444444444444445
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Information,Audio and Video Technicians,.06666666666666667,.11111111111111112
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Information,Editors,.6666666666666666,.6666666666666666
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Information,Film and Video Editors,.2,.2
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Information,"News Analysts, Reporters, and Journalists",.5555555555555556,.711111111111111
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Information,Producers and Directors,.26666666666666666,.28888888888888886
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Manufacturing,Buyers and Purchasing Agents,.4222222222222222,.48888888888888893
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Manufacturing,First-Line Supervisors of Production and Operating Workers,.5555555555555556,.6
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Manufacturing,Industrial Engineers,.13333333333333333,.2444444444444444
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Manufacturing,Mechanical Engineers,.3333333333333333,.3555555555555555
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.5333333333333333,.8
+occupation,claude-sonnet-45,Claude Sonnet 4.5,"Professional, Scientific, and Technical Services",Accountants and Auditors,.2444444444444444,.28888888888888886
+occupation,claude-sonnet-45,Claude Sonnet 4.5,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.48888888888888893,.6
+occupation,claude-sonnet-45,Claude Sonnet 4.5,"Professional, Scientific, and Technical Services",Lawyers,.17777777777777776,.42222222222222217
+occupation,claude-sonnet-45,Claude Sonnet 4.5,"Professional, Scientific, and Technical Services",Project Management Specialists,.26666666666666666,.4
+occupation,claude-sonnet-45,Claude Sonnet 4.5,"Professional, Scientific, and Technical Services",Software Developers,.6444444444444445,.6444444444444445
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Real Estate and Rental and Leasing,Concierges,.15555555555555556,.15555555555555556
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Real Estate and Rental and Leasing,Counter and Rental Clerks,.7555555555555555,.7777777777777778
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.3111111111111111,.3333333333333333
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Real Estate and Rental and Leasing,Real Estate Brokers,.6666666666666667,.6666666666666667
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Real Estate and Rental and Leasing,Real Estate Sales Agents,.2,.24444444444444446
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Retail Trade,First-Line Supervisors of Retail Sales Workers,.4,.4888888888888888
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Retail Trade,General and Operations Managers,.5333333333333333,.6
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Retail Trade,Pharmacists,.37777777777777777,.4
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Retail Trade,Private Detectives and Investigators,.5777777777777777,.5777777777777777
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.8222222222222222,.8222222222222222
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Wholesale Trade,Order Clerks,.3333333333333333,.5111111111111111
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Wholesale Trade,Sales Managers,.5777777777777777,.6666666666666666
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.5555555555555556,.6222222222222222
+occupation,claude-sonnet-45,Claude Sonnet 4.5,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.4222222222222222,.4444444444444445
+occupation,claude,Claude Opus 4.1,Finance and Insurance,Customer Service Representatives,.55556,.57778
+occupation,claude,Claude Opus 4.1,Finance and Insurance,Financial Managers,.24444,.31111
+occupation,claude,Claude Opus 4.1,Finance and Insurance,Financial and Investment Analysts,.37778,.4
+occupation,claude,Claude Opus 4.1,Finance and Insurance,Personal Financial Advisors,.62222,.64444
+occupation,claude,Claude Opus 4.1,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.46667,.46667
+occupation,claude,Claude Opus 4.1,Government,Administrative Services Managers,.53333,.53333
+occupation,claude,Claude Opus 4.1,Government,"Child, Family, and School Social Workers",.33333,.44444
+occupation,claude,Claude Opus 4.1,Government,Compliance Officers,.51111,.66667
+occupation,claude,Claude Opus 4.1,Government,First-Line Supervisors of Police and Detectives,.55556,.55556
+occupation,claude,Claude Opus 4.1,Government,Recreation Workers,.35556,.4
+occupation,claude,Claude Opus 4.1,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.31111,.4
+occupation,claude,Claude Opus 4.1,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.37778,.4
+occupation,claude,Claude Opus 4.1,Health Care and Social Assistance,Medical and Health Services Managers,.62222,.66667
+occupation,claude,Claude Opus 4.1,Health Care and Social Assistance,Nurse Practitioners,.44444,.48889
+occupation,claude,Claude Opus 4.1,Health Care and Social Assistance,Registered Nurses,.35556,.35556
+occupation,claude,Claude Opus 4.1,Information,Audio and Video Technicians,.02222,.02222
+occupation,claude,Claude Opus 4.1,Information,Editors,.73333,.77778
+occupation,claude,Claude Opus 4.1,Information,Film and Video Editors,.13333,.13333
+occupation,claude,Claude Opus 4.1,Information,"News Analysts, Reporters, and Journalists",.46667,.48889
+occupation,claude,Claude Opus 4.1,Information,Producers and Directors,.31111,.31111
+occupation,claude,Claude Opus 4.1,Manufacturing,Buyers and Purchasing Agents,.53333,.62222
+occupation,claude,Claude Opus 4.1,Manufacturing,First-Line Supervisors of Production and Operating Workers,.57778,.57778
+occupation,claude,Claude Opus 4.1,Manufacturing,Industrial Engineers,.2,.2
+occupation,claude,Claude Opus 4.1,Manufacturing,Mechanical Engineers,.24444,.26667
+occupation,claude,Claude Opus 4.1,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.68889,.75556
+occupation,claude,Claude Opus 4.1,"Professional, Scientific, and Technical Services",Accountants and Auditors,.13333,.24444
+occupation,claude,Claude Opus 4.1,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.35556,.42222
+occupation,claude,Claude Opus 4.1,"Professional, Scientific, and Technical Services",Lawyers,.26667,.44444
+occupation,claude,Claude Opus 4.1,"Professional, Scientific, and Technical Services",Project Management Specialists,.37778,.4
+occupation,claude,Claude Opus 4.1,"Professional, Scientific, and Technical Services",Software Developers,.73333,.73333
+occupation,claude,Claude Opus 4.1,Real Estate and Rental and Leasing,Concierges,.15556,.28889
+occupation,claude,Claude Opus 4.1,Real Estate and Rental and Leasing,Counter and Rental Clerks,.82222,.82222
+occupation,claude,Claude Opus 4.1,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.35556,.35556
+occupation,claude,Claude Opus 4.1,Real Estate and Rental and Leasing,Real Estate Brokers,.51111,.51111
+occupation,claude,Claude Opus 4.1,Real Estate and Rental and Leasing,Real Estate Sales Agents,.35556,.35556
+occupation,claude,Claude Opus 4.1,Retail Trade,First-Line Supervisors of Retail Sales Workers,.44444,.48889
+occupation,claude,Claude Opus 4.1,Retail Trade,General and Operations Managers,.62222,.66667
+occupation,claude,Claude Opus 4.1,Retail Trade,Pharmacists,.31111,.31111
+occupation,claude,Claude Opus 4.1,Retail Trade,Private Detectives and Investigators,.68889,.71111
+occupation,claude,Claude Opus 4.1,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.55556,.68889
+occupation,claude,Claude Opus 4.1,Wholesale Trade,Order Clerks,.28889,.31111
+occupation,claude,Claude Opus 4.1,Wholesale Trade,Sales Managers,.64444,.66667
+occupation,claude,Claude Opus 4.1,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.55556,.57778
+occupation,claude,Claude Opus 4.1,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.42222,.46667
+occupation,gemini-3,Gemini 3 Pro,Finance and Insurance,Customer Service Representatives,.5333333333333333,.6555555555555557
+occupation,gemini-3,Gemini 3 Pro,Finance and Insurance,Financial Managers,.4444444444444445,.5111111111111111
+occupation,gemini-3,Gemini 3 Pro,Finance and Insurance,Financial and Investment Analysts,.37777777777777777,.4444444444444445
+occupation,gemini-3,Gemini 3 Pro,Finance and Insurance,Personal Financial Advisors,.3555555555555555,.5444444444444445
+occupation,gemini-3,Gemini 3 Pro,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.4666666666666666,.48888888888888893
+occupation,gemini-3,Gemini 3 Pro,Government,Administrative Services Managers,.31111111111111106,.4222222222222222
+occupation,gemini-3,Gemini 3 Pro,Government,"Child, Family, and School Social Workers",.6888888888888889,.7888888888888889
+occupation,gemini-3,Gemini 3 Pro,Government,Compliance Officers,.37777777777777777,.6333333333333333
+occupation,gemini-3,Gemini 3 Pro,Government,First-Line Supervisors of Police and Detectives,.26666666666666666,.48888888888888893
+occupation,gemini-3,Gemini 3 Pro,Government,Recreation Workers,.5333333333333334,.611111111111111
+occupation,gemini-3,Gemini 3 Pro,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.37777777777777777,.5111111111111111
+occupation,gemini-3,Gemini 3 Pro,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.22222222222222218,.4
+occupation,gemini-3,Gemini 3 Pro,Health Care and Social Assistance,Medical and Health Services Managers,.3555555555555555,.5555555555555556
+occupation,gemini-3,Gemini 3 Pro,Health Care and Social Assistance,Nurse Practitioners,.37777777777777777,.5
+occupation,gemini-3,Gemini 3 Pro,Health Care and Social Assistance,Registered Nurses,.37777777777777777,.5333333333333334
+occupation,gemini-3,Gemini 3 Pro,Information,Audio and Video Technicians,.37777777777777777,.6888888888888889
+occupation,gemini-3,Gemini 3 Pro,Information,Editors,.4222222222222222,.5333333333333334
+occupation,gemini-3,Gemini 3 Pro,Information,Film and Video Editors,.3333333333333333,.4
+occupation,gemini-3,Gemini 3 Pro,Information,"News Analysts, Reporters, and Journalists",.37777777777777777,.44444444444444436
+occupation,gemini-3,Gemini 3 Pro,Information,Producers and Directors,.4444444444444445,.5444444444444445
+occupation,gemini-3,Gemini 3 Pro,Manufacturing,Buyers and Purchasing Agents,.2666666666666667,.4111111111111111
+occupation,gemini-3,Gemini 3 Pro,Manufacturing,First-Line Supervisors of Production and Operating Workers,.5111111111111111,.5777777777777777
+occupation,gemini-3,Gemini 3 Pro,Manufacturing,Industrial Engineers,.4444444444444445,.5333333333333333
+occupation,gemini-3,Gemini 3 Pro,Manufacturing,Mechanical Engineers,.4444444444444445,.6
+occupation,gemini-3,Gemini 3 Pro,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.4666666666666666,.5111111111111111
+occupation,gemini-3,Gemini 3 Pro,"Professional, Scientific, and Technical Services",Accountants and Auditors,.4222222222222222,.5555555555555556
+occupation,gemini-3,Gemini 3 Pro,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.4222222222222222,.611111111111111
+occupation,gemini-3,Gemini 3 Pro,"Professional, Scientific, and Technical Services",Lawyers,.3555555555555555,.5777777777777777
+occupation,gemini-3,Gemini 3 Pro,"Professional, Scientific, and Technical Services",Project Management Specialists,.24444444444444446,.30000000000000004
+occupation,gemini-3,Gemini 3 Pro,"Professional, Scientific, and Technical Services",Software Developers,.3555555555555555,.3666666666666666
+occupation,gemini-3,Gemini 3 Pro,Real Estate and Rental and Leasing,Concierges,.3111111111111111,.4222222222222222
+occupation,gemini-3,Gemini 3 Pro,Real Estate and Rental and Leasing,Counter and Rental Clerks,.5555555555555556,.6444444444444445
+occupation,gemini-3,Gemini 3 Pro,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.4,.611111111111111
+occupation,gemini-3,Gemini 3 Pro,Real Estate and Rental and Leasing,Real Estate Brokers,.4666666666666666,.5666666666666667
+occupation,gemini-3,Gemini 3 Pro,Real Estate and Rental and Leasing,Real Estate Sales Agents,.4444444444444445,.5111111111111111
+occupation,gemini-3,Gemini 3 Pro,Retail Trade,First-Line Supervisors of Retail Sales Workers,.6222222222222221,.8111111111111111
+occupation,gemini-3,Gemini 3 Pro,Retail Trade,General and Operations Managers,.24444444444444446,.3666666666666667
+occupation,gemini-3,Gemini 3 Pro,Retail Trade,Pharmacists,.3555555555555555,.5444444444444444
+occupation,gemini-3,Gemini 3 Pro,Retail Trade,Private Detectives and Investigators,.37777777777777777,.6111111111111112
+occupation,gemini-3,Gemini 3 Pro,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.5555555555555556,.5555555555555556
+occupation,gemini-3,Gemini 3 Pro,Wholesale Trade,Order Clerks,.39999999999999997,.4333333333333333
+occupation,gemini-3,Gemini 3 Pro,Wholesale Trade,Sales Managers,.4444444444444445,.6444444444444445
+occupation,gemini-3,Gemini 3 Pro,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.28888888888888886,.5555555555555556
+occupation,gemini-3,Gemini 3 Pro,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.28888888888888886,.5333333333333334
+occupation,gemini,Gemini 2.5 Pro,Finance and Insurance,Customer Service Representatives,.4222222222222222,.4222222222222222
+occupation,gemini,Gemini 2.5 Pro,Finance and Insurance,Financial Managers,.06666666666666667,.06666666666666667
+occupation,gemini,Gemini 2.5 Pro,Finance and Insurance,Financial and Investment Analysts,.28888888888888886,.28888888888888886
+occupation,gemini,Gemini 2.5 Pro,Finance and Insurance,Personal Financial Advisors,.26666666666666666,.26666666666666666
+occupation,gemini,Gemini 2.5 Pro,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.24444444444444446,.24444444444444446
+occupation,gemini,Gemini 2.5 Pro,Government,Administrative Services Managers,.37777777777777777,.37777777777777777
+occupation,gemini,Gemini 2.5 Pro,Government,"Child, Family, and School Social Workers",.22222222222222224,.22222222222222224
+occupation,gemini,Gemini 2.5 Pro,Government,Compliance Officers,.24444444444444446,.4
+occupation,gemini,Gemini 2.5 Pro,Government,First-Line Supervisors of Police and Detectives,.4444444444444445,.4444444444444445
+occupation,gemini,Gemini 2.5 Pro,Government,Recreation Workers,.17777777777777776,.17777777777777776
+occupation,gemini,Gemini 2.5 Pro,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.13333333333333333,.17777777777777776
+occupation,gemini,Gemini 2.5 Pro,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.2,.2
+occupation,gemini,Gemini 2.5 Pro,Health Care and Social Assistance,Medical and Health Services Managers,.2,.31111111111111106
+occupation,gemini,Gemini 2.5 Pro,Health Care and Social Assistance,Nurse Practitioners,.4,.4222222222222222
+occupation,gemini,Gemini 2.5 Pro,Health Care and Social Assistance,Registered Nurses,.15555555555555556,.15555555555555556
+occupation,gemini,Gemini 2.5 Pro,Information,Audio and Video Technicians,.02222222222222222,.02222222222222222
+occupation,gemini,Gemini 2.5 Pro,Information,Editors,.4222222222222222,.4222222222222222
+occupation,gemini,Gemini 2.5 Pro,Information,Film and Video Editors,.11111111111111112,.11111111111111112
+occupation,gemini,Gemini 2.5 Pro,Information,"News Analysts, Reporters, and Journalists",.4666666666666666,.48888888888888893
+occupation,gemini,Gemini 2.5 Pro,Information,Producers and Directors,.15555555555555553,.15555555555555553
+occupation,gemini,Gemini 2.5 Pro,Manufacturing,Buyers and Purchasing Agents,.28888888888888886,.3333333333333333
+occupation,gemini,Gemini 2.5 Pro,Manufacturing,First-Line Supervisors of Production and Operating Workers,.22222222222222224,.22222222222222224
+occupation,gemini,Gemini 2.5 Pro,Manufacturing,Industrial Engineers,.04444444444444444,.06666666666666667
+occupation,gemini,Gemini 2.5 Pro,Manufacturing,Mechanical Engineers,.06666666666666667,.08888888888888888
+occupation,gemini,Gemini 2.5 Pro,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.15555555555555553,.22222222222222224
+occupation,gemini,Gemini 2.5 Pro,"Professional, Scientific, and Technical Services",Accountants and Auditors,.02222222222222222,.02222222222222222
+occupation,gemini,Gemini 2.5 Pro,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.2444444444444444,.2444444444444444
+occupation,gemini,Gemini 2.5 Pro,"Professional, Scientific, and Technical Services",Lawyers,.13333333333333333,.22222222222222224
+occupation,gemini,Gemini 2.5 Pro,"Professional, Scientific, and Technical Services",Project Management Specialists,.11111111111111112,.11111111111111112
+occupation,gemini,Gemini 2.5 Pro,"Professional, Scientific, and Technical Services",Software Developers,.4444444444444445,.4666666666666666
+occupation,gemini,Gemini 2.5 Pro,Real Estate and Rental and Leasing,Concierges,.11111111111111112,.17777777777777776
+occupation,gemini,Gemini 2.5 Pro,Real Estate and Rental and Leasing,Counter and Rental Clerks,.4444444444444445,.4444444444444445
+occupation,gemini,Gemini 2.5 Pro,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.13333333333333333,.15555555555555553
+occupation,gemini,Gemini 2.5 Pro,Real Estate and Rental and Leasing,Real Estate Brokers,.4,.4
+occupation,gemini,Gemini 2.5 Pro,Real Estate and Rental and Leasing,Real Estate Sales Agents,.26666666666666666,.26666666666666666
+occupation,gemini,Gemini 2.5 Pro,Retail Trade,First-Line Supervisors of Retail Sales Workers,.15555555555555553,.15555555555555553
+occupation,gemini,Gemini 2.5 Pro,Retail Trade,General and Operations Managers,.3555555555555555,.4
+occupation,gemini,Gemini 2.5 Pro,Retail Trade,Pharmacists,.13333333333333333,.13333333333333333
+occupation,gemini,Gemini 2.5 Pro,Retail Trade,Private Detectives and Investigators,.4444444444444445,.5333333333333333
+occupation,gemini,Gemini 2.5 Pro,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.22222222222222224,.24444444444444446
+occupation,gemini,Gemini 2.5 Pro,Wholesale Trade,Order Clerks,.02222222222222222,.02222222222222222
+occupation,gemini,Gemini 2.5 Pro,Wholesale Trade,Sales Managers,.3333333333333333,.3333333333333333
+occupation,gemini,Gemini 2.5 Pro,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.3333333333333333,.3555555555555555
+occupation,gemini,Gemini 2.5 Pro,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.15555555555555553,.2
+occupation,gpt-4o,gpt-4o,Finance and Insurance,Customer Service Representatives,.11765,.17647
+occupation,gpt-4o,gpt-4o,Finance and Insurance,Financial Managers,0,0
+occupation,gpt-4o,gpt-4o,Finance and Insurance,Financial and Investment Analysts,.06667,.06667
+occupation,gpt-4o,gpt-4o,Finance and Insurance,Personal Financial Advisors,.08889,.08889
+occupation,gpt-4o,gpt-4o,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.13333,.15556
+occupation,gpt-4o,gpt-4o,Government,Administrative Services Managers,.17778,.22222
+occupation,gpt-4o,gpt-4o,Government,"Child, Family, and School Social Workers",.08889,.08889
+occupation,gpt-4o,gpt-4o,Government,Compliance Officers,.29825,.31579
+occupation,gpt-4o,gpt-4o,Government,First-Line Supervisors of Police and Detectives,.15556,.15556
+occupation,gpt-4o,gpt-4o,Government,Recreation Workers,.01961,.03922
+occupation,gpt-4o,gpt-4o,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.06667,.06667
+occupation,gpt-4o,gpt-4o,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.08333,.10417
+occupation,gpt-4o,gpt-4o,Health Care and Social Assistance,Medical and Health Services Managers,.0625,.0625
+occupation,gpt-4o,gpt-4o,Health Care and Social Assistance,Nurse Practitioners,.08889,.13333
+occupation,gpt-4o,gpt-4o,Health Care and Social Assistance,Registered Nurses,.15556,.2
+occupation,gpt-4o,gpt-4o,Information,Audio and Video Technicians,0,0
+occupation,gpt-4o,gpt-4o,Information,Editors,.13333,.13333
+occupation,gpt-4o,gpt-4o,Information,Film and Video Editors,.02222,.02222
+occupation,gpt-4o,gpt-4o,Information,"News Analysts, Reporters, and Journalists",.15556,.17778
+occupation,gpt-4o,gpt-4o,Information,Producers and Directors,.02222,.02222
+occupation,gpt-4o,gpt-4o,Manufacturing,Buyers and Purchasing Agents,.02222,.08889
+occupation,gpt-4o,gpt-4o,Manufacturing,First-Line Supervisors of Production and Operating Workers,0,.08889
+occupation,gpt-4o,gpt-4o,Manufacturing,Industrial Engineers,.04444,.04444
+occupation,gpt-4o,gpt-4o,Manufacturing,Mechanical Engineers,.03922,.03922
+occupation,gpt-4o,gpt-4o,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.2,.24444
+occupation,gpt-4o,gpt-4o,"Professional, Scientific, and Technical Services",Accountants and Auditors,.03509,.05263
+occupation,gpt-4o,gpt-4o,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.08889,.15556
+occupation,gpt-4o,gpt-4o,"Professional, Scientific, and Technical Services",Lawyers,.02222,.11111
+occupation,gpt-4o,gpt-4o,"Professional, Scientific, and Technical Services",Project Management Specialists,.04444,.08889
+occupation,gpt-4o,gpt-4o,"Professional, Scientific, and Technical Services",Software Developers,.26667,.28889
+occupation,gpt-4o,gpt-4o,Real Estate and Rental and Leasing,Concierges,0,0
+occupation,gpt-4o,gpt-4o,Real Estate and Rental and Leasing,Counter and Rental Clerks,.27451,.31373
+occupation,gpt-4o,gpt-4o,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.02222,.02222
+occupation,gpt-4o,gpt-4o,Real Estate and Rental and Leasing,Real Estate Brokers,.17778,.2
+occupation,gpt-4o,gpt-4o,Real Estate and Rental and Leasing,Real Estate Sales Agents,.01961,.03922
+occupation,gpt-4o,gpt-4o,Retail Trade,First-Line Supervisors of Retail Sales Workers,.09804,.09804
+occupation,gpt-4o,gpt-4o,Retail Trade,General and Operations Managers,.17778,.22222
+occupation,gpt-4o,gpt-4o,Retail Trade,Pharmacists,.06667,.06667
+occupation,gpt-4o,gpt-4o,Retail Trade,Private Detectives and Investigators,.10417,.16667
+occupation,gpt-4o,gpt-4o,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.23529,.2549
+occupation,gpt-4o,gpt-4o,Wholesale Trade,Order Clerks,.04444,.06667
+occupation,gpt-4o,gpt-4o,Wholesale Trade,Sales Managers,.12698,.22222
+occupation,gpt-4o,gpt-4o,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.2,.2
+occupation,gpt-4o,gpt-4o,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.04444,.04444
+occupation,gpt-5-high,GPT-5 (high),Finance and Insurance,Customer Service Representatives,.54054,.59459
+occupation,gpt-5-high,GPT-5 (high),Finance and Insurance,Financial Managers,.10476,.10476
+occupation,gpt-5-high,GPT-5 (high),Finance and Insurance,Financial and Investment Analysts,.29524,.31429
+occupation,gpt-5-high,GPT-5 (high),Finance and Insurance,Personal Financial Advisors,.19048,.2
+occupation,gpt-5-high,GPT-5 (high),Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.2381,.2381
+occupation,gpt-5-high,GPT-5 (high),Government,Administrative Services Managers,.39048,.40952
+occupation,gpt-5-high,GPT-5 (high),Government,"Child, Family, and School Social Workers",.20952,.22857
+occupation,gpt-5-high,GPT-5 (high),Government,Compliance Officers,.55556,.67521
+occupation,gpt-5-high,GPT-5 (high),Government,First-Line Supervisors of Police and Detectives,.39048,.4
+occupation,gpt-5-high,GPT-5 (high),Government,Recreation Workers,.37838,.40541
+occupation,gpt-5-high,GPT-5 (high),Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.20952,.27619
+occupation,gpt-5-high,GPT-5 (high),Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.36111,.39815
+occupation,gpt-5-high,GPT-5 (high),Health Care and Social Assistance,Medical and Health Services Managers,.44444,.49074
+occupation,gpt-5-high,GPT-5 (high),Health Care and Social Assistance,Nurse Practitioners,.55238,.5619
+occupation,gpt-5-high,GPT-5 (high),Health Care and Social Assistance,Registered Nurses,.22857,.24762
+occupation,gpt-5-high,GPT-5 (high),Information,Audio and Video Technicians,.10476,.11429
+occupation,gpt-5-high,GPT-5 (high),Information,Editors,.77143,.77143
+occupation,gpt-5-high,GPT-5 (high),Information,Film and Video Editors,.15238,.15238
+occupation,gpt-5-high,GPT-5 (high),Information,"News Analysts, Reporters, and Journalists",.4,.40952
+occupation,gpt-5-high,GPT-5 (high),Information,Producers and Directors,.24762,.29524
+occupation,gpt-5-high,GPT-5 (high),Manufacturing,Buyers and Purchasing Agents,.24762,.4
+occupation,gpt-5-high,GPT-5 (high),Manufacturing,First-Line Supervisors of Production and Operating Workers,.45714,.47619
+occupation,gpt-5-high,GPT-5 (high),Manufacturing,Industrial Engineers,.08571,.11429
+occupation,gpt-5-high,GPT-5 (high),Manufacturing,Mechanical Engineers,.20721,.24324
+occupation,gpt-5-high,GPT-5 (high),Manufacturing,"Shipping, Receiving, and Inventory Clerks",.48571,.53333
+occupation,gpt-5-high,GPT-5 (high),"Professional, Scientific, and Technical Services",Accountants and Auditors,.12821,.13675
+occupation,gpt-5-high,GPT-5 (high),"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.53333,.55238
+occupation,gpt-5-high,GPT-5 (high),"Professional, Scientific, and Technical Services",Lawyers,.26667,.4381
+occupation,gpt-5-high,GPT-5 (high),"Professional, Scientific, and Technical Services",Project Management Specialists,.2,.2381
+occupation,gpt-5-high,GPT-5 (high),"Professional, Scientific, and Technical Services",Software Developers,.65714,.66667
+occupation,gpt-5-high,GPT-5 (high),Real Estate and Rental and Leasing,Concierges,.21905,.2381
+occupation,gpt-5-high,GPT-5 (high),Real Estate and Rental and Leasing,Counter and Rental Clerks,.62162,.62162
+occupation,gpt-5-high,GPT-5 (high),Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.14286,.1619
+occupation,gpt-5-high,GPT-5 (high),Real Estate and Rental and Leasing,Real Estate Brokers,.48571,.49524
+occupation,gpt-5-high,GPT-5 (high),Real Estate and Rental and Leasing,Real Estate Sales Agents,.17117,.18018
+occupation,gpt-5-high,GPT-5 (high),Retail Trade,First-Line Supervisors of Retail Sales Workers,.27928,.28829
+occupation,gpt-5-high,GPT-5 (high),Retail Trade,General and Operations Managers,.52381,.58095
+occupation,gpt-5-high,GPT-5 (high),Retail Trade,Pharmacists,.18095,.18095
+occupation,gpt-5-high,GPT-5 (high),Retail Trade,Private Detectives and Investigators,.41667,.46296
+occupation,gpt-5-high,GPT-5 (high),Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.45946,.52252
+occupation,gpt-5-high,GPT-5 (high),Wholesale Trade,Order Clerks,.2381,.24762
+occupation,gpt-5-high,GPT-5 (high),Wholesale Trade,Sales Managers,.73171,.78862
+occupation,gpt-5-high,GPT-5 (high),Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.50485,.52427
+occupation,gpt-5-high,GPT-5 (high),Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.22857,.24762
+occupation,gpt-5-low,gpt-5-low,Finance and Insurance,Customer Service Representatives,.17777777777777776,.17777777777777776
+occupation,gpt-5-low,gpt-5-low,Finance and Insurance,Financial Managers,.02222222222222222,.04444444444444444
+occupation,gpt-5-low,gpt-5-low,Finance and Insurance,Financial and Investment Analysts,.06666666666666667,.06666666666666667
+occupation,gpt-5-low,gpt-5-low,Finance and Insurance,Personal Financial Advisors,.04444444444444444,.06666666666666667
+occupation,gpt-5-low,gpt-5-low,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.17777777777777776,.17777777777777776
+occupation,gpt-5-low,gpt-5-low,Government,Administrative Services Managers,.15555555555555553,.17777777777777776
+occupation,gpt-5-low,gpt-5-low,Government,"Child, Family, and School Social Workers",.17777777777777776,.17777777777777776
+occupation,gpt-5-low,gpt-5-low,Government,Compliance Officers,.2444444444444444,.3555555555555555
+occupation,gpt-5-low,gpt-5-low,Government,First-Line Supervisors of Police and Detectives,.17777777777777776,.22222222222222224
+occupation,gpt-5-low,gpt-5-low,Government,Recreation Workers,.11111111111111112,.11111111111111112
+occupation,gpt-5-low,gpt-5-low,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.15555555555555553,.15555555555555553
+occupation,gpt-5-low,gpt-5-low,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.06666666666666667,.06666666666666667
+occupation,gpt-5-low,gpt-5-low,Health Care and Social Assistance,Medical and Health Services Managers,.13333333333333333,.13333333333333333
+occupation,gpt-5-low,gpt-5-low,Health Care and Social Assistance,Nurse Practitioners,.2,.2
+occupation,gpt-5-low,gpt-5-low,Health Care and Social Assistance,Registered Nurses,.08888888888888888,.08888888888888888
+occupation,gpt-5-low,gpt-5-low,Information,Audio and Video Technicians,.02222222222222222,.04444444444444444
+occupation,gpt-5-low,gpt-5-low,Information,Editors,.28888888888888886,.28888888888888886
+occupation,gpt-5-low,gpt-5-low,Information,Film and Video Editors,.08888888888888888,.08888888888888888
+occupation,gpt-5-low,gpt-5-low,Information,"News Analysts, Reporters, and Journalists",.17777777777777776,.17777777777777776
+occupation,gpt-5-low,gpt-5-low,Information,Producers and Directors,0,0
+occupation,gpt-5-low,gpt-5-low,Manufacturing,Buyers and Purchasing Agents,.13333333333333333,.17777777777777776
+occupation,gpt-5-low,gpt-5-low,Manufacturing,First-Line Supervisors of Production and Operating Workers,.11111111111111112,.11111111111111112
+occupation,gpt-5-low,gpt-5-low,Manufacturing,Industrial Engineers,.08888888888888888,.08888888888888888
+occupation,gpt-5-low,gpt-5-low,Manufacturing,Mechanical Engineers,.04444444444444444,.04444444444444444
+occupation,gpt-5-low,gpt-5-low,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.26666666666666666,.28888888888888886
+occupation,gpt-5-low,gpt-5-low,"Professional, Scientific, and Technical Services",Accountants and Auditors,.04444444444444444,.04444444444444444
+occupation,gpt-5-low,gpt-5-low,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.22222222222222224,.2444444444444444
+occupation,gpt-5-low,gpt-5-low,"Professional, Scientific, and Technical Services",Lawyers,.06666666666666667,.17777777777777776
+occupation,gpt-5-low,gpt-5-low,"Professional, Scientific, and Technical Services",Project Management Specialists,.08888888888888888,.08888888888888888
+occupation,gpt-5-low,gpt-5-low,"Professional, Scientific, and Technical Services",Software Developers,.3333333333333333,.3333333333333333
+occupation,gpt-5-low,gpt-5-low,Real Estate and Rental and Leasing,Concierges,.11111111111111112,.11111111111111112
+occupation,gpt-5-low,gpt-5-low,Real Estate and Rental and Leasing,Counter and Rental Clerks,.2444444444444444,.2444444444444444
+occupation,gpt-5-low,gpt-5-low,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.04444444444444444,.04444444444444444
+occupation,gpt-5-low,gpt-5-low,Real Estate and Rental and Leasing,Real Estate Brokers,.28888888888888886,.28888888888888886
+occupation,gpt-5-low,gpt-5-low,Real Estate and Rental and Leasing,Real Estate Sales Agents,.02222222222222222,.02222222222222222
+occupation,gpt-5-low,gpt-5-low,Retail Trade,First-Line Supervisors of Retail Sales Workers,.15555555555555553,.15555555555555553
+occupation,gpt-5-low,gpt-5-low,Retail Trade,General and Operations Managers,.28888888888888886,.3333333333333333
+occupation,gpt-5-low,gpt-5-low,Retail Trade,Pharmacists,.08888888888888888,.08888888888888888
+occupation,gpt-5-low,gpt-5-low,Retail Trade,Private Detectives and Investigators,.08888888888888888,.08888888888888888
+occupation,gpt-5-low,gpt-5-low,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.22222222222222224,.2444444444444444
+occupation,gpt-5-low,gpt-5-low,Wholesale Trade,Order Clerks,.06666666666666667,.06666666666666667
+occupation,gpt-5-low,gpt-5-low,Wholesale Trade,Sales Managers,.3333333333333333,.3555555555555555
+occupation,gpt-5-low,gpt-5-low,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.15555555555555553,.15555555555555553
+occupation,gpt-5-low,gpt-5-low,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.06666666666666667,.06666666666666667
+occupation,gpt-5-medium,gpt-5-medium,Finance and Insurance,Customer Service Representatives,.22222222222222224,.22222222222222224
+occupation,gpt-5-medium,gpt-5-medium,Finance and Insurance,Financial Managers,.02222222222222222,.02222222222222222
+occupation,gpt-5-medium,gpt-5-medium,Finance and Insurance,Financial and Investment Analysts,.06666666666666667,.08888888888888888
+occupation,gpt-5-medium,gpt-5-medium,Finance and Insurance,Personal Financial Advisors,.13333333333333333,.13333333333333333
+occupation,gpt-5-medium,gpt-5-medium,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.2,.2
+occupation,gpt-5-medium,gpt-5-medium,Government,Administrative Services Managers,.13333333333333333,.13333333333333333
+occupation,gpt-5-medium,gpt-5-medium,Government,"Child, Family, and School Social Workers",.22222222222222224,.22222222222222224
+occupation,gpt-5-medium,gpt-5-medium,Government,Compliance Officers,.2444444444444444,.3555555555555555
+occupation,gpt-5-medium,gpt-5-medium,Government,First-Line Supervisors of Police and Detectives,.15555555555555553,.22222222222222224
+occupation,gpt-5-medium,gpt-5-medium,Government,Recreation Workers,.04444444444444444,.04444444444444444
+occupation,gpt-5-medium,gpt-5-medium,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.17777777777777776,.17777777777777776
+occupation,gpt-5-medium,gpt-5-medium,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.15555555555555553,.15555555555555553
+occupation,gpt-5-medium,gpt-5-medium,Health Care and Social Assistance,Medical and Health Services Managers,.22222222222222224,.22222222222222224
+occupation,gpt-5-medium,gpt-5-medium,Health Care and Social Assistance,Nurse Practitioners,.26666666666666666,.26666666666666666
+occupation,gpt-5-medium,gpt-5-medium,Health Care and Social Assistance,Registered Nurses,.08888888888888888,.08888888888888888
+occupation,gpt-5-medium,gpt-5-medium,Information,Audio and Video Technicians,.02222222222222222,.04444444444444444
+occupation,gpt-5-medium,gpt-5-medium,Information,Editors,.2444444444444444,.2444444444444444
+occupation,gpt-5-medium,gpt-5-medium,Information,Film and Video Editors,.04444444444444444,.04444444444444444
+occupation,gpt-5-medium,gpt-5-medium,Information,"News Analysts, Reporters, and Journalists",.17777777777777776,.17777777777777776
+occupation,gpt-5-medium,gpt-5-medium,Information,Producers and Directors,0,0
+occupation,gpt-5-medium,gpt-5-medium,Manufacturing,Buyers and Purchasing Agents,.15555555555555553,.17777777777777776
+occupation,gpt-5-medium,gpt-5-medium,Manufacturing,First-Line Supervisors of Production and Operating Workers,.2,.2
+occupation,gpt-5-medium,gpt-5-medium,Manufacturing,Industrial Engineers,.04444444444444444,.04444444444444444
+occupation,gpt-5-medium,gpt-5-medium,Manufacturing,Mechanical Engineers,.11111111111111112,.11111111111111112
+occupation,gpt-5-medium,gpt-5-medium,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.22222222222222224,.22222222222222224
+occupation,gpt-5-medium,gpt-5-medium,"Professional, Scientific, and Technical Services",Accountants and Auditors,.04444444444444444,.04444444444444444
+occupation,gpt-5-medium,gpt-5-medium,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.2,.2444444444444444
+occupation,gpt-5-medium,gpt-5-medium,"Professional, Scientific, and Technical Services",Lawyers,.11111111111111112,.22222222222222224
+occupation,gpt-5-medium,gpt-5-medium,"Professional, Scientific, and Technical Services",Project Management Specialists,.08888888888888888,.08888888888888888
+occupation,gpt-5-medium,gpt-5-medium,"Professional, Scientific, and Technical Services",Software Developers,.3333333333333333,.3333333333333333
+occupation,gpt-5-medium,gpt-5-medium,Real Estate and Rental and Leasing,Concierges,.11111111111111112,.11111111111111112
+occupation,gpt-5-medium,gpt-5-medium,Real Estate and Rental and Leasing,Counter and Rental Clerks,.2,.2
+occupation,gpt-5-medium,gpt-5-medium,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.06666666666666667,.06666666666666667
+occupation,gpt-5-medium,gpt-5-medium,Real Estate and Rental and Leasing,Real Estate Brokers,.28888888888888886,.28888888888888886
+occupation,gpt-5-medium,gpt-5-medium,Real Estate and Rental and Leasing,Real Estate Sales Agents,.04444444444444444,.06666666666666667
+occupation,gpt-5-medium,gpt-5-medium,Retail Trade,First-Line Supervisors of Retail Sales Workers,.17777777777777776,.2
+occupation,gpt-5-medium,gpt-5-medium,Retail Trade,General and Operations Managers,.31111111111111106,.3555555555555555
+occupation,gpt-5-medium,gpt-5-medium,Retail Trade,Pharmacists,.06666666666666667,.06666666666666667
+occupation,gpt-5-medium,gpt-5-medium,Retail Trade,Private Detectives and Investigators,.15555555555555553,.17777777777777776
+occupation,gpt-5-medium,gpt-5-medium,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.2,.2444444444444444
+occupation,gpt-5-medium,gpt-5-medium,Wholesale Trade,Order Clerks,.06666666666666667,.06666666666666667
+occupation,gpt-5-medium,gpt-5-medium,Wholesale Trade,Sales Managers,.31111111111111106,.31111111111111106
+occupation,gpt-5-medium,gpt-5-medium,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.13333333333333333,.13333333333333333
+occupation,gpt-5-medium,gpt-5-medium,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.06666666666666667,.06666666666666667
+occupation,gpt-5p2-high,GPT-5.2 (high),Finance and Insurance,Customer Service Representatives,.7555555555555555,.8222222222222222
+occupation,gpt-5p2-high,GPT-5.2 (high),Finance and Insurance,Financial Managers,.11111111111111112,.24444444444444446
+occupation,gpt-5p2-high,GPT-5.2 (high),Finance and Insurance,Financial and Investment Analysts,.4444444444444445,.6222222222222222
+occupation,gpt-5p2-high,GPT-5.2 (high),Finance and Insurance,Personal Financial Advisors,.42222222222222217,.7777777777777777
+occupation,gpt-5p2-high,GPT-5.2 (high),Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.7333333333333333,.7777777777777778
+occupation,gpt-5p2-high,GPT-5.2 (high),Government,Administrative Services Managers,.7777777777777777,.8666666666666668
+occupation,gpt-5p2-high,GPT-5.2 (high),Government,"Child, Family, and School Social Workers",.31111111111111106,.7333333333333333
+occupation,gpt-5p2-high,GPT-5.2 (high),Government,Compliance Officers,.6444444444444444,.9555555555555555
+occupation,gpt-5p2-high,GPT-5.2 (high),Government,First-Line Supervisors of Police and Detectives,.7555555555555554,.8666666666666668
+occupation,gpt-5p2-high,GPT-5.2 (high),Government,Recreation Workers,.5555555555555556,.8
+occupation,gpt-5p2-high,GPT-5.2 (high),Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.37777777777777777,.8222222222222222
+occupation,gpt-5p2-high,GPT-5.2 (high),Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.31111111111111117,.5555555555555556
+occupation,gpt-5p2-high,GPT-5.2 (high),Health Care and Social Assistance,Medical and Health Services Managers,.5777777777777777,.7333333333333334
+occupation,gpt-5p2-high,GPT-5.2 (high),Health Care and Social Assistance,Nurse Practitioners,.6666666666666667,.7555555555555555
+occupation,gpt-5p2-high,GPT-5.2 (high),Health Care and Social Assistance,Registered Nurses,.4222222222222222,.6888888888888889
+occupation,gpt-5p2-high,GPT-5.2 (high),Information,Audio and Video Technicians,.06666666666666667,.2888888888888889
+occupation,gpt-5p2-high,GPT-5.2 (high),Information,Editors,.711111111111111,.7777777777777778
+occupation,gpt-5p2-high,GPT-5.2 (high),Information,Film and Video Editors,.24444444444444446,.4
+occupation,gpt-5p2-high,GPT-5.2 (high),Information,"News Analysts, Reporters, and Journalists",.6,.8666666666666666
+occupation,gpt-5p2-high,GPT-5.2 (high),Information,Producers and Directors,.2888888888888889,.6444444444444445
+occupation,gpt-5p2-high,GPT-5.2 (high),Manufacturing,Buyers and Purchasing Agents,.6444444444444445,.888888888888889
+occupation,gpt-5p2-high,GPT-5.2 (high),Manufacturing,First-Line Supervisors of Production and Operating Workers,.5111111111111111,.7777777777777778
+occupation,gpt-5p2-high,GPT-5.2 (high),Manufacturing,Industrial Engineers,.2,.6
+occupation,gpt-5p2-high,GPT-5.2 (high),Manufacturing,Mechanical Engineers,.3555555555555555,.5777777777777778
+occupation,gpt-5p2-high,GPT-5.2 (high),Manufacturing,"Shipping, Receiving, and Inventory Clerks",.6,.6666666666666666
+occupation,gpt-5p2-high,GPT-5.2 (high),"Professional, Scientific, and Technical Services",Accountants and Auditors,.22222222222222224,.4
+occupation,gpt-5p2-high,GPT-5.2 (high),"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.6666666666666666,.9333333333333332
+occupation,gpt-5p2-high,GPT-5.2 (high),"Professional, Scientific, and Technical Services",Lawyers,.15555555555555559,.6666666666666666
+occupation,gpt-5p2-high,GPT-5.2 (high),"Professional, Scientific, and Technical Services",Project Management Specialists,.6,.7333333333333332
+occupation,gpt-5p2-high,GPT-5.2 (high),"Professional, Scientific, and Technical Services",Software Developers,.8222222222222222,.8222222222222222
+occupation,gpt-5p2-high,GPT-5.2 (high),Real Estate and Rental and Leasing,Concierges,.11111111111111112,.4222222222222222
+occupation,gpt-5p2-high,GPT-5.2 (high),Real Estate and Rental and Leasing,Counter and Rental Clerks,.6888888888888889,.8444444444444444
+occupation,gpt-5p2-high,GPT-5.2 (high),Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.3111111111111111,.37777777777777777
+occupation,gpt-5p2-high,GPT-5.2 (high),Real Estate and Rental and Leasing,Real Estate Brokers,.48888888888888893,.6
+occupation,gpt-5p2-high,GPT-5.2 (high),Real Estate and Rental and Leasing,Real Estate Sales Agents,.6,.7777777777777778
+occupation,gpt-5p2-high,GPT-5.2 (high),Retail Trade,First-Line Supervisors of Retail Sales Workers,.6888888888888889,.8444444444444444
+occupation,gpt-5p2-high,GPT-5.2 (high),Retail Trade,General and Operations Managers,.5111111111111111,.9333333333333332
+occupation,gpt-5p2-high,GPT-5.2 (high),Retail Trade,Pharmacists,.3333333333333333,.6
+occupation,gpt-5p2-high,GPT-5.2 (high),Retail Trade,Private Detectives and Investigators,.6888888888888889,.9333333333333332
+occupation,gpt-5p2-high,GPT-5.2 (high),Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.8666666666666666,.888888888888889
+occupation,gpt-5p2-high,GPT-5.2 (high),Wholesale Trade,Order Clerks,.17777777777777776,.2888888888888889
+occupation,gpt-5p2-high,GPT-5.2 (high),Wholesale Trade,Sales Managers,.8,.9333333333333332
+occupation,gpt-5p2-high,GPT-5.2 (high),Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.5333333333333333,.7999999999999999
+occupation,gpt-5p2-high,GPT-5.2 (high),Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.5333333333333334,.8666666666666666
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Finance and Insurance,Customer Service Representatives,.8,.8
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Finance and Insurance,Financial Managers,.13333,.2
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Finance and Insurance,Financial and Investment Analysts,.13333,.2
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Finance and Insurance,Personal Financial Advisors,.26667,.26667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",0,0
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Government,Administrative Services Managers,.33333,.4
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Government,"Child, Family, and School Social Workers",.4,.46667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Government,Compliance Officers,.4,.53333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Government,First-Line Supervisors of Police and Detectives,.66667,.66667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Government,Recreation Workers,.4,.4
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,0,0
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.4,.46667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Health Care and Social Assistance,Medical and Health Services Managers,.46667,.53333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Health Care and Social Assistance,Nurse Practitioners,.66667,.66667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Health Care and Social Assistance,Registered Nurses,.2,.26667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Information,Audio and Video Technicians,.13333,.13333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Information,Editors,.8,.86667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Information,Film and Video Editors,0,0
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Information,"News Analysts, Reporters, and Journalists",.46667,.53333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Information,Producers and Directors,.26667,.26667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Manufacturing,Buyers and Purchasing Agents,.26667,.53333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Manufacturing,First-Line Supervisors of Production and Operating Workers,0,0
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Manufacturing,Industrial Engineers,.33333,.33333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Manufacturing,Mechanical Engineers,.13333,.13333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.46667,.53333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,"Professional, Scientific, and Technical Services",Accountants and Auditors,.06667,.06667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.6,.6
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,"Professional, Scientific, and Technical Services",Lawyers,.4,.6
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,"Professional, Scientific, and Technical Services",Project Management Specialists,.2,.2
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,"Professional, Scientific, and Technical Services",Software Developers,.73333,.73333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Real Estate and Rental and Leasing,Concierges,.4,.4
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Real Estate and Rental and Leasing,Counter and Rental Clerks,.8,.8
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",0,0
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Real Estate and Rental and Leasing,Real Estate Brokers,.53333,.6
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Real Estate and Rental and Leasing,Real Estate Sales Agents,.26667,.33333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Retail Trade,First-Line Supervisors of Retail Sales Workers,.26667,.26667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Retail Trade,General and Operations Managers,.4,.46667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Retail Trade,Pharmacists,.26667,.33333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Retail Trade,Private Detectives and Investigators,.6,.6
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,0,0
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Wholesale Trade,Order Clerks,.26667,.26667
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Wholesale Trade,Sales Managers,.53333,.53333
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",0,0
+occupation,gpt-5r-high-engprompt,gpt-5r-high-engprompt,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",0,0
+occupation,grok,Grok 4,Finance and Insurance,Customer Service Representatives,.5111111111111111,.5111111111111111
+occupation,grok,Grok 4,Finance and Insurance,Financial Managers,.06666666666666667,.06666666666666667
+occupation,grok,Grok 4,Finance and Insurance,Financial and Investment Analysts,.15555555555555553,.17777777777777776
+occupation,grok,Grok 4,Finance and Insurance,Personal Financial Advisors,.15555555555555553,.15555555555555553
+occupation,grok,Grok 4,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.2444444444444444,.26666666666666666
+occupation,grok,Grok 4,Government,Administrative Services Managers,.2444444444444444,.2444444444444444
+occupation,grok,Grok 4,Government,"Child, Family, and School Social Workers",.13333333333333336,.22222222222222224
+occupation,grok,Grok 4,Government,Compliance Officers,.3333333333333333,.5333333333333333
+occupation,grok,Grok 4,Government,First-Line Supervisors of Police and Detectives,.37777777777777777,.39999999999999997
+occupation,grok,Grok 4,Government,Recreation Workers,.22222222222222224,.22222222222222224
+occupation,grok,Grok 4,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.04444444444444444,.06666666666666667
+occupation,grok,Grok 4,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.2,.22222222222222224
+occupation,grok,Grok 4,Health Care and Social Assistance,Medical and Health Services Managers,.13333333333333333,.3333333333333333
+occupation,grok,Grok 4,Health Care and Social Assistance,Nurse Practitioners,.3555555555555555,.3555555555555555
+occupation,grok,Grok 4,Health Care and Social Assistance,Registered Nurses,.11111111111111112,.11111111111111112
+occupation,grok,Grok 4,Information,Audio and Video Technicians,0,0
+occupation,grok,Grok 4,Information,Editors,.3555555555555555,.3555555555555555
+occupation,grok,Grok 4,Information,Film and Video Editors,.13333333333333333,.13333333333333333
+occupation,grok,Grok 4,Information,"News Analysts, Reporters, and Journalists",.28888888888888886,.28888888888888886
+occupation,grok,Grok 4,Information,Producers and Directors,.15555555555555553,.15555555555555553
+occupation,grok,Grok 4,Manufacturing,Buyers and Purchasing Agents,.15555555555555553,.24444444444444446
+occupation,grok,Grok 4,Manufacturing,First-Line Supervisors of Production and Operating Workers,.24444444444444446,.24444444444444446
+occupation,grok,Grok 4,Manufacturing,Industrial Engineers,.06666666666666667,.06666666666666667
+occupation,grok,Grok 4,Manufacturing,Mechanical Engineers,.11111111111111112,.15555555555555553
+occupation,grok,Grok 4,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.13333333333333333,.17777777777777776
+occupation,grok,Grok 4,"Professional, Scientific, and Technical Services",Accountants and Auditors,.02222222222222222,.02222222222222222
+occupation,grok,Grok 4,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.2444444444444444,.28888888888888886
+occupation,grok,Grok 4,"Professional, Scientific, and Technical Services",Lawyers,.15555555555555553,.22222222222222224
+occupation,grok,Grok 4,"Professional, Scientific, and Technical Services",Project Management Specialists,.11111111111111112,.15555555555555553
+occupation,grok,Grok 4,"Professional, Scientific, and Technical Services",Software Developers,.4444444444444445,.5111111111111111
+occupation,grok,Grok 4,Real Estate and Rental and Leasing,Concierges,.06666666666666667,.08888888888888888
+occupation,grok,Grok 4,Real Estate and Rental and Leasing,Counter and Rental Clerks,.4,.4888888888888888
+occupation,grok,Grok 4,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.11111111111111112,.11111111111111112
+occupation,grok,Grok 4,Real Estate and Rental and Leasing,Real Estate Brokers,.37777777777777777,.37777777777777777
+occupation,grok,Grok 4,Real Estate and Rental and Leasing,Real Estate Sales Agents,.06666666666666667,.06666666666666667
+occupation,grok,Grok 4,Retail Trade,First-Line Supervisors of Retail Sales Workers,.22222222222222224,.22222222222222224
+occupation,grok,Grok 4,Retail Trade,General and Operations Managers,.26666666666666666,.3555555555555555
+occupation,grok,Grok 4,Retail Trade,Pharmacists,.08888888888888888,.08888888888888888
+occupation,grok,Grok 4,Retail Trade,Private Detectives and Investigators,.5777777777777777,.6222222222222222
+occupation,grok,Grok 4,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.2444444444444444,.2444444444444444
+occupation,grok,Grok 4,Wholesale Trade,Order Clerks,.06666666666666667,.06666666666666667
+occupation,grok,Grok 4,Wholesale Trade,Sales Managers,.3333333333333333,.4444444444444445
+occupation,grok,Grok 4,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.3555555555555555,.4
+occupation,grok,Grok 4,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.17777777777777776,.2
+occupation,human,human,Finance and Insurance,Customer Service Representatives,0,0
+occupation,human,human,Finance and Insurance,Financial Managers,0,0
+occupation,human,human,Finance and Insurance,Financial and Investment Analysts,0,0
+occupation,human,human,Finance and Insurance,Personal Financial Advisors,0,0
+occupation,human,human,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",0,0
+occupation,human,human,Government,Administrative Services Managers,0,0
+occupation,human,human,Government,"Child, Family, and School Social Workers",0,0
+occupation,human,human,Government,Compliance Officers,0,0
+occupation,human,human,Government,First-Line Supervisors of Police and Detectives,0,0
+occupation,human,human,Government,Recreation Workers,0,0
+occupation,human,human,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,0,0
+occupation,human,human,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,0,0
+occupation,human,human,Health Care and Social Assistance,Medical and Health Services Managers,0,0
+occupation,human,human,Health Care and Social Assistance,Nurse Practitioners,0,0
+occupation,human,human,Health Care and Social Assistance,Registered Nurses,0,0
+occupation,human,human,Information,Audio and Video Technicians,0,0
+occupation,human,human,Information,Editors,0,0
+occupation,human,human,Information,Film and Video Editors,0,0
+occupation,human,human,Information,"News Analysts, Reporters, and Journalists",0,0
+occupation,human,human,Information,Producers and Directors,0,0
+occupation,human,human,Manufacturing,Buyers and Purchasing Agents,0,0
+occupation,human,human,Manufacturing,First-Line Supervisors of Production and Operating Workers,0,0
+occupation,human,human,Manufacturing,Industrial Engineers,0,0
+occupation,human,human,Manufacturing,Mechanical Engineers,0,0
+occupation,human,human,Manufacturing,"Shipping, Receiving, and Inventory Clerks",0,0
+occupation,human,human,"Professional, Scientific, and Technical Services",Accountants and Auditors,0,0
+occupation,human,human,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,0,0
+occupation,human,human,"Professional, Scientific, and Technical Services",Lawyers,0,0
+occupation,human,human,"Professional, Scientific, and Technical Services",Project Management Specialists,0,0
+occupation,human,human,"Professional, Scientific, and Technical Services",Software Developers,0,0
+occupation,human,human,Real Estate and Rental and Leasing,Concierges,0,0
+occupation,human,human,Real Estate and Rental and Leasing,Counter and Rental Clerks,0,0
+occupation,human,human,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",0,0
+occupation,human,human,Real Estate and Rental and Leasing,Real Estate Brokers,0,0
+occupation,human,human,Real Estate and Rental and Leasing,Real Estate Sales Agents,0,0
+occupation,human,human,Retail Trade,First-Line Supervisors of Retail Sales Workers,0,0
+occupation,human,human,Retail Trade,General and Operations Managers,0,0
+occupation,human,human,Retail Trade,Pharmacists,0,0
+occupation,human,human,Retail Trade,Private Detectives and Investigators,0,0
+occupation,human,human,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,0,0
+occupation,human,human,Wholesale Trade,Order Clerks,0,0
+occupation,human,human,Wholesale Trade,Sales Managers,0,0
+occupation,human,human,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",0,0
+occupation,human,human,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",0,0
+occupation,o3-high,o3-high,Finance and Insurance,Customer Service Representatives,.47059,.4902
+occupation,o3-high,o3-high,Finance and Insurance,Financial Managers,.06667,.06667
+occupation,o3-high,o3-high,Finance and Insurance,Financial and Investment Analysts,.33333,.35556
+occupation,o3-high,o3-high,Finance and Insurance,Personal Financial Advisors,.2,.26667
+occupation,o3-high,o3-high,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.22222,.22222
+occupation,o3-high,o3-high,Government,Administrative Services Managers,.28889,.31111
+occupation,o3-high,o3-high,Government,"Child, Family, and School Social Workers",.17778,.17778
+occupation,o3-high,o3-high,Government,Compliance Officers,.47368,.5614
+occupation,o3-high,o3-high,Government,First-Line Supervisors of Police and Detectives,.37778,.42222
+occupation,o3-high,o3-high,Government,Recreation Workers,.21569,.23529
+occupation,o3-high,o3-high,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.22222,.26667
+occupation,o3-high,o3-high,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.375,.41667
+occupation,o3-high,o3-high,Health Care and Social Assistance,Medical and Health Services Managers,.20833,.22917
+occupation,o3-high,o3-high,Health Care and Social Assistance,Nurse Practitioners,.42222,.44444
+occupation,o3-high,o3-high,Health Care and Social Assistance,Registered Nurses,.24444,.24444
+occupation,o3-high,o3-high,Information,Audio and Video Technicians,.06667,.06667
+occupation,o3-high,o3-high,Information,Editors,.55556,.55556
+occupation,o3-high,o3-high,Information,Film and Video Editors,.13333,.13333
+occupation,o3-high,o3-high,Information,"News Analysts, Reporters, and Journalists",.48889,.55556
+occupation,o3-high,o3-high,Information,Producers and Directors,.15556,.17778
+occupation,o3-high,o3-high,Manufacturing,Buyers and Purchasing Agents,.26667,.42222
+occupation,o3-high,o3-high,Manufacturing,First-Line Supervisors of Production and Operating Workers,.33333,.4
+occupation,o3-high,o3-high,Manufacturing,Industrial Engineers,.02222,.02222
+occupation,o3-high,o3-high,Manufacturing,Mechanical Engineers,.19608,.21569
+occupation,o3-high,o3-high,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.53333,.62222
+occupation,o3-high,o3-high,"Professional, Scientific, and Technical Services",Accountants and Auditors,.05263,.05263
+occupation,o3-high,o3-high,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.33333,.4
+occupation,o3-high,o3-high,"Professional, Scientific, and Technical Services",Lawyers,.08889,.28889
+occupation,o3-high,o3-high,"Professional, Scientific, and Technical Services",Project Management Specialists,.2,.24444
+occupation,o3-high,o3-high,"Professional, Scientific, and Technical Services",Software Developers,.68889,.68889
+occupation,o3-high,o3-high,Real Estate and Rental and Leasing,Concierges,.11111,.13333
+occupation,o3-high,o3-high,Real Estate and Rental and Leasing,Counter and Rental Clerks,.45098,.45098
+occupation,o3-high,o3-high,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.26667,.26667
+occupation,o3-high,o3-high,Real Estate and Rental and Leasing,Real Estate Brokers,.46667,.46667
+occupation,o3-high,o3-high,Real Estate and Rental and Leasing,Real Estate Sales Agents,.2549,.2549
+occupation,o3-high,o3-high,Retail Trade,First-Line Supervisors of Retail Sales Workers,.29412,.29412
+occupation,o3-high,o3-high,Retail Trade,General and Operations Managers,.51111,.51111
+occupation,o3-high,o3-high,Retail Trade,Pharmacists,.11111,.11111
+occupation,o3-high,o3-high,Retail Trade,Private Detectives and Investigators,.45833,.54167
+occupation,o3-high,o3-high,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.56863,.62745
+occupation,o3-high,o3-high,Wholesale Trade,Order Clerks,.08889,.13333
+occupation,o3-high,o3-high,Wholesale Trade,Sales Managers,.61905,.69841
+occupation,o3-high,o3-high,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.53333,.53333
+occupation,o3-high,o3-high,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.24444,.24444
+occupation,o3-low,o3-low,Finance and Insurance,Customer Service Representatives,.22222222222222224,.2444444444444444
+occupation,o3-low,o3-low,Finance and Insurance,Financial Managers,.02222222222222222,.02222222222222222
+occupation,o3-low,o3-low,Finance and Insurance,Financial and Investment Analysts,.08888888888888888,.08888888888888888
+occupation,o3-low,o3-low,Finance and Insurance,Personal Financial Advisors,.08888888888888888,.08888888888888888
+occupation,o3-low,o3-low,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.22222222222222224,.22222222222222224
+occupation,o3-low,o3-low,Government,Administrative Services Managers,.13333333333333333,.13333333333333333
+occupation,o3-low,o3-low,Government,"Child, Family, and School Social Workers",.17777777777777776,.17777777777777776
+occupation,o3-low,o3-low,Government,Compliance Officers,.17777777777777776,.31111111111111106
+occupation,o3-low,o3-low,Government,First-Line Supervisors of Police and Detectives,.08888888888888888,.13333333333333333
+occupation,o3-low,o3-low,Government,Recreation Workers,.04444444444444444,.06666666666666667
+occupation,o3-low,o3-low,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.13333333333333333,.13333333333333333
+occupation,o3-low,o3-low,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.11111111111111112,.11111111111111112
+occupation,o3-low,o3-low,Health Care and Social Assistance,Medical and Health Services Managers,.11111111111111112,.13333333333333333
+occupation,o3-low,o3-low,Health Care and Social Assistance,Nurse Practitioners,.11111111111111112,.11111111111111112
+occupation,o3-low,o3-low,Health Care and Social Assistance,Registered Nurses,.08888888888888888,.13333333333333333
+occupation,o3-low,o3-low,Information,Audio and Video Technicians,0,.02222222222222222
+occupation,o3-low,o3-low,Information,Editors,.15555555555555553,.15555555555555553
+occupation,o3-low,o3-low,Information,Film and Video Editors,.06666666666666667,.06666666666666667
+occupation,o3-low,o3-low,Information,"News Analysts, Reporters, and Journalists",.13333333333333333,.13333333333333333
+occupation,o3-low,o3-low,Information,Producers and Directors,0,0
+occupation,o3-low,o3-low,Manufacturing,Buyers and Purchasing Agents,.15555555555555553,.17777777777777776
+occupation,o3-low,o3-low,Manufacturing,First-Line Supervisors of Production and Operating Workers,.15555555555555553,.17777777777777776
+occupation,o3-low,o3-low,Manufacturing,Industrial Engineers,0,.04444444444444444
+occupation,o3-low,o3-low,Manufacturing,Mechanical Engineers,.04444444444444444,.04444444444444444
+occupation,o3-low,o3-low,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.2,.22222222222222224
+occupation,o3-low,o3-low,"Professional, Scientific, and Technical Services",Accountants and Auditors,.04444444444444444,.04444444444444444
+occupation,o3-low,o3-low,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.2,.2
+occupation,o3-low,o3-low,"Professional, Scientific, and Technical Services",Lawyers,.02222222222222222,.13333333333333333
+occupation,o3-low,o3-low,"Professional, Scientific, and Technical Services",Project Management Specialists,.04444444444444444,.06666666666666667
+occupation,o3-low,o3-low,"Professional, Scientific, and Technical Services",Software Developers,.2,.2
+occupation,o3-low,o3-low,Real Estate and Rental and Leasing,Concierges,.06666666666666667,.06666666666666667
+occupation,o3-low,o3-low,Real Estate and Rental and Leasing,Counter and Rental Clerks,.17777777777777776,.17777777777777776
+occupation,o3-low,o3-low,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.06666666666666667,.08888888888888888
+occupation,o3-low,o3-low,Real Estate and Rental and Leasing,Real Estate Brokers,.2444444444444444,.2444444444444444
+occupation,o3-low,o3-low,Real Estate and Rental and Leasing,Real Estate Sales Agents,.04444444444444444,.08888888888888888
+occupation,o3-low,o3-low,Retail Trade,First-Line Supervisors of Retail Sales Workers,.15555555555555553,.17777777777777776
+occupation,o3-low,o3-low,Retail Trade,General and Operations Managers,.22222222222222224,.31111111111111106
+occupation,o3-low,o3-low,Retail Trade,Pharmacists,.02222222222222222,.02222222222222222
+occupation,o3-low,o3-low,Retail Trade,Private Detectives and Investigators,.22222222222222224,.2444444444444444
+occupation,o3-low,o3-low,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.17777777777777776,.17777777777777776
+occupation,o3-low,o3-low,Wholesale Trade,Order Clerks,.04444444444444444,.04444444444444444
+occupation,o3-low,o3-low,Wholesale Trade,Sales Managers,.28888888888888886,.3333333333333333
+occupation,o3-low,o3-low,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.08888888888888888,.11111111111111112
+occupation,o3-low,o3-low,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.08888888888888888,.11111111111111112
+occupation,o3-medium,o3-medium,Finance and Insurance,Customer Service Representatives,.2444444444444444,.26666666666666666
+occupation,o3-medium,o3-medium,Finance and Insurance,Financial Managers,0,0
+occupation,o3-medium,o3-medium,Finance and Insurance,Financial and Investment Analysts,.11111111111111112,.11111111111111112
+occupation,o3-medium,o3-medium,Finance and Insurance,Personal Financial Advisors,.11111111111111112,.11111111111111112
+occupation,o3-medium,o3-medium,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.17777777777777776,.17777777777777776
+occupation,o3-medium,o3-medium,Government,Administrative Services Managers,.13333333333333333,.13333333333333333
+occupation,o3-medium,o3-medium,Government,"Child, Family, and School Social Workers",.22222222222222224,.2444444444444444
+occupation,o3-medium,o3-medium,Government,Compliance Officers,.17777777777777776,.28888888888888886
+occupation,o3-medium,o3-medium,Government,First-Line Supervisors of Police and Detectives,.13333333333333333,.17777777777777776
+occupation,o3-medium,o3-medium,Government,Recreation Workers,.08888888888888888,.08888888888888888
+occupation,o3-medium,o3-medium,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.11111111111111112,.13333333333333333
+occupation,o3-medium,o3-medium,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.11111111111111112,.13333333333333333
+occupation,o3-medium,o3-medium,Health Care and Social Assistance,Medical and Health Services Managers,.13333333333333333,.13333333333333333
+occupation,o3-medium,o3-medium,Health Care and Social Assistance,Nurse Practitioners,.15555555555555553,.15555555555555553
+occupation,o3-medium,o3-medium,Health Care and Social Assistance,Registered Nurses,.08888888888888888,.08888888888888888
+occupation,o3-medium,o3-medium,Information,Audio and Video Technicians,.02222222222222222,.02222222222222222
+occupation,o3-medium,o3-medium,Information,Editors,.2444444444444444,.26666666666666666
+occupation,o3-medium,o3-medium,Information,Film and Video Editors,.08888888888888888,.08888888888888888
+occupation,o3-medium,o3-medium,Information,"News Analysts, Reporters, and Journalists",.17777777777777776,.17777777777777776
+occupation,o3-medium,o3-medium,Information,Producers and Directors,0,0
+occupation,o3-medium,o3-medium,Manufacturing,Buyers and Purchasing Agents,.15555555555555553,.17777777777777776
+occupation,o3-medium,o3-medium,Manufacturing,First-Line Supervisors of Production and Operating Workers,.11111111111111112,.11111111111111112
+occupation,o3-medium,o3-medium,Manufacturing,Industrial Engineers,.04444444444444444,.04444444444444444
+occupation,o3-medium,o3-medium,Manufacturing,Mechanical Engineers,.06666666666666667,.06666666666666667
+occupation,o3-medium,o3-medium,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.17777777777777776,.2
+occupation,o3-medium,o3-medium,"Professional, Scientific, and Technical Services",Accountants and Auditors,.04444444444444444,.04444444444444444
+occupation,o3-medium,o3-medium,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.17777777777777776,.22222222222222224
+occupation,o3-medium,o3-medium,"Professional, Scientific, and Technical Services",Lawyers,.04444444444444444,.2
+occupation,o3-medium,o3-medium,"Professional, Scientific, and Technical Services",Project Management Specialists,.04444444444444444,.04444444444444444
+occupation,o3-medium,o3-medium,"Professional, Scientific, and Technical Services",Software Developers,.3333333333333333,.3555555555555555
+occupation,o3-medium,o3-medium,Real Estate and Rental and Leasing,Concierges,.04444444444444444,.04444444444444444
+occupation,o3-medium,o3-medium,Real Estate and Rental and Leasing,Counter and Rental Clerks,.17777777777777776,.17777777777777776
+occupation,o3-medium,o3-medium,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.08888888888888888,.08888888888888888
+occupation,o3-medium,o3-medium,Real Estate and Rental and Leasing,Real Estate Brokers,.2,.2
+occupation,o3-medium,o3-medium,Real Estate and Rental and Leasing,Real Estate Sales Agents,0,0
+occupation,o3-medium,o3-medium,Retail Trade,First-Line Supervisors of Retail Sales Workers,.15555555555555553,.15555555555555553
+occupation,o3-medium,o3-medium,Retail Trade,General and Operations Managers,.2444444444444444,.26666666666666666
+occupation,o3-medium,o3-medium,Retail Trade,Pharmacists,.02222222222222222,.02222222222222222
+occupation,o3-medium,o3-medium,Retail Trade,Private Detectives and Investigators,.08888888888888888,.11111111111111112
+occupation,o3-medium,o3-medium,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.17777777777777776,.17777777777777776
+occupation,o3-medium,o3-medium,Wholesale Trade,Order Clerks,.04444444444444444,.04444444444444444
+occupation,o3-medium,o3-medium,Wholesale Trade,Sales Managers,.31111111111111106,.3555555555555555
+occupation,o3-medium,o3-medium,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.08888888888888888,.08888888888888888
+occupation,o3-medium,o3-medium,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.13333333333333333,.13333333333333333
+occupation,o4-mini-high,o4-mini-high,Finance and Insurance,Customer Service Representatives,.43137,.43137
+occupation,o4-mini-high,o4-mini-high,Finance and Insurance,Financial Managers,.04444,.04444
+occupation,o4-mini-high,o4-mini-high,Finance and Insurance,Financial and Investment Analysts,.2,.22222
+occupation,o4-mini-high,o4-mini-high,Finance and Insurance,Personal Financial Advisors,.17778,.17778
+occupation,o4-mini-high,o4-mini-high,Finance and Insurance,"Securities, Commodities, and Financial Services Sales Agents",.2,.2
+occupation,o4-mini-high,o4-mini-high,Government,Administrative Services Managers,.17778,.2
+occupation,o4-mini-high,o4-mini-high,Government,"Child, Family, and School Social Workers",.13333,.2
+occupation,o4-mini-high,o4-mini-high,Government,Compliance Officers,.47368,.50877
+occupation,o4-mini-high,o4-mini-high,Government,First-Line Supervisors of Police and Detectives,.28889,.33333
+occupation,o4-mini-high,o4-mini-high,Government,Recreation Workers,.15686,.19608
+occupation,o4-mini-high,o4-mini-high,Health Care and Social Assistance,First-Line Supervisors of Office and Administrative Support Workers,.17778,.28889
+occupation,o4-mini-high,o4-mini-high,Health Care and Social Assistance,Medical Secretaries and Administrative Assistants,.22917,.22917
+occupation,o4-mini-high,o4-mini-high,Health Care and Social Assistance,Medical and Health Services Managers,.125,.16667
+occupation,o4-mini-high,o4-mini-high,Health Care and Social Assistance,Nurse Practitioners,.35556,.37778
+occupation,o4-mini-high,o4-mini-high,Health Care and Social Assistance,Registered Nurses,.28889,.31111
+occupation,o4-mini-high,o4-mini-high,Information,Audio and Video Technicians,.08889,.08889
+occupation,o4-mini-high,o4-mini-high,Information,Editors,.37778,.37778
+occupation,o4-mini-high,o4-mini-high,Information,Film and Video Editors,.11111,.11111
+occupation,o4-mini-high,o4-mini-high,Information,"News Analysts, Reporters, and Journalists",.31111,.33333
+occupation,o4-mini-high,o4-mini-high,Information,Producers and Directors,.08889,.08889
+occupation,o4-mini-high,o4-mini-high,Manufacturing,Buyers and Purchasing Agents,.28889,.4
+occupation,o4-mini-high,o4-mini-high,Manufacturing,First-Line Supervisors of Production and Operating Workers,.44444,.48889
+occupation,o4-mini-high,o4-mini-high,Manufacturing,Industrial Engineers,.02222,.04444
+occupation,o4-mini-high,o4-mini-high,Manufacturing,Mechanical Engineers,.17647,.19608
+occupation,o4-mini-high,o4-mini-high,Manufacturing,"Shipping, Receiving, and Inventory Clerks",.46667,.51111
+occupation,o4-mini-high,o4-mini-high,"Professional, Scientific, and Technical Services",Accountants and Auditors,.08772,.08772
+occupation,o4-mini-high,o4-mini-high,"Professional, Scientific, and Technical Services",Computer and Information Systems Managers,.26667,.26667
+occupation,o4-mini-high,o4-mini-high,"Professional, Scientific, and Technical Services",Lawyers,.02222,.17778
+occupation,o4-mini-high,o4-mini-high,"Professional, Scientific, and Technical Services",Project Management Specialists,.2,.24444
+occupation,o4-mini-high,o4-mini-high,"Professional, Scientific, and Technical Services",Software Developers,.6,.6
+occupation,o4-mini-high,o4-mini-high,Real Estate and Rental and Leasing,Concierges,.2,.2
+occupation,o4-mini-high,o4-mini-high,Real Estate and Rental and Leasing,Counter and Rental Clerks,.31373,.31373
+occupation,o4-mini-high,o4-mini-high,Real Estate and Rental and Leasing,"Property, Real Estate, and Community Association Managers",.22222,.22222
+occupation,o4-mini-high,o4-mini-high,Real Estate and Rental and Leasing,Real Estate Brokers,.28889,.28889
+occupation,o4-mini-high,o4-mini-high,Real Estate and Rental and Leasing,Real Estate Sales Agents,.11765,.11765
+occupation,o4-mini-high,o4-mini-high,Retail Trade,First-Line Supervisors of Retail Sales Workers,.17647,.19608
+occupation,o4-mini-high,o4-mini-high,Retail Trade,General and Operations Managers,.4,.48889
+occupation,o4-mini-high,o4-mini-high,Retail Trade,Pharmacists,.02222,.02222
+occupation,o4-mini-high,o4-mini-high,Retail Trade,Private Detectives and Investigators,.39583,.47917
+occupation,o4-mini-high,o4-mini-high,Wholesale Trade,First-Line Supervisors of Non-Retail Sales Workers,.5098,.52941
+occupation,o4-mini-high,o4-mini-high,Wholesale Trade,Order Clerks,.06667,.06667
+occupation,o4-mini-high,o4-mini-high,Wholesale Trade,Sales Managers,.60317,.61905
+occupation,o4-mini-high,o4-mini-high,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",.42222,.44444
+occupation,o4-mini-high,o4-mini-high,Wholesale Trade,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",.2,.2
