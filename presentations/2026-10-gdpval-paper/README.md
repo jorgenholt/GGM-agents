@@ -11,5 +11,5 @@ Jørgen Holt & Save Brautaset, supervisor Franziska Holz.
 - **Recovered OpenAI GDPval leaderboard data** (expert-graded results per sector and occupation,
   Dec 2025): [`leaderboard-data/gdpval_leaderboard_archive.csv`](leaderboard-data/gdpval_leaderboard_archive.csv)
 
-**Public version note:** the expert text on slide 13 (an excerpt from Huppmann & Holz, DIW Roundup 58,
-2015) is not included here because it has no open license. The slide shows a citation and link instead.
+**Quoted text:** slide 13 quotes a paragraph from Huppmann & Holz (2015), *What about the OPEC Cartel?*,
+DIW Roundup 58, p. 2, used with the agreement of Franziska Holz.
