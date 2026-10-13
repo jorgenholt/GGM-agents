@@ -204,6 +204,11 @@ project plan, and supervisors will read it as one.
 
 Source material for chapter 2. Three clusters, from closest to your problem outward.
 
+> **Superseded as a reading list (2026-10-13):** the full, verified list is now in
+> [`literature-sources.md`](literature-sources.md). The candidates below are kept for the reasoning
+> around them; the gap argument stays here, with a refinement noted in
+> [`literature-sources.md`](literature-sources.md#note-on-the-gap-claim).
+
 ### Closest: agents that configure or calibrate domain models
 
 **[Agentic Calibration of Grey-Box Simulation Models](https://arxiv.org/html/2607.18308v1)** —
@@ -225,7 +230,7 @@ simulation code, using retrieval over mixed-format documentation, with a dedicat
 checking schema, parameter dependencies and ranges *before* execution. The structural analogue to
 generating GGM workbooks. Read it directly — verify the domain and details yourself.
 
-**[Automated building energy modeling / EnergyPlus multi-agent](https://www.cell.com/iscience/fulltext/S2589-0042(25)02128-5)**
+**[Automated building energy modeling / EnergyPlus multi-agent](https://doi.org/10.1016/j.isci.2025.113867)** (Lu et al., 2025, *iScience*)
 — agents transforming descriptions into runnable models for another configuration-heavy engineering
 tool. Useful as evidence the pattern generalises beyond one domain.
 
@@ -235,7 +240,7 @@ tool. Useful as evidence the pattern generalises beyond one domain.
 language, writes and debugs solver code, and checks solution validity. Established enough to be a
 standard reference point, with the NLP4LP benchmark.
 
-**[Chain-of-Experts](https://arxiv.org/pdf/2407.19633)** — multi-agent operations-research framework
+**[Chain-of-Experts](https://proceedings.iclr.cc/paper_files/paper/2024/hash/d45ee77826332c100a1e15f7765b99ff-Abstract-Conference.html)** — multi-agent operations-research framework
 with a conductor coordinating specialists for terminology, modelling, programming and review. A
 concrete architecture to compare your design sketch against.
 
