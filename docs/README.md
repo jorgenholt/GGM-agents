@@ -8,6 +8,7 @@ Working documents for the project thesis. Start here.
 |---|---|---|
 | [`thesis-scope.md`](thesis-scope.md) | The two-phase structure — project thesis now, master's in spring | Orienting, or when someone proposes building something |
 | [`project-thesis-structure.md`](project-thesis-structure.md) | Proposed chapter structure, related work, open decisions | Discussing structure with supervisors. **Short version is at the top** |
+| [`literature-sources.md`](literature-sources.md) | Every source found so far, verified, grouped by topic, with what it covers and which chapter uses it. Reading list at the top | Writing chapter 2 or 4, or looking for something to cite |
 | [`workflow-task-inventory.md`](workflow-task-inventory.md) | Working material for chapter 5: the input layers, the workflow broken into stages, and a provisional read on code vs agent vs human | Working on chapter 5 |
 | [`how-it-would-work.md`](how-it-would-work.md) | One scenario walked end to end, today versus with agents | Explaining the idea to someone concretely |
 | [`ggm-data-2023.md`](ggm-data-2023.md) | The real 2023 dataset in `../data_2023/`: scenarios, network, what gets calibrated, oddities | Working with or describing the data |
@@ -22,6 +23,7 @@ Per the convention in the root `CLAUDE.md`:
 - **How GGM works** → `ggm-model.md`, with a source line or PDF page that proves it
 - **What is automatable and why** → `workflow-task-inventory.md`
 - **Needs a human answer** → `questions-for-weekly-meeting.md`
+- **A new source or reference** → `literature-sources.md`
 - **Thesis framing or chapter structure** → `project-thesis-structure.md`
 - **Phase, scope, deadlines** → `thesis-scope.md`
 
