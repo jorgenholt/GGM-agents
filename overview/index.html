@@ -620,6 +620,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
       </div>
       <div class="filter-row" id="f-kind"><h3>Kind</h3></div>
       <div class="filter-row" id="f-type"><h3>Type</h3></div>
+      <div class="filter-row" id="f-year"><h3>Year</h3></div>
       <div class="filter-row" id="f-prio"><h3>Priority</h3></div>
       <div class="filter-row" id="f-chap"><h3>Chapter</h3></div>
       <div class="filter-row" id="f-status"><h3>Reading</h3></div>
@@ -750,7 +751,15 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
   let db = null, canWrite = true;
   let reading = {};       // id -> {status}
   let tasks = [];
-  const F = { q: "", kinds: new Set(), types: new Set(), prios: new Set(), chaps: new Set(), status: "", readingOnly: false };
+  const F = { q: "", kinds: new Set(), types: new Set(), years: new Set(), prios: new Set(), chaps: new Set(), status: "", readingOnly: false };
+  // Year groups, shared by the "By year" chart and the year filter.
+  const yearBin = (s) => (!s.year ? "Undated" : s.year <= 2000 ? "\u22642000" : s.year <= 2015 ? "2001\u201315" : s.year <= 2019 ? "2016\u201319" : String(s.year));
+  function yearBins() {
+    const max = Math.max(2020, ...S.filter((s) => s.year).map((s) => s.year));
+    const bins = ["\u22642000", "2001\u201315", "2016\u201319"];
+    for (let y = 2020; y <= max; y++) bins.push(String(y));
+    return bins.concat("Undated");
+  }
   let view = store.get("view", "map");
   let colorBy = store.get("colorBy", "type");
   let selected = null;
@@ -995,13 +1004,9 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
   }
 
   function renderYears() {
-    const yrs = S.filter((s) => s.year).map((s) => s.year);
-    const groups = [["≤2000", (y) => y <= 2000], ["2001–15", (y) => y > 2000 && y <= 2015], ["2016–19", (y) => y >= 2016 && y <= 2019]];
-    for (let y = 2020; y <= Math.max(...yrs); y++) groups.push([String(y), (yy) => yy === y]);
-    groups.push(["Undated", null]);
-    const data = groups.map(([l, f]) => {
+    const data = yearBins().map((l) => {
       const row = { l };
-      TYPE_ORDER.forEach((t) => (row[t] = S.filter((s) => s.type === t && (f ? s.year && f(s.year) : !s.year)).length));
+      TYPE_ORDER.forEach((t) => (row[t] = S.filter((s) => s.type === t && yearBin(s) === l).length));
       row.total = TYPE_ORDER.reduce((a, t) => a + row[t], 0);
       return row;
     });
@@ -1054,6 +1059,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     };
     mk($("#f-kind"), [["sci", "Scientific"], ["grey", "Non-scientific"]], F.kinds, "kind");
     mk($("#f-type"), TYPE_ORDER.map((t) => [t, TYPE_LABEL[t], typeColor(t)]), F.types, "type");
+    mk($("#f-year"), yearBins().filter((b) => S.some((s) => yearBin(s) === b)).map((b) => [b, `${b} (${S.filter((s) => yearBin(s) === b).length})`]), F.years, "year");
     mk($("#f-prio"), [["3", "★★★ Read in full"], ["2", "★★ Cite and skim"], ["1", "★ Background"]], F.prios, "prio");
     mk($("#f-chap"), [...(D.writing?.chapters || []).map((c) => c.n), "M"].map((c) => [c, c === "M" ? "Master's thesis" : chapShort(c) + " " + chapName(c)]), F.chaps, "chap");
     STATUS.forEach(([v, l]) => {
@@ -1068,10 +1074,11 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     $("#f-reading").addEventListener("click", () => { F.readingOnly = !F.readingOnly; syncFilterUi(); renderSourcesView(); });
     $("#f-clear").addEventListener("click", () => { clearFilters(); syncFilterUi(); renderSourcesView(); });
   }
-  function clearFilters() { F.q = ""; F.kinds.clear(); F.types.clear(); F.prios.clear(); F.chaps.clear(); F.status = ""; F.readingOnly = false; $("#f-q").value = ""; }
+  function clearFilters() { F.q = ""; F.kinds.clear(); F.types.clear(); F.years.clear(); F.prios.clear(); F.chaps.clear(); F.status = ""; F.readingOnly = false; $("#f-q").value = ""; }
   function syncFilterUi() {
     $$("#f-kind [data-kind]").forEach((b) => b.setAttribute("aria-pressed", String(F.kinds.has(b.dataset.kind))));
     $$("#f-type [data-type]").forEach((b) => b.setAttribute("aria-pressed", String(F.types.has(b.dataset.type))));
+    $$("#f-year [data-year]").forEach((b) => b.setAttribute("aria-pressed", String(F.years.has(b.dataset.year))));
     $$("#f-prio [data-prio]").forEach((b) => b.setAttribute("aria-pressed", String(F.prios.has(b.dataset.prio))));
     $$("#f-chap [data-chap]").forEach((b) => b.setAttribute("aria-pressed", String(F.chaps.has(b.dataset.chap))));
     $$("#f-status [data-status]").forEach((b) => b.setAttribute("aria-pressed", String(F.status === b.dataset.status)));
@@ -1080,6 +1087,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
   function matches(s) {
     if (F.kinds.size && !F.kinds.has(s.type === "grey" ? "grey" : "sci")) return false;
     if (F.types.size && !F.types.has(s.type)) return false;
+    if (F.years.size && !F.years.has(yearBin(s))) return false;
     if (F.prios.size && !F.prios.has(String(s.priority))) return false;
     if (F.chaps.size && !s.chapters.some((c) => F.chaps.has(c))) return false;
     if (F.readingOnly && !readingIds.has(s.id)) return false;
@@ -1096,7 +1104,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
 
   function renderSourcesView() {
     const shown = S.filter(matches);
-    const active = F.q || F.kinds.size || F.types.size || F.prios.size || F.chaps.size || F.status || F.readingOnly;
+    const active = F.q || F.kinds.size || F.types.size || F.years.size || F.prios.size || F.chaps.size || F.status || F.readingOnly;
     $("#f-count").textContent = active ? `${shown.length} of ${S.length} sources match.` : `Showing all ${S.length} sources.`;
     $$("[data-view]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
     $$("[data-color]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.color === colorBy)));
