@@ -32,7 +32,11 @@ Then ask Claude to republish `overview/index.html` with `data/overview.json` (sa
 **This also happens automatically.** A cloud routine,
 [GGM hub: sync and rebuild](https://claude.ai/code/routines/trig_01Wigzds8U52Zr9DqaZtaNrs), runs every
 three hours. It clones `main` from GitHub, syncs hub writing into `thesis/`, runs the build, and
-republishes only if the content fingerprint (`contentHash`) differs from the published copy. So only
+republishes only if the content fingerprint (`contentHash`) differs from the published copy.
+
+**The routine only publishes data changes.** When `overview/index.html` itself changes (new features,
+layout), the publish is refused for review and the routine stops by design. Ask Claude in a Code
+session to publish the page; after that, the routine takes over again. So only
 changes merged into `main` on GitHub reach the page. Pause or delete it from the routine's page.
 
 ## Writing
