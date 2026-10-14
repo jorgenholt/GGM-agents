@@ -1202,8 +1202,22 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     svg.setAttribute("role", "img");
     svg.setAttribute("aria-label", "Network of sources grouped by topic");
     let html = "";
+    // Topic labels wrap onto at most two short lines so neighbouring clusters don't collide.
+    const wrapLabel = (text, max = 22) => {
+      const lines = [""];
+      text.split(" ").forEach((w) => {
+        const cur = lines[lines.length - 1];
+        if ((cur + " " + w).trim().length <= max) lines[lines.length - 1] = (cur + " " + w).trim();
+        else lines.push(w);
+      });
+      if (lines.length > 2) lines.splice(2, lines.length, (lines[1].length > max - 1 ? lines[1].slice(0, max - 1) : lines[1]) + "\u2026");
+      return lines;
+    };
+    let topicLabels = "";
     D.literature.sections.forEach((sec) => {
-      html += `<text x="${anchor[sec.id].x}" y="${anchor[sec.id].y - 58}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink-2)">${sec.id} · ${esc(sec.name.length > 34 ? sec.name.slice(0, 32) + "…" : sec.name)}</text>`;
+      const lines = wrapLabel(`${sec.id} \u00b7 ${sec.name}`);
+      const y0 = anchor[sec.id].y - 60 - (lines.length - 1) * 12;
+      topicLabels += `<text x="${anchor[sec.id].x}" y="${y0}" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ink-2)" stroke="var(--panel)" stroke-width="3" style="paint-order:stroke;pointer-events:none">${lines.map((l, i) => `<tspan x="${anchor[sec.id].x}" dy="${i ? 12 : 0}">${esc(l)}</tspan>`).join("")}</text>`;
     });
     html += `<g class="links">` + gLinks.map((l, i) => `<line data-i="${i}" x1="${l.source.x}" y1="${l.source.y}" x2="${l.target.x}" y2="${l.target.y}" stroke="${l.kind === "mentions" ? "var(--ink-2)" : "var(--ink-3)"}" stroke-width="${l.kind === "mentions" ? 1.6 : 0.8}" stroke-opacity="${l.kind === "mentions" ? 0.7 : 0.22}"/>`).join("") + `</g>`;
     html += `<g class="nodes">` + gNodes.map((n) => {
@@ -1211,6 +1225,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
       return `<circle data-id="${n.id}" cx="${n.x}" cy="${n.y}" r="${rad(n)}" fill="${colorOf(n.s)}" stroke="${st === "read" ? "var(--ok)" : "var(--panel)"}" stroke-width="${st === "read" ? 2.5 : 1.5}" style="cursor:pointer"/>`;
     }).join("") + `</g>`;
     html += `<g class="labels">` + gNodes.filter((n) => n.s.priority === 3).map((n) => `<text x="${n.x + rad(n) + 3}" y="${n.y + 3.5}" font-size="10.5" fill="var(--ink)" style="pointer-events:none;paint-order:stroke" stroke="var(--panel)" stroke-width="3">${esc(label(n.s))}</text>`).join("") + `</g>`;
+    html += `<g class="topics">${topicLabels}</g>`;
     svg.innerHTML = html;
     wrap.appendChild(svg);
 
