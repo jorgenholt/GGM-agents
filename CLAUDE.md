@@ -39,7 +39,8 @@ be illustrative and disposable, and the deliverable is a written argument.
 ## Conventions
 
 - Code and comments in English
-- Feature branches off `main`, merge via PR
+- Feature branches off `main`, merge via PR. **Exception: `thesis/`** is committed straight to
+  `main`, because the hub's sync routine writes there every three hours (see `thesis/README.md`)
 - API keys in `.env`, never committed
 - Scratch data goes in `data/` (gitignored); `data_2023/` is tracked on purpose
 

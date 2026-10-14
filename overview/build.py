@@ -26,6 +26,7 @@ import hashlib
 import json
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -575,6 +576,7 @@ FOLDER_NOTES = {
     "gdpval-presentation": "The GDPval paper presentation (October 2026) and its sources",
     "overview": "This overview page, its build script and its data",
     "agents": "Agent definitions (none yet)",
+    "thesis": "The thesis text in LaTeX, one file per section. Written on the hub and synced here; see thesis/README.md",
 }
 
 
@@ -631,6 +633,50 @@ def parse_repo(docs_index):
     }
 
 
+def parse_writing(sources):
+    """The thesis text in thesis/chapters, its word counts, and how they grew over time."""
+    sys.path.insert(0, str(ROOT / "thesis"))
+    import sync  # thesis/sync.py
+
+    keys = sync.cite_keys(sources)
+    for s in sources:
+        s["citeKey"] = keys[s["id"]]
+    chapters = sync.list_sections()
+    for ch in chapters:
+        for sec in ch["sections"]:
+            sec.pop("tex", None)
+        ch["words"] = sum(sec["words"] for sec in ch["sections"])
+
+    # Words per chapter at the end of each day that changed the thesis.
+    history, seen = [], set()
+    log = git("log", "--format=%H%x09%cs", "--", "thesis/chapters").splitlines()
+    for line in log:  # newest first
+        commit, date = line.split("\t")
+        if date in seen:
+            continue
+        seen.add(date)
+        by_chapter = {}
+        for path in git("ls-tree", "-r", "--name-only", commit, "thesis/chapters").splitlines():
+            name = Path(path).name
+            if not name.endswith(".tex") or name.startswith("_"):
+                continue
+            tex = git("show", f"{commit}:{path}")
+            _, body = sync.split_section(tex)
+            ch = Path(path).parent.name
+            by_chapter[ch] = by_chapter.get(ch, 0) + sync.count_words(body)
+        history.append({"date": date, "words": sum(by_chapter.values()), "byChapter": by_chapter})
+    history.reverse()
+    return {
+        "chapters": chapters,
+        "words": sum(ch["words"] for ch in chapters),
+        "history": history,
+        "citedKeys": sorted(
+            {k.strip() for ch in chapters for sec in ch["sections"]
+             for m in re.finditer(r'data-keys="([^"]+)"', sec["html"]) for k in m.group(1).split(",")}
+        ),
+    }
+
+
 def parse_agents():
     path = ROOT / "agents" / "registry.json"
     if not path.exists():
@@ -643,6 +689,7 @@ def parse_agents():
 
 def main():
     docs_index, filing_rules = parse_docs_index()
+    literature = parse_literature()
     data = {
         "builtAt": dt.datetime.now().isoformat(timespec="minutes"),
         "chapterNames": CHAPTER_NAMES,
@@ -650,7 +697,8 @@ def main():
         "timeline": parse_timeline(),
         "workflow": parse_workflow(),
         "questions": parse_questions(),
-        "literature": parse_literature(),
+        "literature": literature,
+        "writing": parse_writing(literature["sources"]),
         "docsIndex": docs_index,
         "filingRules": filing_rules,
         "repo": parse_repo(docs_index),
@@ -668,7 +716,7 @@ def main():
         f"Wrote {OUT.relative_to(ROOT)}: {len(lit['sources'])} sources in "
         f"{len(lit['sections'])} sections, {len(lit['relations'])} relations, "
         f"{len(data['timeline']['plan'])} plan rows, {len(data['repo']['files'])} files, "
-        f"{len(data['agents'])} agents\ncontentHash {data['contentHash']}"
+        f"{len(data['agents'])} agents, {data['writing']['words']} thesis words\ncontentHash {data['contentHash']}"
     )
 
 

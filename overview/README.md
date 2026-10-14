@@ -29,16 +29,23 @@ python3 overview/build.py
 
 Then ask Claude to republish `overview/index.html` with `data/overview.json` (same URL).
 
-**This also happens automatically every morning.** A cloud routine,
-[GGM overview: daily rebuild](https://claude.ai/code/routines/trig_01Wigzds8U52Zr9DqaZtaNrs), runs at
-05:00 UTC (06:00 Oslo in winter, 07:00 in summer). It clones `main` from GitHub, runs the build, and
+**This also happens automatically.** A cloud routine,
+[GGM hub: sync and rebuild](https://claude.ai/code/routines/trig_01Wigzds8U52Zr9DqaZtaNrs), runs every
+three hours. It clones `main` from GitHub, syncs hub writing into `thesis/`, runs the build, and
 republishes only if the content fingerprint (`contentHash`) differs from the published copy. So only
 changes merged into `main` on GitHub reach the page. Pause or delete it from the routine's page.
 
+## Writing
+
+The Writing tab is where the thesis is written. Its text lives in `thesis/` in the repo; the page
+keeps drafts in its shared storage until the sync routine writes them to GitHub. How that works,
+and what happens on a conflict: [`thesis/README.md`](../thesis/README.md).
+
 ## What is *not* in the repo
 
-**Tasks** and **reading status** (to read / reading / read) are stored with the published page on
-claude.ai, so everyone with access sees the same board. They are not written back to git.
+**Tasks**, **reading status** and **unsynced writing** are stored with the published page on
+claude.ai, so everyone with access sees the same thing. Tasks and reading status are never written
+back to git; writing is, at the next sync.
 
 ## Rules
 
