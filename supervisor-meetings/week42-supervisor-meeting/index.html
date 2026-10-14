@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervisor meeting, week 42</title>
+<style>
+  :root {
+    --ink: #111;
+    --ink-2: #444;
+    --ink-3: #777;
+    --rule: #ddd;
+    --bar: #d9d9d9;
+    --bar-now: #111;
+    --mark: #c62828;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #fff; color: var(--ink); }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; overflow: hidden; }
+
+  /* Every slide is drawn at 1280x720 and scaled to fit the window. */
+  .stage { position: fixed; inset: 0; display: grid; place-items: center; }
+  .slide {
+    position: absolute; width: 1280px; height: 720px; padding: 64px 80px;
+    background: #fff; display: none; transform-origin: center center;
+  }
+  .slide.active { display: block; }
+  h1 { font-size: 44px; font-weight: 600; margin: 0 0 12px; letter-spacing: -0.01em; }
+  h2 { font-size: 34px; font-weight: 600; margin: 0 0 28px; letter-spacing: -0.01em; }
+  h3 { font-size: 17px; font-weight: 600; margin: 26px 0 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); }
+  p, li { font-size: 21px; line-height: 1.45; }
+  ul { margin: 0; padding-left: 26px; }
+  li + li { margin-top: 12px; }
+  .muted { color: var(--ink-3); }
+  .counter { position: fixed; right: 18px; bottom: 14px; font-size: 13px; color: var(--ink-3); }
+
+  /* Title */
+  .title { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+  .title p { margin: 4px 0; color: var(--ink-2); }
+
+  /* Gantt */
+  .gantt { margin-top: 8px; }
+  .g-row { display: grid; grid-template-columns: 300px 1fr; align-items: center; height: 46px; border-bottom: 1px solid var(--rule); }
+  .g-row.head { height: 40px; border-bottom: 1px solid var(--ink); }
+  .g-label { font-size: 17px; padding-right: 16px; line-height: 1.2; }
+  .g-label small { display: block; font-size: 13px; color: var(--ink-3); }
+  .g-track { position: relative; height: 100%; }
+  .g-weeks { display: grid; grid-template-columns: repeat(11, 1fr); height: 100%; }
+  .g-weeks div { border-left: 1px solid var(--rule); font-size: 13px; color: var(--ink-3); padding: 4px 0 0 6px; line-height: 1.2; }
+  .g-weeks div b { display: block; color: var(--ink); font-weight: 600; }
+  .g-bar { position: absolute; top: 11px; height: 24px; background: var(--bar); border-radius: 3px; }
+  .g-bar.now { background: var(--bar-now); }
+  .g-line { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--mark); }
+  .g-mile { position: absolute; top: 15px; width: 14px; height: 14px; background: var(--ink); transform: translateX(-7px) rotate(45deg); }
+  .g-note { position: absolute; bottom: -24px; transform: translateX(-50%); font-size: 13px; color: var(--mark); font-weight: 600; white-space: nowrap; }
+  .g-status { margin-top: 48px; font-size: 20px; }
+
+  /* Paper slides */
+  .paper { display: grid; grid-template-columns: 430px 1fr; gap: 56px; height: 100%; align-items: start; }
+  .paper img { width: 430px; height: auto; max-height: 592px; object-fit: contain; object-position: top; border: 1px solid #ccc; display: block; }
+  .paper .kicker { font-size: 15px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 10px; }
+  .paper h2 { font-size: 29px; line-height: 1.25; margin-bottom: 18px; }
+  .meta { display: grid; grid-template-columns: 110px 1fr; gap: 6px 14px; font-size: 17px; line-height: 1.4; }
+  .meta dt { color: var(--ink-3); }
+  .meta dd { margin: 0; }
+  .paper ul li { font-size: 19px; }
+
+  /* Next steps */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .ask { border-left: 3px solid var(--ink); padding-left: 24px; }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- 1. Title -->
+  <section class="slide">
+    <div class="title">
+      <h1>Supervisor meeting, week 42</h1>
+      <p>Where we are, five papers we find most relevant, and next steps</p>
+      <p class="muted" style="margin-top:28px">Jørgen Holt and Save Brautaset · 15 October 2026</p>
+    </div>
+  </section>
+
+  <!-- 2. Gantt -->
+  <section class="slide">
+    <h2>Where we are</h2>
+    <div class="gantt">
+      <div class="g-row head">
+        <div class="g-label"></div>
+        <div class="g-track"><div class="g-weeks">
+          <div><b>W40</b>28 Sep</div><div><b>W41</b>5 Oct</div><div><b>W42</b>12 Oct</div><div><b>W43</b>19 Oct</div>
+          <div><b>W44</b>26 Oct</div><div><b>W45</b>2 Nov</div><div><b>W46</b>9 Nov</div><div><b>W47</b>16 Nov</div>
+          <div><b>W48</b>23 Nov</div><div><b>W49</b>30 Nov</div><div><b>W50</b>7 Dec</div>
+        </div></div>
+      </div>
+      <!-- Bars: left = (start week − 40) / 11, width = weeks / 11. Today line: Thursday of week 42. -->
+      <div class="g-row"><div class="g-label">Scope and outline<small>Outline done</small></div>
+        <div class="g-track"><div class="g-bar" style="left:0%;width:9.09%"></div><div class="g-line" style="left:22.73%"></div></div></div>
+      <div class="g-row"><div class="g-label">Ch. 2: Literature review<small>Chapter 2 drafted</small></div>
+        <div class="g-track"><div class="g-bar now" style="left:9.09%;width:18.18%"></div><div class="g-line" style="left:22.73%"></div></div></div>
+      <div class="g-row"><div class="g-label">Ch. 3: The Global Gas Model<small>Chapter 3 drafted</small></div>
+        <div class="g-track"><div class="g-bar now" style="left:18.18%;width:18.18%"></div><div class="g-line" style="left:22.73%"></div></div></div>
+      <div class="g-row"><div class="g-label">Ch. 4: LLM agents<small>Chapter 4 drafted</small></div>
+        <div class="g-track"><div class="g-bar" style="left:27.27%;width:18.18%"></div><div class="g-line" style="left:22.73%"></div></div></div>
+      <div class="g-row"><div class="g-label">Ch. 5: Where AI fits<small>Chapter 5 drafted</small></div>
+        <div class="g-track"><div class="g-bar" style="left:45.45%;width:27.27%"></div><div class="g-line" style="left:22.73%"></div></div></div>
+      <div class="g-row"><div class="g-label">Ch. 6–8: Closing chapters</div>
+        <div class="g-track"><div class="g-bar" style="left:63.64%;width:18.18%"></div><div class="g-line" style="left:22.73%"></div></div></div>
+      <div class="g-row"><div class="g-label">Introduction and abstract<small>Full draft to supervisors, 29 Nov</small></div>
+        <div class="g-track"><div class="g-bar" style="left:72.73%;width:9.09%"></div><div class="g-mile" style="left:81.17%"></div><div class="g-line" style="left:22.73%"></div></div></div>
+      <div class="g-row"><div class="g-label">Feedback, revise, hand in<small>Hand-in, 13 Dec</small></div>
+        <div class="g-track"><div class="g-bar" style="left:81.82%;width:18.18%"></div><div class="g-mile" style="left:99.35%"></div><div class="g-line" style="left:22.73%"><span class="g-note">Today, 15 Oct</span></div></div></div>
+    </div>
+    <p class="g-status">Literature search done: 142 sources, each checked to exist. Writing chapter 2 starts now.</p>
+  </section>
+
+  <!-- 3. GGM documentation -->
+  <section class="slide">
+    <div class="paper">
+      <img src="img/ggm-documentation.png" alt="First page of the Global Gas Model documentation v3.0">
+      <div>
+        <p class="kicker">Paper 1 of 5 · GGM</p>
+        <h2>Global Gas Model: Model and Data Documentation v3.0</h2>
+        <dl class="meta">
+          <dt>Authors</dt><dd>Ruud Egging and Franziska Holz</dd>
+          <dt>Year</dt><dd>2019</dd>
+          <dt>Published</dt><dd>DIW Data Documentation 100, DIW Berlin</dd>
+          <dt>Link</dt><dd>doi.org/10.18723/diw_ddc:2019-100</dd>
+        </dl>
+        <h3>Why it matters for us</h3>
+        <ul>
+          <li>The source of truth for chapter 3: model structure, data sources and calibration, with page numbers we can cite.</li>
+          <li>States that calibration takes an experienced analyst days to weeks (pp. 28–32). The clearest evidence of manual effort worth helping with.</li>
+          <li>Writes down how an expert diagnoses a bad calibration (p. 28). That gives us something to test agents against later.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Grey-box calibration -->
+  <section class="slide">
+    <div class="paper">
+      <img src="img/grey-box-calibration.png" alt="First page of Agentic Calibration of Grey-Box Simulation Models">
+      <div>
+        <p class="kicker">Paper 2 of 5 · AI and calibration</p>
+        <h2>Agentic Calibration of Grey-Box Simulation Models: An LLM-Driven Alternative</h2>
+        <dl class="meta">
+          <dt>Authors</dt><dd>David Gómez-Guillén, Mireia Díaz, Josep Lluis Arcos, Jesús Cerquides</dd>
+          <dt>Year</dt><dd>2026 (July)</dd>
+          <dt>Published</dt><dd>Preprint, arXiv:2607.18308</dd>
+          <dt>From</dt><dd>Catalan Institute of Oncology and IIIA-CSIC, Spain</dd>
+        </dl>
+        <h3>Why it matters for us</h3>
+        <ul>
+          <li>An LLM acts as the optimiser in a calibration loop. It sees past guesses and errors and proposes the next parameter set, with a written reason.</li>
+          <li>It needed 16 model runs, against 110 for Bayesian optimisation and hundreds to thousands for Nelder–Mead.</li>
+          <li>The closest paper to GGM calibration. The difference: its targets are observed data, while GGM's calibrated values include market power, which is judgment.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. AutoSAM -->
+  <section class="slide">
+    <div class="paper">
+      <img src="img/autosam.png" alt="First page of AutoSAM">
+      <div>
+        <p class="kicker">Paper 3 of 5 · AI and model inputs</p>
+        <h2>AutoSAM: An Agentic Framework for Automating Input File Generation for the SAM Code</h2>
+        <dl class="meta">
+          <dt>Authors</dt><dd>Zaid Abulawi, Zavier Ndum, Eric Cervi, Rui Hu, Yang Liu</dd>
+          <dt>Year</dt><dd>2026 (March)</dd>
+          <dt>Published</dt><dd>Preprint, arXiv:2603.24736</dd>
+          <dt>From</dt><dd>Texas A&amp;M University and Argonne National Laboratory</dd>
+        </dl>
+        <h3>Why it matters for us</h3>
+        <ul>
+          <li>Builds input files for a reactor simulation code from PDFs, diagrams and spreadsheets. That is the same kind of work as filling GGM's workbooks from IEA, ENTSOG or GIIGNL reports.</li>
+          <li>Puts every extracted value in a step a person can check, flags missing data and labels assumed values.</li>
+          <li>About 88% of values were extracted correctly from PDF text: useful, but not good enough to skip review.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. HydroAgent -->
+  <section class="slide">
+    <div class="paper">
+      <img src="img/hydroagent.png" alt="First page of HydroAgent">
+      <div>
+        <p class="kicker">Paper 4 of 5 · The limits</p>
+        <h2>HydroAgent: Closing the Gap Between Frontier LLMs and Human Experts in Hydrologic Model Calibration</h2>
+        <dl class="meta">
+          <dt>Authors</dt><dd>Zhi Li, Songkun Yan, Jie Cao, Mofan Zhang, Anjiang Wei, Jinwoong Yoo, Yang Hong</dd>
+          <dt>Year</dt><dd>2026 (May)</dd>
+          <dt>Published</dt><dd>Preprint, arXiv:2605.17792</dd>
+          <dt>From</dt><dd>U. Colorado Boulder, U. Oklahoma, Stanford, NASA Goddard</dd>
+        </dl>
+        <h3>Why it matters for us</h3>
+        <ul>
+          <li>Tested nine frontier LLMs (Claude, GPT, Gemini) on calibrating the US National Weather Service's flash-flood model.</li>
+          <li>Almost none reached the human expert's result (one model, at one gauge). The authors blame missing domain knowledge, not model size.</li>
+          <li>Keeps our argument honest: today, an agent should help the analyst with calibration, not replace them.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Human attention -->
+  <section class="slide">
+    <div class="paper">
+      <img src="img/human-attention.png" alt="First page of (Human) Attention Is (Still) All You Need">
+      <div>
+        <p class="kicker">Paper 5 of 5 · Humans in the loop</p>
+        <h2>(Human) Attention Is (Still) All You Need: Human Oversight Makes AI-Assisted Social Science Reliable</h2>
+        <dl class="meta">
+          <dt>Authors</dt><dd>Chen Zhu, Xiaolu Wang, Weilong Zhang</dd>
+          <dt>Year</dt><dd>2026 (June)</dd>
+          <dt>Published</dt><dd>Preprint, arXiv:2606.12848</dd>
+          <dt>From</dt><dd>China Agricultural University and University of Cambridge</dd>
+        </dl>
+        <h3>Why it matters for us</h3>
+        <ul>
+          <li>An experiment with 280 AI-assisted economics research runs: with no constraints, a multi-agent setup failed badly in 72% of runs.</li>
+          <li>Three rules cut that to 16%: the LLM only reasons, data work and estimation run as ordinary code, and a person signs off at three points.</li>
+          <li>This is close to the design principle we are working towards for GGM: judgment from the model, arithmetic in code, a person at the key decisions.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Next steps -->
+  <section class="slide">
+    <h2>Next steps</h2>
+    <div class="two">
+      <div>
+        <h3 style="margin-top:0">Start writing</h3>
+        <ul>
+          <li>Begin with chapter 2, the literature review. The sources are gathered and sorted by chapter.</li>
+          <li>Then chapter 3 on GGM, which overlaps with chapter 2 in the plan.</li>
+        </ul>
+      </div>
+      <div class="ask">
+        <h3 style="margin-top:0">A request for Lukas</h3>
+        <ul>
+          <li>A longer session when you have time, so we can go through the GGM workflow in detail.</li>
+          <li>Ideally you show or talk us through the manual workflow: preparing data, setting up a scenario, calibrating, running, reading results.</li>
+          <li>We take notes and ask a lot of basic questions. The notes feed the workflow chapter.</li>
+        </ul>
+        <p style="margin-top:22px"><b>When would suit you?</b></p>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div class="counter" id="counter"></div>
+
+<script>
+  // Arrow keys, space, Page Up/Down or click to move between slides. F toggles fullscreen.
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let i = Math.max(0, Math.min(slides.length - 1, parseInt(location.hash.slice(1), 10) - 1 || 0));
+  function fit() {
+    const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+    slides.forEach((el) => (el.style.transform = `scale(${s})`));
+  }
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((el, k) => el.classList.toggle("active", k === i));
+    document.getElementById("counter").textContent = `${i + 1} / ${slides.length}`;
+    history.replaceState(null, "", "#" + (i + 1));
+  }
+  document.addEventListener("keydown", (e) => {
+    if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    if (e.key === "Home") show(0);
+    if (e.key === "End") show(slides.length - 1);
+    if (e.key === "f" || e.key === "F") {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.();
+    }
+  });
+  document.addEventListener("click", (e) => { if (e.clientX > window.innerWidth / 3) show(i + 1); else show(i - 1); });
+  window.addEventListener("resize", fit);
+  fit(); show(i);
+</script>
+</body>
+</html>
