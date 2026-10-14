@@ -34,6 +34,8 @@ DOCS = ROOT / "docs"
 OUT = ROOT / "overview" / "data" / "overview.json"
 
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+# Chapter numbers the literature notes may tag ("Ch3", "master's"). The names shown on the hub
+# come from thesis/chapters instead; these are only a fallback and for recognising tags.
 CHAPTER_NAMES = {
     "1": "Introduction",
     "2": "Literature review",
@@ -696,15 +698,19 @@ def parse_agents():
 def main():
     docs_index, filing_rules = parse_docs_index()
     literature = parse_literature()
+    writing = parse_writing(literature["sources"])
+    # Chapter names come from thesis/, so the hub has one list of chapters.
+    chapter_names = {c["n"]: c["title"] for c in writing["chapters"]}
+    chapter_names["M"] = CHAPTER_NAMES["M"]
     data = {
         "builtAt": dt.datetime.now().isoformat(timespec="minutes"),
-        "chapterNames": CHAPTER_NAMES,
+        "chapterNames": chapter_names,
         "structure": parse_structure(),
         "timeline": parse_timeline(),
         "workflow": parse_workflow(),
         "questions": parse_questions(),
         "literature": literature,
-        "writing": parse_writing(literature["sources"]),
+        "writing": writing,
         "docsIndex": docs_index,
         "filingRules": filing_rules,
         "repo": parse_repo(docs_index),
