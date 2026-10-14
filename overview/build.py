@@ -656,6 +656,11 @@ def main():
         "repo": parse_repo(docs_index),
         "agents": parse_agents(),
     }
+    # A fingerprint of everything except the build time, so a scheduled
+    # rebuild can tell whether anything changed since the last publish.
+    data["contentHash"] = hashlib.sha1(
+        json.dumps({k: v for k, v in data.items() if k != "builtAt"}, sort_keys=True).encode()
+    ).hexdigest()[:16]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     lit = data["literature"]
@@ -663,7 +668,7 @@ def main():
         f"Wrote {OUT.relative_to(ROOT)}: {len(lit['sources'])} sources in "
         f"{len(lit['sections'])} sections, {len(lit['relations'])} relations, "
         f"{len(data['timeline']['plan'])} plan rows, {len(data['repo']['files'])} files, "
-        f"{len(data['agents'])} agents"
+        f"{len(data['agents'])} agents\ncontentHash {data['contentHash']}"
     )
 
 
