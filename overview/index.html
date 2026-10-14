@@ -490,7 +490,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
 
     <div class="grid-2">
       <div class="panel">
-        <div class="panel-head"><h2>Chapters</h2><span class="muted small">Sources tagged to each, from the literature list</span></div>
+        <div class="panel-head"><h2>Chapters</h2><span class="muted small">From thesis/, with the sources tagged to each</span></div>
         <div class="chapters" id="chapters"></div>
       </div>
       <div class="panel">
@@ -881,19 +881,19 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     }));
   }
 
+  // The chapter list comes from thesis/ (via D.writing), the same list the Writing tab uses.
   function renderChapters() {
     const counts = {};
     S.forEach((s) => s.chapters.forEach((c) => (counts[c] = (counts[c] || 0) + 1)));
-    const chapters = ["1", "2", "3", "4", "5", "6", "7", "8", "M"];
-    const lines = Object.fromEntries(D.structure.chapters.map((c) => [c.n, c.line]));
-    lines["6"] = lines["6"] && D.structure.chapters.length <= 6 ? "Design sketch for the master's thesis" : lines["6"];
-    lines["7"] = lines["7"] || "Risks, limits, and what should not be automated";
-    lines["8"] = lines["8"] || "What was established, and the plan for spring";
-    lines["M"] = "Spring 2027: building and evaluating the agents";
-    $("#chapters").innerHTML = chapters.map((c) => `<div class="chapter-row">
-        <span class="n">${c === "M" ? "M" : c}</span>
-        <div><b>${esc(chapName(c))}</b><div class="muted small">${esc(lines[c] || "")}</div></div>
-        <button class="chip" data-chap="${c}" title="Show these sources">${counts[c] || 0} sources</button></div>`).join("");
+    const rows = (D.writing?.chapters || []).map((c) => ({
+      n: c.n, title: c.title,
+      line: `${c.sections.length} section${c.sections.length === 1 ? "" : "s"} · ${c.words.toLocaleString("en-GB")} words in GitHub`,
+    }));
+    rows.push({ n: "M", title: chapName("M"), line: "Spring 2027: building and evaluating the agents" });
+    $("#chapters").innerHTML = rows.map((c) => `<div class="chapter-row">
+        <span class="n">${esc(c.n)}</span>
+        <div><b>${esc(c.title)}</b><div class="muted small">${esc(c.line)}</div></div>
+        <button class="chip" data-chap="${esc(c.n)}" title="Show these sources">${counts[c.n] || 0} sources</button></div>`).join("");
     $$("#chapters [data-chap]").forEach((b) => b.addEventListener("click", () => {
       clearFilters(); F.chaps.add(b.dataset.chap); syncFilterUi(); showRoom("sources"); renderSourcesView();
     }));
@@ -901,7 +901,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
 
   // ---------------------------------------------------------------- tasks
   function chapterOptions(sel) {
-    const opts = [["", "None"], ["1", "1 Introduction"], ["2", "2 Literature review"], ["3", "3 The Global Gas Model"], ["4", "4 LLM agents"], ["5", "5 Where AI fits"], ["6", "6 Design sketch"], ["7", "7 Discussion"], ["8", "8 Conclusion"], ["M", "Master's thesis"]];
+    const opts = [["", "None"], ...(D.writing?.chapters || []).map((c) => [c.n, `${c.n} ${c.title}`]), ["M", "Master's thesis"]];
     sel.innerHTML = opts.map(([v, l]) => `<option value="${v}">${esc(l)}</option>`).join("");
   }
 
@@ -1055,7 +1055,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     mk($("#f-kind"), [["sci", "Scientific"], ["grey", "Non-scientific"]], F.kinds, "kind");
     mk($("#f-type"), TYPE_ORDER.map((t) => [t, TYPE_LABEL[t], typeColor(t)]), F.types, "type");
     mk($("#f-prio"), [["3", "★★★ Read in full"], ["2", "★★ Cite and skim"], ["1", "★ Background"]], F.prios, "prio");
-    mk($("#f-chap"), ["1", "2", "3", "4", "5", "6", "7", "8", "M"].map((c) => [c, chapShort(c) + " " + chapName(c)]), F.chaps, "chap");
+    mk($("#f-chap"), [...(D.writing?.chapters || []).map((c) => c.n), "M"].map((c) => [c, c === "M" ? "Master's thesis" : chapShort(c) + " " + chapName(c)]), F.chaps, "chap");
     STATUS.forEach(([v, l]) => {
       const b = document.createElement("button");
       b.className = "chip"; b.type = "button"; b.dataset.status = v || "none"; b.setAttribute("aria-pressed", "false");
@@ -1125,9 +1125,10 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     return `<button class="sdot${st === "read" ? " read" : ""}${ok.has(s.id) ? "" : " dim"}${selected === s.id ? " sel" : ""}" style="--c:${colorOf(s)};--s:${size}px" data-id="${s.id}" title="${esc(label(s))}: ${esc(s.title)}" aria-label="${esc(s.title)}"></button>`;
   }
   function renderMatrix(ok) {
-    const chs = ["2", "3", "4", "5", "6", "7", "M"].concat(S.some((s) => s.chapters.includes("1")) ? ["1"] : []);
+    const thesisChs = (D.writing?.chapters || []).map((c) => c.n);
+    const chs = thesisChs.filter((c) => S.some((s) => s.chapters.includes(c))).concat(["M"]);
     const secs = D.literature.sections;
-    const head = `<thead><tr><th>Topic</th>${chs.map((c) => `<th>${esc(chapShort(c))}<small>${esc(chapName(c))}</small></th>`).join("")}</tr></thead>`;
+    const head = `<thead><tr><th>Topic</th>${chs.map((c) => `<th>${esc(chapShort(c))}<small>${esc(c === "M" ? "Spring 2027" : chapName(c))}</small></th>`).join("")}</tr></thead>`;
     const body = secs.map((sec) => {
       const inSec = S.filter((s) => s.section === sec.id);
       const cells = chs.map((c) => {
