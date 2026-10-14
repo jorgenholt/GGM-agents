@@ -643,9 +643,12 @@ def parse_writing(sources):
         s["citeKey"] = keys[s["id"]]
     chapters = sync.list_sections()
     for ch in chapters:
-        for sec in ch["sections"]:
-            sec.pop("tex", None)
         ch["words"] = sum(sec["words"] for sec in ch["sections"])
+
+    main_tex = (ROOT / "thesis" / "main.tex").read_text(encoding="utf-8")
+    def tex_arg(cmd):
+        m = re.search(r"\\" + cmd + r"\{([^}]*)\}", main_tex)
+        return sync.unescape_text(m.group(1)).replace("\\and", "and").strip() if m else ""
 
     # Words per chapter at the end of each day that changed the thesis.
     history, seen = [], set()
@@ -667,6 +670,9 @@ def parse_writing(sources):
         history.append({"date": date, "words": sum(by_chapter.values()), "byChapter": by_chapter})
     history.reverse()
     return {
+        "title": tex_arg("title"),
+        "author": re.sub(r"\s+", " ", tex_arg("author")),
+        "date": tex_arg("date"),
         "chapters": chapters,
         "words": sum(ch["words"] for ch in chapters),
         "history": history,

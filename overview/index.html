@@ -378,6 +378,62 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
 .banner .acts { display: flex; gap: 6px; flex-wrap: wrap; }
 #ed-github { max-width: 72ch; margin: 18px auto 0; border-top: 2px dashed var(--rule); padding-top: 12px; }
 
+/* ---------- whole document ---------- */
+:root { --sheet: #ffffff; --sheet-ink: #161616; --sheet-mute: #6b6b6b; --sheet-rule: #dcdcdc; --sheet-cite: #1d4f8c; --sheet-desk: #e4e9ec; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --sheet-desk: #0a1015; } }
+:root[data-theme="dark"] { --sheet-desk: #0a1015; }
+.w-modes { display: flex; gap: 10px 14px; flex-wrap: wrap; align-items: center; }
+.w-modes label { display: inline-flex; gap: 6px; align-items: center; }
+#w-doc { min-width: 0; }
+.desk { background: var(--sheet-desk); border-radius: var(--r); padding: clamp(10px, 3vw, 36px) clamp(6px, 3vw, 36px); }
+.sheet {
+  background: var(--sheet); color: var(--sheet-ink); max-width: 780px; margin: 0 auto; padding: clamp(24px, 6vw, 84px) clamp(18px, 7vw, 96px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 8px 30px rgba(0, 0, 0, 0.08);
+  font-family: var(--f-display); font-size: 1.06rem; line-height: 1.55; hyphens: auto; -webkit-hyphens: auto;
+}
+.sheet .ts-title { text-align: center; margin: 0 0 6px; font-size: 1.9rem; font-weight: 600; line-height: 1.2; }
+.sheet .ts-author, .sheet .ts-date { text-align: center; margin: 0; color: var(--sheet-ink); }
+.sheet .ts-date { margin-bottom: 36px; }
+.sheet .ts-toc { margin: 0 0 40px; }
+.sheet .ts-toc h2 { font-family: var(--f-display); font-size: 1.5rem; margin: 0 0 12px; }
+.sheet .ts-toc .row { display: grid; grid-template-columns: 3em minmax(0, 1fr); gap: 4px; padding: 1px 0; }
+.sheet .ts-toc .row.ch { font-weight: 600; margin-top: 8px; }
+.sheet .ts-toc .row.sec { padding-left: 1.4em; grid-template-columns: 3.2em minmax(0, 1fr); }
+.sheet .ts-toc a { color: inherit; text-decoration: none; }
+.sheet .ts-toc a:hover { text-decoration: underline; }
+.sheet .ts-ch { margin: 56px 0 20px; }
+.sheet .ts-ch .k { font-size: 1.2rem; display: block; margin-bottom: 8px; }
+.sheet .ts-ch .t { font-size: 1.85rem; font-weight: 600; line-height: 1.2; display: block; }
+.sheet h3.ts-sec, .sheet h4.ts-sub, .sheet h5.ts-subsub { font-family: var(--f-display); color: var(--sheet-ink); text-transform: none; letter-spacing: 0; font-weight: 600; cursor: pointer; }
+.sheet h3.ts-sec { font-size: 1.3rem; margin: 30px 0 10px; }
+.sheet h4.ts-sub { font-size: 1.1rem; margin: 22px 0 8px; }
+.sheet h5.ts-subsub { font-size: 1rem; margin: 18px 0 6px; }
+.sheet h3.ts-sec .n, .sheet h4.ts-sub .n { margin-right: 0.8em; }
+.sheet h3.ts-sec:hover::after { content: " · edit"; font-family: var(--f-body); font-size: 0.75rem; font-weight: 400; color: var(--sheet-mute); }
+.sheet p { margin: 0; text-align: justify; }
+.sheet p + p { text-indent: 1.5em; }
+.sheet ul, .sheet ol { margin: 6px 0 10px; padding-left: 1.6em; }
+.sheet .cite { color: var(--sheet-cite); }
+.sheet sup.fnref { font-size: 0.7em; color: var(--sheet-cite); }
+.sheet .notes { border-top: 1px solid var(--sheet-rule); margin-top: 18px; padding-top: 8px; font-size: 0.86rem; }
+.sheet .notes p { text-indent: 0; text-align: left; margin-bottom: 3px; }
+.sheet .tex, .sheet .texblock { font-family: var(--f-mono); font-size: 0.8em; color: var(--sheet-mute); }
+.sheet .texblock { display: block; white-space: pre-wrap; border-left: 2px solid var(--sheet-rule); padding: 6px 10px; margin: 10px 0; }
+.sheet .texblock::before { content: "LaTeX, rendered in the PDF"; display: block; font-family: var(--f-body); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 3px; }
+.sheet .empty-sec { color: var(--sheet-mute); font-style: italic; font-size: 0.92rem; text-indent: 0; }
+.sheet .todo-note { font-family: var(--f-body); font-size: 0.82rem; color: #8a5a00; background: #fff6df; border-left: 3px solid #d39b1a; padding: 4px 8px; margin: 6px 0; text-indent: 0; text-align: left; }
+.sheet .refs h2 { font-family: var(--f-display); font-size: 1.6rem; margin: 56px 0 14px; }
+.sheet .refs p { text-indent: -1.5em; padding-left: 1.5em; text-align: left; margin-bottom: 6px; font-size: 0.95rem; }
+.hubdoc .h-ch { font-family: var(--f-display); font-size: 1.6rem; margin: 36px 0 6px; padding-bottom: 6px; border-bottom: 2px solid var(--ink); }
+.hubdoc .h-sec { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 26px 0 4px; }
+.hubdoc .h-sec h3 { font-family: var(--f-body); font-size: 1.12rem; text-transform: none; letter-spacing: 0; color: var(--ink); }
+.hubdoc .doc { min-height: 0; margin-top: 6px; padding-bottom: 8px; }
+.texsrc { font-family: var(--f-mono); font-size: 0.82rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r); padding: 16px 18px; }
+.texsrc .cm { color: var(--ink-3); }
+.texsrc .cmd { color: var(--accent); }
+.texsrc .file { display: block; color: var(--ink-3); border-top: 1px dashed var(--rule); margin-top: 10px; padding-top: 8px; }
+.texsrc .pend { color: var(--warn); }
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 
@@ -463,6 +519,19 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
       </div>
       <div class="w-bars" id="w-bars"></div>
     </div>
+    <div class="w-modes">
+      <div class="seg" role="group" aria-label="Writing view">
+        <button type="button" data-wview="sections" aria-pressed="true">Section by section</button>
+        <button type="button" data-wview="document" aria-pressed="false">Whole document</button>
+      </div>
+      <div class="seg" role="group" aria-label="Document style" id="w-dmodes" hidden>
+        <button type="button" data-dmode="typeset" aria-pressed="true">Typeset</button>
+        <button type="button" data-dmode="hub" aria-pressed="false">As on the hub</button>
+        <button type="button" data-dmode="latex" aria-pressed="false">LaTeX</button>
+      </div>
+      <label class="small muted" id="w-todo-wrap" hidden><input type="checkbox" id="w-show-todos"> Show TODO notes</label>
+    </div>
+    <div id="w-doc" hidden></div>
     <div class="w-layout">
       <nav class="panel w-toc" id="w-toc" aria-label="Chapters and sections"></nav>
       <div class="panel w-editor" id="w-editor">
@@ -1370,8 +1439,11 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     const parts = (keys || "").split(",").map((k) => k.trim()).filter(Boolean).map((k) => {
       const s = byKey.get(k);
       if (!s) return { a: k, y: "" };
-      const many = /et al|&|,.*,/.test(s.authors);
-      return { a: (s.surname || s.short || s.title.split(" ")[0]) + (many ? " et al." : ""), y: s.year || "n.d." };
+      // natbib style: one author by name, two as "A and B", three or more as "A et al."
+      const names = [...(s.authors || "").matchAll(/([^,&]+?),\s*(?:[A-Z][a-z]?\.?\s?-?)+(?=\s*(?:,|&|$))/g)].map((m) => m[1].trim());
+      const first = names[0] || s.surname || s.short || s.title.split(" ")[0];
+      const a = /et al/.test(s.authors) || names.length > 2 ? `${first} et al.` : names.length === 2 ? `${names[0]} and ${names[1]}` : first;
+      return { a, y: s.year || "n.d." };
     });
     if (!parts.length) return "[citation]";
     return mode === "t" ? parts.map((p) => `${p.a} (${p.y})`).join("; ") : "(" + parts.map((p) => `${p.a}, ${p.y}`).join("; ") + ")";
@@ -1414,6 +1486,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     renderWritingSummary();
     renderToc();
     if (cur) { renderBanner(); renderEdStatus(); }
+    if (wview === "document" && !$("#room-writing").hidden) renderFullDoc();
   }
 
   function renderWritingSummary() {
@@ -1757,11 +1830,167 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     $("#pop-q").focus();
   }
 
+
+  // ---- whole-document view: typeset, as on the hub, or LaTeX source
+  let wview = store.get("wview", "sections"), dmode = store.get("dmode", "typeset");
+  function setWview(v) {
+    wview = v; store.set("wview", v);
+    $$("[data-wview]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.wview === v)));
+    const doc = v === "document";
+    $("#w-doc").hidden = !doc; $(".w-layout").hidden = doc; $("#w-dmodes").hidden = !doc;
+    $("#w-todo-wrap").hidden = !doc || dmode !== "typeset";
+    if (doc) { if (cur) closeSection(); renderFullDoc(); }
+  }
+  function setDmode(m) {
+    dmode = m; store.set("dmode", m);
+    $$("[data-dmode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.dmode === m)));
+    $("#w-todo-wrap").hidden = wview !== "document" || m !== "typeset";
+    renderFullDoc();
+  }
+  $$("[data-wview]").forEach((b) => b.addEventListener("click", () => setWview(b.dataset.wview)));
+  $$("[data-dmode]").forEach((b) => b.addEventListener("click", () => setDmode(b.dataset.dmode)));
+  $("#w-show-todos").addEventListener("change", renderFullDoc);
+  function editFromDoc(sid) { setWview("sections"); openSection(sid); }
+
+  // Chapters with their visible sections, in order, numbered the way LaTeX would number them.
+  function docOutline() {
+    const states = allSids().map(secState).filter((x) => x.visible && !x.deleted);
+    return D.writing.chapters.map((c, ci) => ({
+      ...c, num: ci + 1,
+      secs: states.filter((x) => x.chapter === c.key).map((x, si) => ({ ...x, num: `${ci + 1}.${si + 1}` })),
+    }));
+  }
+
+  // A small port of thesis/sync.py html_to_tex, so unsynced edits can be shown as LaTeX too.
+  const TEX_ESC = { "\\": "\\textbackslash{}", "&": "\\&", "%": "\\%", "$": "\\$", "#": "\\#", "_": "\\_", "{": "\\{", "}": "\\}", "~": "\\textasciitilde{}", "^": "\\textasciicircum{}", "\u00a0": "~" };
+  const texEsc = (t) => t.replace(/[\\&%$#_{}~^\u00a0]/g, (c) => TEX_ESC[c]);
+  function inlineTex(n) {
+    let out = "";
+    for (const c of n.childNodes) {
+      if (c.nodeType === 3) { out += texEsc(c.nodeValue.replace(/\s+/g, " ")); continue; }
+      if (c.nodeType !== 1) continue;
+      const t = c.tagName.toLowerCase(), cl = c.classList;
+      if (t === "span" && cl.contains("cite")) { const k = (c.getAttribute("data-keys") || "").trim(); if (k) out += (c.getAttribute("data-mode") === "t" ? "\\citet{" : "\\citep{") + k + "}"; }
+      else if (t === "span" && cl.contains("tex")) out += c.textContent;
+      else if (t === "span" && cl.contains("fn")) out += "\\footnote{" + inlineTex(c).trim() + "}";
+      else if (t === "strong" || t === "b") { const x = inlineTex(c); out += x.trim() ? "\\textbf{" + x + "}" : x; }
+      else if (t === "em" || t === "i") { const x = inlineTex(c); out += x.trim() ? "\\emph{" + x + "}" : x; }
+      else if (t === "a") { const h = c.getAttribute("href") || "", x = inlineTex(c); out += !x.trim() || x.trim() === texEsc(h) ? "\\url{" + h + "}" : "\\href{" + h + "}{" + x + "}"; }
+      else if (t === "br") out += " ";
+      else out += inlineTex(c);
+    }
+    return out;
+  }
+  const sentences = (t) => t.trim().split(/(?<=[.!?])\s+(?=[A-Z"“(\\])/).map((x) => x.trim()).filter(Boolean).join("\n");
+  function htmlToTex(title, html) {
+    const blocks = [];
+    for (const n of inert(safeHtml(html)).children) {
+      const t = n.tagName.toLowerCase();
+      if (t === "pre") { const raw = n.textContent.replace(/\n+$/, ""); if (raw.trim()) blocks.push(raw); }
+      else if (t === "p" && n.classList.contains("todo")) blocks.push("% TODO: " + n.textContent.replace(/\s+/g, " ").trim());
+      else if (t === "h3") blocks.push("\\subsection{" + inlineTex(n).trim() + "}");
+      else if (t === "h4") blocks.push("\\subsubsection{" + inlineTex(n).trim() + "}");
+      else if (t === "ul" || t === "ol") { const env = t === "ul" ? "itemize" : "enumerate"; blocks.push(`\\begin{${env}}\n` + [...n.children].map((li) => "  \\item " + inlineTex(li).trim()).join("\n") + `\n\\end{${env}}`); }
+      else { const x = inlineTex(n).trim(); if (x) blocks.push(sentences(x)); }
+    }
+    const merged = [];
+    blocks.forEach((b) => { const last = merged[merged.length - 1]; if (last && b.startsWith("%") && last.startsWith("%") && !last.includes("\n")) merged[merged.length - 1] += "\n" + b; else merged.push(b); });
+    return "\\section{" + texEsc((title || "Untitled").trim()) + "}\n\n" + merged.join("\n\n") + (merged.length ? "\n" : "");
+  }
+
+  function renderFullDoc() {
+    if (wview !== "document" || !D || !D.writing) return;
+    const box = $("#w-doc");
+    const scroll = window.scrollY;
+    if (dmode === "latex") box.innerHTML = renderLatexDoc();
+    else if (dmode === "hub") box.innerHTML = renderHubDoc();
+    else box.innerHTML = renderTypesetDoc();
+    $$("#w-doc [data-edit]").forEach((el) => el.addEventListener("click", (e) => { e.preventDefault(); editFromDoc(el.dataset.edit); }));
+    $$("#w-doc [data-jump]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); document.getElementById(a.dataset.jump)?.scrollIntoView({ behavior: "smooth", block: "start" }); }));
+    window.scrollTo(0, scroll);
+  }
+
+  function renderTypesetDoc() {
+    const outline = docOutline(), showTodos = $("#w-show-todos").checked;
+    const cited = new Set();
+    let hidden = 0;
+    let toc = `<div class="ts-toc"><h2>Contents</h2>`;
+    let body = "";
+    outline.forEach((c) => {
+      toc += `<div class="row ch"><span>${c.num}</span><a href="#" data-jump="ts-${esc(c.key)}">${esc(c.title)}</a></div>`;
+      body += `<div class="ts-ch" id="ts-${esc(c.key)}"><span class="k">Chapter ${c.num}</span><span class="t">${esc(c.title)}</span></div>`;
+      let fnN = 0; const notes = [];
+      c.secs.forEach((x) => {
+        toc += `<div class="row sec"><span>${x.num}</span><a href="#" data-jump="ts-${esc(x.sid)}">${esc(x.title || "Untitled")}</a></div>`;
+        const b = inert(safeHtml(x.html));
+        b.querySelectorAll("p.todo").forEach((n) => { if (showTodos) { const d = document.createElement("p"); d.className = "todo-note"; d.textContent = "TODO: " + n.textContent; n.replaceWith(d); } else { hidden++; n.remove(); } });
+        b.querySelectorAll("span.cite").forEach((n) => { (n.getAttribute("data-keys") || "").split(",").map((k) => k.trim()).filter(Boolean).forEach((k) => cited.add(k)); n.textContent = citeLabel(n.getAttribute("data-keys"), n.getAttribute("data-mode")); });
+        b.querySelectorAll("span.fn").forEach((n) => { fnN++; notes.push(`<p><sup>${fnN}</sup> ${n.innerHTML}</p>`); const s = document.createElement("sup"); s.className = "fnref"; s.textContent = fnN; n.replaceWith(s); });
+        b.querySelectorAll("pre").forEach((n) => { const d = document.createElement("div"); d.className = "texblock"; d.textContent = n.textContent; n.replaceWith(d); });
+        let sub = 0;
+        b.querySelectorAll("h3, h4").forEach((h) => {
+          const el = document.createElement(h.tagName === "H3" ? "h4" : "h5");
+          if (h.tagName === "H3") { sub++; el.className = "ts-sub"; el.innerHTML = `<span class="n">${x.num}.${sub}</span>${h.innerHTML}`; }
+          else { el.className = "ts-subsub"; el.innerHTML = h.innerHTML; }
+          h.replaceWith(el);
+        });
+        const text = b.innerHTML.trim();
+        body += `<h3 class="ts-sec" id="ts-${esc(x.sid)}" data-edit="${esc(x.sid)}" title="Edit this section"><span class="n">${x.num}</span>${esc(x.title || "Untitled")}</h3>`;
+        body += text && b.textContent.trim() ? text : `<p class="empty-sec">No text yet.</p>`;
+      });
+      if (notes.length) body += `<div class="notes">${notes.join("")}</div>`;
+    });
+    toc += `<div class="row ch"><span></span><a href="#" data-jump="ts-refs">References</a></div></div>`;
+    const refs = [...cited].map((k) => byKey.get(k)).filter(Boolean)
+      .sort((a, b) => (a.authors || a.title).localeCompare(b.authors || b.title))
+      .map((s) => { const au = (s.authors || "").trim(); return `<p>${esc(au && !au.endsWith(".") ? au + "." : au)}${au ? " " : ""}(${esc(s.year || "n.d.")}). ${esc(s.title)}.${s.venue ? " " + esc(s.venue) + "." : ""}${s.url ? ` <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url.replace(/^https?:\/\//, ""))}</a>` : ""}</p>`; }).join("");
+    const words = docOutline().reduce((a, c) => a + c.secs.reduce((b, x) => b + x.words, 0), 0);
+    const note = `<p class="muted small" style="max-width:780px;margin:0 auto 10px">A preview of how the PDF will read: ${words.toLocaleString("en-GB")} words. Layout, fonts and page breaks will differ in the real PDF.${hidden ? ` ${hidden} TODO note${hidden > 1 ? "s" : ""} hidden, as LaTeX hides comments.` : ""} Click a section heading to edit it.</p>`;
+    return note + `<div class="desk"><article class="sheet" lang="en">
+      <h1 class="ts-title">${esc(D.writing.title || "Project thesis")}</h1>
+      <p class="ts-author">${esc(D.writing.author || "")}</p><p class="ts-date">${esc(D.writing.date || "")}</p>
+      ${toc}${body}<div class="refs" id="ts-refs"><h2>References</h2>${refs || `<p class="empty-sec">Nothing cited yet.</p>`}</div></article></div>`;
+  }
+
+  function renderHubDoc() {
+    let html = `<div class="panel hubdoc">`;
+    docOutline().forEach((c) => {
+      html += `<h2 class="h-ch">${c.num}. ${esc(c.title)}</h2>`;
+      c.secs.forEach((x) => {
+        const chips = [`<span class="chip num">${x.words} w</span>`];
+        if (x.conflict) chips.push(`<span class="chip st-conflict">Needs attention</span>`);
+        else if (x.pending) chips.push(`<span class="chip st-pending">${x.repo ? "Not yet in GitHub" : "New"}</span>`);
+        const lb = lockedBy(x.sid); if (lb) chips.push(`<span class="chip st-lock">${esc(nameOf(lb))} is editing</span>`);
+        const b = inert(safeHtml(x.html)); decorate(b);
+        html += `<div class="h-sec"><h3>${x.num} ${esc(x.title || "Untitled")}</h3><span class="card-meta">${chips.join("")}<button class="btn" type="button" data-edit="${esc(x.sid)}">Edit</button></span></div>
+          <div class="doc">${b.innerHTML || `<p class="muted">No text yet.</p>`}</div>`;
+      });
+    });
+    return html + `</div>`;
+  }
+
+  function renderLatexDoc() {
+    const hl = (t) => esc(t).replace(/^(%.*)$/gm, '<span class="cm">$1</span>').replace(/(\\[a-zA-Z]+)/g, '<span class="cmd">$1</span>');
+    let out = `<p class="muted small" style="margin-bottom:8px">The thesis as LaTeX: each section file in order, as it is in GitHub. Sections with edits not yet synced are shown as they will be after the next sync.</p><pre class="texsrc">`;
+    docOutline().forEach((c) => {
+      out += `<span class="file">chapters/${esc(c.key)}/_chapter.tex</span>` + hl(`\\chapter{${texEsc(c.title)}}`) + "\n";
+      c.secs.forEach((x) => {
+        const live = x.d && (x.pending || x.conflict);
+        const tex = live ? htmlToTex(x.title, x.d.html) : x.repo ? x.repo.tex : "";
+        const file = `chapters/${x.sid.replace(".", "/")}.tex`;
+        out += `<span class="file" data-edit="${esc(x.sid)}" style="cursor:pointer">${esc(file)}${live ? ` <span class="pend">· not yet in GitHub</span>` : ""}</span>` + hl(tex);
+      });
+    });
+    return out + `</pre>`;
+  }
+
   function initWriting() {
     repoSecs = new Map();
     (D.writing?.chapters || []).forEach((c) => c.sections.forEach((s) => repoSecs.set(s.sid, s)));
     byKey = new Map(S.map((s) => [s.citeKey, s]));
     renderWriting();
+    setDmode(dmode);
+    setWview(wview);
   }
 
   // ---------------------------------------------------------------- shared store
