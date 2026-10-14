@@ -309,6 +309,75 @@ table.matrix { border-collapse: collapse; width: 100%; min-width: 780px; }
 .template div span { color: var(--ink-3); }
 pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; overflow-x: auto; font-size: 0.8rem; margin: 0; }
 
+/* ---------- writing ---------- */
+.w-summary { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); align-items: center; }
+@media (max-width: 860px) { .w-summary { grid-template-columns: 1fr; } }
+.w-stats { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-end; }
+.w-stats p { flex-basis: 100%; }
+.w-chart svg { width: 100%; height: auto; display: block; }
+.w-bars { display: grid; gap: 6px; margin-top: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); }
+.w-bar { font-size: 0.78rem; color: var(--ink-2); }
+.w-bar .track { height: 6px; background: var(--sunk); border-radius: 3px; overflow: hidden; margin-top: 3px; }
+.w-bar .fill { height: 100%; background: var(--accent); }
+.w-layout { display: grid; gap: 20px; grid-template-columns: minmax(240px, 320px) minmax(0, 1fr); align-items: start; }
+@media (max-width: 900px) { .w-layout { grid-template-columns: 1fr; } }
+.w-toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 64px); max-height: calc(100vh - 90px); overflow-y: auto; padding: 12px; }
+@media (max-width: 900px) { .w-toc { position: static; max-height: none; } }
+.w-ch { margin-bottom: 12px; }
+.w-ch > header { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; padding: 4px 6px; }
+.w-ch > header b { font-size: 0.88rem; }
+.w-sec { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; width: 100%; text-align: left; border: 0; background: none; padding: 6px 8px; border-radius: 4px; cursor: pointer; font-size: 0.86rem; }
+.w-sec:hover { background: var(--sunk); }
+.w-sec[aria-current="true"] { background: var(--accent-soft); }
+.w-sec .m { grid-column: 1 / -1; display: flex; gap: 6px; flex-wrap: wrap; }
+.w-sec .chip { font-size: 0.68rem; padding: 0 6px; }
+.w-sec.gone { text-decoration: line-through; color: var(--ink-3); }
+.chip.st-pending { border-color: var(--warn); color: var(--warn); }
+.chip.st-conflict { border-color: var(--bad); color: var(--bad); }
+.chip.st-lock { border-color: var(--accent); color: var(--accent); }
+.w-add { display: flex; gap: 6px; padding: 4px 6px; }
+.w-add input { flex: 1; font-size: 0.84rem; }
+.w-addbtn { border: 0; background: none; color: var(--accent); cursor: pointer; font-size: 0.82rem; padding: 4px 8px; }
+.w-editor { min-height: 60vh; }
+.w-empty { display: grid; gap: 8px; place-content: center; text-align: center; min-height: 50vh; max-width: 52ch; margin: 0 auto; }
+.ed-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.ed-title { width: 100%; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; font-family: var(--f-display); font-size: 1.7rem; font-weight: 600; padding: 8px 0; margin: 6px 0 4px; background: transparent; }
+.ed-status { font-size: 0.8rem; color: var(--ink-3); min-height: 1.3em; }
+.ed-toolbar { display: flex; gap: 8px; flex-wrap: wrap; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 56px); background: var(--panel); padding: 8px 0; z-index: 5; border-bottom: 1px solid var(--rule); }
+.ed-toolbar .seg button { font-size: 0.8rem; padding: 4px 10px; }
+.ed-pop { border: 1px solid var(--rule); border-radius: var(--r); background: var(--panel); padding: 10px; margin: 8px 0; display: grid; gap: 8px; box-shadow: 0 8px 24px rgba(10, 20, 30, 0.08); }
+.ed-pop .list { max-height: 260px; overflow-y: auto; display: grid; gap: 2px; }
+.ed-pop .list button { text-align: left; border: 0; background: none; padding: 5px 6px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; }
+.ed-pop .list button:hover, .ed-pop .list button:focus-visible { background: var(--sunk); }
+.ed-pop .row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.ed-pop .row input { flex: 1 1 200px; }
+.doc {
+  font-family: var(--f-display); font-size: 1.12rem; line-height: 1.65; max-width: 72ch; margin: 18px auto 0;
+  min-height: 40vh; outline: none; padding: 4px 2px 40px;
+}
+.doc:focus-visible { outline: none; }
+.doc p { margin: 0 0 0.9em; }
+.doc h3 { font-family: var(--f-body); font-size: 1.15rem; margin: 1.4em 0 0.5em; text-transform: none; letter-spacing: 0; color: var(--ink); }
+.doc h4 { font-family: var(--f-body); font-size: 1rem; margin: 1.2em 0 0.4em; color: var(--ink); }
+.doc ul, .doc ol { margin: 0 0 0.9em; padding-left: 1.4em; }
+.doc a { color: var(--accent); }
+.doc .cite { background: var(--accent-soft); border-radius: 3px; padding: 0 3px; font-family: var(--f-body); font-size: 0.86em; white-space: nowrap; cursor: default; }
+.doc .fn { font-family: var(--f-body); font-size: 0.8em; background: var(--sunk); border-radius: 3px; padding: 1px 4px; color: var(--ink-2); }
+.doc .fn::before { content: "Footnote: "; color: var(--ink-3); font-weight: 600; }
+.doc .tex { font-family: var(--f-mono); font-size: 0.8em; background: var(--sunk); border-radius: 3px; padding: 0 4px; }
+.doc pre.tex { display: block; padding: 10px 12px; white-space: pre-wrap; margin: 0 0 0.9em; border-left: 3px solid var(--ink-3); }
+.doc pre.tex::before { content: "LaTeX"; display: block; font-family: var(--f-body); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+.doc p.todo { font-family: var(--f-body); font-size: 0.86rem; background: color-mix(in srgb, var(--warn) 10%, var(--panel)); border-left: 3px solid var(--warn); padding: 6px 10px; color: var(--ink-2); }
+.doc p.todo::before { content: "TODO  "; font-weight: 700; color: var(--warn); }
+.doc[contenteditable="false"] { opacity: 0.85; }
+.ed-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; max-width: 72ch; margin: 0 auto; border-top: 1px solid var(--rule); padding-top: 10px; }
+.banner { border-radius: var(--r); padding: 10px 12px; margin: 8px 0; font-size: 0.88rem; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+.banner.info { background: var(--accent-soft); }
+.banner.warn { background: color-mix(in srgb, var(--warn) 14%, var(--panel)); }
+.banner.bad { background: color-mix(in srgb, var(--bad) 12%, var(--panel)); }
+.banner .acts { display: flex; gap: 6px; flex-wrap: wrap; }
+#ed-github { max-width: 72ch; margin: 18px auto 0; border-top: 2px dashed var(--rule); padding-top: 12px; }
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 
@@ -317,6 +386,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     <div class="brand"><b>GGM Agents</b><span>Project thesis · NTNU Industrial Economics · autumn 2026</span></div>
     <nav class="tabs" role="tablist" aria-label="Sections">
       <button class="tab" role="tab" id="tab-overview" data-room="overview" aria-selected="true">Overview</button>
+      <button class="tab" role="tab" id="tab-writing" data-room="writing" aria-selected="false">Writing</button>
       <button class="tab" role="tab" id="tab-sources" data-room="sources" aria-selected="false">Sources</button>
       <button class="tab" role="tab" id="tab-repo" data-room="repo" aria-selected="false">Repository</button>
       <button class="tab" role="tab" id="tab-agents" data-room="agents" aria-selected="false">Agents</button>
@@ -374,6 +444,71 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
           <div><h3>Still open in the scope</h3><ul class="plain" id="open-items" style="margin-top:6px"></ul></div>
           <div><h3>Decided</h3><ul class="plain" id="decided" style="margin-top:6px"></ul></div>
           <p class="muted small" id="q-counts"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WRITING ================= -->
+  <section class="room" id="room-writing" hidden>
+    <div class="panel">
+      <div class="w-summary">
+        <div class="w-stats">
+          <div><div class="bignum" id="w-words">0</div><span class="muted small">words written</span></div>
+          <div><div class="bignum" id="w-pending">0</div><span class="muted small">sections not yet in GitHub</span></div>
+          <div><div class="bignum" id="w-todos">0</div><span class="muted small">TODO notes left</span></div>
+          <p class="muted small" id="w-sync"></p>
+        </div>
+        <div class="w-chart" id="w-chart"></div>
+      </div>
+      <div class="w-bars" id="w-bars"></div>
+    </div>
+    <div class="w-layout">
+      <nav class="panel w-toc" id="w-toc" aria-label="Chapters and sections"></nav>
+      <div class="panel w-editor" id="w-editor">
+        <div class="w-empty" id="w-empty">
+          <h2>Pick a section to start writing</h2>
+          <p class="muted">Everything you type is saved as you go and shared straight away. It reaches the LaTeX files in GitHub at the next sync, every three hours.</p>
+        </div>
+        <div id="w-open" hidden>
+          <div class="ed-head">
+            <span class="muted small" id="ed-crumb"></span>
+            <button class="btn" type="button" id="ed-close">Close</button>
+          </div>
+          <input type="text" id="ed-title" class="ed-title" aria-label="Section title" maxlength="160">
+          <div class="ed-status" id="ed-status" aria-live="polite"></div>
+          <div id="ed-banner"></div>
+          <div class="ed-toolbar" id="ed-toolbar" role="toolbar" aria-label="Formatting">
+            <div class="seg" role="group">
+              <button type="button" data-cmd="p" title="Normal text">Text</button>
+              <button type="button" data-cmd="h3" title="Subsection heading">Heading</button>
+              <button type="button" data-cmd="h4" title="Sub-subsection heading">Subheading</button>
+            </div>
+            <div class="seg" role="group">
+              <button type="button" data-cmd="bold" title="Bold"><b>B</b></button>
+              <button type="button" data-cmd="italic" title="Italic"><i>I</i></button>
+            </div>
+            <div class="seg" role="group">
+              <button type="button" data-cmd="ul" title="Bulleted list">• List</button>
+              <button type="button" data-cmd="ol" title="Numbered list">1. List</button>
+            </div>
+            <div class="seg" role="group">
+              <button type="button" data-cmd="link" title="Link">Link</button>
+              <button type="button" data-cmd="cite" title="Cite a source from the literature list">Cite</button>
+              <button type="button" data-cmd="fn" title="Footnote">Footnote</button>
+            </div>
+            <div class="seg" role="group">
+              <button type="button" data-cmd="todo" title="A note to ourselves, not printed">TODO</button>
+              <button type="button" data-cmd="tex" title="Raw LaTeX for maths, tables and figures">LaTeX</button>
+            </div>
+          </div>
+          <div class="ed-pop" id="ed-pop" hidden></div>
+          <div class="doc" id="ed-body" contenteditable="true" spellcheck="true" aria-label="Section text"></div>
+          <div class="ed-foot">
+            <span class="muted small" id="ed-words"></span>
+            <button class="btn danger" type="button" id="ed-delete">Delete section</button>
+          </div>
+          <div id="ed-github" hidden></div>
         </div>
       </div>
     </div>
@@ -1163,16 +1298,524 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     }).join("");
   }
 
+
+  // ---------------------------------------------------------------- writing
+  // The repo is the record. Edits made here are saved as drafts in the shared store
+  // and copied into thesis/chapters/*.tex by thesis/sync.py every three hours. A draft
+  // is "pending" until a receipt for its revision appears; a receipt can also say the
+  // repo copy changed underneath (a conflict), in which case nothing was overwritten.
+  let me = { id: null }, userApi = null, names = {};
+  let drafts = {}, receipts = {}, lastRun = null, locks = {};
+  let repoSecs = new Map();
+  let cur = null, saveTimer = null, saving = false, saveAgain = false, heartbeat = null, lastSavedAt = null;
+  let savedRange = null, showGithub = false, armedUseGithub = false, loadedRev = 0;
+  const LOCK_MS = 120000;
+  const parser = new DOMParser();
+  const inert = (html) => parser.parseFromString(`<body>${html || ""}</body>`, "text/html").body;
+
+  function cleanInline(n) {
+    let out = "";
+    for (const c of n.childNodes) {
+      if (c.nodeType === 3) { out += esc(c.nodeValue); continue; }
+      if (c.nodeType !== 1) continue;
+      const t = c.tagName.toLowerCase(), cl = c.classList;
+      if (t === "br") out += "<br>";
+      else if (t === "span" && cl.contains("cite")) out += `<span class="cite" data-keys="${esc(c.getAttribute("data-keys") || "")}" data-mode="${c.getAttribute("data-mode") === "t" ? "t" : "p"}">${esc(c.textContent)}</span>`;
+      else if (t === "span" && cl.contains("tex")) out += `<span class="tex">${esc(c.textContent)}</span>`;
+      else if (t === "span" && cl.contains("fn")) out += `<span class="fn">${cleanInline(c)}</span>`;
+      else if (t === "strong" || t === "b") out += `<strong>${cleanInline(c)}</strong>`;
+      else if (t === "em" || t === "i") out += `<em>${cleanInline(c)}</em>`;
+      else if (t === "a") { const h = c.getAttribute("href") || ""; out += /^(https?:|mailto:)/i.test(h) ? `<a href="${esc(h)}">${cleanInline(c)}</a>` : cleanInline(c); }
+      else if (/^(p|div|h\d|li|ul|ol|pre|blockquote)$/.test(t)) out += " " + cleanInline(c) + " ";
+      else if (/^(script|style|template|iframe|object|img|svg|video|audio)$/.test(t)) continue;
+      else out += cleanInline(c);
+    }
+    return out;
+  }
+  function cleanHtml(root) {
+    let out = "", loose = "";
+    const flush = () => { if (loose.replace(/<br>/g, "").trim()) out += `<p>${loose.trim()}</p>`; loose = ""; };
+    for (const c of root.childNodes) {
+      if (c.nodeType === 3) { loose += esc(c.nodeValue); continue; }
+      if (c.nodeType !== 1) continue;
+      const t = c.tagName.toLowerCase();
+      if (/^(span|strong|b|em|i|a|br)$/.test(t)) { const w = document.createElement("div"); w.appendChild(c.cloneNode(true)); loose += cleanInline(w); continue; }
+      flush();
+      if (t === "pre") { if (c.textContent.trim()) out += `<pre class="tex">${esc(c.textContent.replace(/\n+$/, ""))}</pre>`; }
+      else if (t === "p" && c.classList.contains("todo")) { const x = c.textContent.replace(/\s+/g, " ").trim(); if (x) out += `<p class="todo">${esc(x)}</p>`; }
+      else if (/^h[123]$/.test(t)) { const x = cleanInline(c).trim(); if (x) out += `<h3>${x}</h3>`; }
+      else if (/^h[456]$/.test(t)) { const x = cleanInline(c).trim(); if (x) out += `<h4>${x}</h4>`; }
+      else if (t === "ul" || t === "ol") {
+        const items = [...c.children].filter((x) => x.tagName === "LI").map((li) => cleanInline(li).trim()).filter(Boolean).map((x) => `<li>${x}</li>`).join("");
+        if (items) out += `<${t}>${items}</${t}>`;
+      } else if (/^(script|style|template|iframe|object|img|svg|video|audio)$/.test(t)) continue;
+      else { const x = cleanInline(c); if (x.replace(/<br>/g, "").trim()) out += `<p>${x.trim()}</p>`; }
+    }
+    flush();
+    return out;
+  }
+  const safeHtml = (html) => cleanHtml(inert(html));
+  function wordsIn(html) {
+    const b = inert(html);
+    b.querySelectorAll("pre, p.todo").forEach((n) => n.remove());
+    b.querySelectorAll("span.cite").forEach((n) => (n.textContent = " x "));
+    b.querySelectorAll("span.tex").forEach((n) => (n.textContent = " "));
+    return (b.textContent.match(/[\p{L}][\p{L}\p{N}'’-]*|\d+/gu) || []).length;
+  }
+  const todosIn = (html) => inert(html).querySelectorAll("p.todo").length;
+
+  // Citations show as "Author et al. (2026)" or "(Author et al., 2026)".
+  let byKey = new Map();
+  function citeLabel(keys, mode) {
+    const parts = (keys || "").split(",").map((k) => k.trim()).filter(Boolean).map((k) => {
+      const s = byKey.get(k);
+      if (!s) return { a: k, y: "" };
+      const many = /et al|&|,.*,/.test(s.authors);
+      return { a: (s.surname || s.short || s.title.split(" ")[0]) + (many ? " et al." : ""), y: s.year || "n.d." };
+    });
+    if (!parts.length) return "[citation]";
+    return mode === "t" ? parts.map((p) => `${p.a} (${p.y})`).join("; ") : "(" + parts.map((p) => `${p.a}, ${p.y}`).join("; ") + ")";
+  }
+  function decorate(root) {
+    root.querySelectorAll("span.cite").forEach((n) => { n.contentEditable = "false"; n.textContent = citeLabel(n.getAttribute("data-keys"), n.getAttribute("data-mode")); n.title = n.getAttribute("data-keys") || ""; });
+    root.querySelectorAll("span.tex").forEach((n) => (n.contentEditable = "false"));
+  }
+
+  // State of one section, combining the published repo copy, the draft and its receipts.
+  function latestReceipt(sid) { return receipts[sid] || null; }
+  function secState(sid) {
+    const repo = repoSecs.get(sid) || null, d = drafts[sid] || null, r = latestReceipt(sid);
+    const pending = !!d && (!r || (r.rev || 0) < (d.rev || 0));
+    const conflict = !!d && !!r && !!r.conflict && d.resolved !== r.rev;
+    const live = d && (pending || conflict);
+    const html = live ? d.html : repo ? repo.html : d ? d.html : "";
+    const title = live ? d.title : repo ? repo.title : d ? d.title : "";
+    const deleted = !!d && !!d.deleted && (pending || conflict);
+    const visible = !!repo || (live && !d.deleted) || deleted;
+    return { sid, repo, d, r, pending, conflict, deleted, visible, html, title, chapter: sid.split(".")[0],
+      words: live ? wordsIn(d.html) : repo ? repo.words : 0, todos: live ? todosIn(d.html) : repo ? repo.todos : 0 };
+  }
+  function allSids() {
+    const set = new Set(repoSecs.keys());
+    Object.keys(drafts).forEach((k) => set.add(k));
+    return [...set].sort();
+  }
+  const lockedBy = (sid) => { const l = locks[sid]; return l && l.by && l.by !== me.id && Date.now() - (l.at || 0) < LOCK_MS ? l.by : null; };
+  const nameOf = (id) => names[id] || "Someone";
+  async function resolveNames(ids) {
+    const need = ids.filter((id) => id && !(id in names));
+    if (!need.length || !userApi?.profiles) return;
+    try { const ps = await userApi.profiles(need); need.forEach((id) => (names[id] = (ps[id] && ps[id].name) || "")); renderToc(); renderBanner(); } catch {}
+  }
+  const canEditText = () => !!db && !!me.id && canWrite;
+
+  function renderWriting() {
+    if (!D || !D.writing) return;
+    renderWritingSummary();
+    renderToc();
+    if (cur) { renderBanner(); renderEdStatus(); }
+  }
+
+  function renderWritingSummary() {
+    const states = allSids().map(secState).filter((x) => x.visible && !x.deleted);
+    const total = states.reduce((a, x) => a + x.words, 0);
+    $("#w-words").textContent = total.toLocaleString("en-GB");
+    $("#w-pending").textContent = states.filter((x) => x.pending).length + allSids().map(secState).filter((x) => x.deleted).length;
+    $("#w-todos").textContent = states.reduce((a, x) => a + x.todos, 0);
+    const conflicts = states.filter((x) => x.conflict).length;
+    const run = lastRun ? new Date(lastRun).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : null;
+    $("#w-sync").textContent = (db ? (run ? `Last sync with changes: ${run}. ` : "No hub edits synced to GitHub yet. ") : "Writing needs the shared store, available when this page is opened on claude.ai. ") +
+      `GitHub text as of ${D.builtAt.replace("T", " ")}.` + (conflicts ? ` ${conflicts} section${conflicts > 1 ? "s need" : " needs"} attention.` : "");
+    // Words per chapter
+    const byCh = {};
+    states.forEach((x) => (byCh[x.chapter] = (byCh[x.chapter] || 0) + x.words));
+    const max = Math.max(1, ...Object.values(byCh));
+    $("#w-bars").innerHTML = D.writing.chapters.map((c) => `<div class="w-bar"><div style="display:flex;justify-content:space-between;gap:6px"><span>${esc(c.n)}. ${esc(c.title)}</span><b class="num">${(byCh[c.key] || 0).toLocaleString("en-GB")}</b></div><div class="track"><div class="fill" style="width:${((byCh[c.key] || 0) / max) * 100}%"></div></div></div>`).join("");
+    renderWordChart(total);
+  }
+
+  function renderWordChart(total) {
+    const hist = D.writing.history.map((h) => ({ d: parseDate(h.date), w: h.words }));
+    const t = today();
+    if (!hist.length || +hist[hist.length - 1].d !== +t || hist[hist.length - 1].w !== total) hist.push({ d: t, w: total, live: true });
+    const x0 = parseDate(D.timeline.plan[0].start), x1 = parseDate("2026-12-13");
+    const W = 640, H = 170, pl = 44, pr = 12, pt = 12, pb = 24;
+    const maxW = Math.max(1000, ...hist.map((h) => h.w));
+    const step = [100, 250, 500, 1000, 2500, 5000, 10000].find((s) => maxW / s <= 4) || 20000;
+    const top = Math.ceil((maxW * 1.1) / step) * step;
+    const X = (d) => pl + ((d - x0) / (x1 - x0)) * (W - pl - pr);
+    const Y = (v) => H - pb - (v / top) * (H - pb - pt);
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Words written over time">`;
+    for (let v = 0; v <= top; v += step) svg += `<line x1="${pl}" x2="${W - pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--rule)"/><text x="${pl - 6}" y="${Y(v) + 4}" text-anchor="end" font-size="10" fill="var(--ink-3)" class="num">${v >= 1000 ? v / 1000 + "k" : v}</text>`;
+    D.timeline.milestones.forEach((m) => {
+      const x = X(parseDate(m.date));
+      svg += `<line x1="${x}" x2="${x}" y1="${pt}" y2="${H - pb}" stroke="var(--ink-3)" stroke-dasharray="3 3"/><text x="${x - 4}" y="${pt + 10}" text-anchor="end" font-size="10" fill="var(--ink-3)">${esc(m.label)}</text>`;
+    });
+    if (t >= x0 && t <= x1) svg += `<line x1="${X(t)}" x2="${X(t)}" y1="${pt}" y2="${H - pb}" stroke="var(--bad)"/>`;
+    [["2026-10-01", "Oct"], ["2026-11-01", "Nov"], ["2026-12-01", "Dec"]].forEach(([d, l]) => (svg += `<text x="${X(parseDate(d))}" y="${H - 6}" font-size="10" fill="var(--ink-3)">${l}</text>`));
+    const pts = hist.filter((h) => h.d >= x0 && h.d <= x1);
+    if (pts.length) {
+      const line = pts.map((h, i) => `${i ? "L" : "M"}${X(h.d).toFixed(1)},${Y(h.w).toFixed(1)}`).join("");
+      svg += `<path d="${line}L${X(pts[pts.length - 1].d).toFixed(1)},${Y(0)}L${X(pts[0].d).toFixed(1)},${Y(0)}Z" fill="var(--accent)" fill-opacity="0.12"/>`;
+      svg += `<path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2"/>`;
+      const e = pts[pts.length - 1];
+      svg += `<circle cx="${X(e.d)}" cy="${Y(e.w)}" r="4" fill="var(--accent)"/><text x="${X(e.d) + 7}" y="${Y(e.w) - 6}" font-size="11" fill="var(--ink)" class="num">${e.w.toLocaleString("en-GB")}</text>`;
+    }
+    $("#w-chart").innerHTML = svg + "</svg>";
+  }
+
+  let addingIn = null;
+  function renderToc() {
+    if (!D || !D.writing) return;
+    const states = allSids().map(secState).filter((x) => x.visible);
+    $("#w-toc").innerHTML = D.writing.chapters.map((c) => {
+      const secs = states.filter((x) => x.chapter === c.key);
+      const words = secs.filter((x) => !x.deleted).reduce((a, x) => a + x.words, 0);
+      const items = secs.map((x) => {
+        const lb = lockedBy(x.sid);
+        const chips = [`<span class="chip num">${x.words} w</span>`];
+        if (x.conflict) chips.push(`<span class="chip st-conflict">Needs attention</span>`);
+        else if (x.deleted) chips.push(`<span class="chip st-pending">Deleted at next sync</span>`);
+        else if (x.pending) chips.push(`<span class="chip st-pending">${x.repo ? "Not yet in GitHub" : "New"}</span>`);
+        if (lb) chips.push(`<span class="chip st-lock">${esc(nameOf(lb))} is editing</span>`);
+        if (x.todos) chips.push(`<span class="chip">${x.todos} TODO</span>`);
+        return `<button class="w-sec${x.deleted ? " gone" : ""}" data-sid="${esc(x.sid)}" aria-current="${cur === x.sid}"><span>${esc(x.title || "Untitled")}</span><span></span><span class="m">${chips.join("")}</span></button>`;
+      }).join("");
+      const add = addingIn === c.key
+        ? `<form class="w-add" data-ch="${esc(c.key)}"><input type="text" id="w-add-${esc(c.key)}" placeholder="Section title" maxlength="120" required><button class="btn" type="submit">Add</button></form>`
+        : canEditText() ? `<button class="w-addbtn" data-addch="${esc(c.key)}" type="button">+ Add section</button>` : "";
+      return `<div class="w-ch"><header><b>${esc(c.n)}. ${esc(c.title)}</b><span class="muted small num">${words.toLocaleString("en-GB")} w</span></header>${items}${add}</div>`;
+    }).join("");
+    $$("#w-toc [data-sid]").forEach((b) => b.addEventListener("click", () => openSection(b.dataset.sid)));
+    $$("#w-toc [data-addch]").forEach((b) => b.addEventListener("click", () => { addingIn = b.dataset.addch; renderToc(); $(`#w-add-${CSS.escape(addingIn)}`)?.focus(); }));
+    $$("#w-toc form.w-add").forEach((f) => f.addEventListener("submit", (e) => { e.preventDefault(); createSection(f.dataset.ch, f.querySelector("input").value); }));
+  }
+
+  function slugify(t) {
+    return (t.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/\u00e6/g, "ae").replace(/\u00f8/g, "o").replace(/\u00e5/g, "a")
+      .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40).replace(/-+$/, "")) || "section";
+  }
+  async function createSection(chKey, title) {
+    title = (title || "").trim();
+    if (!title || !canEditText()) return;
+    const nums = allSids().filter((s) => s.startsWith(chKey + ".")).map((s) => parseInt(s.split(".")[1], 10) || 0);
+    const n = String(Math.max(0, ...nums) + 1).padStart(2, "0");
+    const sid = `${chKey}.${n}-${slugify(title)}`;
+    try {
+      await db.collection("drafts").doc(sid).set({ title, html: "", rev: 1, baseHash: "none", by: me.id, updatedAt: new Date().toISOString(), deleted: false });
+      addingIn = null;
+      openSection(sid);
+    } catch (err) { $("#w-sync").textContent = writeError(err); }
+  }
+  function writeError(err) {
+    const code = err && err.code;
+    if (code === "invalid_argument") { canWrite = false; return "You can read the thesis here but not edit it. Ask the page owner for Contributor access."; }
+    if (code === "quota_exceeded") return "The shared store is full. Tell Jørgen so old sync records can be cleared.";
+    return "Could not save. Check your connection; your text is still in the editor and will be saved on the next change.";
+  }
+
+  // ---- editor
+  function openSection(sid) {
+    if (cur && cur !== sid) closeSection();
+    const x = secState(sid);
+    cur = sid; showGithub = false; armedUseGithub = false; loadedRev = (drafts[sid] && drafts[sid].rev) || 0;
+    const ch = D.writing.chapters.find((c) => c.key === x.chapter);
+    $("#w-empty").hidden = true; $("#w-open").hidden = false;
+    $("#ed-crumb").textContent = ch ? `Chapter ${ch.n} · ${ch.title}` : x.chapter;
+    $("#ed-title").value = x.title;
+    const body = $("#ed-body");
+    body.innerHTML = safeHtml(x.html) || "<p><br></p>";
+    decorate(body);
+    const editable = canEditText() && !x.deleted;
+    body.contentEditable = String(editable);
+    $("#ed-title").disabled = !editable;
+    $$("#ed-toolbar button").forEach((b) => (b.disabled = !editable));
+    $("#ed-delete").hidden = !editable;
+    $("#ed-delete").textContent = "Delete section"; $("#ed-delete").dataset.armed = "";
+    $("#ed-pop").hidden = true;
+    $("#ed-github").hidden = true;
+    if (editable) setLock(true);
+    renderBanner(); renderEdStatus(); renderToc();
+    $("#w-open").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  function closeSection() {
+    if (!cur) return;
+    flushSave();
+    setLock(false);
+    cur = null;
+    $("#w-open").hidden = true; $("#w-empty").hidden = false;
+    renderToc();
+  }
+  $("#ed-close").addEventListener("click", closeSection);
+
+  async function setLock(on) {
+    if (!db || !me.id || !cur) return;
+    clearInterval(heartbeat);
+    const sid = cur;
+    try { await db.collection("locks").doc(sid).set({ by: on ? me.id : null, at: Date.now() }); } catch {}
+    if (on) heartbeat = setInterval(() => { if (cur === sid) db.collection("locks").doc(sid).set({ by: me.id, at: Date.now() }).catch(() => {}); }, 45000);
+  }
+
+  function renderEdStatus() {
+    if (!cur) return;
+    const x = secState(cur);
+    const words = wordsIn(cleanHtml($("#ed-body")));
+    $("#ed-words").textContent = `${words.toLocaleString("en-GB")} words (approximate)`;
+    let st;
+    if (saving || saveTimer) st = "Saving…";
+    else if (!canEditText()) st = db ? "Read only." : "Read only: open this page on claude.ai to write.";
+    else if (x.conflict) st = "Saved here. Not synced: see the note above.";
+    else if (x.deleted) st = "Will be deleted from GitHub at the next sync.";
+    else if (x.pending) st = `Saved here${lastSavedAt ? " at " + lastSavedAt : ""}. Reaches GitHub at the next sync (every 3 hours).`;
+    else st = x.repo ? "Up to date with GitHub." : "";
+    $("#ed-status").textContent = st;
+  }
+
+  function renderBanner() {
+    if (!cur) return;
+    const x = secState(cur), lb = lockedBy(cur);
+    let html = "";
+    if (x.conflict) {
+      html += `<div class="banner bad"><span>This section was also changed in GitHub after you started editing it here, so the sync left GitHub's version alone. Pick one version.</span>
+        <span class="acts"><button class="btn" type="button" data-act="show-gh">${showGithub ? "Hide" : "Show"} GitHub's version</button>
+        <button class="btn" type="button" data-act="keep-mine">Keep my version</button>
+        <button class="btn danger" type="button" data-act="use-gh">${armedUseGithub ? "Confirm: discard my version" : "Use GitHub's version"}</button></span></div>`;
+    }
+    if (x.deleted) html += `<div class="banner warn"><span>This section will be deleted from GitHub at the next sync.</span><span class="acts"><button class="btn" type="button" data-act="undelete">Keep it</button></span></div>`;
+    if (lb) html += `<div class="banner info"><span>${esc(nameOf(lb))} has this section open right now. If you both type, the last save wins.</span></div>`;
+    const d = drafts[cur];
+    if (d && d.by && d.by !== me.id && (d.rev || 0) > loadedRev) {
+      html += `<div class="banner info"><span>${esc(nameOf(d.by))} just changed this section.</span><span class="acts"><button class="btn" type="button" data-act="reload">Load their version</button></span></div>`;
+    }
+    $("#ed-banner").innerHTML = html;
+    $$("#ed-banner [data-act]").forEach((b) => b.addEventListener("click", () => bannerAction(b.dataset.act)));
+    const gh = $("#ed-github");
+    if (showGithub && x.repo) { gh.hidden = false; gh.innerHTML = `<h3 style="margin-bottom:8px">GitHub's version</h3><div class="doc" style="min-height:0;margin-top:0">${safeHtml(x.repo.html)}</div>`; decorate(gh); }
+    else gh.hidden = true;
+  }
+
+  async function bannerAction(act) {
+    const sid = cur, x = secState(sid);
+    if (act === "show-gh") { showGithub = !showGithub; renderBanner(); return; }
+    if (act === "reload") { openSection(sid); return; }
+    if (act === "use-gh") {
+      if (!armedUseGithub) { armedUseGithub = true; renderBanner(); return; }
+      try { await db.collection("drafts").doc(sid).delete(); } catch (err) { $("#ed-status").textContent = writeError(err); return; }
+      armedUseGithub = false; openSection(sid); return;
+    }
+    if (act === "keep-mine") { await saveNow({ resolveConflict: true }); return; }
+    if (act === "undelete") { await saveNow({ deleted: false }); openSection(sid); }
+  }
+
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => { saveTimer = null; saveNow(); }, 1200);
+    renderEdStatus();
+  }
+  function flushSave() { if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; saveNow(); } }
+  async function saveNow(opts = {}) {
+    if (!cur || !canEditText()) return;
+    if (saving) { saveAgain = true; return; }
+    saving = true; saveAgain = false;
+    const sid = cur, x = secState(sid), d = drafts[sid], r = latestReceipt(sid);
+    let baseHash = x.pending || x.conflict ? (d && d.baseHash) || "none" : x.repo ? x.repo.hash : "none";
+    const doc = {
+      title: $("#ed-title").value.trim() || "Untitled",
+      html: cleanHtml($("#ed-body")),
+      rev: Math.max((d && d.rev) || 0, (r && r.rev) || 0) + 1,
+      baseHash, by: me.id, updatedAt: new Date().toISOString(),
+      deleted: opts.deleted ?? !!(d && d.deleted && (x.pending || x.conflict)),
+    };
+    if (opts.resolveConflict && r && r.conflict) { doc.baseHash = r.repoHash; doc.resolved = r.rev; }
+    else if (d && d.resolved != null) doc.resolved = d.resolved;
+    try {
+      await db.collection("drafts").doc(sid).set(doc);
+      loadedRev = doc.rev;
+      lastSavedAt = new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+    } catch (err) { $("#ed-status").textContent = writeError(err); saving = false; return; }
+    saving = false;
+    if (saveAgain) saveNow(); else renderEdStatus();
+  }
+
+  $("#ed-body").addEventListener("input", scheduleSave);
+  $("#ed-title").addEventListener("input", scheduleSave);
+  $("#ed-body").addEventListener("paste", (e) => {
+    e.preventDefault();
+    const text = (e.clipboardData || window.clipboardData).getData("text/plain");
+    document.execCommand("insertText", false, text);
+  });
+  $("#ed-delete").addEventListener("click", async (e) => {
+    const b = e.currentTarget;
+    if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "Confirm: delete this section"; setTimeout(() => { if (b.isConnected) { b.dataset.armed = ""; b.textContent = "Delete section"; } }, 4000); return; }
+    const sid = cur, x = secState(sid);
+    if (!x.repo) { try { await db.collection("drafts").doc(sid).delete(); } catch (err) { $("#ed-status").textContent = writeError(err); return; } closeSection(); return; }
+    await saveNow({ deleted: true });
+    openSection(sid);
+  });
+  window.addEventListener("pagehide", flushSave);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flushSave(); });
+
+  // ---- toolbar
+  function rememberRange() {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && $("#ed-body").contains(sel.anchorNode)) savedRange = sel.getRangeAt(0).cloneRange();
+  }
+  function restoreRange() {
+    const body = $("#ed-body");
+    body.focus();
+    if (savedRange) { const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(savedRange); }
+  }
+  // Insert inline HTML at the cursor, keeping it inside the paragraph it belongs to.
+  function insertAtCaret(html) {
+    restoreRange();
+    const sel = window.getSelection();
+    if (!sel.rangeCount) return;
+    const r = sel.getRangeAt(0);
+    r.deleteContents();
+    const frag = r.createContextualFragment(html);
+    const last = frag.lastChild;
+    r.insertNode(frag);
+    if (last) { r.setStartAfter(last); r.collapse(true); sel.removeAllRanges(); sel.addRange(r); }
+    savedRange = r.cloneRange();
+  }
+  function currentBlock() {
+    const sel = window.getSelection();
+    let n = sel && sel.anchorNode;
+    const body = $("#ed-body");
+    while (n && n !== body) { if (n.nodeType === 1 && /^(P|H3|H4|LI|PRE|DIV)$/.test(n.tagName) && n.parentNode === body) return n; n = n.parentNode; }
+    return null;
+  }
+  document.execCommand("defaultParagraphSeparator", false, "p");
+  $("#ed-toolbar").addEventListener("mousedown", (e) => { if (e.target.closest("button")) { rememberRange(); e.preventDefault(); } });
+  $("#ed-toolbar").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-cmd]");
+    if (!b || b.disabled) return;
+    const cmd = b.dataset.cmd;
+    restoreRange();
+    if (cmd === "p" || cmd === "h3" || cmd === "h4") {
+      document.execCommand("formatBlock", false, cmd.toUpperCase());
+      const blk = currentBlock(); if (blk) blk.classList.remove("todo");
+    } else if (cmd === "bold" || cmd === "italic") document.execCommand(cmd);
+    else if (cmd === "ul") document.execCommand("insertUnorderedList");
+    else if (cmd === "ol") document.execCommand("insertOrderedList");
+    else if (cmd === "todo") {
+      let blk = currentBlock();
+      if (blk && blk.tagName === "P" && blk.classList.contains("todo")) blk.classList.remove("todo");
+      else { document.execCommand("formatBlock", false, "P"); blk = currentBlock(); if (blk) blk.classList.add("todo"); }
+    } else if (cmd === "fn") {
+      const sel = window.getSelection();
+      const text = sel && !sel.isCollapsed ? esc(sel.toString()) : "Footnote text";
+      insertAtCaret(`<span class="fn">${text}</span>\u00a0`);
+    } else if (cmd === "tex") {
+      document.execCommand("insertHTML", false, `<pre class="tex">\\begin{equation}\n  \n\\end{equation}</pre><p><br></p>`);
+    } else if (cmd === "link") { rememberRange(); openLinkPop(); return; }
+    else if (cmd === "cite") { rememberRange(); openCitePop(); return; }
+    scheduleSave();
+  });
+
+  function closePop() { $("#ed-pop").hidden = true; $("#ed-pop").innerHTML = ""; }
+  function openLinkPop() {
+    const pop = $("#ed-pop");
+    pop.innerHTML = `<form class="row" id="pop-link"><input type="text" id="pop-url" placeholder="https://…" aria-label="Link address"><button class="btn primary" type="submit">Add link</button><button class="btn" type="button" id="pop-cancel">Cancel</button></form>`;
+    pop.hidden = false;
+    $("#pop-url").focus();
+    $("#pop-cancel").addEventListener("click", closePop);
+    $("#pop-link").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const url = $("#pop-url").value.trim();
+      if (!/^https?:\/\//i.test(url)) { $("#pop-url").setCustomValidity("Start the address with https://"); $("#pop-url").reportValidity(); return; }
+      closePop(); restoreRange();
+      const sel = window.getSelection();
+      if (sel.isCollapsed) insertAtCaret(`<a href="${esc(url)}">${esc(url)}</a>\u00a0`);
+      else document.execCommand("createLink", false, url);
+      scheduleSave();
+    });
+  }
+  function openCitePop() {
+    const pop = $("#ed-pop");
+    pop.innerHTML = `<div class="row"><input type="search" id="pop-q" placeholder="Search the literature list" aria-label="Search sources">
+      <div class="seg" role="group" aria-label="Citation style"><button type="button" id="pop-mt" aria-pressed="false">Author (Year)</button><button type="button" id="pop-mp" aria-pressed="true">(Author, Year)</button></div>
+      <button class="btn" type="button" id="pop-cancel">Cancel</button></div><div class="list" id="pop-list"></div>`;
+    pop.hidden = false;
+    let mode = "p";
+    const list = () => {
+      const q = $("#pop-q").value.trim().toLowerCase();
+      const hits = S.filter((s) => !q || (s.title + " " + s.authors + " " + s.short + " " + s.year).toLowerCase().includes(q)).sort((a, b) => b.priority - a.priority).slice(0, 40);
+      $("#pop-list").innerHTML = hits.map((s) => `<button type="button" data-key="${esc(s.citeKey)}"><b>${esc(label(s))}</b> · ${esc(s.title)}</button>`).join("") || `<span class="muted small">No match. Add the source to docs/literature-sources.md first.</span>`;
+      $$("#pop-list [data-key]").forEach((b) => b.addEventListener("click", () => {
+        closePop();
+        const k = b.dataset.key;
+        insertAtCaret(`<span class="cite" contenteditable="false" data-keys="${esc(k)}" data-mode="${mode}">${esc(citeLabel(k, mode))}</span>\u00a0`);
+        scheduleSave();
+      }));
+    };
+    $("#pop-q").addEventListener("input", list);
+    $("#pop-mt").addEventListener("click", () => { mode = "t"; $("#pop-mt").setAttribute("aria-pressed", "true"); $("#pop-mp").setAttribute("aria-pressed", "false"); });
+    $("#pop-mp").addEventListener("click", () => { mode = "p"; $("#pop-mp").setAttribute("aria-pressed", "true"); $("#pop-mt").setAttribute("aria-pressed", "false"); });
+    $("#pop-cancel").addEventListener("click", closePop);
+    list();
+    $("#pop-q").focus();
+  }
+
+  function initWriting() {
+    repoSecs = new Map();
+    (D.writing?.chapters || []).forEach((c) => c.sections.forEach((s) => repoSecs.set(s.sid, s)));
+    byKey = new Map(S.map((s) => [s.citeKey, s]));
+    renderWriting();
+  }
+
   // ---------------------------------------------------------------- shared store
+  // Local test mode: open index.html?localdb outside claude.ai to try writing against an
+  // in-memory store. Nothing is saved anywhere; it exists only to test the page.
+  function memoryStore() {
+    const cols = {}, subs = {};
+    const emit = (c) => (subs[c] || []).forEach((fn) => fn({ docs: Object.entries(cols[c] || {}).map(([id, v]) => ({ id, data: () => v })) }));
+    return { collection: (c) => ({
+      onSnapshot: (fn) => { (subs[c] = subs[c] || []).push(fn); setTimeout(() => emit(c)); return () => {}; },
+      doc: (id) => ({
+        set: async (v) => { (cols[c] = cols[c] || {})[id] = JSON.parse(JSON.stringify(v)); emit(c); },
+        update: async (v) => { Object.assign((cols[c] = cols[c] || {})[id] || {}, v); emit(c); },
+        delete: async () => { if (cols[c]) delete cols[c][id]; emit(c); },
+      }),
+      add: async (v) => { const id = Math.random().toString(36).slice(2); (cols[c] = cols[c] || {})[id] = v; emit(c); return { id }; },
+    }) };
+  }
   async function connectStore() {
     let user = null;
     try { [db, user] = await Promise.all([window.claude?.use?.("db") ?? null, window.claude?.use?.("user") ?? null]); } catch { db = null; }
+    if (!db && /[?&]localdb\b/.test(location.search)) {
+      db = memoryStore();
+      user = { can: async () => true, me: async () => ({ id: "u_local", name: "Local test" }), profiles: async (ids) => Object.fromEntries(ids.map((i) => [i, { name: "Local test" }])) };
+    }
     if (!db) {
       $("#task-status").textContent = "Tasks and reading status are stored on claude.ai. Open the published page there to see and add them.";
       setTaskFormEnabled(false); renderBoard(); renderReadProgress();
       return;
     }
     try { const w = user ? await user.can("data.write") : null; if (w === false) canWrite = false; } catch {}
+    userApi = user;
+    try { if (user) me = await user.me(); } catch {}
+    db.collection("drafts").onSnapshot((snap) => {
+      drafts = Object.fromEntries(snap.docs.map((d) => [d.id, d.data()]));
+      resolveNames([...new Set(Object.values(drafts).map((d) => d.by))]);
+      renderWriting();
+    }, () => {});
+    db.collection("receipts").onSnapshot((snap) => {
+      const latest = {}; let run = null;
+      snap.docs.forEach((doc) => {
+        const r = doc.data();
+        if (r.run) { if (!run || r.at > run) run = r.at; return; }
+        if (r.sid && (!latest[r.sid] || (r.rev || 0) > (latest[r.sid].rev || 0))) latest[r.sid] = r;
+      });
+      receipts = latest; lastRun = run;
+      renderWriting();
+    }, () => {});
+    db.collection("locks").onSnapshot((snap) => {
+      locks = Object.fromEntries(snap.docs.map((d) => [d.id, d.data()]));
+      resolveNames(Object.values(locks).map((l) => l.by).filter(Boolean));
+      renderToc(); renderBanner();
+    }, () => {});
+    renderWriting();
     if (!canWrite) { setTaskFormEnabled(false); $("#task-status").textContent = "View only: ask the page owner for Contributor access to change tasks."; }
     db.collection("tasks").onSnapshot((snap) => {
       tasks = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
@@ -1208,14 +1851,14 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     chapterOptions($("#task-chapter"));
     renderOverview(); renderTimeline(); renderBoard();
     renderSourceStats(); renderReadingList(); buildFilterUi(); syncFilterUi(); renderGap();
-    renderRepo(); renderAgents();
+    renderRepo(); renderAgents(); initWriting();
     const hash = (location.hash || "").slice(1);
-    const room = ["overview", "sources", "repo", "agents"].includes(hash) ? hash : store.get("room", "overview");
+    const room = ["overview", "writing", "sources", "repo", "agents"].includes(hash) ? hash : store.get("room", "overview");
     showRoom(room);
     renderSourcesView();
     window.addEventListener("hashchange", () => {
       const h = (location.hash || "").slice(1);
-      if (["overview", "sources", "repo", "agents"].includes(h)) showRoom(h);
+      if (["overview", "writing", "sources", "repo", "agents"].includes(h)) showRoom(h);
     });
     connectStore();
   }
