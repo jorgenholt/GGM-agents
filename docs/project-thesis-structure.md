@@ -226,7 +226,7 @@ dependent on backend determinism, reliance on domain knowledge from pretraining)
 transferable as risks to your discussion.
 
 **[AutoSAM](https://arxiv.org/pdf/2603.24736)** — multi-agent generation of input files for a large
-simulation code, using retrieval over mixed-format documentation, with a dedicated validation agent
+simulation code, using retrieval over mixed-format documentation, with a rule-based validator tool (not a separate agent — corrected 2026-10-15)
 checking schema, parameter dependencies and ranges *before* execution. The structural analogue to
 generating GGM workbooks. Read it directly — verify the domain and details yourself.
 
