@@ -33,8 +33,9 @@ storage at geographical nodes (PDF p. 10, Figure 1).
 
 **Who developed it** (PDF p. 10, printed p. 8): "GGM was developed by Egging (2010, 2013)", building on
 the European Gas Model and the World Gas Model. Holz co-authored the documentation and many of the
-applications. The thesis says "developed by Ruud Egging … applied and documented together with Franziska
-Holz at DIW Berlin"; check with Franziska that this is how she would put it.
+applications. The thesis therefore cites the model neutrally, as "the Global Gas Model (GGM) (Egging and Holz, 2019)",
+without saying who developed what, until Franziska says how she would put it
+([question 10](questions-for-weekly-meeting.md)).
 
 ### Regions
 

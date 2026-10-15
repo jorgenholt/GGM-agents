@@ -161,6 +161,17 @@ produced or used. These three gaps can only be filled by someone who works with 
   yet. An example set of output files from one run, and a quick walkthrough of what you look at
   first, would show what an agent interpreting results would actually be working with.
 
+### 10. How should we credit GGM's development?
+
+**For:** Franziska Holz · **Raised:** 2026-10-15 · **Feeds:** chapters 1 and 3
+
+The 2019 documentation says "GGM was developed by Egging (2010, 2013)" (printed p. 8), but she
+co-authored that documentation and many applications, the public repository is under her account, and
+the Julia port came from her group. For now the thesis just cites the model as (Egging and Holz, 2019).
+How would she like the development credited? For example: "developed by Egging and Holz", or
+"developed by Egging, and maintained and extended at DIW Berlin"? And should the Julia port (Barner)
+be credited separately?
+
 ---
 
 ## Parked — for the build phase (spring 2027)
