@@ -26,12 +26,14 @@ feedback. Everything else here is still a proposal, not a decision.*
 | 3 | The Global Gas Model | What it is, and where the manual work actually goes |
 | 4 | LLM agents | What they are good at, what they are bad at |
 | 5 | **Where AI fits** | The core chapter — a step-by-step walk through the workflow, and where AI could help at each step |
-| 6 | Conclusion | What we'd build in the master's thesis |
+| 6 | Discussion and conclusion | What should not be automated, the limits of the analysis, and what we'd build in the master's thesis |
 
 No proof of concept this semester — that is left for the master's thesis.
 
 The detailed outline, and the slides shown in week 40, split chapter 6 into three: 6 Design sketch,
-7 Discussion, 8 Conclusion and plan for spring.
+7 Discussion, 8 Conclusion and plan for spring. **Merged back into one chapter on 2026-10-15** to keep
+the thesis to about 36 pages of main text; the agent job descriptions at the end of chapter 5 take the
+place of the design sketch. Page and word targets per chapter: [`thesis-scope.md`](thesis-scope.md#length-targets).
 
 **Why this order:** chapter 2 places the thesis in the field and ends by stating the gap. Chapters 3
 and 4 are the two halves of the problem — the model and the tool. Chapter 5 is where they meet, and
