@@ -115,12 +115,12 @@ text** (roughly 45 with front matter and bibliography). IØT publishes no page l
 **confirm with Franziska** ([question 7](questions-for-weekly-meeting.md)).
 
 Words per page are measured, not guessed: the current LaTeX layout (`report`, 11pt, A4) gives about
-**390 words per page**. Check a chapter with `tectonic` or by counting words before calling it done.
+**390 words per page** without citations and about **380 with author-year citations**. Check a chapter with `tectonic` or by counting words before calling it done.
 
 | Chapter | Pages | Words | Sources | Note |
 |---|---|---|---|---|
-| 1 Introduction | 3 | ~1,150 | ~10 | Written; at target |
-| 2 Literature review | 5 | ~2,000 | ~20 | Written; at target. Breadth lives in `literature-sources.md`, not in the chapter |
+| 1 Introduction | 3 | ~950–1,150 | ~10 | Written: 950 words, 7 sources, 3 pages |
+| 2 Literature review | 5 | ~1,900–2,000 | ~20–25 | Written: 1,910 words, 24 sources, 5 pages. Breadth lives in `literature-sources.md`, not in the chapter |
 | 3 The Global Gas Model | 5 | ~1,950 | | Only what chapters 5–6 need; details to `ggm-model.md`, not the thesis |
 | 4 LLM agents | 7 | ~2,700 | | Deliberately longer than chapter 3: central to the argument |
 | 5 Where AI fits | 12 | ~4,700 | | The core — about a third of the thesis |
@@ -139,6 +139,17 @@ setting up and running models 350, calibration 600, energy and economic models 2
 - A source earns a place in the thesis by backing a specific claim, not by showing breadth.
 - No summary subsections inside a 5-page chapter; the last section does that job.
 - If a chapter runs over by more than about 20%, cut before moving on — the overrun compounds.
+
+**Sources cut from chapter 2 that later chapters should pick up** (2026-10-15). They were dropped for
+length, not because they are wrong; each backs a specific point elsewhere:
+
+| Chapter | Sources | For |
+|---|---|---|
+| 3 GGM | Holz (2015); Holz, von Hirschhausen & Kemfert (2008, GASMOD); Gabriel et al. (2005); Silvast et al. (2020); Süsser et al. (2021) | The model's lineage, and the judgment in energy-modelling practice |
+| 4 LLM agents | Wang et al. (2024); Schluntz & Zhang (2024); Majumder et al. (2024); Hu et al. (2025); Rojas et al. (2026); Korinek (2023, 2025); Kapoor et al. (2024) | What an agent is, workflows versus agents, energy-specific limits, "the solver computes", agents for economists, cost |
+| 5 Where AI fits | Eloundou et al. (2024); Dell'Acqua et al. (2026); Autor, Levy & Murnane (2003) | The task-by-task method of the chapter |
+| 5 (read the results) | Forootani et al. (2025, RE-LLM); Li et al. (2026, OptArgus) | Explaining results; a close fit is not a correct model |
+| 6 Discussion | Parasuraman & Manzey (2010); Kydland & Prescott (1996); Kennedy & O'Hagan (2001) | Automation bias at human gates; calibration as method |
 
 ---
 
