@@ -114,7 +114,9 @@ Jørgen and Save have flagged that scope is still being negotiated. Worth pinnin
 
 - What does a strong project thesis look like here — how much breadth versus depth?
 - *(Decided 2026-09-30: no proof of concept this semester — no need to ask.)*
-- Expected length, structure, and deadline
+- Expected length, structure, and deadline. **Length specifically (added 2026-10-15):** we are
+  writing to about 36 pages of main text (literature review 5, GGM 5, LLM agents 7, where AI fits 12).
+  Is that the right order of magnitude for an IØT project thesis written by two students?
 - Is there existing literature they would point to on LLM agents in modelling workflows?
 
 ### 8. Questions about the 2023 dataset

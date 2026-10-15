@@ -101,11 +101,55 @@ gap chapters 3–5 answer, and chapter 4 cites back to it. The introduction is w
 | 42–43 | Chapter 3: the Global Gas Model | Chapter 3 drafted |
 | 43–44 | Chapter 4: LLM agents | Chapter 4 drafted |
 | 45–47 | Chapter 5: where AI fits | Chapter 5 drafted |
-| 47–48 | Chapters 6–8: closing chapters | — |
+| 47–48 | Chapter 6: discussion and conclusion | — |
 | 48 | Introduction and abstract | Full draft to supervisors, 29 November |
 | 49–50 | Supervisor feedback, revise, hand in | **Hand-in, 13 December** |
 
 Hand-in date 13 December as stated by Jørgen (2026-10-05).
+
+## Length targets
+
+*Set 2026-10-15.* A first full draft of chapters 1–2 came to 24 pages, which projected to over 100
+pages for the whole thesis — master's-thesis length. These targets keep it to about **36 pages of main
+text** (roughly 45 with front matter and bibliography). IØT publishes no page limit for TIØ4500, so
+**confirm with Franziska** ([question 7](questions-for-weekly-meeting.md)).
+
+Words per page are measured, not guessed: the current LaTeX layout (`report`, 11pt, A4) gives about
+**390 words per page** without citations and about **380 with author-year citations**. Check a chapter with `tectonic` or by counting words before calling it done.
+
+| Chapter | Pages | Words | Sources | Note |
+|---|---|---|---|---|
+| 1 Introduction | 3 | ~950–1,150 | ~10 | Written: 950 words, 7 sources, 3 pages |
+| 2 Literature review | 5 | ~1,900–2,000 | ~20–25 | Written: 1,910 words, 24 sources, 5 pages. Breadth lives in `literature-sources.md`, not in the chapter |
+| 3 The Global Gas Model | 5 | ~1,950 | | Only what chapters 5–6 need; details to `ggm-model.md`, not the thesis |
+| 4 LLM agents | 7 | ~2,700 | | Deliberately longer than chapter 3: central to the argument |
+| 5 Where AI fits | 12 | ~4,700 | | The core — about a third of the thesis |
+| 6 Discussion and conclusion | 4 | ~1,550 | | Merges the earlier chapters 6–8 |
+| **Main text** | **36** | **~14,000** | | |
+
+**Section budgets for the written chapters** (words): introduction — problem 450, research question
+150, scope 150, GGM in brief 250, contribution and structure 200. Literature review — approach 250,
+setting up and running models 350, calibration 600, energy and economic models 250, dividing the work
+250, gap 450.
+
+**Rules of thumb for writing to length**
+
+- Decide what is *must-have* (carries the argument) before writing; *nice-to-have* material goes to
+  the working docs, where it is not lost.
+- A source earns a place in the thesis by backing a specific claim, not by showing breadth.
+- No summary subsections inside a 5-page chapter; the last section does that job.
+- If a chapter runs over by more than about 20%, cut before moving on — the overrun compounds.
+
+**Sources cut from chapter 2 that later chapters should pick up** (2026-10-15). They were dropped for
+length, not because they are wrong; each backs a specific point elsewhere:
+
+| Chapter | Sources | For |
+|---|---|---|
+| 3 GGM | Holz (2015); Holz, von Hirschhausen & Kemfert (2008, GASMOD); Gabriel et al. (2005); Silvast et al. (2020); Süsser et al. (2021) | The model's lineage, and the judgment in energy-modelling practice |
+| 4 LLM agents | Wang et al. (2024); Schluntz & Zhang (2024); Majumder et al. (2024); Hu et al. (2025); Rojas et al. (2026); Korinek (2023, 2025); Kapoor et al. (2024) | What an agent is, workflows versus agents, energy-specific limits, "the solver computes", agents for economists, cost |
+| 5 Where AI fits | Eloundou et al. (2024); Dell'Acqua et al. (2026); Autor, Levy & Murnane (2003) | The task-by-task method of the chapter |
+| 5 (read the results) | Forootani et al. (2025, RE-LLM); Li et al. (2026, OptArgus) | Explaining results; a close fit is not a correct model |
+| 6 Discussion | Parasuraman & Manzey (2010); Kydland & Prescott (1996); Kennedy & O'Hagan (2001) | Automation bias at human gates; calibration as method |
 
 ---
 
@@ -128,6 +172,7 @@ Hand-in date 13 December as stated by Jørgen (2026-10-05).
 ## Open items
 
 - Precise scope and research question — in discussion with supervisors
-- Chapters 6–8 (design sketch, discussion, conclusion) — proposed, not yet confirmed by supervisors
+- Chapter 6 (discussion and conclusion, merging the earlier proposed chapters 6–8 on 2026-10-15) — not yet confirmed by supervisors
+- Expected length of the project thesis — targets below assume about 36 pages of main text; confirm with Franziska
 - The format of chapter 5's summary figure
 - Final hand-in date for the master's thesis — not yet recorded here
