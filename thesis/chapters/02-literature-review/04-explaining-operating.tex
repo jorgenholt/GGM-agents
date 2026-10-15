@@ -6,14 +6,14 @@ OptiChat extends this to explaining a model's formulation and diagnosing why it 
 Like this thesis, they treat the model as trusted and fixed.
 
 Almost all of the work above comes from engineering or operations research.
-Agents around models of energy markets and the economy are rarer, and the closest study found is by \citet{golden2026agentic}.
+Agents around energy-market and economic models are rarer, and the study closest to this thesis in setting is by \citet{golden2026agentic}.
 It wraps sixteen existing models of oil, gas, LNG, electricity, commodity markets and the wider economy, including partial and general equilibrium models, and applies them to the closure of the Strait of Hormuz in 2026.
 An LLM drafts scenario narratives, extracts the quantitative assumptions they imply and maps them onto each model's inputs, and a deterministic executor runs the models in order.
 By design the LLM produces no numbers of its own: every reported value comes from a model run.
 An analyst must approve the work at three checkpoints, and where models disagree, the disagreement is reported rather than averaged away.
 
 The study shows that agents can operate a portfolio of energy-market models with people at the key decisions.
-But it uses every model with the calibration it already has, and several are simplified versions calibrated from the literature.
+Unlike the calibration studies, however, it uses every model with the calibration it already has, and several are simplified versions calibrated from the literature.
 Its model registry even lists a Global Gas Model implemented in GAMS and solved with CPLEX, as GGM was in 2019 \citep[p.~37]{egging2019global}, but that model was not among those that ran.
 The work that keeps an energy-market model credible from one scenario to the next, preparing its data and calibrating it, is not addressed.
 

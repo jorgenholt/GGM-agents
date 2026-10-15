@@ -4,7 +4,7 @@ Calibration is the task closest to the core of this thesis.
 Automating it with optimisation algorithms is decades old \citep{duan1992effective}, and so is the finding that a good fit does not settle a calibration: different parameter sets can often reproduce the observations equally well, a property known in hydrology as \emph{equifinality} \citep{beven2006manifesto}.
 What is new is giving the task to a language model.
 
-The study closest to GGM's calibration problem uses an LLM as the optimiser for a disease simulation model with ten parameters \citep{gomezguillen2026agentic}.
+Among calibration studies, the one closest to GGM's problem uses an LLM as the optimiser for a disease simulation model with ten parameters \citep{gomezguillen2026agentic}.
 At each step the model receives the parameters with their meanings and bounds, constraints written in plain language, and the history of earlier guesses with their errors broken down by age group; it returns a new parameter vector and a written rationale.
 A harness runs every simulation and rejects infeasible proposals, so the LLM never touches the model directly.
 The authors call this a \emph{grey-box} problem: the parameters are interpretable, but their joint effect is hard to predict, which is where an expert reasons directionally from the pattern of errors.
