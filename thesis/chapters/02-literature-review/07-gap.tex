@@ -1,0 +1,57 @@
+\section{The gap}
+
+\subsection{What is established}
+
+The literature reviewed in this chapter establishes more than might be expected of a field this young.
+Agents can produce valid input for existing simulation codes from documents and descriptions, provided a harness checks every candidate and feeds errors back (Section 2.2).
+They can take part in calibrating existing models, as the optimiser, as the organiser of the workflow or as a source of priors, though the best current results fall short of skilled experts on demanding real models (Section 2.3).
+They can explain an existing optimisation model and answer what-if questions by having the solver do the computing (Section 2.4).
+They can translate scenario narratives into inputs for a portfolio of existing energy and economic models, with an analyst approving each translation (Section 2.5).
+And there is experimental evidence that reliability depends as much on how the work is divided between the language model, deterministic code and people as on the model itself (Section 2.6).
+
+It would therefore be wrong to claim that using agents to configure, run or calibrate an existing model is new.
+This thesis sits inside that body of work, not outside it.
+
+\subsection{What is missing}
+
+Three things are missing, in decreasing order of importance.
+
+\subsubsection{Calibration where the target is partly a judgment}
+
+In every calibration paper found, the target is an observation, and a calibration can be scored by how closely the model reproduces it.
+Market equilibrium models such as GGM are calibrated differently.
+The reference values GGM is tuned to reproduce are observed production and consumption for the base year, but for future years they are themselves projections taken from published outlooks.
+The parameters adjusted to reach them include production costs, reference prices and market power assumptions: quantities that are not measured anywhere and that encode economic judgments about how markets behave.
+GGM's own documentation is explicit about what follows.
+Which parameters to adjust is ``up to some extent arbitrary''; there are many defensible ways to calibrate the model, and many wrong ones; and a wrongly calibrated model may give biased scenario results that stem from invalid parameter choices rather than from market logic \citep[p.~26]{egging2019global}.
+A calibration of such a model cannot be judged only by its fit.
+It also has to be judged by whether the choices behind it are defensible, which is the kind of output \citet{zhu2026pai} describe as lacking a machine-readable correctness signal.
+They make the point for economic theory.
+For the calibration of an existing equilibrium model, where part of the target can be checked against data and part cannot, it has not been examined.
+The OptArgus finding that a formulation can match the reference objective while being wrong \citep{li2026optargus} suggests what the risk looks like: a calibration can reproduce the reference values for reasons that do not hold up.
+
+% TODO: Confirm with Lukas that the base-year reference values are historical statistics (docs/ggm-model.md section 7).
+
+\subsubsection{The middle of the workflow for energy-market models}
+
+No paper found applies agents to preparing the data for, or calibrating, a partial equilibrium or complementarity model of an energy market.
+The nearest work either sits at the ends of the workflow, translating scenarios into inputs and results into explanations \citep{golden2026agentic, forootani2025re}, or concerns physical systems such as power grids, buildings and reservoirs.
+\citet{golden2026agentic} come closest, and even list a Global Gas Model among the models their framework can call; but they use every model with the calibration it already has.
+The work that keeps such a model credible from one scenario to the next is untouched.
+On its own this is a weak claim, since novelty of application is thin ground for a thesis.
+It matters because of the first point: it is precisely in this middle part of the workflow that the judgments described above are made.
+
+\subsubsection{A view of the whole workflow}
+
+Most papers automate one task, such as input generation, calibration, or result explanation, and evaluate it in isolation.
+Few ask, for a single model, which of the steps around it suit an agent, which suit ordinary code, and which should stay with a person, and why.
+\citet{chen2024scienceagentbench} argue that agents should be assessed step by step before claims about whole workflows are made, and \citet{zhu2026human} show that the division of labour itself determines reliability.
+This is presented as the appropriate scope for an exploratory thesis, not as a contribution in its own right.
+
+\subsection{How the thesis addresses the gap}
+
+The rest of the thesis takes up these points for one model.
+Chapter 3 describes GGM and the workflow around it, and shows where the effort and the judgment lie.
+Chapter 4 sets out, in general terms, what LLM agents are good and bad at, and which tasks are better done by ordinary code.
+Chapter 5 brings the two together, walking through the GGM workflow step by step and asking at each step what an agent could do and where a person must stay involved, with particular attention to calibration.
+Chapters 6 to 8 sketch what a system built on that analysis would look like, discuss what should not be automated, and set out what remains for the master's thesis.

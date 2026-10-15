@@ -1,3 +1,30 @@
 \section{The Global Gas Model in brief}
 
-% TODO: Just enough GGM for chapter 2 to be readable; the full treatment is chapter 3.
+This section gives just enough of GGM for the literature review in Chapter 2 to be read against it.
+Chapter 3 describes the model and its workflow in full.
+
+\subsection{What the model does}
+
+GGM is a multi-period partial equilibrium model of the global natural gas market \citep{egging2019global}.
+It covers more than ninety countries grouped into nine regions, with large countries such as the United States, Russia and China split into several nodes, and runs in five-year steps to 2060, with three seasons in each year.
+Gas moves along a value chain from production, through pipelines or through liquefaction, shipping and regasification, to consumption, with storage at the nodes.
+Traders sell gas into consumption nodes, and some exporting countries are allowed to exercise market power, between perfect competition and Cournot behaviour.
+The model finds the market equilibrium (production, trade flows, storage use, infrastructure expansion and prices) by solving a single large optimisation problem whose solution corresponds to that equilibrium.
+It descends from the World Gas Model \citep{egging2010world}, and the current version is written in Julia and solved with a commercial solver \citep{ggmpublicongithubndggm}.
+
+\subsection{What it takes to use it}
+
+A GGM scenario is defined entirely by three spreadsheet workbooks: one describing the world as it is (nodes, pipelines, LNG terminals, storage, costs and market power), one holding the projected production and consumption for each node and year, and one holding the calibrated values.
+There is no separate configuration layer: to change a scenario is to change the workbooks.
+
+Most of the input is collected.
+Infrastructure capacities and distances come from industry and agency databases, and projected production and consumption are taken from published outlooks, such as the International Energy Agency's World Energy Outlook, and then split across nodes and years.
+This is laborious, but most of it follows documented rules.
+
+The rest is calibrated.
+Calibration adjusts production costs and capacities, reference prices and market power assumptions until the model reproduces reference values for production and consumption, first for the base year and then for the future years \citep[p.~26]{egging2019global}.
+Because the market is connected through trade, changing one country's costs shifts consumption elsewhere, so the adjustments cannot be made one country at a time.
+The documentation describes how an analyst reasons about a deviation, for example that a country producing too little may face costs that are too high, demand abroad that is too weak, or too much market power of its own, and states that the analyst must combine knowledge of the market with knowledge of the model.
+It also states that this takes an experienced analyst days to weeks.
+
+For the purposes of Chapter 2, three features of GGM matter most: it is an existing model that is not to be changed; its inputs come from heterogeneous documents and data sources; and part of its configuration is set by calibrating parameters that are not observed and that carry economic judgment.

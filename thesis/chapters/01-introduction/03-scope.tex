@@ -1,3 +1,18 @@
 \section{Scope: exploration, not implementation}
 
-% TODO: State plainly that building is the master's thesis.
+This is a project thesis, written in autumn 2026 as the first of two connected pieces of work.
+Its aim is to establish \emph{where} agents could be used around GGM and \emph{what it would take}, not to build them.
+No agent is implemented or evaluated here.
+Building and testing the agents is the subject of the master's thesis in spring 2027, which takes this thesis as its starting point.
+The difference matters for how the thesis should be read: its claims are arguments from the model's documentation, its code and data, and the literature, not measured results.
+
+Within that aim, the scope is limited in four further ways.
+
+\begin{itemize}
+  \item \textbf{One model, left unchanged.} The thesis concerns GGM only, as described in its documentation \citep{egging2019global} and implemented in the public Julia version of the model \citep{ggmpublicongithubndggm}. The model itself is taken as given; the agents considered work around it.
+  \item \textbf{The workflow, not the results.} The thesis asks how the work of preparing, calibrating, running and interpreting the model is done, not whether any particular dataset or result is right. The 2023 dataset provided by the model's authors is used to illustrate the workflow, not to assess it.
+  \item \textbf{Evidence from documents first.} Much of the description of the workflow is inferred from the documentation, the code and the data. Where it has been checked with the model's developers, this is stated; where it has not, it is marked as an inference.
+  \item \textbf{General claims by argument only.} Several conclusions are likely to hold for other calibrated equilibrium models of energy markets. Where the thesis says so, it is an argument from the structure of the problem, not a tested result.
+\end{itemize}
+
+% TODO: Update the third point once the workflow session with Lukas has taken place.

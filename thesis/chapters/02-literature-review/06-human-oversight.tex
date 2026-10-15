@@ -1,0 +1,47 @@
+\section{Dividing the work between agents, code and people}
+
+The previous sections describe what agents have been asked to do.
+This section turns to a question every one of those systems answers, explicitly or not: which parts of the work go to the language model, which to ordinary code, and which stay with a person.
+The most useful evidence comes from recent work on AI-assisted research in economics and the social sciences, where the question has been studied directly.
+
+\subsection{From full autonomy to gated pipelines}
+
+At one end of the field are systems built for full autonomy.
+The AI Scientist generates research ideas, writes and runs experiments, and drafts and reviews complete machine-learning papers with little human involvement, at a reported cost of under 15 dollars per paper \citep{lu2024ai}.
+Coscientist plans and executes chemistry experiments through laboratory automation \citep{boiko2023autonomous}, ChemCrow gives a language model eighteen expert-designed chemistry tools \citep{bran2024augmenting}, and Co-Scientist generates and ranks biomedical hypotheses for experimental testing \citep{gottweis2026accelerating}.
+Surveys of these scientific agents emphasise domain tools and validation mechanisms as what separates them from general-purpose assistants \citep{ren2025towards}.
+
+Evaluations temper the picture.
+ScienceAgentBench draws 102 tasks from 44 peer-reviewed publications and asks agents to write the analysis code for each; the best agent solved about a third of the tasks \citep{chen2024scienceagentbench}.
+Its authors draw a methodological conclusion that this thesis adopts: agents should be assessed on the individual tasks of a scientific workflow before claims are made about automating the workflow end to end.
+
+In economics, \citet{korinek2023generative} catalogues dozens of uses of LLMs across ideation, writing, background research, coding, data analysis and mathematical derivation, and argues that the main near-term gains come from automating many small tasks within the researcher's own workflow.
+A later guide describes how economists can build agents for literature, coding and data work \citep{korinek2025ai}.
+Both treat the researcher as the one who decides what is worth doing and whether the result holds.
+
+\subsection{Evidence that the division matters}
+
+The clearest evidence on how to divide the work comes from a pair of papers on human-in-the-loop economic research.
+HLER is a multi-agent pipeline for empirical economics that audits a dataset, generates hypotheses constrained by what the data can support, runs the econometric analysis, and drafts a paper, with human decisions at fixed points \citep{zhu2026hler}.
+\citet{zhu2026human} then test whether its reliability comes from the model or from how the work is organised.
+In a pre-specified experiment with 280 complete research runs on four datasets, an unconstrained multi-agent pipeline produced a critical failure in 72\% of runs.
+With the same model, the same agents and the same prompts, the failure rate fell to 16\% when three rules were imposed: the LLM reasons but does not do the data work, data preparation and estimation are done by deterministic code, and a person decides at three gates (the choice of research question, the identification strategy and the decision to publish).
+An ablation suggests that deterministic computation and human gates each reduce failures on their own, and do most when combined.
+The most common failures in the unconstrained pipeline were hallucinated references, inconsistent interpretation, infeasible research questions and weak identification, not errors in executing code.
+The authors note the limits: one model, four datasets, and an ablation with only twenty runs per condition.
+Their conclusion is that the question is not how to remove people from the loop, but where human attention does the most to prevent, expose and contain failure.
+
+The same authors address a harder case in pAI-Econ-claude, a gated multi-agent architecture for developing economic theory \citep{zhu2026pai}.
+They start from the observation that many outputs in economics have no cheap, complete, machine-readable signal of whether they are correct.
+A proof sketch, a mechanism or a welfare claim cannot be checked the way code can be tested.
+Their gates therefore \emph{diagnose} specific failures and recommend going back a step, but explicitly do not certify that what passes is correct.
+Decisions that are costly to reverse, such as the choice of equilibrium concept, are reserved for the researcher.
+In five paired comparisons, two blinded evaluators preferred the gated workflow in four, though it used several times the resources of the ungated baseline.
+
+\subsection{What this strand establishes}
+
+This work offers the thesis two things.
+The first is a design principle with experimental support: let the language model reason and propose, let deterministic code compute, and put people at the decisions that are hard to undo.
+The engineering systems in Sections 2.2 to 2.5 arrive at the same division independently, through harnesses, validators and solvers that produce every number.
+The second is a recognition, now explicit in the AI-for-economics literature, that some outputs cannot be scored against a right answer.
+Where that is so, automated checks can find specific faults, but deciding that a result is good enough remains a human judgment.

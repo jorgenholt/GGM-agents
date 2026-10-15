@@ -1,10 +1,29 @@
 \section{Problem and motivation}
 
-The Global Gas Model (GGM) is a partial equilibrium model of the global natural gas market, developed at DIW Berlin, that represents producers, traders and infrastructure operators and allows for market power \citep{egging2019global}.
-It is used to analyse questions such as how much Russian gas the European Union still needs under different climate policies \citep{barner2024russian}.
-Much of the expert effort around the model lies not in running it but in preparing its inputs and calibrating it.
-According to its documentation, calibrating GGM for a new scenario takes an experienced analyst at least several days, and several weeks after a major revision of the input data \citep{egging2019global}.
-At the same time, agents built on large language models (LLMs) are starting to be used to set up and calibrate existing simulation models in other fields \citep{abulawi2026autosam, gomezguillen2026agentic}.
-This thesis asks where such agents could take over part of the work around GGM, and where they should not.
+Numerical models of energy markets are a standard tool for questions that cannot be answered by experiment, such as how a supply disruption, a new pipeline or a climate policy would change trade flows and prices over decades.
+The Global Gas Model (GGM), developed at DIW Berlin, is one such model: a partial equilibrium model of the global natural gas market that represents producers, traders and infrastructure across more than ninety countries, and allows some exporters to exercise market power \citep{egging2019global}.
+It belongs to a family of complementarity models of gas markets that goes back two decades \citep{gabriel2005mixed, egging2010world}, and it is used for questions with direct policy relevance, such as how much Russian gas the European Union still needs under different climate pathways \citep{barner2024russian, holz2024diw}.
 
-% TODO: Add the page reference for the calibration claim (printed p. 26), and rewrite in our own words.
+A model of this kind is only as credible as the work done around it.
+Its input data are collected from many statistical sources and published outlooks, converted, aggregated and checked.
+A scenario has to be defined and translated into changes to those inputs.
+The model then has to be calibrated: parameters that cannot be observed are adjusted until the model reproduces reference values for production and consumption.
+Only then is it run and its results interpreted.
+Studies of energy-modelling practice describe these steps as resting on the modellers' own judgment and values \citep{silvast2020energy}, and show that choices about data, assumptions and scope shape what the results can say \citep{susser2021model}.
+Efforts to formalise good practice in energy-system modelling exist \citep{decarolis2017formalizing}, but the day-to-day work around a particular model is rarely written down in full.
+For GGM, the documentation states that calibrating the model for a new scenario takes an experienced analyst at least several days, and up to several weeks after a major revision of the input data \citep[p.~26]{egging2019global}.
+
+At the same time, a new kind of tool has appeared that could take on part of this work.
+Agents built on large language models (LLMs) can read documents, write and run code, call external software and adjust what they do in response to the results.
+Since 2024 such agents have been used to write input files for existing simulation codes, to run and repair them, and to calibrate existing models against observed data, in fields from nuclear engineering to hydrology and reservoir engineering \citep{abulawi2026autosam, li2026moosenger, gomezguillen2026agentic, samigullin2026multi}.
+Most recently, an agent framework has been used to translate a crisis scenario into inputs for a portfolio of existing energy and economic models \citep{golden2026agentic}.
+The evidence is encouraging but not uniform.
+Agents are far more reliable inside a harness that checks their work, frontier models still fall short of expert modellers at calibration \citep{li2026hydroagent}, and the reliability of AI-assisted research depends heavily on how the work is divided between the language model, ordinary code and people \citep{zhu2026human}.
+
+It is not obvious how this transfers to a model like GGM.
+Some of the work around it is mechanical, and would be better done by ordinary software than by a language model.
+Some of it requires reading reports and applying rules of thumb, which LLMs do well.
+And some of it, calibration in particular, involves choosing values for quantities such as market power that are not measured anywhere and that two competent analysts could set differently.
+There, the main risk is not a run that fails, but a plausible result that rests on a poor choice, and an agent that explains its choices fluently could make such a result more convincing rather than less.
+
+The question this thesis takes up is therefore not whether agents could operate GGM, but where in the work around it they would help, where ordinary code would do better, and where the work should stay with a person.

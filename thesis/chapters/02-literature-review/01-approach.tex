@@ -1,3 +1,43 @@
 \section{Approach}
 
-% TODO: Organise by what the agent was asked to do, not by domain. Write for a reader who has only the introduction's sketch of GGM.
+This chapter reviews what has been done with agents built on large language models (LLMs) around large, existing domain models.
+Its purpose is to place the thesis in that work and to end by stating the gap the rest of the thesis addresses.
+
+\subsection{What the chapter covers}
+
+The relationship that matters here is the one between an agent and a model that already exists.
+In every case reviewed below, the domain model is built by people, is trusted by its users, and stays as it is.
+The agent works around it: it writes the model's inputs, runs it, adjusts its parameters, explains its results, or decides when to stop and ask a person.
+This is the same relationship this thesis proposes between agents and the Global Gas Model (GGM), which is not to be changed.
+
+The chapter is therefore organised by \emph{what the agent was asked to do}, not by application domain.
+Organising by domain would turn the chapter into a survey of AI in energy, nuclear engineering or hydrology, and would hide the fact that the same few tasks recur across all of them.
+The sections follow roughly the order in which the work around a model happens: setting up and running a simulation code (Section 2.2), calibrating a model against targets (Section 2.3), querying and explaining an optimisation model (Section 2.4), and building scenarios across several energy and economic models (Section 2.5).
+Section 2.6 turns from what agents do to how the work is divided between agents, ordinary code and people, drawing on recent work on AI-assisted research in economics and the social sciences.
+Section 2.7 states the gap.
+
+The chapter is written for a reader who has only the short sketch of GGM in Section 1.4.
+Where a paper is relevant to a particular step of the GGM workflow, that link is made in Chapter 5, which cites back to this chapter rather than describing the paper again.
+
+\subsection{How the literature was found}
+
+The literature was collected in September and October 2026 by searching arXiv, OpenAlex, Semantic Scholar and Crossref, and by web search for practitioner and institutional sources.
+Searches combined terms for LLM agents with terms for calibration, history matching, input generation, simulation codes, optimisation models, energy-system models, equilibrium models and economic research.
+The reference lists of the closest papers were then followed backwards and forwards.
+Papers judged closest to the thesis were read in full; the rest were assessed from their abstracts and, where needed, their method sections.
+
+Two features of this literature shape how it should be read.
+First, it is very recent.
+Most of the papers closest to this thesis appeared in 2025 and 2026, and many are preprints that have not yet been peer reviewed.
+Where a peer-reviewed version exists, it is cited instead; otherwise the preprint is cited and its status noted.
+Second, the models the papers evaluate are often superseded within months.
+Reported numbers are therefore read as evidence about \emph{patterns} of what works and what fails, not as stable measures of what current models can do.
+
+\subsection{Terminology}
+
+Three terms need fixing before the review.
+An \emph{LLM agent}, or simply an agent, is used here in the sense common in the recent literature: a language model that calls tools in a loop to reach a goal, observing the result of each call before choosing the next \citep{yao2023react, willison2025i}.
+Chapter 4 develops the definition and distinguishes agents from fixed workflows in which code, not the model, decides the sequence of steps \citep{schluntz2024building}.
+A \emph{domain model} is the simulation or optimisation model the agent works around, such as a reactor code, a hydrological model or GGM.
+\emph{Calibration} means adjusting a model's uncertain inputs until its outputs match reference values; in petroleum engineering the same task is called history matching.\footnote{The word \emph{agent} also has two other meanings nearby: an agent in an agent-based simulation \citep{gao2024llms}, and a player in an equilibrium model, such as GGM's producers and traders.
+In this thesis, \emph{agent} on its own always means an LLM agent; GGM's agents are called players.}
