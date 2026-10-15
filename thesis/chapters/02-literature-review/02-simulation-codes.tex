@@ -8,7 +8,8 @@ The motivation is the same across domains: the code is trusted, but turning a ph
 The closest analogue to preparing GGM's input data is AutoSAM \citep{abulawi2026autosam}.
 SAM is a system-level thermal-hydraulics code for advanced nuclear reactors, developed at Argonne National Laboratory.
 Its users build input files by extracting design data from engineering reports, diagrams and spreadsheets and translating them into the solver's syntax.
-AutoSAM gives a single agent tools for reading PDFs, images, spreadsheets and text, retrieval over the solver's user guide and theory manual, and a rule-based validator that checks the generated input for required blocks, units, connectivity and boundary conditions before it is run.
+AutoSAM gives a single agent tools for reading PDFs, images, spreadsheets and text, and retrieval over the solver's user guide and theory manual.
+A rule-based validator then checks the generated input for required blocks, units, connectivity and boundary conditions before it is run.
 Two design choices stand out.
 The agent first writes the extracted parameters to a human-readable intermediate file, which an expert can review and edit before the solver input is generated.
 And where the source documents are silent, the agent records the value it substituted as an assumption rather than filling the gap silently.
@@ -17,39 +18,41 @@ The authors describe their evaluation as a characterisation of information flow 
 
 A second line of work starts from natural-language descriptions instead of documents.
 In building energy simulation, EPlus-LLM turns plain descriptions of buildings into models for the EnergyPlus engine \citep{jiang2024eplus}, and later agentic workflows add automatic debugging of the generated models \citep{zhang2025automatic}.
-Data2BEM goes furthest: a multi-agent system parses drawings, specifications and sensor data, generates a building model and calibrates it against measured performance \citep{lu2025automated}.
-For one office building the authors report a total modelling time of 48 minutes, against 8 to 32 hours in professional practice.
+Data2BEM, discussed further in Section 2.3, extends this to a full pipeline that reads drawings, specifications and sensor data, builds a model and calibrates it \citep{lu2025automated}.
 
 \subsection{The harness around the model}
 
-A consistent finding in this strand is that the system built around the language model matters more than the model itself.
-MOOSEnger, an agent framework for the MOOSE multiphysics code, makes the point most clearly \citep{li2026moosenger}.
-Its harness parses each candidate input, checks it against the code's object and parameter schemas, runs the code's own validation and a short execution probe, and only then accepts the revision; a failed candidate goes back to the model with the evidence of why it failed.
+A consistent finding in this strand is that the system built around the language model matters more than the language model itself.
+MOOSEnger, an agent framework for the MOOSE multiphysics code, shows this most clearly \citep{li2026moosenger}.
+Its harness parses each candidate input, checks it against the code's object and parameter schemas, and runs the code's own validation and a short execution probe.
+Only then is the revision accepted; a failed candidate goes back to the model with the evidence of why it failed.
 On a benchmark of 200 tasks, GPT-5.2 on its own produced an input that ran in 10 cases (5\%); inside the harness it did so in 179 (89.5\%).
-An open-weight model rose from zero to 153.
+An open-weight model rose from none to 153.
 The authors are careful about what this shows.
-They state that successful execution is necessary but not sufficient: a simulation can run while encoding the wrong equations, boundary conditions or physical assumptions.
+They state that successful execution is necessary but not sufficient, because a simulation can run while encoding the wrong equations, boundary conditions or physical assumptions.
 On a smaller set of problems with known analytical solutions, eight of ten generated models both ran and matched the solution.
 
 Computational fluid dynamics shows the same pattern.
 OpenFOAMGPT uses retrieval over documentation and an iterative correction loop to set up OpenFOAM cases, and its authors stress that human oversight remains necessary \citep{pandey2025openfoamgpt}.
-Foam-Agent divides the work among specialised agents for planning, meshing, file writing, execution and review, generates configuration files in the order in which they depend on each other, and reports that 88.2\% of 110 basic tasks ran successfully without expert intervention, falling to 62.5\% on harder tasks outside its training distribution \citep{yue2026foam}.
+Foam-Agent divides the work among specialised agents and generates configuration files in the order in which they depend on each other \citep{yue2026foam}.
+It reports that 88\% of 110 basic tasks ran without expert intervention, falling to 63\% on harder tasks outside its training distribution.
 
 \subsection{Agents that call solvers rather than compute}
 
 In power systems, agents are used to drive established simulation and optimisation tools through natural language.
-A feedback-driven multi-agent framework for power system simulation, combining retrieval, structured reasoning and error feedback from the simulator, completed 93\% and 97\% of tasks on two simulation toolboxes, where general-purpose models without the framework succeeded on fewer than 30\% of the complex tasks \citep{jia2025enhancing}.
+A feedback-driven multi-agent framework built around two power-system simulation toolboxes completed 93\% and 97\% of their tasks; general-purpose models without the framework succeeded on fewer than 30\% of the complex ones \citep{jia2025enhancing}.
 GridMind lets agents coordinate optimal power flow and contingency analysis while every number comes from a deterministic solver called as a function \citep{jin2025gridmind}.
-\citet{hu2025natural} argue explicitly against asking the LLM for solutions, because the model lacks the numerical precision and constraint handling of a solver; their agent instead produces a formulation that a solver can handle and repairs it until it validates.
-A recent tutorial on agents for smart grids makes this a general design rule: a number is reported only if it comes from a trusted tool and passes an explicit check \citep{rojas2026llms}.
+\citet{hu2025natural} argue explicitly against asking the LLM for solutions, since it lacks a solver's numerical precision and handling of constraints.
+Their agent instead produces a formulation that a solver can handle, and repairs it until it validates.
+A recent tutorial on agents for smart grids turns this into a general design rule: a number is reported only if it comes from a trusted tool and passes an explicit check \citep{rojas2026llms}.
 The same idea appears as infrastructure.
 EnergyPlus-MCP exposes a building simulation engine to any LLM as a set of 35 tools for editing, validating and running models \citep{li2025energyplus}, and an open-source server does the same for the PyPSA energy-system modelling framework \citep{pypsamcpndpypsa}.
 
-\subsection{What this strand establishes}
+\subsection{Summary}
 
-Three points from this work carry through the rest of the thesis.
+Three points from this strand carry through the rest of the thesis.
 First, generating valid input for an existing code from documents and descriptions is now a demonstrated capability, but only inside a harness that validates every candidate and feeds errors back.
 Second, the most careful systems keep a human-checkable record between the source material and the model input, and label what was assumed rather than found.
-Third, the authors themselves draw a line between a run that \emph{completes} and a result that is \emph{right}.
+Third, the authors themselves distinguish a run that \emph{completes} from a result that is \emph{right}.
 Checking the first can be automated; checking the second still needs a person who understands the model.
-None of the systems reviewed here touches an economic or market model.
+None of the systems reviewed here works with an economic or market model.

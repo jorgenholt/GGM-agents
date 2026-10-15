@@ -1,12 +1,14 @@
 \section{Agents around energy and economic models}
 
-The papers so far come mostly from engineering.
+The studies so far come mostly from engineering.
 This section turns to agents working around models of energy systems and energy markets, which are closer to GGM in purpose: they are used to explore scenarios and inform policy rather than to design a physical object.
 
 \subsection{The energy sector}
 
-Reviews of LLMs in the energy sector are dominated by power systems.
-They list applications in forecasting, fault diagnosis, grid operation and document handling, and converge on the same recommendations: give the model domain-specific tools, ground it in retrieved documents, and treat safety-critical uses with care \citep{majumder2024exploring, mirshekali2025review, antonesi2025transformers}.
+Reviews of LLMs in the energy sector are dominated by power systems \citep{mirshekali2025review, antonesi2025transformers}.
+\citet{majumder2024exploring} test general-purpose models on power-engineering tasks and find them useful for structured answers, code and document handling.
+They also find that the models give no guarantee of correctness and little information about their uncertainty, do not respect physical laws unless given tools that do, and are hampered by the scarcity of domain data.
+Their recommendations are to embed power-system tools in the model, ground it in a curated document base, and evaluate it carefully before any safety-critical use.
 Benchmarks are beginning to test agents on realistic energy work rather than recall.
 One evaluates tool-using agents on 243 expert-curated tasks in energy-market analysis, with live market data, regulatory documents and optimisation models as tools \citep{akinpelu2026tool}.
 Another recomputes the engineering quantities in an agent's answer with deterministic code instead of grading its text \citep{trashchenkov2026power}.
@@ -19,24 +21,26 @@ They deliberately keep the LLM out of the simulation itself, arguing that replac
 
 \subsection{Orchestrating existing economic models}
 
-The paper closest to this thesis in setting is \citet{golden2026agentic}.
+The study closest to this thesis in setting is by \citet{golden2026agentic}.
 It builds an agent framework around a library of existing models of oil, gas, LNG, electricity, commodity markets and the wider economy, including computable general equilibrium and partial equilibrium models, and applies it to the closure of the Strait of Hormuz in 2026.
 An LLM drafts scenario narratives, extracts the quantitative assumptions they imply, and maps those assumptions onto each model's input format.
-A deterministic executor then runs the models in the order in which they depend on each other and passes outputs from one model to the next through fixed rules.
-The LLM writes the final synthesis, but by design it produces no numbers of its own: every reported value comes directly from a model run.
+A deterministic executor then runs the models in the order in which they depend on each other, and passes outputs from one model to the next through fixed rules.
+The LLM writes the final synthesis, but by design produces no numbers of its own: every reported value comes directly from a model run.
 An analyst must approve the work at three checkpoints, after the scenarios are drafted, after the parameters are extracted and after the synthesis is written, and the authors state that the pipeline has no autonomous mode.
 Where models disagree, for example on the size of the gas price shock, the disagreement is reported rather than averaged away.
 The authors estimate that the same analysis done by hand, with sixteen models across five scenarios refreshed weekly, would take about a month.
 
-Two details of this paper matter here.
-First, its model registry lists a ``Global Gas Model'' implemented in GAMS among the models it can call, but that model was not among those that ran in the reported analysis.
+Two details of this study matter here.
+First, its model registry lists a ``Global Gas Model'' implemented in GAMS and solved with CPLEX, which matches the 2019 implementation of GGM \citep[p.~37]{egging2019global}, but that model was not among those that ran in the reported analysis.
 Second, the framework uses every model with the calibration it already has; several are simplified versions calibrated from the literature, and the authors read the outputs as orders of magnitude rather than forecasts.
-The paper shows that agents can operate a portfolio of energy-market models for scenario analysis with people at the key decisions.
+The study shows that agents can operate a portfolio of energy-market models for scenario analysis with people at the key decisions.
 It does not prepare a model's data, calibrate a model, or examine the work that keeps any single model credible.
 
-\subsection{What this strand establishes}
+% TODO: Ask Franziska whether the Global Gas Model in Golden et al. (2026) is GGM.
 
-Work on agents around energy and economic models is recent and still small, and it has so far concentrated on the two ends of the modelling workflow: translating a scenario into inputs, and translating results into explanations.
-The design choices are consistent with those in engineering.
-The model computes, the LLM translates between narrative and numbers, and a person approves the translation.
+\subsection{Summary}
+
+Work on agents around energy and economic models is recent and still small.
+It has so far concentrated on the two ends of the modelling workflow: translating a scenario into inputs, and translating results into explanations.
+The design choices match those in engineering: the model computes, the LLM translates between narrative and numbers, and a person approves the translation.
 The middle of the workflow, where data are prepared and the model is calibrated so that its scenarios can be trusted, has not been addressed for any energy-market model found in the search.

@@ -1,0 +1,40 @@
+\section{Comparing the closest studies}
+
+Table \ref{tab:closest-studies} sets the studies closest to this thesis side by side.
+It records the model each agent works around, what the agent does, what counts as a correct result, what role people have, and how the study was evaluated.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{The studies closest to this thesis.}
+\label{tab:closest-studies}
+\begin{tabularx}{\textwidth}{@{}p{2.3cm}XXXX@{}}
+\toprule
+Study & Model and domain & What the agent does & What counts as correct & Role of people and evaluation \\
+\midrule
+\citet{abulawi2026autosam} & Reactor thermal-hydraulics code & Extracts parameters from documents and writes input files & A valid input that runs and behaves as expected & Expert reviews an intermediate file; four case studies, assessed qualitatively \\
+\citet{li2026moosenger} & Multiphysics code & Writes, checks and repairs input files & The input runs; for ten cases, matches an analytical solution & None in the loop; 200 authors' benchmark tasks \\
+\citet{lu2025automated} & Building energy model & Builds the model and configures a genetic-algorithm calibration & Fit to metered energy use within an industry guideline & Minimal; one building, timed against two human modellers \\
+\citet{gomezguillen2026agentic} & Disease model for health economics & Proposes parameter values as the optimiser & Fit to incidence from a meta-analysis & None in the loop; one model, ten runs per method, against two optimisers \\
+\citet{li2026hydroagent} & Operational flood forecasting model & Calibrates through tool calls & Fit to observed streamflow & None in the loop; four gauges, against an expert's calibration \\
+\citet{samigullin2026multi} & Oil reservoir simulator & Organises history matching, which an optimiser carries out & Fit to recorded well production & Checkpoints designed but skipped; two synthetic cases and one real field, no baseline \\
+\citet{li2023large} & Supply-chain optimisation model & Answers what-if questions by writing code the solver runs & The solver's answer to the question & User asks questions; authors' benchmark, one deployment \\
+\citet{golden2026agentic} & Sixteen energy and economic models & Turns scenarios into model inputs and writes the synthesis & No benchmark; outputs read as orders of magnitude & Three mandatory analyst checkpoints; one crisis case \\
+\citet{zhu2026human} & Empirical economic research & Proposes questions and designs; code does the estimation & Absence of critical defects, judged by experts & Three human gates; 280 runs, own system \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{How the field evaluates itself}
+
+Read together, the studies share several features of method that limit what can be concluded from them.
+Most are evaluated by their authors, on benchmarks or cases they chose, and few compare the agent with established methods or with human practitioners; HydroAgent, Data2BEM and the grey-box calibration study are the main exceptions.
+Many rest on one or a few cases, and where synthetic and real cases are both reported, as in PetroGraph, the real case is much harder.
+Success is usually defined as a run that completes or a fit that is close, which the more careful authors themselves describe as necessary but not sufficient \citep{li2026moosenger, li2026optargus}.
+And the human role is often designed but not studied: PetroGraph's checkpoints were skipped, the auditability of the grey-box study's rationales was argued rather than tested, and AutoSAM left the comparison with human analysts to future work.
+Only the experiment by \citet{zhu2026human} varies the division of work between people, code and the model and measures the effect.
+
+Two consequences follow for this thesis.
+First, the evidence supports claims about \emph{patterns}, such as the value of a harness and of deterministic computation, more firmly than claims about how well a given agent performs.
+Second, an agent working around GGM would need an evaluation designed for the case where a close fit is not enough.
+Chapter 5 uses the literature in the first way, and the plan for the master's thesis in Chapter 8 takes up the second.

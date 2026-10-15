@@ -1,24 +1,24 @@
 \section{LLMs and optimisation models}
 
-GGM is an optimisation model: it finds the market equilibrium by solving a single large quadratic programme.
-The literature on LLMs and optimisation is therefore close in method, even when it is far in domain.
-It divides into two strands that relate to this thesis very differently.
+GGM is an equilibrium model, but its equilibrium is computed by solving a single large quadratic optimisation problem (Section 1.4).
+The literature on LLMs and optimisation models is therefore close to it in method, even where it is far in domain.
+That literature divides into two strands that relate to this thesis very differently.
 
 \subsection{Formulating models from scratch}
 
 Most of the work asks an LLM to turn a problem described in words into a mathematical model and solver code.
-OptiMUS is the standard reference: an agent that formulates mixed-integer linear programmes from natural-language descriptions, writes and debugs the solver code, and checks the solutions, solving nearly twice as many benchmark problems as direct prompting \citep{ahmaditeshnizi2023optimus}.
+OptiMUS is the standard reference: an agent that formulates mixed-integer linear programmes from natural-language descriptions, writes and debugs the solver code, and checks the solutions \citep{ahmaditeshnizi2024optimus}.
 Chain-of-Experts divides the same task among specialist agents for terminology, modelling, programming and review, coordinated by a conductor agent \citep{xiao2024chain}.
 ORLM shows that small open models fine-tuned on synthesised data can perform well on the task, which matters where data or models cannot be sent to a commercial provider \citep{huang2025orlm}.
-A survey of the strand covers these and many other systems, and notes that the benchmark datasets used to evaluate them themselves contain a surprisingly high share of errors \citep{xiao2025survey}.
+A survey of the strand covers these and many other systems, and finds that the benchmark datasets used to evaluate them contain a surprisingly high share of errors \citep{xiao2025survey}.
 
-The strand has also started to examine how its own outputs fail.
-\citet{li2026optargus} show that a formulation can reproduce the correct optimal objective value while still being structurally wrong, for example by omitting a constraint that happens not to bind on the test instance.
-Among formulations that matched the reference value, they find such errors in up to 31\% of cases for some models, and they build a multi-agent auditor that checks the problem description, the mathematical model and the code against each other.
+The strand has also begun to examine how its own outputs fail.
+\citet{li2026optargus} show that a formulation can reproduce the correct optimal objective value while being structurally wrong, for example by omitting a constraint that happens not to bind on the test instance.
+Among formulations that matched the reference value, they find such errors in up to 31\% of cases for some models.
+They build a multi-agent auditor that checks the problem description, the mathematical model and the code against each other.
 
-This strand is not the problem this thesis addresses.
-GGM already exists and is not to be reformulated.
-The strand is still useful in two ways: it supplies architectures to compare against, and the OptArgus finding has a direct counterpart for calibration, to which Section 2.7 returns.
+This strand does not address the problem of this thesis, since GGM already exists and is not to be reformulated.
+It is useful in two other ways: it supplies architectures to compare against, and the OptArgus finding has a direct counterpart for calibration, discussed in Section 2.8.
 
 \subsection{Querying and explaining an existing model}
 
@@ -26,12 +26,12 @@ A smaller strand leaves the optimisation model as it is and uses the LLM to help
 OptiGuide, developed at Microsoft, answers questions about a supply-chain optimisation model in plain language \citep{li2023large}.
 When a planner asks a what-if question, the LLM writes a few lines of code that modify the model, the solver re-runs it, and the LLM explains the outcome.
 The design keeps proprietary data away from the LLM: the model sees the question and documentation of helper functions, while the data stay with the solver.
-The system was deployed on a server-placement problem in Microsoft's cloud supply chain and answered 93\% of benchmark questions correctly with GPT-4.
+The system was deployed on a server-placement problem in Microsoft's cloud supply chain and answered 93\% of the authors' benchmark questions correctly with GPT-4.
 
 OptiChat extends the idea to a dialogue in which practitioners without optimisation training can ask the system to explain a model's formulation, diagnose why it is infeasible, analyse sensitivity, evaluate modifications and give counterfactual explanations \citep{chen2026optichat}.
-For infeasibility, the solver identifies the smallest set of conflicting constraints and the LLM explains what they mean and suggests how to resolve the conflict.
+For an infeasible model, the solver identifies the smallest set of conflicting constraints, and the LLM explains what they mean and suggests how to resolve the conflict.
 The division of labour is the same as in OptiGuide: the solver establishes the facts, and the LLM turns them into an explanation and a proposal.
 
 This strand is closer to the situation around GGM than the first.
-It assumes, as this thesis does, that the model is trusted and fixed, that the people who use its results are not always the people who built it, and that a large part of the work consists of asking the model questions and interpreting its answers.
-What it does not address is how the model's inputs and parameters come to be set in the first place.
+It assumes, as this thesis does, that the model is trusted and fixed, that the people who use its results are not always the people who built it, and that much of the work consists of asking the model questions and interpreting its answers.
+What it does not address is how the model's inputs and parameters are set in the first place.

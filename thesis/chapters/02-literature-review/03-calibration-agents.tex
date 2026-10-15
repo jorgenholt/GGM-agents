@@ -1,27 +1,41 @@
 \section{Agents that calibrate existing models}
 
-Calibration is the task closest to the core of this thesis, and the literature on it is the youngest.
-Almost all of it appeared in 2026.
-The papers share a setting: an existing simulation model with uncertain parameters, a set of reference values the model should reproduce, and an expert who would otherwise adjust the parameters by hand or configure an optimisation routine to do it.
+Calibration is the task closest to the core of this thesis.
+Automating it is not new; what is new is giving the task to a language model.
+
+\subsection{Automated calibration before LLMs}
+
+Calibration has been automated with optimisation algorithms for three decades.
+In hydrology, global search methods such as SCE-UA were developed in the early 1990s to fit rainfall-runoff models to observed streamflow \citep{duan1992effective}.
+In petroleum engineering, history matching of reservoir models against production data has a large literature of automated and ensemble-based methods \citep{oliver2011recent}.
+In statistics, Bayesian calibration treats the uncertain parameters of a computer model as quantities to be inferred from data, with explicit uncertainty \citep{kennedy2001bayesian}.
+These methods replaced much of the manual search, but not the expert.
+Someone still has to decide which parameters to free, what bounds and priors are plausible, which targets matter, and whether a fit is acceptable.
+
+The same literature also established that a good fit does not settle a calibration.
+\citet{duan1992effective} already noted that unique optimal parameter values are often impossible to find, and \citet{beven2006manifesto} argues that many different parameter sets can typically reproduce the observations equally well, a property he calls \emph{equifinality}.
+The question for an LLM agent is therefore not only whether it can find a good fit, but whether it can make, or support, the judgments about which fit to accept.
 
 \subsection{The LLM as the optimiser}
 
-The paper closest to GGM's calibration problem is \citet{gomezguillen2026agentic}.
-They calibrate a disease simulation model used in health-economic evaluation: a Markov model of the natural history of anal cancer with ten free parameters, fitted to age-specific cancer incidence from a published meta-analysis.
+The study closest to GGM's calibration problem is by \citet{gomezguillen2026agentic}.
+They calibrate a disease simulation model used in health-economic evaluation: a Markov model of the natural history of anal cancer with ten free parameters, fitted to age-specific cancer incidence taken from a published meta-analysis.
 The LLM takes the place of the optimisation algorithm.
 At each iteration it receives a description of the model, the parameters with their meanings and bounds, the calibration targets, constraints written in plain language, and the full history of earlier guesses with their errors broken down by age group.
 It returns a short written rationale and a new parameter vector.
-A harness runs every simulation, enforces bounds and rejects infeasible proposals before the model is called, so the LLM never touches the simulation directly.
+A harness runs every simulation, enforces the bounds and rejects infeasible proposals before the model is called, so the LLM never touches the simulation directly.
 
 The authors frame the problem as a \emph{grey-box} one.
 The code is fully available and the parameters have known meanings, but their joint effect on the outputs is hard to predict analytically.
-That is the situation in which an experienced modeller can reason \emph{directionally} from the pattern of errors, and in which a language model with domain knowledge might do the same.
+That is the situation in which an experienced modeller reasons \emph{directionally} from the pattern of errors, and in which a language model with domain knowledge might do the same.
 The results support this in their case.
-Without constraints, the LLM reached a lower error than Bayesian optimisation and Nelder--Mead with 16 model evaluations, against 110 and several hundred.
+Without constraints, the LLM reached a lower error than Bayesian optimisation and Nelder--Mead using 16 model evaluations, against 110 and several hundred respectively.
 With a clinical constraint on the parameters, it reached errors comparable to Bayesian optimisation.
-The gain in evaluations was paid for in time: because each iteration waits for the model to reason, a calibration took four to seven times as long as Bayesian optimisation on the authors' hardware.
-The authors also list the method's limits plainly: it has no convergence guarantee, is reproducible only with a deterministic backend and fixed model weights, and depends on what the LLM learned in pretraining about the domain.
-They argue that the logged rationales make the search auditable in a way classical optimisers are not, but do not test whether human reviewers actually find them useful.
+The saving in evaluations was paid for in time: because each iteration waits for the language model, a calibration took four to seven times as long as Bayesian optimisation on the authors' hardware.
+The authors list the method's limits plainly.
+It has no convergence guarantee, is reproducible only with a deterministic backend and fixed model weights, and depends on what the LLM learned about the domain in pretraining.
+They argue that the logged rationales make the search auditable in a way classical optimisers are not, but they do not test whether human reviewers find them useful.
+The evaluation also covers a single model with ten parameters.
 
 \subsection{How close to the expert?}
 
@@ -29,36 +43,44 @@ Hydrology provides the most direct comparison with human experts.
 \citet{li2026hydroagent} benchmark nine frontier LLM agents from three vendors on calibrating CREST, a distributed hydrological model used by the US National Weather Service for flash-flood forecasting, against observed streamflow at four gauges.
 The best models reached a Nash--Sutcliffe efficiency of 0.65 to 0.75, and the weakest a negative value.
 Only one model reached the human expert's reference, and only at one gauge.
-The authors identify three recurring failures: some models stopped long before their budget ran out, some proposed values outside documented physical ranges, and some described a problem in the hydrograph correctly but then adjusted the wrong group of parameters.
-They read the gap as a lack of domain grounding rather than of reasoning capacity, and try to close it by fine-tuning a small open-weight model on calibration trajectories, with rewards computed from the simulator; this improves the small model markedly, but it is not compared directly with the frontier models or the expert.
-Even so, they recommend keeping a hydrologist in the loop before calibrated parameters reach operational forecasts.
+The authors identify three recurring failures.
+Some models stopped long before their budget ran out; some proposed values outside documented physical ranges; and some described a problem in the simulated flow correctly but then adjusted the wrong group of parameters.
+They read the gap as a lack of domain grounding rather than of reasoning capacity, and try to close it by fine-tuning a small open-weight model with rewards computed from the simulator.
+This improves the small model markedly, but it is not compared directly with the frontier models or with the expert.
+Even so, the authors recommend keeping a hydrologist in the loop before calibrated parameters reach operational forecasts.
 
 A peer-reviewed study of the same question reaches a more mixed verdict \citep{zhu2026large}.
-Of five LLMs compared with two established optimisation algorithms on hydrological calibration, one reached near-optimal fits in far fewer iterations than either algorithm and produced parameters its authors judged physically interpretable; the other four did worse than both algorithms.
+Five LLMs were compared with two established optimisation algorithms, one of them SCE-UA, on hydrological calibration.
+One LLM reached near-optimal fits in far fewer iterations than either algorithm and produced parameters the authors judged physically interpretable; the other four did worse than both algorithms.
 Taken together, the two studies suggest that whether an LLM is a good calibrator depends strongly on which model is used and how it is grounded in the domain, and that the best current results fall short of a skilled human rather than exceeding one.
 
 \subsection{Calibration as a workflow}
 
-Other papers treat calibration as a workflow to be organised rather than a search to be performed.
-PetroGraph addresses history matching of oil reservoirs, which is calibration of a reservoir model against observed production and injection data \citep{samigullin2026multi}.
+Other studies treat calibration as a workflow to be organised rather than a search to be performed.
+PetroGraph addresses history matching of oil reservoirs \citep{samigullin2026multi}.
 It splits the work among agents for reviewing the model, planning the experiment, choosing and bounding parameters, configuring an optimiser, running the simulator and summarising the result.
 Edited input decks are validated with dry runs before use, and the design includes human checkpoints after parameterisation and after the optimiser is set up.
-The results fall sharply with realism: the mismatch fell by 95\% on a small synthetic model and 69\% on a larger synthetic benchmark, but by 13\% on the real Norne field from the Norwegian Sea.
+The results fall sharply with realism: the mismatch fell by 95\% on a small synthetic model and 69\% on a larger synthetic benchmark, but by 13\% on the real Norne field in the Norwegian Sea.
 Two features limit what can be concluded.
 The human checkpoints were skipped in all reported experiments, and no conventional history-matching method was run for comparison.
 
-A lighter use of the LLM is to supply the judgment and leave the search to established methods.
+Data2BEM, a multi-agent system for building energy models, ends its pipeline with calibration \citep{lu2025automated}.
+Its GPT-4-based agents read the documents, build the model and configure the calibration, but the search itself is carried out by a genetic algorithm.
+For one office building the calibrated model met the accuracy criteria of the relevant industry guideline.
+The whole pipeline took 48 minutes, against 32 hours for a junior and 8 hours for a senior human modeller timed on the same task, who spent about 40\% of their time on calibration.
+
+A lighter use of the LLM is to supply part of the judgment and leave the search to established methods.
 \citet{bai2026llm} use an LLM to propose prior distributions for the parameters of a building energy model, which a standard Bayesian calibration then updates against utility data.
 Compared with priors taken from the literature, the LLM-informed priors improved accuracy by 22\% and converged 2.4 times faster, mainly because they were centred in a better place.
-Data2BEM, discussed in Section 2.2, likewise ends its pipeline with a data-driven calibration step \citep{lu2025automated}.
 
-\subsection{What this strand establishes}
+\subsection{Summary}
 
-The calibration literature shows that LLMs can take part in calibration in at least three roles: as the optimiser itself, as the organiser of a calibration workflow, and as a source of priors for a conventional method.
-It also shows the limits honestly.
-Off-the-shelf models do not yet match experts on a demanding operational model, results on synthetic cases overstate results on real ones, and the advantage in model evaluations comes with costs in time, reproducibility and dependence on pretraining.
+The calibration literature shows LLMs taking part in calibration in three roles: as the optimiser itself, as the organiser of a workflow in which a conventional optimiser searches, and as a source of priors for a conventional method.
+It also shows the limits.
+Off-the-shelf models do not yet match experts on a demanding operational model, results on synthetic cases overstate results on real ones, and savings in model evaluations come with costs in time, reproducibility and dependence on pretraining.
 
-One feature is common to every paper in this section and matters for what follows.
-The target is always an observation: measured cancer incidence, gauged streamflow, recorded well production, metered energy use.
-There is a fact the calibrated model should reproduce, and the quality of a calibration can be scored by how close it comes.
-Section 2.7 returns to why this is not quite the situation for a market equilibrium model like GGM.
+One feature is common to every study in this section and matters for what follows.
+The target is always an observation, or a statistical estimate of one: cancer incidence, gauged streamflow, recorded well production, metered energy use.
+The parameters are physical or epidemiological quantities, such as soil storage capacity or a regression rate, with ranges that can be checked against measurements or the literature.
+Equifinality means that more than one parameter set may fit, but the candidates are judged against physical plausibility.
+Section 2.8 returns to why calibrating a market equilibrium model such as GGM differs on this point.
