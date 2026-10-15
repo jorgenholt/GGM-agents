@@ -1,6 +1,11 @@
-\section{Agents around energy and economic models}
+\section{Explaining and operating existing models}
 
-Almost all of the work above comes from engineering.
+Some agents leave the model's inputs and parameters as they are and help people use it.
+OptiGuide answers what-if questions about a supply-chain optimisation model at Microsoft: the LLM writes a few lines of code that modify the model, the solver re-runs it, and the LLM explains the outcome, while the proprietary data never reach the LLM \citep{li2023large}.
+OptiChat extends this to explaining a model's formulation and diagnosing why it is infeasible, with the solver establishing the facts and the LLM explaining them \citep{chen2026optichat}.
+Like this thesis, they treat the model as trusted and fixed.
+
+Almost all of the work above comes from engineering or operations research.
 Agents around models of energy markets and the economy are rarer, and the closest study found is by \citet{golden2026agentic}.
 It wraps sixteen existing models of oil, gas, LNG, electricity, commodity markets and the wider economy, including partial and general equilibrium models, and applies them to the closure of the Strait of Hormuz in 2026.
 An LLM drafts scenario narratives, extracts the quantitative assumptions they imply and maps them onto each model's inputs, and a deterministic executor runs the models in order.

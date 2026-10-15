@@ -4,14 +4,13 @@ The Global Gas Model (GGM), developed by Ruud Egging at NTNU and Franziska Holz 
 It descends from earlier equilibrium models of gas markets \citep{egging2010world} and is used for policy questions such as how much Russian gas the European Union still needs under different climate pathways \citep{barner2025russian}.
 
 Such a model is only as credible as the work done around it.
-Its input data are collected from statistical sources and published outlooks, converted and aggregated; a scenario is defined as changes to those inputs; and the model is calibrated, by adjusting parameters that cannot be observed until it reproduces reference values for production and consumption.
+Its input data are collected from statistical sources and published outlooks, a scenario is defined as changes to those inputs, and the model is calibrated so that it reproduces observed and projected market outcomes.
 The documentation states that GGM ``requires a sophisticated calibration'' \citep[p.~37]{egging2019global}, and that calibrating it for a new scenario takes an experienced analyst at least several days, and up to several weeks after a major data revision \citep[p.~26]{egging2019global}.
 
-Agents built on large language models (LLMs), which can read documents, write and run code and call other software, are now used to set up and calibrate existing simulation models in fields from nuclear engineering to hydrology \citep{abulawi2026autosam, gomezguillen2026agentic}, and to operate energy-market models for scenario analysis \citep{golden2026agentic}.
-The evidence is uneven: the best agents still fall short of expert modellers at calibration \citep{li2026hydroagent}, and their reliability depends heavily on how work is divided between the language model, ordinary code and people \citep{zhu2026human}.
+Agents built on large language models (LLMs), which can read documents, write and run code and call other software, are now used to set up, calibrate and operate existing models in fields from nuclear engineering to energy markets \citep{abulawi2026autosam, gomezguillen2026agentic, golden2026agentic}, with uneven results that Chapter 2 reviews.
 
 How this transfers to GGM is not obvious.
 Some of the work around the model is mechanical and better done by ordinary code; some consists of finding figures in reports and applying documented rules, the kind of task agents have been built for.
 Calibration is different.
-Its parameters, such as market power, are not measured anywhere, several combinations of them can reproduce the same reference data, and economists have long treated such parameters as choices that must be justified rather than as measurements \citep{hansen1996empirical}.
+Its parameters, such as market power, are not measured anywhere and are not pinned down by the data, so setting them is partly an economic judgment.
 The risk there is not a run that fails, but a plausible result resting on a poor choice, which an agent's fluent explanation could make more convincing rather than less.
