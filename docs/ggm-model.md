@@ -31,6 +31,11 @@ while allowing some exporters to exert **market power**.
 Value chain: production → (pipeline | liquefaction → shipping → regasification) → consumption, with
 storage at geographical nodes (PDF p. 10, Figure 1).
 
+**Who developed it** (PDF p. 10, printed p. 8): "GGM was developed by Egging (2010, 2013)", building on
+the European Gas Model and the World Gas Model. Holz co-authored the documentation and many of the
+applications. The thesis says "developed by Ruud Egging … applied and documented together with Franziska
+Holz at DIW Berlin"; check with Franziska that this is how she would put it.
+
 ### Regions
 
 `NAM` North America · `SAM` South America · `EU` EU28 · `ROE` Other Europe · `AFR` Africa ·

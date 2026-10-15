@@ -121,7 +121,7 @@ Words per page are measured, not guessed: the current LaTeX layout (`report`, 11
 |---|---|---|---|---|
 | 1 Introduction | 3 | ~950–1,150 | ~10 | Written: 950 words, 7 sources, 3 pages |
 | 2 Literature review | 5 | ~1,900–2,000 | ~20–25 | Written: 1,910 words, 24 sources, 5 pages. Breadth lives in `literature-sources.md`, not in the chapter |
-| 3 The Global Gas Model | 5 | ~1,950 | | Only what chapters 5–6 need; details to `ggm-model.md`, not the thesis |
+| 3 The Global Gas Model | 5 | ~1,700 + table | ~12 | Drafted 2026-10-15: 1,690 words, 12 sources, 5 pages. Only what chapters 5–6 need; details stay in `ggm-model.md` |
 | 4 LLM agents | 7 | ~2,700 | | Deliberately longer than chapter 3: central to the argument |
 | 5 Where AI fits | 12 | ~4,700 | | The core — about a third of the thesis |
 | 6 Discussion and conclusion | 4 | ~1,550 | | Merges the earlier chapters 6–8 |
