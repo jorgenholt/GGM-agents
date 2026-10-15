@@ -293,6 +293,28 @@ literature above establishes clearly that it is not. Distinguishing yourself fro
 "LLM writes an optimisation model from scratch" cluster (OptiMUS, Chain-of-Experts) is worth doing,
 but it places you inside the configure-an-existing-model cluster rather than outside all of them.
 
+### Refinement after the supervisor-style review — 2026-10-15
+
+The headline above ("the tuned quantities are contestable, not measurable") is kept, but chapter 2
+now argues it more carefully, because an economist will object to the first version:
+
+- **Calibration as judgment is not new in economics.** Kydland & Prescott (1996), Hansen & Heckman
+  (1996) and Dawkins, Srinivasan & Whalley (2001) debated it long ago. What is new is an *agent*
+  doing the calibrating. Cite them; do not present "calibrated parameters encode judgment" as a
+  discovery.
+- **Non-unique fits are not unique to GGM.** Hydrology calls it equifinality (Beven 2006). The
+  distinctive feature of GGM is that the parameters (production costs, reference prices, market
+  power) carry *economic* meaning, so equally good fits can embody different assumptions about how
+  the market works and respond differently in a new scenario.
+- **The targets are given, not judged.** Base-year targets are statistics and future-year targets
+  come from outlooks. The judgment is in the parameters, not the targets. (The first draft's heading
+  "the target is partly a judgment" was wrong on our own account.)
+- **The research question now has a fourth sub-question on calibration**, so the question and the
+  gap line up. Whole-workflow coverage stays framed as scope, not contribution.
+
+Text: `thesis/chapters/02-literature-review/08-gap.tex`; sub-questions in
+`thesis/chapters/01-introduction/02-research-question.tex`.
+
 ### A practical contribution is also a contribution
 
 DIW Berlin wants this to work and would use it. For an applied discipline that is a genuine strength,
