@@ -1,19 +1,10 @@
-\section{Contribution}
+\section{Contribution and structure}
 
-The main contribution of this thesis is a map of where AI can be used across the workflow around GGM, and of the reasoning behind each placement.
-The workflow is followed step by step, from obtaining source data through preparing it, setting up a scenario and calibrating the model, to running it and reading the results.
-At each step the thesis asks what happens today, what the step requires, what an agent could do, and where a person should stay involved.
-The result places each step somewhere between work that ordinary code should do, work an agent could take on, and work that should remain with the analyst.
-It ends with a description of each proposed agent: what it receives, what it produces, what tools it uses, what it must never do, and how one would know it worked.
-That description is meant to be the starting point for building the agents in the master's thesis.
+The main contribution is a step-by-step map of the GGM workflow showing, for each step, what an agent could do, what ordinary code should do, and where a person should stay involved, ending with a description of each proposed agent as the starting point for the master's thesis.
+Beyond GGM, the thesis applies to a market equilibrium model a division of labour that recent evidence supports elsewhere, and examines a case the literature on agent-assisted calibration has not addressed: parameters that carry economic meaning and are not pinned down by the data.
+It argues that a person must then remain responsible for accepting the calibration, because the decision is partly an economic judgment.
 
-The thesis also makes two contributions beyond GGM.
-First, it applies to a market equilibrium model a division of labour for which the recent literature offers evidence: language models reason and propose, deterministic code computes, and people decide where decisions are hard to undo.
-That evidence comes from engineering simulation and empirical economics; the thesis examines, step by step, how far it carries to a different kind of model.
-Second, it examines a case the literature on agent-assisted calibration has not addressed: calibrating a model whose parameters are not uniquely determined by the data and carry economic meaning, so that equally good fits can embody different assumptions about how the market works.
-The thesis argues that in such a case a person must remain responsible for accepting the calibration, not only as a safety margin that better models may one day remove, but because the decision is partly an economic judgment.
-That argument is developed in Chapters 5 and 7.
-
-The contribution is also practical.
-Preparing and calibrating GGM is a documented burden for the researchers who use it, and a clear account of which parts of that work could be automated, and at what risk, is useful to them in its own right.
-What the thesis does not contribute is evidence that any particular agent works; that is left to the master's thesis.
+Chapter 2 reviews the literature and states the gap.
+Chapter 3 describes GGM and its workflow, and Chapter 4 what LLM agents can and cannot do.
+Chapter 5, the core of the thesis, brings the two together step by step.
+Chapter 6 discusses the risks, what should not be automated and the limitations of the analysis, and sets out the plan for the master's thesis.

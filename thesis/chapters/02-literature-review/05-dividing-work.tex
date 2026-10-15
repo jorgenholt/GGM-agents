@@ -1,0 +1,12 @@
+\section{Dividing the work between people, code and agents}
+
+Every system above makes a choice about which work goes to the language model, which to ordinary code, and which stays with a person.
+The question is older than LLMs.
+Research on automation has long treated the degree of automation as a design choice, made separately for gathering information, analysing it, deciding and acting \citep{parasuraman2000model}, and has warned that automating the routine parts of a job leaves people with the hardest parts and less practice at them \citep{bainbridge1983ironies}.
+
+The most direct recent evidence comes from economics.
+\citet{zhu2026human} ran 280 complete AI-assisted research projects on four datasets.
+An unconstrained multi-agent pipeline produced a critical failure in 72\% of runs.
+With the same model, agents and prompts, the failure rate fell to 16\% under three rules: the LLM reasons but does not do the data work, data preparation and estimation are done by deterministic code, and a person decides at three points, namely the research question, the identification strategy and publication.
+The most common failures removed were hallucinated references, inconsistent interpretation and infeasible research questions, not coding errors.
+The system tested is the authors' own and only one model was used, but the result matches what the engineering studies found independently: the language model should reason and propose, code should compute, and people should decide where decisions are hard to undo.

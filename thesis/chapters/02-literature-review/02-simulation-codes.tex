@@ -1,58 +1,18 @@
-\section{Agents that set up and run existing simulation codes}
+\section{Setting up and running existing models}
 
-The largest and most mature strand of the literature uses agents to produce the input files for an existing simulation code, run the code, and repair the input when the run fails.
-The motivation is the same across domains: the code is trusted, but turning a physical system or a design document into a valid input is slow, specialised and error-prone work.
+The most mature use of agents around existing models is to produce their input files, run them and repair the input when a run fails.
 
-\subsection{From documents to input files}
+The closest analogue to preparing GGM's input data is AutoSAM, which builds input files for a nuclear reactor simulation code from engineering reports, diagrams and spreadsheets \citep{abulawi2026autosam}.
+Two of its design choices carry over directly.
+The agent first writes every extracted parameter to a human-readable intermediate file that an expert can check and correct before the model input is generated.
+And where the documents are silent, it records the value it substituted as an assumption rather than filling the gap silently.
+The extraction results show why the check is needed: 45 of 51 items expected from the PDF text were retrieved.
 
-The closest analogue to preparing GGM's input data is AutoSAM \citep{abulawi2026autosam}.
-SAM is a system-level thermal-hydraulics code for advanced nuclear reactors, developed at Argonne National Laboratory.
-Its users build input files by extracting design data from engineering reports, diagrams and spreadsheets and translating them into the solver's syntax.
-AutoSAM gives a single agent tools for reading PDFs, images, spreadsheets and text, and retrieval over the solver's user guide and theory manual.
-A rule-based validator then checks the generated input for required blocks, units, connectivity and boundary conditions before it is run.
-Two design choices stand out.
-The agent first writes the extracted parameters to a human-readable intermediate file, which an expert can review and edit before the solver input is generated.
-And where the source documents are silent, the agent records the value it substituted as an assumption rather than filling the gap silently.
-The reported extraction rates show why the review step is needed: all parameters supplied in structured form were used, but only 45 of 51 items expected from PDF text were retrieved.
-The authors describe their evaluation as a characterisation of information flow rather than a formal assessment, and leave a comparison with human analysts to future work.
+MOOSEnger, built around a multiphysics simulation code, shows how much depends on the system around the language model \citep{li2026moosenger}.
+Its harness checks every candidate input against the code's schemas and runs the code's own validation before accepting it, and sends failures back to the model with the reason.
+On 200 benchmark tasks, a frontier model alone produced an input that ran in 5\% of cases; inside the harness it did so in 89.5\%.
+The authors stress that a simulation that runs is not necessarily right, since it can still encode the wrong equations or assumptions.
 
-A second line of work starts from natural-language descriptions instead of documents.
-In building energy simulation, EPlus-LLM turns plain descriptions of buildings into models for the EnergyPlus engine \citep{jiang2024eplus}, and later agentic workflows add automatic debugging of the generated models \citep{zhang2025automatic}.
-Data2BEM, discussed further in Section 2.3, extends this to a full pipeline that reads drawings, specifications and sensor data, builds a model and calibrates it \citep{lu2025automated}.
-
-\subsection{The harness around the model}
-
-A consistent finding in this strand is that the system built around the language model matters more than the language model itself.
-MOOSEnger, an agent framework for the MOOSE multiphysics code, shows this most clearly \citep{li2026moosenger}.
-Its harness parses each candidate input, checks it against the code's object and parameter schemas, and runs the code's own validation and a short execution probe.
-Only then is the revision accepted; a failed candidate goes back to the model with the evidence of why it failed.
-On a benchmark of 200 tasks, GPT-5.2 on its own produced an input that ran in 10 cases (5\%); inside the harness it did so in 179 (89.5\%).
-An open-weight model rose from none to 153.
-The authors are careful about what this shows.
-They state that successful execution is necessary but not sufficient, because a simulation can run while encoding the wrong equations, boundary conditions or physical assumptions.
-On a smaller set of problems with known analytical solutions, eight of ten generated models both ran and matched the solution.
-
-Computational fluid dynamics shows the same pattern.
-OpenFOAMGPT uses retrieval over documentation and an iterative correction loop to set up OpenFOAM cases, and its authors stress that human oversight remains necessary \citep{pandey2025openfoamgpt}.
-Foam-Agent divides the work among specialised agents and generates configuration files in the order in which they depend on each other \citep{yue2026foam}.
-It reports that 88\% of 110 basic tasks ran without expert intervention, falling to 63\% on harder tasks outside its training distribution.
-
-\subsection{Agents that call solvers rather than compute}
-
-In power systems, agents are used to drive established simulation and optimisation tools through natural language.
-A feedback-driven multi-agent framework built around two power-system simulation toolboxes completed 93\% and 97\% of their tasks; general-purpose models without the framework succeeded on fewer than 30\% of the complex ones \citep{jia2025enhancing}.
-GridMind lets agents coordinate optimal power flow and contingency analysis while every number comes from a deterministic solver called as a function \citep{jin2025gridmind}.
-\citet{hu2025natural} argue explicitly against asking the LLM for solutions, since it lacks a solver's numerical precision and handling of constraints.
-Their agent instead produces a formulation that a solver can handle, and repairs it until it validates.
-A recent tutorial on agents for smart grids turns this into a general design rule: a number is reported only if it comes from a trusted tool and passes an explicit check \citep{rojas2026llms}.
-The same idea appears as infrastructure.
-EnergyPlus-MCP exposes a building simulation engine to any LLM as a set of 35 tools for editing, validating and running models \citep{li2025energyplus}, and an open-source server does the same for the PyPSA energy-system modelling framework \citep{pypsamcpndpypsa}.
-
-\subsection{Summary}
-
-Three points from this strand carry through the rest of the thesis.
-First, generating valid input for an existing code from documents and descriptions is now a demonstrated capability, but only inside a harness that validates every candidate and feeds errors back.
-Second, the most careful systems keep a human-checkable record between the source material and the model input, and label what was assumed rather than found.
-Third, the authors themselves distinguish a run that \emph{completes} from a result that is \emph{right}.
-Checking the first can be automated; checking the second still needs a person who understands the model.
-None of the systems reviewed here works with an economic or market model.
+The same pattern appears in fluid dynamics, building energy and power systems \citep{yue2026foam, jiang2024eplus, jin2025gridmind}.
+The language model interprets the task and writes the input, a solver or validator produces every number, and errors are fed back until the input passes.
+Generating valid input for an existing model is thus a demonstrated capability, but only inside such a harness, and only for whether the model runs, not for whether its result is correct.

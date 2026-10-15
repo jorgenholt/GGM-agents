@@ -1,33 +1,13 @@
 \section{The Global Gas Model in brief}
 
-This section gives just enough of GGM for the literature review in Chapter 2 to be read against it.
+GGM represents the natural gas value chain from production, through pipelines or LNG, to consumption and storage, for more than ninety countries in five-year steps with three seasons per year \citep{egging2019global}.
+Suppliers may behave anywhere between perfect competition and Cournot competition, set by a market power parameter for each supplier, node and year.
+The equilibrium is computed by solving a single quadratic optimisation problem, in which a market power adjustment term makes the solution correspond to imperfect competition rather than to a welfare maximum \citep[pp.~47, 49]{egging2019global}.
+
+The data for a scenario are held in three spreadsheet workbooks: one describing the world (infrastructure, costs, market power), one with projected production and consumption, and one with calibrated values.
+Most inputs are collected from databases and outlooks and processed by documented rules.
+The rest are calibrated: according to the documentation, production costs and capacities, reference prices and market power are adjusted until the model reproduces reference production and consumption, first for the base year and then for future years \citep[p.~26]{egging2019global}.
+Because trade links all markets, a change in one country's costs shifts consumption elsewhere, and the analyst ``needs to combine market knowledge with model expertise and trade off choices'' \citep[p.~26]{egging2019global}.
 Chapter 3 describes the model and its workflow in full.
 
-\subsection{What the model does}
-
-GGM is a multi-period partial equilibrium model of the global natural gas market \citep{egging2019global}.
-It covers more than ninety countries grouped into nine regions, with large countries such as the United States, Russia and China split into several nodes, and runs in five-year steps, with three seasons in each year.
-Gas moves along a value chain from production, through pipelines or through liquefaction, shipping and regasification, to consumption, with storage at the nodes.
-Suppliers sell gas to consumers at each node and may behave anywhere between perfect competition and Cournot competition; this degree of market power is set by a conjectural variation parameter for each supplier, node and year.
-The model solves for production, trade flows, storage use, infrastructure expansion and prices simultaneously.
-Like its predecessor, the World Gas Model \citep{egging2010world}, GGM is an equilibrium model, but the documentation sets the equilibrium problem up as a single quadratic optimisation problem: a market power adjustment term in the objective makes its solution correspond to the imperfectly competitive equilibrium rather than to a welfare maximum \citep[pp.~47, 49]{egging2019global}.
-The version documented in 2019 was implemented in GAMS; the current public version is written in Julia and solved with a commercial solver \citep{ggmpublicongithubndggm}.
-
-\subsection{What it takes to use it}
-
-The data for a GGM scenario are held in three spreadsheet workbooks: one describing the world as it is (nodes, pipelines, LNG terminals, storage, costs and market power), one holding the projected production and consumption for each node and year, and one holding the calibrated values.
-To change a scenario is, for the most part, to change these workbooks.
-
-Most of the input is collected.
-Infrastructure capacities and distances come from industry and agency databases, and projected production and consumption are taken from published outlooks, such as the International Energy Agency's World Energy Outlook, and then split across nodes and years.
-This is laborious, but most of it follows documented rules.
-
-The rest is calibrated.
-According to the documentation, calibration adjusts production costs and capacities, reference prices and market power assumptions until the model reproduces reference values for production and consumption, first for the base year and then for the future years \citep[p.~26]{egging2019global}.
-Because the market is connected through trade, changing one country's costs shifts consumption elsewhere, so the adjustments cannot be made one country at a time.
-The documentation describes how an analyst reasons about a deviation.
-A country producing too little, for example, may have production costs that are too high, face too little willingness to pay in its export markets, or be given too much market power, and the analyst ``needs to combine market knowledge with model expertise and trade off choices'' \citep[p.~26]{egging2019global}.
-
-% TODO: In the 2023 dataset, market power values are identical across scenarios (docs/ggm-data-2023.md). Ask Franziska whether market power is still part of routine calibration.
-
-For the purposes of Chapter 2, three features of GGM matter most: it is an existing model that is not to be changed; its inputs come from heterogeneous documents and data sources; and part of its configuration is set by calibrating parameters that are not observed, that are not uniquely determined by the data, and that carry economic meaning.
+% TODO: In the 2023 dataset, market power is identical across scenarios. Ask Franziska whether it is still part of routine calibration.

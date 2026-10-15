@@ -1,0 +1,25 @@
+\section{The gap}
+
+The literature establishes that agents can set up, run and repair existing models inside a harness, take part in calibrating them, and translate scenarios into inputs for energy-market models, and that reliability depends on how the work is divided between the model, code and people.
+Using agents around an existing model is therefore not new, and this thesis does not claim that it is.
+Three things are missing.
+
+\textbf{Calibration where the parameters carry economic judgment.} In the calibration studies above, the parameters are physical quantities that can be checked against measurements.
+GGM is calibrated by adjusting production costs, reference prices and market power until the model reproduces reference production and consumption, which for future years are themselves taken from published outlooks \citep[p.~26]{egging2019global}.
+None of these parameters is observed, and different combinations can reproduce the same reference values.
+The documentation calls the choice of which parameters to adjust ``up to some extent arbitrary'', and warns that a wrongly calibrated model may give biased results that stem from invalid parameter choices rather than from market logic \citep[p.~26]{egging2019global}.
+Two equally good fits can thus embody different assumptions about how the market works, and respond differently when the model is used for a new scenario.
+Economists have long argued that calibrated parameters of this kind must be justified and tested for their influence on the results \citep{hansen1996empirical}, and recent work on AI in economics recognises that such outputs lack a machine-readable signal of correctness \citep{zhu2026pai}.
+What it means for an agent to calibrate such a model has not been examined.
+
+\textbf{The middle of the workflow for energy-market models.} No study found applies agents to preparing the data for, or calibrating, an equilibrium model of an energy market.
+The closest work operates such models as they are \citep{golden2026agentic}.
+On its own this would be a weak claim, but it is precisely here that the judgments described above are made.
+
+\textbf{A view of the whole workflow.} Most studies automate one task and evaluate it in isolation.
+Agents should be assessed task by task before claims are made about whole workflows \citep{chen2025scienceagentbench}, and few studies ask, for a single model, which steps suit an agent, which suit ordinary code and which should stay with a person.
+This is the scope of the thesis rather than a contribution in its own right.
+
+Chapter 3 describes GGM and where the effort and judgment in its workflow lie, Chapter 4 sets out what LLM agents can and cannot do, and Chapter 5 brings the two together step by step, with particular attention to calibration.
+
+% TODO: Confirm with Lukas that the base-year reference values are historical statistics.
