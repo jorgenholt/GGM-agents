@@ -106,7 +106,13 @@ therefore focus on **what actually happens** and **what judgment it takes**.
    versus gross production and country-specific conversion factors. What else belongs on that list?
 9. **How do you check the prepared data before using it?** Do you have scripts, eyeball checks, or
    comparisons against the previous version?
-10. **How long does a full data update take, and which part is slowest?**
+10. ★ **How long does a full data update take, and where within it does the time go?** Ask for a
+    rough split across these stages. They differ a lot in how far they can be automated.
+    - finding and obtaining the sources
+    - extracting the figures from reports and tables
+    - converting units
+    - splitting regional totals and mapping figures to nodes
+    - checking the result
 
 ## 3. Setting up a scenario
 
@@ -152,30 +158,39 @@ Give this the most time. If possible, ask him to demonstrate on one country.
 6. ★ **How do you know when to stop?** Is "close enough" a number, and is it written down?
 7. ★ **How many iterations and hours does it take?** Compare the base year with a new scenario's
    future years.
-8. ★ **About 1,700–2,050 values change from one 2023 scenario to the next.** Are those tuned by hand,
+8. ★ **How much of that time is waiting for runs, and how much is thinking?**
+   - One run of `NCA_NENO` took us about 24 minutes on a laptop. Roughly how many runs does a
+     calibration need?
+   - What machine do you run on?
+   - Do you leave runs going overnight or run several at once?
+
+   This decides what an agent could save. It can't make a solve faster, only need fewer runs or work
+   through them unattended.
+9. ★ **About 1,700–2,050 values change from one 2023 scenario to the next.** Are those tuned by hand,
    or derived by a formula or script? This answer decides whether that work is judgment or mechanics.
-9. **Why is capacity slack 0–2.4 % when the documentation recommends 3–5 %?**
-10. ★ **Is there a calibration script outside the public repo?** The code has an unused calibration
+10. **Why is capacity slack 0–2.4 % when the documentation recommends 3–5 %?**
+11. ★ **Is there a calibration script outside the public repo?** The code has an unused calibration
     hook (`GGM_CalibrationTargets`) and an unused input that scales demand (`calib_int`). Was this
     work started and then dropped?
-11. **The model doesn't produce a calibration report.** How do you compare results with the reference
+12. **The model doesn't produce a calibration report.** How do you compare results with the reference
     values today?
 
 **What it needs**
 
-12. ★ **Do any records of past calibrations exist** — notes, intermediate files, emails? Could we get
+13. ★ **Do any records of past calibrations exist** — notes, intermediate files, emails? Could we get
     them? A trace of expert reasoning is the best possible benchmark for an agent.
-13. **What does a failed calibration look like?** When do you stop tuning and change the input data
+14. **What does a failed calibration look like?** When do you stop tuning and change the input data
     instead?
-14. **Would two experienced analysts end up with the same calibration?** How much room is there for
+15. **Would two experienced analysts end up with the same calibration?** How much room is there for
     defensible disagreement?
-15. **Who decides that a calibration is good enough?**
+16. **Who decides that a calibration is good enough?**
 
 ## 5. Running the model
 
 1. **How do you start a run** — a Julia script, the REPL, or a cluster? On which machine, and with
    which Gurobi licence?
-2. **How long does one scenario take to run, and how much memory does it need?**
+2. **Is our run time typical?** `NCA_NENO` took us about 24 minutes on an M1 laptop with 8 GB of RAM,
+   and needed more memory than the machine has. How long does a run take on your machine?
 3. **How often do runs fail?** When the model is infeasible, how do you find the cause?
 4. **Which warnings in the log do you read, and which do you ignore?** Is the ∞ → 10,000 fallback in
    `FFF` and `TZE` known and accepted?
@@ -204,9 +219,14 @@ Give this the most time. If possible, ask him to demonstrate on one country.
 
 ## 8. Effort and frequency (for §3.5)
 
+Lukas has already said, informally in October 2026, that data preprocessing and calibration take the
+longest. The aim here is to turn that remark into rough figures we can cite.
+
 1. ★ **Roughly what share of the time goes to each of the six steps?** Ask separately for:
    - a full data update;
    - a new scenario on existing data.
+
+   Ask whether we may cite the figures as a personal communication.
 2. **How often does each of those happen per year?**
 3. **What is the most tedious part?** Which part would you most like to have automated?
 

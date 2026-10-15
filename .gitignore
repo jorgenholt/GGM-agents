@@ -24,3 +24,6 @@ data/
 # IDE
 .vscode/
 .idea/
+
+# Office lock files (created while a document is open)
+~$*
