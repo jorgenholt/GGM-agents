@@ -1,3 +1,34 @@
-\section{Inputs}
+\section{What goes into the model}
 
-% TODO: The three workbooks and the four layers of input (workflow-task-inventory.md).
+Section 1.4 introduced the three workbooks that define a scenario.
+In the 2023 dataset, four demand scenarios, which differ in their projections and calibration, can be combined with three network variants, which differ in whether Russian gas reaches Europe.
+
+The inputs are not all of the same kind.
+Table \ref{tab:ggm-inputs} groups the numeric values in one 2023 scenario by where they come from.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Kinds of input in one scenario of the 2023 GGM dataset (our count).}
+\label{tab:ggm-inputs}
+\begin{tabularx}{\textwidth}{@{}lrX@{}}
+\toprule
+Kind of input & Values & Where it comes from \\
+\midrule
+Physical facts & 15,200 & Capacities, lengths and distances from industry and agency databases \\
+Projections & 9,400 & Reference production and consumption from published outlooks, split by node and year \\
+Literature parameters & 26 & Elasticities, base costs, loss and discount rates \\
+Scenario settings & 1,900 & Expansion limits, market power, sales restrictions \\
+Calibrated values & 7,050 & Set by calibration; about 2,630 differ from their neutral value \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Most values are therefore collected, not chosen.
+Physical facts come from sources such as ENTSOG, the EIA, GIIGNL and GIE, and projections from the IEA's World Energy Outlook and, for Europe, from the PRIMES model \citep[pp.~11--22]{egging2019global}.
+Turning these into model inputs is a pipeline of its own.
+The documentation describes three further internal workbooks in which outlook figures are compiled, converted to common units and, for the five countries represented by several nodes, split across those nodes using each region's share in a base year \citep[pp.~22--25]{egging2019global}.
+The rules contain traps that are written down, such as using marketed rather than gross production when splitting US output, because gross production in Alaska is many times its marketed production \citep[p.~24]{egging2019global}.
+
+Part of the source data is proprietary, so the model is published without it, and the documentation describes the processing in enough detail for others to rebuild the data \citep[p.~8]{egging2019global}, a common compromise in energy modelling \citep{pfenninger2017importance}.
+The values that are not collected are the scenario settings, which express what world is being modelled, and the calibrated values, which are the subject of Section 3.5.
