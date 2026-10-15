@@ -1,0 +1,4 @@
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+GlobalGasModel = "8e4a132a-2312-471f-9e9d-76faa863077d"
+Gurobi = "2e9cd046-0924-5485-92f1-d5272153d98b"
