@@ -1,24 +1,24 @@
 \section{The workflow around the model}
 
 The documentation describes the model and its data, but not the order in which the work is done.
-Reading it together with the code and the 2023 data suggests six steps, which Chapter 5 follows:
+In the working session, the developers' practice followed six steps:
 
 \begin{enumerate}
-  \item \textbf{Get source data:} find the current editions of statistics and outlooks, and extract the relevant figures.
-  \item \textbf{Prepare the data:} convert units, map figures to nodes, split country totals and fill in missing years.
-  \item \textbf{Set up the scenario:} choose the outlook and the network variant, and set expansion limits, market power and sales restrictions to match the scenario.
-  \item \textbf{Calibrate:} adjust costs, capacities, prices and market power until the model reproduces the reference values.
+  \item \textbf{Set up the scenario:} agree on the storyline to model, choose the node structure the available data can support, and decide the scenario settings, such as blocked routes or sanctions.
+  \item \textbf{Get source data:} find current infrastructure data and the statistics and outlooks the storyline is anchored to.
+  \item \textbf{Prepare the data:} write the projections node by node, map infrastructure data to nodes, and set elasticities and seasonal patterns.
+  \item \textbf{Calibrate:} adjust costs, capacities and prices until the model reproduces the reference values.
   \item \textbf{Run the model:} build and solve the optimisation problem and write out the results.
   \item \textbf{Read the results:} check the results for consistency and interpret them as findings.
 \end{enumerate}
 
 The steps are not strictly sequential.
-Calibration requires repeated runs, a scenario that cannot be calibrated may send the analyst back to the data, and implausible results may reveal a problem in any earlier step.
-The work is also unevenly documented.
-Data sources and processing rules are described in detail, calibration is described by its principles and a few worked examples, and scenario design and the interpretation of results are not described at all.
+Calibration requires repeated runs, an implausible result can send the analysts back to the storyline, and adding a single LNG terminal touches the node list, the arcs and the shipping distances at once.
+A new study is set up by copying an earlier one's workbooks and run script and changing them, so the node structure itself varies between studies: the 2023 data use 136 geographic nodes, while a 2026 study of the Strait of Hormuz used far fewer, with one node for Canada and three for Russia.
+Setting up a study is effortful enough that the developers weigh whether a question justifies it before starting.
 
 Some checks are already automated.
 When loading the data, the code reports any node whose projected exports or imports exceed the transport capacity available to it.
 The model produces tables of production, flows, investments and prices; the 2019 version also produced reports comparing model outcomes with the reference values \citep[p.~26]{egging2019global}, but the public Julia version does not.
 
-% TODO: The six steps are inferred from documents. Check the order, and how results are compared with reference values today, in the workflow session with Lukas.
+% TODO: Chapter 5 sections are still in the old order (source data before scenario). Reorder to match these six steps.

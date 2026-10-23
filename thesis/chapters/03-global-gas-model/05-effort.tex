@@ -1,30 +1,30 @@
 \section{Where the effort and judgment lie}
 
-The volume of the work lies in the data.
-More than 24,000 of the values in Table \ref{tab:ggm-inputs} are collected facts and projections, which must be refreshed whenever a new edition of a source appears.
-This work is laborious but mostly rule-bound, and an error in it, such as a wrong unit, often produces a value that is visibly out of range.
+The volume of the work lies in the infrastructure data: more than 15,000 values that must be refreshed, mapped and checked whenever a source publishes a new edition.
+This work is laborious but rule-bound, and an error in it, such as a wrong unit, often produces a value that is visibly out of range.
 
-The judgment lies in calibration.
-GGM is calibrated to annual production and consumption, for individual countries in Europe and at the regional level elsewhere, by adjusting production costs and capacities, reference prices and market power; price elasticities are left unchanged \citep[p.~26]{egging2019global}.
-The base year is calibrated first and the future years afterwards.
-Three features make this hard.
+The judgment lies in two places.
+The first is the scenario itself: the reference quantities and demand shares described in Section 3.3, which encode a view of how the market could develop and are designed rather than measured.
+The second is calibration.
+GGM is calibrated to annual production and consumption, for individual countries in Europe and at the regional level elsewhere, by adjusting production costs and capacities and reference prices; price elasticities are left unchanged \citep[p.~26]{egging2019global}.
+The documentation also lists market power among the calibrated parameters; in practice it is set per scenario, by judgment, and used to represent long-term contracts and to correct implausible trade.
+Three features make calibration hard.
 
 First, the parameters cannot be looked up.
 The documentation states that detailed and consistent production cost and capacity data are not available, so these values are derived from the developers' own assumptions supported by limited information, and that price information is missing for many countries \citep[pp.~27, 29]{egging2019global}.
 
 Second, a deviation has several possible causes.
 If a country produces too little while consuming enough, its exports are too low, which may reflect production costs that are too high, too little willingness to pay in its export markets, or too much market power \citep[p.~26]{egging2019global}.
-Because the market is connected through trade, correcting one country shifts outcomes in others, and the documentation notes that oligopolistic models of this kind are much harder to calibrate than competitive ones.
+Because costs and prices are both tuned and the market is connected through trade, correcting one country shifts outcomes in others.
 
 Third, a calibration must hold beyond its reference values.
 Parameter choices should remain sensible if, in another scenario, a country turned from exporter into importer, and the documentation warns that a wrongly calibrated model may produce biased results that stem from invalid parameter choices rather than from market logic \citep[p.~26]{egging2019global}.
 
-The documentation estimates that calibrating the model for a new scenario takes an experienced analyst at least several days, and up to several weeks after a major revision of the data.
-The 2023 dataset shows the scale: moving from one demand scenario to another changes between about 1,700 and 2,050 calibrated values, all of them future-year factors for production costs, capacities and prices.
-Each test of a change requires a model run, and a single run took 24 minutes on our laptop.
-In the 2023 dataset, market power is the same in every demand scenario, which suggests it is now set as part of the scenario rather than re-tuned each time.
-
-% TODO: Confirm with Franziska and Lukas how calibration is done in practice, and whether market power is still calibrated.
+In practice, calibration is done entirely by hand, with no script.
+The analyst starts from the results of an earlier run, checks whether production, consumption or both deviate, decides whether the cause lies in the data or in the parameters, and adjusts the parameter that seems least plausible; then runs the model again.
+To use the waiting time, two scenarios are calibrated in parallel, one adjusted while the other solves.
+The developer who calibrated the 2023 data describes the process as trial and error that takes several days of full-time work.
+The 2023 dataset shows the scale: moving from one climate scenario to another changes between about 1,700 and 2,050 calibrated values, and a single run took 24 minutes on our laptop.
 
 Studies of energy modelling describe choices of this kind as resting on the modellers' judgment and experience of both the model and the system it represents \citep{silvast2020energy}.
 It is also where an agent would face the problem identified in Section 2.6: there is a fit to aim for, but no single correct set of parameters behind it.
