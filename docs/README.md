@@ -14,7 +14,8 @@ Working documents for the project thesis. Start here.
 | [`ggm-data-2023.md`](ggm-data-2023.md) | The real 2023 dataset in `../data_2023/`: scenarios, network, what gets calibrated, oddities | Working with or describing the data |
 | [`ggm-model.md`](ggm-model.md) | Model reference — sets, variables, constraints, parameters, calibration, with PDF page pointers | Looking up how GGM actually works |
 | [`questions-for-weekly-meeting.md`](questions-for-weekly-meeting.md) | Things needing a human answer, and answers already resolved | Before each weekly meeting |
-| [`lukas-workflow-session.md`](lukas-workflow-session.md) | Question guide for a long session with Lukas to map the workflow, step by step, for chapters 3 and 5 | Preparing that session |
+| [`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md) | Timestamped notes from the 23 October session with Lukas: how each workbook is built, how calibration is done, his view of an agent workflow | Writing chapters 3 and 5, or designing agents |
+| [`lukas-workflow-session.md`](lukas-workflow-session.md) | The question guide prepared for that session | Reference |
 | [`ggm-documentation-v3.0.pdf`](ggm-documentation-v3.0.pdf) | Egging & Holz (2019), DIW Data Documentation 100 | The source of truth for GGM |
 
 ## Which file does a new finding go in?

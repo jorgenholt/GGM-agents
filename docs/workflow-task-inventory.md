@@ -26,6 +26,33 @@ not a framework the chapter commits to.
 
 ---
 
+## Corrected after the session with Lukas — 2026-10-23
+
+The inventory below was drafted from documents. The session with Lukas ([`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md)) confirmed parts of
+it and overturned others. Where the two disagree, this section wins.
+
+- **Projections are judgment, not extraction.** Reference production and consumption are a storyline
+  loosely aligned with an outlook (WEO or Energy Institute) and adjusted node by node; "all of the data
+  in this are made up" apart from the anchoring aggregates. Franziska does this, about a week full time.
+  Lukas sees it as the least suited to automation. Layer 2 below is therefore wrong as written.
+- **Elasticities, sector shares and seasonality are judgment too.** No data set exists; values are
+  copied from earlier work or rebuilt per study. Layer 3 below is wrong for these.
+- **The general workbook is the factual layer**: ENTSOG, EIA and Global Energy Monitor for arcs; EIA and
+  ENTSOG/GIE for storage; the scgraph library for shipping distances. Scenario settings (sales
+  restrictions, blocked routes, market power) are adjusted on top. Lukas already uses AI for the mapping
+  of source data to model nodes, and has a script for pipeline extraction.
+- **Market power** is "gut feeling plus some type of calibration", set per scenario.
+- **Calibration** (stage 8) is confirmed as manual trial and error: no script, several days, two
+  scenarios in parallel, diagnosis by direction of the deviation.
+- **Order of work**, as Lukas would structure it: baseline scenario → node structure → projections →
+  elasticities → seasonality → general data → initial calibration values → runs and calibration, with
+  a human review after each of the first steps.
+- **Two places of judgment, not one**: the projections (scenario design) and the calibration. The
+  "judgment in, arithmetic out" principle still holds, but the "judgment" input is larger than the
+  section below assumes.
+
+---
+
 ## The task is ETL, not file generation
 
 Worth stating plainly, because it is easy to get wrong: GGM's inputs are **not invented**. They are

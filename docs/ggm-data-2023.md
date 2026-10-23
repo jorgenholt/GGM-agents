@@ -65,7 +65,8 @@ A cell-by-cell comparison shows each differs from `NENO` in exactly one sheet:
 | `EUSD` | Sales Restrictions only | NENO plus a **zero sales limit for Russia in 38 European nodes** (28 EU, 10 other European), 2025–2060 — covers LNG as well as pipeline gas |
 
 So `NENO` looks like the baseline, and the other two are the "Russia to Europe" dials turned one way
-or the other. *Guess, unconfirmed:* SQAB may stand for "status quo ante bellum".
+or the other. **Confirmed by Lukas, 2026-10-23:** NENO = new normal, SQAB = status quo ante bellum,
+EUSD = European supply disruption.
 
 This is exactly the kind of scenario used as the worked example in
 [`how-it-would-work.md`](how-it-would-work.md) — the 2023 dataset already contains it.
@@ -86,7 +87,9 @@ calibration. Global reference totals, bcm/yr:
 
 (Consumption shown; production follows the same shape, within about 3 % of it.)
 
-*Guesses, unconfirmed:* NCA and MCA read like "no" and "moderate climate action"; FFF and TZE are two
+**Confirmed by Lukas, 2026-10-23:** NCA = no climate ambition (roughly IEA's Stated Policies), MCA =
+moderate climate ambition, TZE = more ambitious (around IEA's Net Zero), FFF = "fossil and fissile
+free" (climate ambition plus a nuclear phase-out). FFF and TZE are two
 routes to zero gas use by 2050 — FFF holds up until 2030 and then drops fast, TZE declines from the
 start. In MCA, EU consumption falls from 395 to 46 bcm/yr by 2050.
 
