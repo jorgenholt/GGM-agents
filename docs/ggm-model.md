@@ -233,6 +233,26 @@ Key points:
 - The global market behaves as communicating vessels — changing one country's production cost spills
   over into consumption everywhere.
 
+### Calibration in practice — Lukas, 2026-10-23
+
+Verified by the person who calibrated the 2023 data ([`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md) §4):
+
+- **By hand, no script**, "several days full time" for a set of scenarios.
+- **Two-sided**: production costs and reference prices are both tuned, which he describes as much harder
+  than calibrating one side.
+- **Workflow**: start from the outcomes of an old run; calibrate two scenarios at a time, adjusting one
+  while the other solves; repeat until satisfied.
+- **Levers actually used**: base production cost and its year factors; capacity slack (about 1.05,
+  higher for cheap producers); base reference price and its year factors. The c/q curve coefficients and
+  the 50/46/4 block shares are normally left alone. Seasonal price factors come from historical spreads
+  and are kept across scenarios. Global losses are zero.
+- **Diagnosis**: first whether production, consumption or both are off; then whether the cause is data
+  (export capacity) or calibration (costs, slack, prices); change the parameter closest to plausible.
+- **Market power** is set per scenario, by judgment plus some calibration, and also used to stand in for
+  long-term contracts.
+- **LLM pitfall he flagged**: official subsidised gas prices are far below the implied prices the model
+  needs.
+
 ### Calibration effort — citable evidence of manual burden
 
 **Location: PDF p. 28 (printed p. 26), §5.1 "Calibration", third paragraph.**

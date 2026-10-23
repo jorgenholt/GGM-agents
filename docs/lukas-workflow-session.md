@@ -1,5 +1,8 @@
 # Workflow session with Lukas — question guide
 
+> **Held on 2026-10-23.** Notes from the session: [`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md).
+> This guide is kept for reference.
+
 A guide for one long session with Lukas Barner. The goal is to gather everything chapter 3
 (§3.4 workflow, §3.5 effort) and chapter 5 (*Where AI fits*) need.
 

@@ -33,6 +33,8 @@ before building on it** — full version in
 
 Is this how you think about it? Is anything misplaced, or missing?
 
+> **Answered in part, 2026-10-23 (Lukas).** Layers 1 and the general workbook hold. Layer 2 is wrong: projections are a judgment-heavy storyline, not read off an outlook. Elasticities, sector shares and seasonality are judgment too. Details in [`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md) §2–3. Still worth confirming with Franziska, who does the projections.
+
 ### 2. How is layer 4 actually done? — **the key question**
 
 **For:** Lukas Barner (weekly) · **Feeds:** the core chapter
@@ -54,7 +56,11 @@ Concretely:
 - **Is there any record of past calibrations** — old files, notes, working spreadsheets? Would be
   extremely valuable: a trace of expert reasoning to evaluate an agent against.
 
+> **Answered, 2026-10-23 (Lukas).** By hand, no script, several days full time; two scenarios in parallel; start from an old run's outcomes; diagnose by direction, then change the parameter closest to plausible; trial and error. See [`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md) §4. **Still open:** when to stop ("close enough"), and whether old calibration files exist.
+
 ### 3. Which layer actually eats the most time?
+
+> **Answered in part, 2026-10-23 (Lukas).** Projections: about a week of Franziska's time, with back and forth. Calibration: several days full time. The general workbook: not quantified. See [`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md).
 
 **For:** Lukas Barner, Franziska Holz · **Feeds:** scoping, and the motivation argument
 
@@ -99,6 +105,8 @@ acknowledge, and it marks which problems are already solved and not worth claimi
 Also worth asking what he found repetitive while porting the model — that is a direct read on where
 the friction lives.
 
+> **Answered, 2026-10-23 (Lukas).** No calibration script. He already uses AI for mapping source data to model nodes, and has a Julia script for extracting pipeline data (`run_pipe_extraction_stuff.jl`). See [`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md) §3.
+
 ### 6. Who else uses GGM, and how? **(open)**
 
 **For:** Franziska Holz · **Feeds:** motivation, scope
@@ -129,6 +137,9 @@ understanding it correctly.
 
 - **What do the codes stand for?** Scenarios `FFF`, `MCA`, `NCA`, `TZE`; general variants `NENO`,
   `SQAB`, `EUSD`. Which combination is the usual reference run?
+  **Answered 2026-10-23:** NCA no climate ambition, MCA moderate, TZE more ambitious, FFF fossil- and
+  fissile-free; NENO new normal, SQAB status quo ante bellum, EUSD European supply disruption. See
+  [`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md) §1. Reference run not asked.
 - **Is market power meant to stay constant?** The minimum ratio is 1 for every trader, which switches
   off the 0.7-per-period decay entirely.
 - **Storage OPEX is labelled USD** but used as EUR without conversion. Stale label, or a real mismatch?
@@ -157,6 +168,8 @@ produced or used. These three gaps can only be filled by someone who works with 
   ([Model.jl:7](../ggm/GlobalGasModel/src/SubModules/Model.jl#L7)). Neither is ever called. Is there
   a calibration script outside the public repo, or was this started and dropped? Also, since the model
   produces no calibration report, how do you compare results with the reference values today?
+> **Partly answered, 2026-10-23 (Lukas).** Sources per sheet: ENTSOG, EIA and Global Energy Monitor for arcs; EIA and ENTSOG/GIE for storage; scgraph for shipping distances; WEO or Energy Institute for projections. No calibration script; the unused hook was not discussed. See [`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md).
+
 - **What does a finished run look like, and how do you read it?** We can't run the model ourselves
   yet. An example set of output files from one run, and a quick walkthrough of what you look at
   first, would show what an agent interpreting results would actually be working with.
@@ -189,6 +202,12 @@ the curves really are steeper than documented. The question is now whether that 
 ---
 
 ## Resolved
+
+### Workflow session with Lukas — *2026-10-23*
+
+A 2 h 46 min recorded session in which Lukas walked through all three workbooks. It answers most of
+questions 1, 2, 3, 5 and 9 and the scenario codes in 8; the answers are marked under each question
+above, and the full notes, with timestamps, are in [`lukas-session-2026-10-23.md`](lukas-session-2026-10-23.md).
 
 ### Input data received — *2026-09-30*
 
