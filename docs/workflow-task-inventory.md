@@ -14,12 +14,16 @@ below are the finer breakdown that feeds those steps:
 
 | Chapter 5 step | Inventory stages |
 |---|---|
+| Set up the scenario | 7 Scenario definition (storyline, node structure, scenario settings) |
 | Get source data | 1 Source acquisition |
-| Prepare the data | 2 Unit conversion · 3 Spatial aggregation · 4 Temporal interpolation |
-| Set up the scenario | 7 Scenario definition · 5 Structural validation · 6 Feasibility checks |
+| Prepare the data | 2 Unit conversion · 3 Spatial aggregation · 4 Temporal interpolation · 5 Structural validation · 6 Feasibility checks |
 | Calibrate | 8 Calibration |
 | Run the model | 9 Execution |
 | Read the results | 10 Result checking · 11 Interpretation and write-up |
+
+*Reordered 2026-10-28:* the Lukas session showed that the scenario (storyline and node structure) is set
+up first and frames the data work, so it is now step 1; validation and feasibility checks moved to
+"prepare the data".
 
 The Code / Agent / Human / Mixed verdicts below are provisional input to the chapter's four questions,
 not a framework the chapter commits to.

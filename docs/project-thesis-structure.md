@@ -150,8 +150,10 @@ already covered something, cite back to chapter 2 rather than repeating it.
 Written **generally**, so it holds for any GGM configuration rather than one dataset. The chapter walks
 through the workflow from chapter 3 in the order the work happens:
 
-> Get source data → Prepare the data → Set up the scenario → Calibrate → Run the model → Read the
+> Set up the scenario → Get source data → Prepare the data → Calibrate → Run the model → Read the
 > results
+
+*Reordered 2026-10-28* after the session with Lukas: the scenario and node structure come first.
 
 Each step gets the same four questions:
 
