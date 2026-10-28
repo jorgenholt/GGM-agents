@@ -1,3 +1,28 @@
 \section{What LLMs are bad at}
 
-% TODO: Hallucination, weak arithmetic, non-determinism, context limits.
+The weaknesses matter more than the strengths for this thesis, because an error in GGM's input does not announce itself: a model with a wrong cost still solves and still produces prices.
+
+\textbf{Plausible but wrong output.} LLMs generate fluent text that can be unfaithful to the source they were given or to facts, a family of errors surveyed as hallucination \citep{huang2025survey}.
+The risk is greatest where a value is missing and the model fills the gap with one that looks right, which is why AutoSAM records every substituted value as an assumption (Section 2.2).
+Hallucinated references were also among the most common critical failures in the economics pipelines studied by \citet{zhu2026human}.
+
+\textbf{Arithmetic.} Models are unreliable at calculation done in text.
+On grade-school mathematics problems, performance drops when only the numbers in a question are changed, and drops further when an irrelevant clause is added \citep{mirzadeh2024gsm}.
+Unit conversions, sums over nodes and shares that must add up to one should therefore be computed by code, which the tool-use work in Section 4.1 was designed to do \citep{gao2022pal}.
+
+\textbf{Long inputs.} Models with large context windows still use long inputs unevenly, and miss information placed in the middle of the input more often than at its start or end \citep{liu2024lost}.
+GGM's three workbooks hold tens of thousands of values (Table \ref{tab:ggm-inputs}), so pasting them into a prompt is no substitute for tools that read the cells a step needs.
+
+\textbf{Agreeing too easily.} Training on human feedback rewards answers that people like, and models tend to agree with a view the user has stated, even when it is wrong \citep{sharma2023towards}.
+An agent asked to review a calibration the modeller is pleased with may confirm it rather than question it.
+
+\textbf{Knowing what it does not know.} Models are partly able to judge whether their own answers are correct \citep{kadavath2022language}, but people tend to trust a model's explanation more than its accuracy warrants, and longer explanations raise that trust whether or not the answer is right \citep{steyvers2025large}.
+A fluent rationale for a parameter change is therefore not evidence that the change is sensible.
+
+\textbf{Non-determinism.} The same prompt can produce different answers, even with sampling set to be deterministic, mainly because the arithmetic on the provider's servers depends on how many requests are processed together \citep{he2025defeating}.
+An agent-assisted calibration cannot be reproduced by running the prompt again; to be reproducible, its decisions must be logged.
+
+For the energy sector specifically, \citet{majumder2024exploring} list further limits: scarce domain data, no built-in respect for physical laws, no information on uncertainty, and exposure of confidential data.
+The last point applies to GGM directly, since part of its source data is proprietary (Section 3.3), and is one reason the choice of model in Section 4.4 is not only a matter of quality.
+
+These weaknesses have a common remedy in the literature: the model proposes, deterministic code computes and checks, and a person decides where an error would be costly and hard to see (Section 2.5).

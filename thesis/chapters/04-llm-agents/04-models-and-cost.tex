@@ -1,2 +1,37 @@
 \section{Choosing a model, and what it costs}
 
+Models are offered in tiers.
+The largest models from the main providers are the most capable and the most expensive; smaller models from the same providers are cheaper and faster, and suit simple, high-volume steps; and open-weight models can be downloaded and run on one's own hardware.
+Table \ref{tab:model-prices} shows the list prices of one provider's three current tiers, as an indication of the order of magnitude.
+Prices are quoted per million tokens, a token being roughly three quarters of an English word, and output costs several times as much as input.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{List prices of one provider's models, October 2026, in US dollars per million tokens; the smallest model's prices apply to inputs up to 100,000 tokens \citep{anthropic2026pricing}.}
+\label{tab:model-prices}
+\begin{tabularx}{\textwidth}{@{}Xrrr@{}}
+\toprule
+Model & Input & Output & Context window \\
+\midrule
+Claude Opus 5.5 (largest) & 4.00 & 20.00 & 1M tokens \\
+Claude Sonnet 5.5 (middle) & 2.00 & 10.00 & 1M tokens \\
+Claude Haiku 5.5 (smallest) & 0.10 & 0.50 & 1M tokens \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+At these prices, a single model call is cheap.
+A call that reads 50,000 tokens, roughly a hundred pages of text, and writes 5,000 costs about 30 cents with the largest model.
+Agents are more expensive than single calls, because each turn of the loop sends the growing history back to the model, and multi-agent systems more so, at about fifteen times the tokens of a chat in the case cited in Section 4.1 \citep{anthropic2025we}.
+Reported costs in the studies close to this thesis are nonetheless small: an agent framework for power-system simulation completed each simulation for about \$0.014 in tokens \citep{jia2025enhancing}, and a fully automated research pipeline produced each paper for under \$15 \citep{lu2024ai}.
+Against several days of an experienced analyst's time per calibration (Section 3.5), the token cost of an agent is unlikely to be what decides whether it is worth using.
+
+What decides it is the cost of the result being wrong.
+\citet{kapoor2024ai} argue that agents should be evaluated on accuracy and cost together, because a system can look better simply by spending more, for instance by retrying until something passes.
+For GGM, the relevant comparison is not tokens against salary but the time an analyst needs to check an agent's work against the time needed to do the work, and the risk that an error passes the check unnoticed.
+
+Two further considerations shape the choice.
+The first is data: sending proprietary source data to an external provider may not be permitted, and an open-weight model run locally avoids this at the price of lower capability and the need for suitable hardware.
+The second is that prices and capabilities change within months, as Section 4.2 noted.
+The cost figures here should therefore be read as orders of magnitude, and a design that lets the model be swapped is worth more than the choice of any particular model.

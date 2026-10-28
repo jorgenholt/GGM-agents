@@ -1,2 +1,29 @@
 \section{What LLMs are good at}
 
+The strengths that matter for GGM are those that fit the inputs described in Chapter 3: reports, spreadsheets in many formats, documentation and the judgment that ties them together.
+
+\textbf{Reading unstructured material.} LLMs read text, tables and documents in whatever form they arrive and can extract the quantities a task needs, which is why most of the systems in Section 2.2 use them to turn reports and manuals into model input.
+For economists, \citet{korinek2023generative} includes summarising and extracting from text among his use cases, and a later guide shows how agents can combine literature search, data retrieval and code for research \citep{korinek2025ai}.
+
+\textbf{Applying written rules.} An instruction such as ``map each pipeline to the node of its entry point, and convert capacities to the model's units'' can be given in plain language, without first being written as a program.
+This suits the rule-bound but irregular work of mapping infrastructure data, where the rules are clear but every source reports in its own way.
+
+\textbf{Writing and repairing code.} Agentic coding is the best-measured agent capability.
+SWE-bench tests whether a model can resolve real issues in open-source software repositories \citep{jimenez2024swe}, and it became the standard benchmark for agents that read code, change it and run tests.
+Code written by a model can be read, tested and reused, which makes it a more checkable product than a number the model states directly.
+
+\textbf{Revising under feedback.} Agents improve when they are told why an attempt failed.
+Reflexion agents that write a short reflection on each failure and keep it for the next attempt outperform agents that simply retry \citep{shinn2023reflexion}, and the harnesses in Chapter 2 rely on the same mechanism when they return solver errors to the model.
+Calibration, which is a sequence of runs, deviations and adjustments, has this structure.
+
+\textbf{Explaining.} Because the model reasons in text, it can state why it proposes a change, and this rationale can be logged and reviewed.
+The calibration agent in Section 2.3 attaches such a rationale to every iteration \citep{gomezguillen2026agentic}.
+
+How good the best models are at expert work has been measured directly.
+In GDPval, experts with on average fourteen years of experience in 44 occupations wrote realistic work tasks, and other experts compared the models' deliverables blind with those of human professionals; the authors conclude that the best models are approaching experts in deliverable quality \citep{patwardhan2025gdpval}.
+The tasks were, however, specified in full and completed in one step, which is exactly what GGM's calibration is not.
+
+Capability is also changing quickly.
+METR measures the length of software tasks, in the time they take a skilled person, that a model completes with 50\% probability, and found that this time horizon has doubled about every seven months since 2019 \citep{kwa2025measuring}.
+The measure has been widely used as evidence that agents can take on ever longer tasks, but its authors caution that a 50\% success rate is not a level at which work can safely be delegated, that the estimates are uncertain by about a factor of two, and that the tasks are cleaner than most real work \citep{metr2026clarifying}.
+Any assessment of what agents can do in GGM's workflow is therefore a snapshot, and the division of work proposed in Chapter 5 should be revisited as models improve.

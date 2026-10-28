@@ -1,3 +1,27 @@
 \section{From a prompt to an agent}
 
-% TODO: Tool use, iteration, feedback from execution.
+This chapter describes what LLM agents are, what they do well and badly, and what they cost, as far as it matters for deciding which parts of GGM's workflow they could take on.
+It draws on general surveys and engineering guidance rather than on the studies reviewed in Chapter 2, and refers back to those where they illustrate a point.
+
+A large language model is a neural network, built on the transformer architecture \citep{vaswani2017attention}, that has been trained on large amounts of text to predict the next word.
+Trained at sufficient scale, such models can perform a new task from a written instruction and a few examples in the prompt, without retraining \citep{brown2020language}, and further training on human feedback makes them follow instructions more reliably \citep{ouyang2022training}.
+Asking a model to write out intermediate steps before its answer improves performance on problems that require several steps of reasoning \citep{wei2022chain}.
+
+On its own, a model can only produce text.
+Three additions turn it into something that can work on a modelling task.
+The first is tools: the model writes a structured request, such as a function call or a piece of code, ordinary software executes it, and the result is returned to the model.
+Tool use was motivated from the start by what models do badly, namely arithmetic and looking up facts \citep{schick2023toolformer}, and letting the model write a program that an interpreter runs gives more accurate answers than letting it calculate in text \citep{gao2022pal}.
+The second is retrieval: relevant passages are fetched from a document collection, such as a model's documentation, and placed in the prompt, so that answers rest on the source rather than on what the model remembers \citep{lewis2020retrieval}.
+The third is a loop.
+The model chooses an action, observes its result and chooses the next, interleaving reasoning with actions until the goal is reached \citep{yao2023react}.
+This loop, together with planning, memory and tools, is the general anatomy of an LLM agent described in the surveys \citep{wang2024survey}.
+
+How much of the loop the model controls is a design choice.
+\citet{schluntz2024building} distinguish \emph{workflows}, in which the model and tools are called along paths written in code, from \emph{agents}, in which the model directs its own process and decides which tools to use and when to stop.
+Agents trade cost, latency and predictability for flexibility, so the advice is to use the simplest arrangement that works and to add autonomy only where the task cannot be specified in advance.
+The distinction matters for this thesis: a step whose order of operations is known is a candidate for a workflow, and only a step whose path depends on what is found along the way needs an agent.
+
+Several agents can also work together, each with its own role, prompt and tools \citep{guo2024llm}.
+In one reported research system, a lead agent that delegated to parallel sub-agents outperformed a single agent by 90\% on the developer's own evaluation, but used about fifteen times as many tokens as a chat, and the developers note that the design suits tasks that split into independent parts and fits poorly where agents must share context or depend on each other \citep{anthropic2025we}.
+An analysis of failed multi-agent runs found that most failures arose from the specification of the system and from coordination between agents rather than from the individual models, and that gains over a single agent were often small \citep{cemri2025multi}.
+GGM's three workbooks are tightly coupled, as Section 3.4 showed, which is the case where splitting the work among many agents helps least.

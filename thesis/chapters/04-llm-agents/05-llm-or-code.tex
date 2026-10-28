@@ -1,3 +1,22 @@
 \section{Which tasks suit an LLM, and which suit ordinary code}
 
-% TODO: Chapter 5 builds on this at each step.
+The previous sections suggest a division of labour that the literature on energy systems arrives at independently.
+A tutorial on agents for power grids warns that language models can produce numerically plausible but physically infeasible outputs, and proposes that the agent orchestrates, retrieves and explains, while trusted tools compute and a numerical result is reported only after it passes explicit verification \citep{rojas2026llms}.
+For optimisation, \citet{hu2025natural} argue against letting the model produce solutions directly: it should produce a formulation that is checked and then solved by a solver, so that every number comes from the solver.
+The economics pipelines in Section 2.5 reached the same arrangement from the other direction, by removing failures \citep{zhu2026human}.
+
+From this, four questions can be asked of any task in a modelling workflow.
+
+\begin{enumerate}
+  \item \textbf{Is there one correct answer that a rule can compute?} Unit conversions, aggregation over nodes, checking that shares sum to one or that flows respect capacities: these belong in ordinary code, which is exact, fast, free to rerun and gives the same answer every time. An LLM can write that code, but should not stand in for it.
+  \item \textbf{Is the input unstructured, or are the rules irregular?} Reading a report, matching a source's names for countries and facilities to model nodes, or searching documentation for how a parameter is defined are tasks where code is brittle and an LLM is strong. Here an LLM, or an LLM writing code for each new source, is the better tool.
+  \item \textbf{Can the result be checked cheaply?} If a run, a schema or a simple test shows whether the output is right, the LLM's errors are caught and fed back, as in the harnesses of Chapter 2, and the task can be largely automated. If checking takes as long as doing the work, automation saves little.
+  \item \textbf{Would an error be costly and hard to see?} Where a wrong choice still produces a model that solves, and the error would surface only in the conclusions drawn from it, a person decides. The LLM can prepare the options, state their consequences and record the reasoning, but not choose.
+\end{enumerate}
+
+The questions do not sort tasks into neat categories.
+Calibration, for instance, involves arithmetic that code should do, a search that an agent could steer, and choices between equally good fits that, as Section 2.6 argued, carry economic judgment.
+The questions are therefore applied to the parts of each step rather than to whole steps.
+They also say whether a part needs an agent at all: where the sequence of operations is known, a workflow in the sense of Section 4.1 is simpler and more predictable \citep{schluntz2024building}, and an agent is warranted only where the next action depends on what the previous one revealed.
+
+Chapter 5 applies these four questions to each step of GGM's workflow.
