@@ -394,6 +394,7 @@ Cite them as grey literature with the access date.
 
 | Source | What it covers | Use in thesis | ★ |
 |---|---|---|---|
+| Anthropic (2026, Oct). [Pricing](https://platform.claude.com/docs/en/about-claude/pricing). Accessed 2026-10-28 | *Added 2026-10-28.* List prices per million tokens: Opus 5.5 $4 / $20, Sonnet 5.5 $2 / $10, Haiku 5.5 $0.10 / $0.50 (inputs up to 100K tokens; $0.50 / $2.50 beyond); all with 1M-token context | Ch4: the dated price table (§4.4). Prices change within months; re-check before submission | ★★ |
 | He, H. & Thinking Machines Lab (2025, Sep 10). [Defeating nondeterminism in LLM inference](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/) | Same prompt, different answers even at temperature 0, mainly because server batch size changes the arithmetic | Ch4/ch7: reproducibility of agent-assisted calibration. A run cannot be reproduced by re-running the prompt; the decisions must be logged | ★★ |
 | METR (Kwa, T.) (2026, Jan 22). [Clarifying limitations of time horizon](https://metr.org/notes/2026-01-22-time-horizon-limitations/) | A 50% time horizon is not a safe delegation threshold; error bars are about a factor of 2 | Ch4: use whenever the METR paper is cited | ★★ |
 | Stanford HAI (2026). [AI Index Report 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report) | Annual state of AI. Secondary coverage reports large agent-benchmark gains but single-digit business deployment of agents | Ch4: a neutral, citable source for "where things stand". Check figures in the report itself | ★ |
