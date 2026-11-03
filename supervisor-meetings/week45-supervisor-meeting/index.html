@@ -26,7 +26,6 @@
     background: #fff; display: none; transform-origin: center center;
   }
   .slide.active { display: block; }
-  h1 { font-size: 44px; font-weight: 600; margin: 0 0 12px; letter-spacing: -0.01em; }
   h2 { font-size: 34px; font-weight: 600; margin: 0 0 28px; letter-spacing: -0.01em; }
   h3 { font-size: 17px; font-weight: 600; margin: 26px 0 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); }
   p, li { font-size: 21px; line-height: 1.45; }
@@ -34,11 +33,6 @@
   li + li { margin-top: 12px; }
   .muted { color: var(--ink-3); }
   .counter { position: fixed; right: 18px; bottom: 14px; font-size: 13px; color: var(--ink-3); }
-  .kicker { font-size: 15px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 10px; }
-
-  /* Title */
-  .title { display: flex; flex-direction: column; justify-content: center; height: 100%; }
-  .title p { margin: 4px 0; color: var(--ink-2); }
 
   /* Gantt */
   .gantt { margin-top: 8px; }
@@ -56,67 +50,14 @@
   .g-line { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--mark); }
   .g-mile { position: absolute; top: 15px; width: 14px; height: 14px; background: var(--ink); transform: translateX(-7px) rotate(45deg); }
   .g-note { position: absolute; bottom: -24px; transform: translateX(-50%); font-size: 13px; color: var(--mark); font-weight: 600; white-space: nowrap; }
-  .g-status { margin-top: 40px; font-size: 20px; }
-  .g-legend { display: flex; gap: 22px; font-size: 14px; color: var(--ink-3); margin-top: 6px; }
+  .g-legend { display: flex; gap: 22px; font-size: 14px; color: var(--ink-3); margin-top: 44px; }
   .g-legend span::before { content: ""; display: inline-block; width: 18px; height: 10px; border-radius: 2px; margin-right: 7px; vertical-align: 0; background: var(--sw); }
-
-  /* Two-column slides */
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
-  .two ul li { font-size: 19px; }
-  .ask { border-left: 3px solid var(--ink); padding-left: 24px; }
-
-  /* Lukas session: the short version */
-  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 56px; margin-top: 6px; }
-  .fact { border-top: 1px solid var(--ink); padding-top: 12px; }
-  .fact b { display: block; font-size: 19px; margin-bottom: 4px; }
-  .fact p { font-size: 17px; line-height: 1.4; margin: 0; color: var(--ink-2); }
-
-  /* Lukas's proposed workflow */
-  .flow { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; margin-top: 14px; }
-  .step { border: 1px solid var(--ink); border-radius: 4px; padding: 12px 12px 14px; height: 186px; position: relative; }
-  .step .n { font-size: 13px; color: var(--ink-3); font-weight: 600; }
-  .step p { font-size: 16px; line-height: 1.3; margin: 6px 0 0; }
-  .step.agent { background: #111; color: #fff; border-color: #111; }
-  .step.agent .n { color: #bbb; }
-  .gate { margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--mark); text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
-  .gate.none { visibility: hidden; }
-  .flow-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 30px; }
-  .flow-notes p { font-size: 18px; margin: 0; }
-
-  /* Chapter overview table */
-  table.ch { width: 100%; border-collapse: collapse; margin-top: 4px; }
-  table.ch th { text-align: left; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); font-weight: 600; padding: 0 12px 10px 0; border-bottom: 1px solid var(--ink); }
-  table.ch td { font-size: 18px; line-height: 1.35; padding: 13px 12px 13px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
-  table.ch td.num, table.ch th.num { text-align: right; padding-right: 28px; white-space: nowrap; }
-  table.ch tr.total td { border-bottom: none; border-top: 1px solid var(--ink); font-weight: 600; }
-
-  /* Chapter slides */
-  .chap { display: grid; grid-template-columns: 330px 1fr; gap: 64px; height: 100%; align-items: start; }
-  .chap-card { border-top: 3px solid var(--ink); padding-top: 18px; }
-  .chap-card .big { font-size: 96px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; }
-  .chap-card .name { font-size: 24px; font-weight: 600; margin: 10px 0 22px; line-height: 1.25; }
-  .meta { display: grid; grid-template-columns: 90px 1fr; gap: 6px 14px; font-size: 17px; line-height: 1.4; margin: 0; }
-  .meta dt { color: var(--ink-3); }
-  .meta dd { margin: 0; }
-  .chap h2 { font-size: 29px; line-height: 1.25; margin-bottom: 18px; }
-  .chap ul li { font-size: 19px; }
-  .chap h3:first-child { margin-top: 0; }
-  .quote { font-size: 19px; font-style: italic; border-left: 3px solid var(--rule); padding-left: 18px; margin: 0 0 6px; color: var(--ink-2); }
 </style>
 </head>
 <body>
 <div class="stage">
 
-  <!-- 1. Title -->
-  <section class="slide">
-    <div class="title">
-      <h1>Supervisor meeting, week 45</h1>
-      <p>What we learned from the session with Lukas, and chapters 1–4 drafted</p>
-      <p class="muted" style="margin-top:28px">Jørgen Holt and Save Brautaset · 5 November 2026</p>
-    </div>
-  </section>
-
-  <!-- 2. Gantt -->
+  <!-- 1. Gantt -->
   <section class="slide">
     <h2>Where we are</h2>
     <div class="gantt">
@@ -133,7 +74,7 @@
         <div class="g-track"><div class="g-bar done" style="left:0%;width:9.09%"></div><div class="g-line" style="left:50%"></div></div></div>
       <div class="g-row"><div class="g-label">Ch. 2: Literature review<small>Drafted</small></div>
         <div class="g-track"><div class="g-bar done" style="left:9.09%;width:18.18%"></div><div class="g-line" style="left:50%"></div></div></div>
-      <div class="g-row"><div class="g-label">Ch. 3: The Global Gas Model<small>Drafted, corrected after the Lukas session</small></div>
+      <div class="g-row"><div class="g-label">Ch. 3: The Global Gas Model<small>Drafted</small></div>
         <div class="g-track"><div class="g-bar done" style="left:18.18%;width:18.18%"></div><div class="g-line" style="left:50%"></div></div></div>
       <div class="g-row"><div class="g-label">Ch. 4: LLM agents<small>Drafted</small></div>
         <div class="g-track"><div class="g-bar done" style="left:27.27%;width:18.18%"></div><div class="g-line" style="left:50%"></div></div></div>
@@ -141,197 +82,32 @@
         <div class="g-track"><div class="g-bar now" style="left:45.45%;width:27.27%"></div><div class="g-line" style="left:50%"></div></div></div>
       <div class="g-row"><div class="g-label">Ch. 6: Discussion and conclusion</div>
         <div class="g-track"><div class="g-bar" style="left:63.64%;width:18.18%"></div><div class="g-line" style="left:50%"></div></div></div>
-      <div class="g-row"><div class="g-label">Ch. 1: Introduction and abstract<small>Intro drafted early · full draft 29 Nov</small></div>
+      <div class="g-row"><div class="g-label">Ch. 1: Introduction and abstract<small>Full draft to supervisors, 29 Nov</small></div>
         <div class="g-track"><div class="g-bar" style="left:72.73%;width:9.09%"></div><div class="g-mile" style="left:81.17%"></div><div class="g-line" style="left:50%"></div></div></div>
       <div class="g-row"><div class="g-label">Feedback, revise, hand in<small>Hand-in, 13 Dec</small></div>
         <div class="g-track"><div class="g-bar" style="left:81.82%;width:18.18%"></div><div class="g-mile" style="left:99.35%"></div><div class="g-line" style="left:50%"><span class="g-note">Today, 5 Nov</span></div></div></div>
     </div>
-    <p class="g-status">On plan. Chapters 1–4 are drafted, about 7,300 words, which is on the 20-page target. Chapter 5, the core, starts now.</p>
     <div class="g-legend"><span style="--sw:var(--bar-done)">Done</span><span style="--sw:var(--bar-now)">Now</span><span style="--sw:var(--bar)">Planned</span></div>
   </section>
 
-  <!-- 3. Lukas session: the short version -->
+  <!-- 2. What we have done -->
   <section class="slide">
-    <p class="kicker">Workflow session with Lukas · 23 October · 2 h 46 min</p>
-    <h2>What we learned</h2>
-    <div class="facts">
-      <div class="fact"><b>Projections are a storyline, not data</b>
-        <p>Reference production and consumption are anchored to an outlook (IEA WEO) but adjusted node by node. There is no right or wrong version. About a week of Franziska's time.</p></div>
-      <div class="fact"><b>Elasticities, sector shares, seasonality are judgment too</b>
-        <p>No data set for them exists anywhere. They are carried over from earlier work or rebuilt for each study.</p></div>
-      <div class="fact"><b>The general workbook is the most agent-friendly</b>
-        <p>Mostly factual data (ENTSOG, EIA, Global Energy Monitor, shipping distances), adjusted by scenario assumptions. Lukas already uses AI for the mapping.</p></div>
-      <div class="fact"><b>Calibration is by hand, with no script</b>
-        <p>Several days full time. Trial and error with a run between each step. Two scenarios at once: adjust one while the other solves.</p></div>
-      <div class="fact"><b>Market power is "gut feeling plus some calibration"</b>
-        <p>Set per scenario. Also used to stand in for long-term contracts and to correct implausible trade.</p></div>
-      <div class="fact"><b>A new study is a copied folder</b>
-        <p>Copy an earlier data folder and run script, then edit them. No tooling, and the node structure changes between studies.</p></div>
-    </div>
+    <h2>What we have done since last time</h2>
+    <ul>
+      <li>Workflow session with Lukas, 23 October</li>
+      <li>Written drafts of chapters 1–4</li>
+    </ul>
   </section>
 
-  <!-- 4. Lukas's proposed agent workflow -->
+  <!-- 3. Way forward -->
   <section class="slide">
-    <p class="kicker">Workflow session with Lukas · his proposal</p>
-    <h2>How Lukas would structure an agent workflow</h2>
-    <div class="flow">
-      <div><div class="step"><span class="n">1</span><p>Agree the baseline scenarios to model</p></div><div class="gate none">·</div></div>
-      <div><div class="step"><span class="n">2</span><p>Propose a node structure from available data</p></div><div class="gate">Review</div></div>
-      <div><div class="step"><span class="n">3</span><p>Production and consumption profiles</p></div><div class="gate">Review</div></div>
-      <div><div class="step"><span class="n">4</span><p>Elasticity weights</p></div><div class="gate">Review</div></div>
-      <div><div class="step"><span class="n">5</span><p>Seasonal distribution</p></div><div class="gate">Review</div></div>
-      <div><div class="step"><span class="n">6</span><p>General data from sources, for the agreed nodes</p></div><div class="gate none">·</div></div>
-      <div><div class="step"><span class="n">7</span><p>Research initial calibration values: prices, spreads, costs</p></div><div class="gate none">·</div></div>
-      <div><div class="step agent"><span class="n">8</span><p>Run locally and let the agent adjust the calibration</p></div><div class="gate none">·</div></div>
-    </div>
-    <div class="flow-notes">
-      <p><b>Every value carries its source and a confidence level.</b> The reviewer can override in an edited workbook, with a note, and loop back.</p>
-      <p><b>Step 8 is open.</b> Lukas is not sure it works and "would actually be interested to see". Model runs stay on local hardware; only results go to the agent.</p>
-    </div>
-  </section>
-
-  <!-- 5. What it changed -->
-  <section class="slide">
-    <h2>What the session changed in our work</h2>
-    <div class="two">
-      <div>
-        <h3 style="margin-top:0">Corrected</h3>
-        <ul>
-          <li>Our four-layer view of the inputs was wrong. Projections are not "read off an outlook". Only the general workbook is mostly collected data.</li>
-          <li>Chapter 3 overstated how much input is collected. It now says judgment sits in two places: the scenario storyline (Franziska) and the calibration (Lukas).</li>
-          <li>Calibration practice is now confirmed, not inferred from the documentation.</li>
-        </ul>
-      </div>
-      <div>
-        <h3 style="margin-top:0">Strengthened</h3>
-        <ul>
-          <li>The thesis gap is stronger: the judgment is not only in calibration, but also in projections that have no ground truth by design.</li>
-          <li>His eight-step workflow with review gates matches the principle from chapter 2: the LLM proposes, code computes, a person decides.</li>
-          <li>His "source plus confidence for every value" is a concrete spec for the agent descriptions in chapter 5.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Chapters 1–4 overview -->
-  <section class="slide">
-    <h2>Chapters 1–4 drafted</h2>
-    <table class="ch">
-      <thead><tr><th>Chapter</th><th class="num">Words</th><th class="num">Target</th><th class="num">Sources</th><th>In one line</th></tr></thead>
-      <tbody>
-        <tr><td>1 Introduction</td><td class="num">960</td><td class="num">~1,050</td><td class="num">7</td><td>The question: where agents, where code, where a person</td></tr>
-        <tr><td>2 Literature review</td><td class="num">1,910</td><td class="num">~1,950</td><td class="num">24</td><td>Agents around models are not new, but calibration with economic judgment is untested</td></tr>
-        <tr><td>3 The Global Gas Model</td><td class="num">1,890</td><td class="num">~1,700</td><td class="num">13</td><td>The volume is in the data; the judgment is in the storyline and the calibration</td></tr>
-        <tr><td>4 LLM agents</td><td class="num">2,510</td><td class="num">~2,700</td><td class="num">36</td><td>Four questions that sort each task to an LLM, code or a person</td></tr>
-        <tr class="total"><td>Chapters 1–4</td><td class="num">7,270</td><td class="num">~7,400</td><td class="num"></td><td>About 19 of 36 planned pages</td></tr>
-      </tbody>
-    </table>
-    <p class="muted" style="font-size:16px;margin-top:20px">Word counts exclude citation commands. At about 380 words per page in the current layout.</p>
-  </section>
-
-  <!-- 7. Chapter 1 -->
-  <section class="slide">
-    <div class="chap">
-      <div class="chap-card">
-        <div class="big">1</div>
-        <div class="name">Introduction</div>
-        <dl class="meta"><dt>Words</dt><dd>960 (target ~1,050)</dd><dt>Sources</dt><dd>7</dd><dt>Sections</dt><dd>Problem, research question, scope, GGM in brief, contribution</dd></dl>
-      </div>
-      <div>
-        <h3>Research question (provisional)</h3>
-        <p class="quote">Where in the workflow around the Global Gas Model could LLM-based agents take over or support expert work, where would ordinary code serve better, and where should the work stay with a person?</p>
-        <h3>Key points</h3>
-        <ul>
-          <li>Four sub-questions, one for each of chapters 3, 4 and 5, plus one on calibration for chapters 5–6.</li>
-          <li>Scope: we argue from documentation, code, data and literature. We build and evaluate nothing. That is the master's thesis.</li>
-          <li>Contribution: a step-by-step map of the workflow, ending in a description of each proposed agent, and a case the literature has not covered: parameters that carry economic judgment.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. Chapter 2 -->
-  <section class="slide">
-    <div class="chap">
-      <div class="chap-card">
-        <div class="big">2</div>
-        <div class="name">Literature review</div>
-        <dl class="meta"><dt>Words</dt><dd>1,910 (target ~1,950)</dd><dt>Sources</dt><dd>24 of 142 found</dd><dt>Organised</dt><dd>By what the agent does, not by domain</dd></dl>
-      </div>
-      <div>
-        <h3>Key findings</h3>
-        <ul>
-          <li><b>Setting up and running models works inside a harness.</b> MOOSEnger: inputs that run went from 5% for the model alone to 89.5% with validation and feedback. But a run that works is not necessarily a correct one.</li>
-          <li><b>Calibration agents fall short of experts.</b> HydroAgent: one of nine LLMs matched the expert, at one of four gauges. Fewer runs, but slower and harder to reproduce.</li>
-          <li><b>How the work is divided matters most.</b> Zhu et al.: failure rate down from 72% to 16% once the LLM only reasons, code does the data work and a person decides at three points.</li>
-          <li><b>The gap:</b> calibration where parameters carry economic judgment, and preparing data for energy-market models. Golden et al. (2026) come closest, but they only use models with the calibration they already have.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9. Chapter 3 -->
-  <section class="slide">
-    <div class="chap">
-      <div class="chap-card">
-        <div class="big">3</div>
-        <div class="name">The Global Gas Model</div>
-        <dl class="meta"><dt>Words</dt><dd>1,890 (target ~1,700)</dd><dt>Sources</dt><dd>13, plus the Lukas session</dd><dt>New</dt><dd>Input table from our own count of the 2023 data</dd></dl>
-      </div>
-      <div>
-        <h3>Key findings</h3>
-        <ul>
-          <li><b>The model is large.</b> 239 nodes, 125 countries, 2020–2060. One run on a laptop: 5.5 million variables, 24 minutes.</li>
-          <li><b>Only about 15,200 values in a scenario are collected in the ordinary sense</b> (capacities, distances). The other roughly 18,000 are storyline, earlier studies, settings or calibration.</li>
-          <li><b>The volume is in the infrastructure data; the judgment is in two places:</b> the scenario storyline and the calibration.</li>
-          <li><b>Calibration is hard for three reasons.</b> The parameters cannot be looked up, a deviation has several possible causes, and the result must still hold in other scenarios. Between 1,700 and 2,050 calibrated values change from one climate scenario to the next.</li>
-          <li>Six-step workflow: set up the scenario → get source data → prepare data → calibrate → run → read results.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 10. Chapter 4 -->
-  <section class="slide">
-    <div class="chap">
-      <div class="chap-card">
-        <div class="big">4</div>
-        <div class="name">LLM agents</div>
-        <dl class="meta"><dt>Words</dt><dd>2,510 (target ~2,700)</dd><dt>Sources</dt><dd>36</dd><dt>Sections</dt><dd>Prompt to agent, strengths, weaknesses, cost, LLM or code</dd></dl>
-      </div>
-      <div>
-        <h3>Key findings</h3>
-        <ul>
-          <li><b>A workflow, not an agent, where the steps are known.</b> Only steps whose next action depends on what was just found need an agent.</li>
-          <li><b>The weaknesses matter most</b>, because a wrong GGM input still solves: plausible but wrong values, unreliable arithmetic, agreeing too easily, and explanations that win more trust than they deserve.</li>
-          <li><b>Tokens are not the cost that decides.</b> About 30 cents per large call, against days of analyst time. What decides is the cost of checking and the risk of an unseen error.</li>
-          <li><b>Four questions sort each part of a step:</b> is there one answer a rule computes (code)? Is the input unstructured (LLM)? Can the result be checked cheaply (automate)? Would an error be costly and hard to see (a person decides)?</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 11. Next steps -->
-  <section class="slide">
-    <h2>Next steps</h2>
-    <div class="two">
-      <div>
-        <h3 style="margin-top:0">Chapter 5, weeks 45–47</h3>
-        <ul>
-          <li>Apply the four questions from chapter 4 to each of the six workflow steps from chapter 3.</li>
-          <li>For each step: what happens today, what it needs, what an agent could do, and where a person stays involved.</li>
-          <li>End with a description of each proposed agent, built on Lukas's workflow and his source-and-confidence rule.</li>
-        </ul>
-      </div>
-      <div class="ask">
-        <h3 style="margin-top:0">Questions for you</h3>
-        <ul>
-          <li><b>Franziska:</b> is the research question right? Should we cite the Lukas session as a footnote or put the notes in an appendix? Is the "Global Gas Model" in Golden et al. (2026) GGM?</li>
-          <li><b>Lukas:</b> how do you know when a calibration is close enough? Do old calibration files exist that we could look at?</li>
-          <li><b>Both:</b> is about 36 pages of main text the right length?</li>
-        </ul>
-      </div>
-    </div>
+    <h2>Way forward</h2>
+    <ul>
+      <li>Chapter 5, where AI fits: weeks 45–47</li>
+      <li>Chapter 6, discussion and conclusion: weeks 47–48</li>
+      <li>Full draft to you: 29 November</li>
+      <li>Hand-in: 13 December</li>
+    </ul>
   </section>
 
 </div>
