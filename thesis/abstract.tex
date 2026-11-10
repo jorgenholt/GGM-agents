@@ -1,0 +1,18 @@
+% The abstract. Not synced with the hub; edit here.
+\begin{abstract}
+The Global Gas Model (GGM) is a partial equilibrium model of the world natural gas market.
+Most of the expert work in using it lies not in the model but around it: preparing more than 15,000 input values for each study, setting up scenarios, calibrating the model by hand over several days, and interpreting the results.
+This thesis asks where in that workflow LLM-based agents could take over or support the work, where ordinary code would serve better, and where the work should stay with a person.
+
+The workflow is analysed task by task, drawing on the model's documentation, code and 2023 input data, a working session with one of its developers, and the literature on agents that operate and calibrate simulation models.
+Agents suit the parts that involve reading and judging unstructured material, such as extracting values from reports, mapping sources to the model's nodes, diagnosing calibration deviations and drafting explanations of results.
+Ordinary code should do every computation and every model run.
+People should remain responsible for the question and storyline of a scenario, the acceptance of the calibration, and the interpretation of the results.
+
+Calibration is where the thesis extends the existing literature.
+Studies of agent-assisted calibration deal with physical parameters that can be measured, whereas GGM's calibrated parameters carry economic meaning and are not pinned down by the data.
+The thesis argues that an agent can diagnose deviations and propose changes within bounds set by code, but that accepting a calibration remains an economic judgment.
+
+On this basis it proposes a system of four agents that work alongside the analyst, attach reasons, sources and confidence to every suggestion, and keep the analyst's corrections as lessons for later work.
+It ends with the risks of this division of labour and a plan for building and testing the system in the master's thesis.
+\end{abstract}
