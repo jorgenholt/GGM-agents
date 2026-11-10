@@ -125,8 +125,8 @@ Words per page are measured, not guessed: the current LaTeX layout (`report`, 11
 | 2 Literature review | 5 | ~1,900–2,000 | ~20–25 | Written: 1,910 words, 24 sources, 5 pages. Breadth lives in `literature-sources.md`, not in the chapter |
 | 3 The Global Gas Model | 5 | ~1,700 + table | ~12 | Drafted 2026-10-15: 1,690 words, 12 sources, 5 pages. Only what chapters 5–6 need; details stay in `ggm-model.md` |
 | 4 LLM agents | 7 | ~2,700 | | Deliberately longer than chapter 3: central to the argument |
-| 5 Where AI fits | 12 | ~4,700 | | The core — about a third of the thesis |
-| 6 Discussion and conclusion | 4 | ~1,550 | | Merges the earlier chapters 6–8 |
+| 5 Where AI fits | 12 | ~4,700 | | The core — about a third of the thesis. Drafted: ~4,500 words and six figures, about 16 pages. Jørgen accepted the 16 pages on 2026-11-10, since it is the main chapter |
+| 6 Discussion and conclusion | 4 | ~1,550 | | Merges the earlier chapters 6–8. Drafted 2026-11-10: ~1,500 words, no figures |
 | **Main text** | **36** | **~14,000** | | |
 
 **Section budgets for the written chapters** (words): introduction — problem 450, research question
@@ -176,5 +176,5 @@ length, not because they are wrong; each backs a specific point elsewhere:
 - Precise scope and research question — in discussion with supervisors
 - Chapter 6 (discussion and conclusion, merging the earlier proposed chapters 6–8 on 2026-10-15) — not yet confirmed by supervisors
 - Expected length of the project thesis — targets below assume about 36 pages of main text; confirm with Franziska
-- Chapter 5's length: about 16 pages with figures against a target of 12 — trim, or move pages from elsewhere
+- Which agent the master's thesis builds first — chapter 6 proposes the calibration harness, then the calibration agent; agree with Franziska and Lukas
 - Final hand-in date for the master's thesis — not yet recorded here
