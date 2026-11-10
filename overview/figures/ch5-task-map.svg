@@ -3,54 +3,54 @@
 <defs>
 <g>
 <g id="ch5-task-map-glyph-0-0">
-<path d="M 3.10 -1.64 C 3.10 -1.89 3.09 -2.45 2.80 -2.91 C 2.49 -3.37 2.03 -3.45 1.76 -3.45 C 0.93 -3.45 0.26 -2.66 0.26 -1.69 C 0.26 -0.70 0.98 0.08 1.88 0.08 C 2.35 0.08 2.78 -0.09 3.07 -0.30 L 3.02 -0.79 C 2.55 -0.40 2.06 -0.37 1.89 -0.37 C 1.28 -0.37 0.80 -0.90 0.78 -1.64 Z M 2.67 -2.05 L 0.82 -2.05 C 0.94 -2.62 1.34 -3 1.76 -3 C 2.16 -3 2.57 -2.74 2.67 -2.05 Z M 2.67 -2.05 "/>
+<path d="M 3.74 0 L 3.74 -0.49 L 1.73 -0.48 L 1.37 -0.48 L 1.37 -5.20 L 0.70 -5.20 L 0.70 0 Z M 3.74 0 "/>
 </g>
 <g id="ch5-task-map-glyph-0-1">
-<path d="M 2.45 -2.91 L 2.45 -3.41 C 1.78 -3.40 1.37 -3.03 1.14 -2.69 L 1.14 -3.37 L 0.61 -3.37 L 0.61 0 L 1.17 0 L 1.17 -1.60 C 1.17 -2.35 1.71 -2.89 2.45 -2.91 Z M 2.45 -2.91 "/>
-</g>
-<g id="ch5-task-map-glyph-0-2">
 <path d="M 3.51 -1.64 C 3.51 -2.65 2.76 -3.45 1.87 -3.45 C 0.95 -3.45 0.22 -2.63 0.22 -1.64 C 0.22 -0.66 0.98 0.08 1.86 0.08 C 2.76 0.08 3.51 -0.67 3.51 -1.64 Z M 2.92 -1.72 C 2.92 -0.83 2.42 -0.39 1.86 -0.39 C 1.34 -0.39 0.80 -0.81 0.80 -1.72 C 0.80 -2.63 1.37 -3 1.86 -3 C 2.39 -3 2.92 -2.60 2.92 -1.72 Z M 2.92 -1.72 "/>
 </g>
-<g id="ch5-task-map-glyph-0-3">
-</g>
-<g id="ch5-task-map-glyph-0-4">
-<path d="M 1.16 0 L 1.16 -3.32 L 0.60 -3.32 L 0.60 0 Z M 1.23 -4.24 L 1.23 -4.91 L 0.56 -4.91 L 0.56 -4.24 Z M 1.23 -4.24 "/>
-</g>
-<g id="ch5-task-map-glyph-0-5">
-<path d="M 2.69 -0.96 C 2.69 -1.37 2.42 -1.62 2.40 -1.64 C 2.11 -1.91 1.91 -1.95 1.53 -2.02 C 1.12 -2.10 0.78 -2.17 0.78 -2.55 C 0.78 -3.01 1.32 -3.01 1.41 -3.01 C 1.65 -3.01 2.05 -2.98 2.48 -2.73 L 2.57 -3.21 C 2.17 -3.39 1.87 -3.45 1.49 -3.45 C 1.30 -3.45 0.24 -3.45 0.24 -2.47 C 0.24 -2.10 0.46 -1.86 0.65 -1.72 C 0.88 -1.55 1.05 -1.53 1.46 -1.44 C 1.73 -1.39 2.16 -1.30 2.16 -0.90 C 2.16 -0.39 1.57 -0.39 1.46 -0.39 C 0.85 -0.39 0.43 -0.66 0.30 -0.75 L 0.21 -0.24 C 0.44 -0.12 0.86 0.08 1.46 0.08 C 1.60 0.08 2.01 0.08 2.33 -0.15 C 2.57 -0.33 2.69 -0.63 2.69 -0.96 Z M 2.69 -0.96 "/>
-</g>
-<g id="ch5-task-map-glyph-0-6">
-<path d="M 1.16 0 L 1.16 -5.20 L 0.60 -5.20 L 0.60 0 Z M 1.16 0 "/>
-</g>
-<g id="ch5-task-map-glyph-0-7">
+<g id="ch5-task-map-glyph-0-2">
 <path d="M 3.26 0 L 3.26 -3.32 L 2.67 -3.32 L 2.67 -1.15 C 2.67 -0.59 2.25 -0.32 1.77 -0.32 C 1.24 -0.32 1.19 -0.52 1.19 -0.84 L 1.19 -3.32 L 0.60 -3.32 L 0.60 -0.81 C 0.60 -0.27 0.78 0.08 1.40 0.08 C 1.80 0.08 2.33 -0.03 2.69 -0.35 L 2.69 0 Z M 3.26 0 "/>
 </g>
-<g id="ch5-task-map-glyph-0-8">
+<g id="ch5-task-map-glyph-0-3">
 <path d="M 3.25 0 L 3.25 -5.20 L 2.69 -5.20 L 2.69 -3 C 2.29 -3.32 1.87 -3.41 1.59 -3.41 C 0.85 -3.41 0.26 -2.63 0.26 -1.66 C 0.26 -0.68 0.84 0.08 1.55 0.08 C 1.80 0.08 2.25 0.01 2.66 -0.39 L 2.66 0 Z M 2.66 -1.04 C 2.66 -0.93 2.66 -0.80 2.42 -0.58 C 2.25 -0.43 2.06 -0.37 1.86 -0.37 C 1.40 -0.37 0.85 -0.72 0.85 -1.65 C 0.85 -2.64 1.5 -2.95 1.94 -2.95 C 2.27 -2.95 2.50 -2.78 2.66 -2.54 Z M 2.66 -1.04 "/>
 </g>
-<g id="ch5-task-map-glyph-0-9">
+<g id="ch5-task-map-glyph-0-4">
 <path d="M 1.34 -2.70 L 1.34 -3.32 L 0.72 -3.32 L 0.72 -2.70 Z M 1.34 0 L 1.34 -0.62 L 0.72 -0.62 L 0.72 0 Z M 1.34 0 "/>
 </g>
-<g id="ch5-task-map-glyph-0-10">
+<g id="ch5-task-map-glyph-0-5">
+</g>
+<g id="ch5-task-map-glyph-0-6">
+<path d="M 2.69 -0.96 C 2.69 -1.37 2.42 -1.62 2.40 -1.64 C 2.11 -1.91 1.91 -1.95 1.53 -2.02 C 1.12 -2.10 0.78 -2.17 0.78 -2.55 C 0.78 -3.01 1.32 -3.01 1.41 -3.01 C 1.65 -3.01 2.05 -2.98 2.48 -2.73 L 2.57 -3.21 C 2.17 -3.39 1.87 -3.45 1.49 -3.45 C 1.30 -3.45 0.24 -3.45 0.24 -2.47 C 0.24 -2.10 0.46 -1.86 0.65 -1.72 C 0.88 -1.55 1.05 -1.53 1.46 -1.44 C 1.73 -1.39 2.16 -1.30 2.16 -0.90 C 2.16 -0.39 1.57 -0.39 1.46 -0.39 C 0.85 -0.39 0.43 -0.66 0.30 -0.75 L 0.21 -0.24 C 0.44 -0.12 0.86 0.08 1.46 0.08 C 1.60 0.08 2.01 0.08 2.33 -0.15 C 2.57 -0.33 2.69 -0.63 2.69 -0.96 Z M 2.69 -0.96 "/>
+</g>
+<g id="ch5-task-map-glyph-0-7">
 <path d="M 3.26 0 L 3.26 -2.23 C 3.26 -2.73 3.14 -3.41 2.23 -3.41 C 1.76 -3.41 1.41 -3.17 1.16 -2.87 L 1.16 -5.20 L 0.60 -5.20 L 0.60 0 L 1.19 0 L 1.19 -1.83 C 1.19 -2.33 1.37 -2.95 1.94 -2.95 C 2.66 -2.95 2.67 -2.42 2.67 -2.17 L 2.67 0 Z M 3.26 0 "/>
 </g>
-<g id="ch5-task-map-glyph-0-11">
+<g id="ch5-task-map-glyph-0-8">
 <path d="M 5.00 -3.32 L 4.46 -3.32 L 3.98 -1.73 C 3.89 -1.46 3.67 -0.72 3.63 -0.40 L 3.62 -0.40 C 3.59 -0.63 3.41 -1.30 3.28 -1.73 L 2.79 -3.32 L 2.27 -3.32 L 1.84 -1.91 C 1.76 -1.65 1.50 -0.79 1.47 -0.41 L 1.46 -0.41 C 1.43 -0.77 1.18 -1.62 1.06 -2.03 L 0.67 -3.32 L 0.10 -3.32 L 1.13 0 L 1.72 0 L 2.18 -1.54 C 2.29 -1.89 2.50 -2.63 2.52 -2.91 L 2.53 -2.91 C 2.55 -2.69 2.67 -2.17 2.77 -1.85 L 3.32 0 L 3.98 0 Z M 5.00 -3.32 "/>
 </g>
-<g id="ch5-task-map-glyph-0-12">
+<g id="ch5-task-map-glyph-0-9">
 <path d="M 3.06 0 L 3.06 -2.16 C 3.06 -2.92 2.51 -3.45 1.82 -3.45 C 1.34 -3.45 1.00 -3.33 0.65 -3.13 L 0.69 -2.64 C 1.08 -2.91 1.46 -3.01 1.82 -3.01 C 2.17 -3.01 2.48 -2.71 2.48 -2.16 L 2.48 -1.83 C 1.35 -1.82 0.40 -1.50 0.40 -0.84 C 0.40 -0.52 0.60 0.08 1.25 0.08 C 1.36 0.08 2.07 0.06 2.50 -0.26 L 2.50 0 Z M 2.48 -0.98 C 2.48 -0.84 2.48 -0.66 2.22 -0.51 C 2.00 -0.38 1.72 -0.37 1.64 -0.37 C 1.28 -0.37 0.94 -0.54 0.94 -0.86 C 0.94 -1.38 2.16 -1.43 2.48 -1.45 Z M 2.48 -0.98 "/>
 </g>
-<g id="ch5-task-map-glyph-0-13">
+<g id="ch5-task-map-glyph-0-10">
 <path d="M 2.48 -0.20 L 2.36 -0.64 C 2.17 -0.48 1.93 -0.39 1.69 -0.39 C 1.41 -0.39 1.31 -0.62 1.31 -1.01 L 1.31 -2.89 L 2.36 -2.89 L 2.36 -3.32 L 1.31 -3.32 L 1.31 -4.28 L 0.79 -4.28 L 0.79 -3.32 L 0.14 -3.32 L 0.14 -2.89 L 0.77 -2.89 L 0.77 -0.89 C 0.77 -0.44 0.87 0.08 1.39 0.08 C 1.91 0.08 2.30 -0.10 2.48 -0.20 Z M 2.48 -0.20 "/>
 </g>
-<g id="ch5-task-map-glyph-0-14">
+<g id="ch5-task-map-glyph-0-11">
 <path d="M 3.26 0 L 3.26 -2.23 C 3.26 -2.73 3.14 -3.41 2.23 -3.41 C 1.55 -3.41 1.19 -2.90 1.14 -2.83 L 1.14 -3.37 L 0.60 -3.37 L 0.60 0 L 1.19 0 L 1.19 -1.83 C 1.19 -2.33 1.37 -2.95 1.94 -2.95 C 2.66 -2.95 2.67 -2.42 2.67 -2.17 L 2.67 0 Z M 3.26 0 "/>
 </g>
-<g id="ch5-task-map-glyph-0-15">
+<g id="ch5-task-map-glyph-0-12">
 <path d="M 3.10 -0.30 L 3.06 -0.80 C 2.68 -0.50 2.27 -0.39 1.89 -0.39 C 1.27 -0.39 0.85 -0.93 0.85 -1.67 C 0.85 -2.25 1.13 -2.97 1.92 -2.97 C 2.31 -2.97 2.57 -2.91 2.98 -2.64 L 3.07 -3.13 C 2.63 -3.38 2.37 -3.45 1.91 -3.45 C 0.87 -3.45 0.26 -2.55 0.26 -1.66 C 0.26 -0.73 0.95 0.08 1.89 0.08 C 2.29 0.08 2.70 -0.02 3.10 -0.30 Z M 3.10 -0.30 "/>
 </g>
+<g id="ch5-task-map-glyph-0-13">
+<path d="M 3.10 -1.64 C 3.10 -1.89 3.09 -2.45 2.80 -2.91 C 2.49 -3.37 2.03 -3.45 1.76 -3.45 C 0.93 -3.45 0.26 -2.66 0.26 -1.69 C 0.26 -0.70 0.98 0.08 1.88 0.08 C 2.35 0.08 2.78 -0.09 3.07 -0.30 L 3.02 -0.79 C 2.55 -0.40 2.06 -0.37 1.89 -0.37 C 1.28 -0.37 0.80 -0.90 0.78 -1.64 Z M 2.67 -2.05 L 0.82 -2.05 C 0.94 -2.62 1.34 -3 1.76 -3 C 2.16 -3 2.57 -2.74 2.67 -2.05 Z M 2.67 -2.05 "/>
+</g>
+<g id="ch5-task-map-glyph-0-14">
+<path d="M 5.08 -2.58 C 5.08 -4.16 4.00 -5.36 2.75 -5.36 C 1.48 -5.36 0.41 -4.14 0.41 -2.58 C 0.41 -0.99 1.53 0.16 2.75 0.16 C 2.87 0.16 3.14 0.15 3.47 0.03 L 4.11 0.93 L 4.88 0.93 L 3.99 -0.24 C 4.81 -0.88 5.08 -1.80 5.08 -2.58 Z M 4.44 -2.58 C 4.44 -2.09 4.35 -1.28 3.67 -0.66 L 3.08 -1.45 L 2.42 -1.45 L 3.17 -0.38 C 3.17 -0.38 2.97 -0.31 2.75 -0.31 C 1.87 -0.31 1.06 -1.19 1.06 -2.58 C 1.06 -3.98 1.88 -4.88 2.75 -4.88 C 3.65 -4.88 4.44 -3.97 4.44 -2.58 Z M 4.44 -2.58 "/>
+</g>
+<g id="ch5-task-map-glyph-0-15">
+<path d="M 1.16 0 L 1.16 -3.32 L 0.60 -3.32 L 0.60 0 Z M 1.23 -4.24 L 1.23 -4.91 L 0.56 -4.91 L 0.56 -4.24 Z M 1.23 -4.24 "/>
+</g>
 <g id="ch5-task-map-glyph-0-16">
-<path d="M 3.25 1.45 L 3.25 -3.41 L 2.69 -3.41 L 2.69 -2.90 C 2.61 -3 2.25 -3.41 1.66 -3.41 C 0.91 -3.41 0.26 -2.66 0.26 -1.65 C 0.26 -0.70 0.81 0.08 1.53 0.08 C 1.95 0.08 2.35 -0.08 2.66 -0.37 L 2.66 1.45 Z M 2.69 -1.05 C 2.69 -0.91 2.69 -0.89 2.61 -0.80 C 2.42 -0.50 2.14 -0.37 1.87 -0.37 C 1.30 -0.37 0.85 -0.96 0.85 -1.65 C 0.85 -2.42 1.39 -2.92 1.94 -2.92 C 2.45 -2.92 2.69 -2.39 2.69 -2.09 Z M 2.69 -1.05 "/>
+<path d="M 1.16 0 L 1.16 -5.20 L 0.60 -5.20 L 0.60 0 Z M 1.16 0 "/>
 </g>
 <g id="ch5-task-map-glyph-0-17">
 <path d="M 3.34 -3.32 L 2.78 -3.32 C 1.80 -0.94 1.79 -0.60 1.78 -0.42 L 1.77 -0.42 C 1.73 -0.92 1.13 -2.32 1.10 -2.39 L 0.69 -3.32 L 0.10 -3.32 L 1.55 0 L 1.28 0.67 C 1.09 1.10 0.96 1.10 0.86 1.10 C 0.74 1.10 0.50 1.07 0.27 0.98 L 0.32 1.47 C 0.48 1.51 0.69 1.53 0.86 1.53 C 1.12 1.53 1.40 1.44 1.71 0.68 Z M 3.34 -3.32 "/>
@@ -103,7 +103,7 @@
 <path d="M 3.56 -1.26 C 3.56 -1.77 3.29 -2.08 3.12 -2.23 C 2.76 -2.55 2.45 -2.60 2.07 -2.67 C 1.58 -2.76 1.22 -2.84 1.22 -3.19 C 1.22 -3.56 1.51 -3.63 1.87 -3.63 C 2.47 -3.63 2.79 -3.41 3.03 -3.21 C 3.12 -3.12 3.14 -3.12 3.17 -3.12 C 3.26 -3.12 3.28 -3.20 3.29 -3.23 C 3.31 -3.31 3.40 -3.81 3.40 -3.85 C 3.40 -4.00 2.92 -4.12 2.82 -4.16 C 2.46 -4.26 2.17 -4.27 1.94 -4.27 C 1.53 -4.27 0.33 -4.27 0.33 -2.98 C 0.33 -2.54 0.53 -2.27 0.77 -2.05 C 1.08 -1.77 1.43 -1.71 1.95 -1.60 C 2.21 -1.56 2.67 -1.48 2.67 -1.08 C 2.67 -0.66 2.32 -0.60 1.96 -0.60 C 1.57 -0.60 1.07 -0.71 0.64 -1.22 C 0.60 -1.26 0.57 -1.29 0.52 -1.29 C 0.43 -1.29 0.41 -1.21 0.40 -1.16 C 0.38 -1.03 0.27 -0.52 0.27 -0.43 C 0.27 -0.26 0.95 -0.05 0.95 -0.05 C 1.44 0.09 1.81 0.09 1.96 0.09 C 2.42 0.09 3.56 0.06 3.56 -1.26 Z M 3.56 -1.26 "/>
 </g>
 <g id="ch5-task-map-glyph-2-0">
-<path d="M -2.91 -2.45 L -3.41 -2.45 C -3.40 -1.78 -3.03 -1.37 -2.69 -1.14 L -3.37 -1.14 L -3.37 -0.61 L 0 -0.61 L 0 -1.17 L -1.60 -1.17 C -2.35 -1.17 -2.89 -1.71 -2.91 -2.45 Z M -2.91 -2.45 "/>
+<path d="M 0 -4.62 L -2.44 -3.14 C -2.66 -3.91 -3.19 -4.41 -3.80 -4.41 C -4.55 -4.41 -5.20 -3.59 -5.20 -2.52 L -5.20 -0.71 L 0 -0.71 L 0 -1.36 L -2.37 -1.36 L -2.37 -2.55 L 0 -3.95 Z M -3.80 -3.80 C -3.27 -3.80 -2.83 -3.32 -2.83 -2.44 L -2.83 -1.36 L -4.78 -1.36 L -4.78 -2.44 C -4.78 -3.31 -4.33 -3.80 -3.80 -3.80 Z M -3.80 -3.80 "/>
 </g>
 <g id="ch5-task-map-glyph-2-1">
 <path d="M 0 -3.26 L -3.32 -3.26 L -3.32 -2.67 L -1.15 -2.67 C -0.59 -2.67 -0.32 -2.25 -0.32 -1.77 C -0.32 -1.24 -0.52 -1.19 -0.84 -1.19 L -3.32 -1.19 L -3.32 -0.60 L -0.81 -0.60 C -0.27 -0.60 0.08 -0.78 0.08 -1.40 C 0.08 -1.80 -0.03 -2.33 -0.35 -2.69 L 0 -2.69 Z M 0 -3.26 "/>
@@ -130,7 +130,7 @@
 <path d="M 0 -3.25 L -5.20 -3.25 L -5.20 -2.69 L -3 -2.69 C -3.32 -2.29 -3.41 -1.87 -3.41 -1.59 C -3.41 -0.85 -2.63 -0.26 -1.66 -0.26 C -0.68 -0.26 0.08 -0.84 0.08 -1.55 C 0.08 -1.80 0.01 -2.25 -0.39 -2.66 L 0 -2.66 Z M -1.04 -2.66 C -0.93 -2.66 -0.80 -2.66 -0.58 -2.42 C -0.43 -2.25 -0.37 -2.06 -0.37 -1.86 C -0.37 -1.40 -0.72 -0.85 -1.65 -0.85 C -2.64 -0.85 -2.95 -1.5 -2.95 -1.94 C -2.95 -2.27 -2.78 -2.50 -2.54 -2.66 Z M -1.04 -2.66 "/>
 </g>
 <g id="ch5-task-map-glyph-2-9">
-<path d="M 0 -3.06 L -2.16 -3.06 C -2.92 -3.06 -3.45 -2.51 -3.45 -1.82 C -3.45 -1.34 -3.33 -1.00 -3.13 -0.65 L -2.64 -0.69 C -2.91 -1.08 -3.01 -1.46 -3.01 -1.82 C -3.01 -2.17 -2.71 -2.48 -2.16 -2.48 L -1.83 -2.48 C -1.82 -1.35 -1.50 -0.40 -0.84 -0.40 C -0.52 -0.40 0.08 -0.60 0.08 -1.25 C 0.08 -1.36 0.06 -2.07 -0.26 -2.50 L 0 -2.50 Z M -0.98 -2.48 C -0.84 -2.48 -0.66 -2.48 -0.51 -2.22 C -0.38 -2.00 -0.37 -1.72 -0.37 -1.64 C -0.37 -1.28 -0.54 -0.94 -0.86 -0.94 C -1.38 -0.94 -1.43 -2.16 -1.45 -2.48 Z M -0.98 -2.48 "/>
+<path d="M 0 -4.78 L -5.20 -2.82 L -5.20 -2.16 L 0 -0.21 L 0 -0.76 L -1.53 -1.34 L -1.53 -3.52 L 0 -4.09 Z M -1.94 -3.35 L -1.94 -1.5 C -3.01 -1.88 -2.23 -1.60 -3.30 -1.98 C -3.75 -2.14 -4.38 -2.37 -4.66 -2.42 L -4.66 -2.43 C -4.55 -2.45 -4.37 -2.50 -3.87 -2.67 Z M -1.94 -3.35 "/>
 </g>
 <g id="ch5-task-map-glyph-2-10">
 </g>
@@ -156,6 +156,12 @@
 <path d="M 0 -5.34 L -2.23 -5.34 C -2.73 -5.34 -3.41 -5.22 -3.41 -4.31 C -3.41 -3.86 -3.19 -3.48 -2.79 -3.19 C -3.36 -3.00 -3.41 -2.48 -3.41 -2.24 C -3.41 -1.70 -3.10 -1.34 -2.83 -1.14 L -3.37 -1.14 L -3.37 -0.60 L 0 -0.60 L 0 -1.19 L -1.83 -1.19 C -2.34 -1.19 -2.95 -1.39 -2.95 -1.94 C -2.95 -2.64 -2.46 -2.68 -2.17 -2.68 L 0 -2.68 L 0 -3.26 L -1.83 -3.26 C -2.34 -3.26 -2.95 -3.47 -2.95 -4.02 C -2.95 -4.72 -2.46 -4.76 -2.17 -4.76 L 0 -4.76 Z M 0 -5.34 "/>
 </g>
 <g id="ch5-task-map-glyph-2-18">
+<path d="M 0 -3.06 L -2.16 -3.06 C -2.92 -3.06 -3.45 -2.51 -3.45 -1.82 C -3.45 -1.34 -3.33 -1.00 -3.13 -0.65 L -2.64 -0.69 C -2.91 -1.08 -3.01 -1.46 -3.01 -1.82 C -3.01 -2.17 -2.71 -2.48 -2.16 -2.48 L -1.83 -2.48 C -1.82 -1.35 -1.50 -0.40 -0.84 -0.40 C -0.52 -0.40 0.08 -0.60 0.08 -1.25 C 0.08 -1.36 0.06 -2.07 -0.26 -2.50 L 0 -2.50 Z M -0.98 -2.48 C -0.84 -2.48 -0.66 -2.48 -0.51 -2.22 C -0.38 -2.00 -0.37 -1.72 -0.37 -1.64 C -0.37 -1.28 -0.54 -0.94 -0.86 -0.94 C -1.38 -0.94 -1.43 -2.16 -1.45 -2.48 Z M -0.98 -2.48 "/>
+</g>
+<g id="ch5-task-map-glyph-2-19">
+<path d="M -2.91 -2.45 L -3.41 -2.45 C -3.40 -1.78 -3.03 -1.37 -2.69 -1.14 L -3.37 -1.14 L -3.37 -0.61 L 0 -0.61 L 0 -1.17 L -1.60 -1.17 C -2.35 -1.17 -2.89 -1.71 -2.91 -2.45 Z M -2.91 -2.45 "/>
+</g>
+<g id="ch5-task-map-glyph-2-20">
 <path d="M 0 -3.53 L -2.03 -2.10 L -3.32 -3.36 L -3.32 -2.69 L -1.76 -1.16 L -5.20 -1.16 L -5.20 -0.62 L 0 -0.62 L 0 -1.14 L -1.05 -1.14 L -1.67 -1.74 L 0 -2.91 Z M 0 -3.53 "/>
 </g>
 <g id="ch5-task-map-glyph-3-0">
@@ -355,139 +361,139 @@
 <path clip-rule="nonzero" d="M 363 301 L 366.46 301 L 366.46 305 L 363 305 Z M 363 301 "/>
 </clipPath>
 <clipPath id="ch5-task-map-clip-3">
-<rect x="0" y="0" width="16" height="281"/>
+<rect x="0" y="0" width="15" height="281"/>
 </clipPath>
-<g id="ch5-task-map-source-651" clip-path="url(#ch5-task-map-clip-3)">
+<g id="ch5-task-map-source-665" clip-path="url(#ch5-task-map-clip-3)">
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-0" x="12.31" y="279.94"/>
+<use xlink:href="#ch5-task-map-glyph-2-0" x="11.31" y="279.94"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-1" x="12.31" y="277.37"/>
+<use xlink:href="#ch5-task-map-glyph-2-1" x="11.31" y="275.30"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-2" x="12.31" y="273.50"/>
+<use xlink:href="#ch5-task-map-glyph-2-2" x="11.31" y="271.43"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-3" x="12.31" y="271.70"/>
+<use xlink:href="#ch5-task-map-glyph-2-3" x="11.31" y="269.63"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-4" x="12.31" y="268.38"/>
+<use xlink:href="#ch5-task-map-glyph-2-4" x="11.31" y="266.31"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-5" x="12.31" y="265.88"/>
+<use xlink:href="#ch5-task-map-glyph-2-5" x="11.31" y="263.81"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-6" x="12.31" y="261.79"/>
-<use xlink:href="#ch5-task-map-glyph-2-1" x="12.31" y="258.04"/>
+<use xlink:href="#ch5-task-map-glyph-2-6" x="11.31" y="259.72"/>
+<use xlink:href="#ch5-task-map-glyph-2-1" x="11.31" y="255.98"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-7" x="12.31" y="254.17"/>
+<use xlink:href="#ch5-task-map-glyph-2-7" x="11.31" y="252.10"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-8" x="12.31" y="250.29"/>
+<use xlink:href="#ch5-task-map-glyph-2-8" x="11.31" y="248.22"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-9" x="11.31" y="67.03"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-10" x="11.31" y="62.03"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-11" x="11.31" y="59.53"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-12" x="11.31" y="56.07"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-3" x="11.31" y="54.28"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-13" x="11.31" y="50.95"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-10" x="11.31" y="45.83"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-6" x="11.31" y="43.34"/>
+<use xlink:href="#ch5-task-map-glyph-2-14" x="11.31" y="39.59"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-10" x="11.31" y="37.29"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-15" x="11.31" y="34.80"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-16" x="11.31" y="32.09"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-3" x="11.31" y="28.22"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-10" x="11.31" y="24.89"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-17" x="11.31" y="22.39"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-18" x="11.31" y="16.44"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-19" x="11.31" y="13.04"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-20" x="11.31" y="10.48"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-3" x="11.31" y="7.02"/>
+</g>
+<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
+<use xlink:href="#ch5-task-map-glyph-2-15" x="11.31" y="3.69"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-0" x="12.09" y="192.22"/>
+<use xlink:href="#ch5-task-map-glyph-3-0" x="11.10" y="177.01"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-1" x="12.09" y="187.55"/>
+<use xlink:href="#ch5-task-map-glyph-3-1" x="11.10" y="172.34"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-2" x="12.09" y="182.51"/>
+<use xlink:href="#ch5-task-map-glyph-3-2" x="11.10" y="167.29"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-3" x="12.09" y="177.46"/>
+<use xlink:href="#ch5-task-map-glyph-3-3" x="11.10" y="162.24"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-4" x="12.09" y="172.51"/>
+<use xlink:href="#ch5-task-map-glyph-3-4" x="11.10" y="157.30"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-5" x="12.09" y="164.71"/>
+<use xlink:href="#ch5-task-map-glyph-3-5" x="11.10" y="149.50"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-6" x="12.09" y="160.12"/>
+<use xlink:href="#ch5-task-map-glyph-3-6" x="11.10" y="144.90"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-7" x="12.09" y="155.07"/>
+<use xlink:href="#ch5-task-map-glyph-3-7" x="11.10" y="139.85"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-8" x="12.09" y="151.43"/>
+<use xlink:href="#ch5-task-map-glyph-3-8" x="11.10" y="136.22"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-6" x="12.09" y="148.13"/>
+<use xlink:href="#ch5-task-map-glyph-3-6" x="11.10" y="132.92"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-5" x="12.09" y="143.09"/>
+<use xlink:href="#ch5-task-map-glyph-3-5" x="11.10" y="127.87"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-5" x="12.09" y="138.49"/>
+<use xlink:href="#ch5-task-map-glyph-3-5" x="11.10" y="123.27"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-2" x="12.09" y="133.89"/>
+<use xlink:href="#ch5-task-map-glyph-3-2" x="11.10" y="118.68"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-5" x="12.09" y="128.84"/>
+<use xlink:href="#ch5-task-map-glyph-3-5" x="11.10" y="113.63"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-3-2" x="12.09" y="124.25"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-9" x="12.31" y="65.53"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-10" x="12.31" y="61.92"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-11" x="12.31" y="59.42"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-12" x="12.31" y="55.97"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-3" x="12.31" y="54.18"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-13" x="12.31" y="50.85"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-10" x="12.31" y="45.73"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-6" x="12.31" y="43.23"/>
-<use xlink:href="#ch5-task-map-glyph-2-14" x="12.31" y="39.48"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-10" x="12.31" y="37.19"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-15" x="12.31" y="34.69"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-16" x="12.31" y="31.99"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-3" x="12.31" y="28.11"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-10" x="12.31" y="24.78"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-17" x="12.31" y="22.29"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-9" x="12.31" y="16.33"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-0" x="12.31" y="12.94"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-18" x="12.31" y="10.37"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-3" x="12.31" y="6.92"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-2-15" x="12.31" y="3.59"/>
+<use xlink:href="#ch5-task-map-glyph-3-2" x="11.10" y="109.03"/>
 </g>
 </g>
 <clipPath id="ch5-task-map-clip-4">
@@ -503,13 +509,10 @@
 <path clip-rule="nonzero" d="M 75 110 L 366.46 110 L 366.46 200 L 75 200 Z M 75 110 "/>
 </clipPath>
 <clipPath id="ch5-task-map-clip-8">
-<path clip-rule="nonzero" d="M 27 292 L 366.46 292 L 366.46 294 L 27 294 Z M 27 292 "/>
+<path clip-rule="nonzero" d="M 363.12 291.29 L 366.42 291.29 L 366.42 294.59 L 363.12 294.59 Z M 363.12 291.29 "/>
 </clipPath>
 <clipPath id="ch5-task-map-clip-9">
-<path clip-rule="nonzero" d="M 363.28 291.29 L 366.46 291.29 L 366.46 294.59 L 363.28 294.59 Z M 363.28 291.29 "/>
-</clipPath>
-<clipPath id="ch5-task-map-clip-10">
-<path clip-rule="nonzero" d="M 26.21 8 L 29.51 8 L 29.51 11.14 L 26.21 11.14 Z M 26.21 8 "/>
+<path clip-rule="nonzero" d="M 26.21 8.01 L 29.51 8.01 L 29.51 11.30 L 26.21 11.30 Z M 26.21 8.01 "/>
 </clipPath>
 </defs>
 <g clip-path="url(#ch5-task-map-clip-0)">
@@ -522,291 +525,237 @@
 <use xlink:href="#ch5-task-map-glyph-0-0" x="36.36" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-1" x="39.68" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-1" x="40.42" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-2" x="44.17" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-1" x="42.25" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-3" x="48.04" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-2" x="44.81" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-4" x="51.92" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-1" x="48.35" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-5" x="54.00" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="50.91" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-6" x="56.50" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-4" x="53.41" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-7" x="59.37" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-5" x="55.20" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-1" x="63.25" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="58.07" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-8" x="66.78" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-6" x="60.57" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-6" x="71.91" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-2" x="62.36" y="304.84"/>
-<use xlink:href="#ch5-task-map-glyph-0-7" x="66.11" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-5" x="74.78" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-8" x="69.99" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-9" x="77.27" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-9" x="73.86" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-10" x="80.88" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="75.95" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-5" x="83.59" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-5" x="78.44" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-1" x="86.08" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-11" x="89.83" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-10" x="81.31" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-12" x="93.71" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-2" x="85.19" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-13" x="97.03" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-11" x="88.73" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-14" x="252.84" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-5" x="93.85" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-2" x="258.36" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="96.72" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-15" x="262.23" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-12" x="99.22" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-13" x="264.02" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-13" x="102.82" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-10" x="267.35" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="105.53" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-4" x="270.06" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-2" x="108.02" y="304.84"/>
-<use xlink:href="#ch5-task-map-glyph-0-14" x="111.77" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-5" x="272.14" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-15" x="115.65" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-6" x="274.64" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-0" x="118.98" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-7" x="277.51" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-0" x="230.27" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-1" x="281.39" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-1" x="233.59" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-8" x="284.92" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-1" x="236.16" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-6" x="290.04" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-2" x="238.72" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-5" x="292.92" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-1" x="242.26" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-1" x="295.41" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-11" x="299.16" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="244.82" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-4" x="247.32" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-5" x="249.11" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="251.98" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-16" x="254.48" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-7" x="258.36" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-4" x="262.23" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-0" x="264.02" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-13" x="267.35" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-9" x="270.06" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="272.14" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-5" x="274.64" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-10" x="277.51" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-2" x="281.39" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-11" x="284.92" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-5" x="290.04" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="292.92" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-2" x="295.41" y="304.84"/>
-<use xlink:href="#ch5-task-map-glyph-0-14" x="299.16" y="304.84"/>
-</g>
-<g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-6" x="303.04" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-16" x="303.04" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
 <use xlink:href="#ch5-task-map-glyph-0-17" x="304.83" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="308.28" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-5" x="308.28" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-4" x="310.78" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-15" x="310.78" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-14" x="312.57" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-11" x="312.57" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="316.45" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-5" x="316.45" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-13" x="318.94" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-10" x="318.94" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-10" x="321.65" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-7" x="321.65" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-0" x="325.53" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-13" x="325.53" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-3" x="328.86" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-5" x="328.86" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-15" x="331.35" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-12" x="331.35" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-2" x="334.68" y="304.84"/>
-<use xlink:href="#ch5-task-map-glyph-0-14" x="338.43" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-1" x="334.68" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-11" x="338.43" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-15" x="342.30" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-12" x="342.30" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-6" x="345.63" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-16" x="345.63" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-7" x="347.43" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-2" x="347.42" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-5" x="351.30" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-6" x="351.30" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-4" x="354.17" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-15" x="354.17" y="304.84"/>
 </g>
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-2" x="355.96" y="304.84"/>
-<use xlink:href="#ch5-task-map-glyph-0-14" x="359.71" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-1" x="355.96" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-11" x="359.71" y="304.84"/>
 </g>
 <g clip-path="url(#ch5-task-map-clip-2)">
 <g fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-0-5" x="363.59" y="304.84"/>
+<use xlink:href="#ch5-task-map-glyph-0-6" x="363.59" y="304.84"/>
 </g>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-0" x="144.41" y="318.33"/>
-<use xlink:href="#ch5-task-map-glyph-1-1" x="151.56" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-0" x="140.17" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-1" x="147.32" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-2" x="156.23" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-2" x="151.99" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-3" x="162.92" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-3" x="158.68" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-4" x="166.22" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-4" x="161.98" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-5" x="171.27" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-5" x="167.03" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-6" x="176.32" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-6" x="172.07" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-7" x="178.62" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-7" x="174.38" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-8" x="183.22" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-8" x="178.97" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-9" x="186.85" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-9" x="182.61" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-10" x="189.15" y="318.33"/>
-<use xlink:href="#ch5-task-map-glyph-1-3" x="193.65" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-10" x="184.91" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-3" x="189.41" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-11" x="196.95" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-11" x="192.71" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-12" x="201.68" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-12" x="197.44" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-3" x="206.72" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-3" x="202.48" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-7" x="210.02" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-7" x="205.78" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-13" x="214.62" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-13" x="210.38" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-13" x="217.97" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-13" x="213.73" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-1" x="221.31" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-1" x="217.07" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-13" x="225.98" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-13" x="221.74" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-3" x="229.33" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-3" x="225.09" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-14" x="232.63" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-14" x="228.39" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-11" x="237.68" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-11" x="233.44" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-15" x="242.40" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-15" x="238.16" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-15" x="246.20" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-15" x="241.96" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-7" x="249.99" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-7" x="245.75" y="318.33"/>
 </g>
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
-<use xlink:href="#ch5-task-map-glyph-1-15" x="254.59" y="318.33"/>
+<use xlink:href="#ch5-task-map-glyph-1-15" x="250.35" y="318.33"/>
 </g>
-<use xlink:href="#ch5-task-map-source-651" transform="matrix(1, 0, 0, 1, 9, 10)"/>
+<use xlink:href="#ch5-task-map-source-665" transform="matrix(1, 0, 0, 1, 10, 10)"/>
 <g clip-path="url(#ch5-task-map-clip-4)">
 <path fill-rule="nonzero" fill="rgb(99.26%, 96.86%, 95.47%)" fill-opacity="1" d="M 201.82 99.75 L 201.82 13.63 C 201.82 13.28 201.86 12.94 201.92 12.60 C 202 12.26 202.09 11.92 202.23 11.60 C 202.36 11.28 202.52 10.98 202.72 10.69 C 202.91 10.40 203.13 10.13 203.37 9.89 C 203.62 9.64 203.89 9.42 204.17 9.23 C 204.46 9.03 204.77 8.87 205.09 8.74 C 205.41 8.60 205.74 8.51 206.08 8.44 C 206.42 8.37 206.77 8.33 207.12 8.33 L 360.71 8.33 C 361.06 8.33 361.41 8.37 361.75 8.44 C 362.08 8.51 362.42 8.60 362.74 8.74 C 363.06 8.87 363.36 9.03 363.65 9.23 C 363.94 9.42 364.21 9.64 364.46 9.89 C 364.70 10.13 364.92 10.40 365.11 10.69 C 365.30 10.98 365.47 11.28 365.60 11.60 C 365.73 11.92 365.83 12.26 365.90 12.60 C 365.97 12.94 366.00 13.28 366.00 13.63 L 366.00 99.75 C 366.00 100.10 365.97 100.44 365.90 100.78 C 365.83 101.13 365.73 101.46 365.60 101.78 C 365.47 102.10 365.30 102.41 365.11 102.69 C 364.92 102.98 364.70 103.25 364.46 103.5 C 364.21 103.74 363.94 103.96 363.65 104.16 C 363.36 104.35 363.06 104.51 362.74 104.64 C 362.42 104.78 362.08 104.87 361.75 104.94 C 361.41 105.01 361.06 105.05 360.71 105.05 L 207.12 105.05 C 206.77 105.05 206.42 105.01 206.08 104.94 C 205.74 104.87 205.41 104.78 205.09 104.64 C 204.77 104.51 204.46 104.35 204.17 104.16 C 203.89 103.96 203.62 103.74 203.37 103.5 C 203.13 103.25 202.91 102.98 202.72 102.69 C 202.52 102.41 202.36 102.10 202.23 101.78 C 202.09 101.46 202 101.13 201.92 100.78 C 201.86 100.44 201.82 100.10 201.82 99.75 Z M 201.82 99.75 "/>
 </g>
@@ -1942,14 +1891,12 @@
 <g fill="rgb(16.85%, 16.85%, 16.85%)" fill-opacity="1">
 <use xlink:href="#ch5-task-map-glyph-5-7" x="173.12" y="273.35"/>
 </g>
+<path fill="none" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(41.95%, 44.70%, 50.19%)" stroke-opacity="1" stroke-miterlimit="4" d="M 26.45 380.12 L 475.85 380.12 " transform="matrix(0.749682, 0, 0, 0.749682, 8.036274, 7.966519)"/>
 <g clip-path="url(#ch5-task-map-clip-8)">
-<path fill="none" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(47.83%, 50.19%, 54.11%)" stroke-opacity="1" stroke-miterlimit="4" d="M 26.45 380.12 L 477.60 380.12 " transform="matrix(0.749682, 0, 0, 0.749682, 8.036274, 7.966519)"/>
+<path fill-rule="nonzero" fill="rgb(41.95%, 44.70%, 50.19%)" fill-opacity="1" d="M 363.12 291.62 L 366.08 292.94 L 363.12 294.26 L 363.84 292.94 Z M 363.12 291.62 "/>
 </g>
+<path fill="none" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(41.95%, 44.70%, 50.19%)" stroke-opacity="1" stroke-miterlimit="4" d="M 26.45 380.12 L 26.45 2.25 " transform="matrix(0.749682, 0, 0, 0.749682, 8.036274, 7.966519)"/>
 <g clip-path="url(#ch5-task-map-clip-9)">
-<path fill-rule="nonzero" fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1" d="M 363.28 291.62 L 366.25 292.94 L 363.28 294.26 L 364.01 292.94 Z M 363.28 291.62 "/>
-</g>
-<path fill="none" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="round" stroke="rgb(47.83%, 50.19%, 54.11%)" stroke-opacity="1" stroke-miterlimit="4" d="M 26.45 380.12 L 26.45 0.49 " transform="matrix(0.749682, 0, 0, 0.749682, 8.036274, 7.966519)"/>
-<g clip-path="url(#ch5-task-map-clip-10)">
-<path fill-rule="nonzero" fill="rgb(47.83%, 50.19%, 54.11%)" fill-opacity="1" d="M 26.54 11.14 L 27.86 8.17 L 29.18 11.14 L 27.86 10.41 Z M 26.54 11.14 "/>
+<path fill-rule="nonzero" fill="rgb(41.95%, 44.70%, 50.19%)" fill-opacity="1" d="M 26.54 11.30 L 27.86 8.33 L 29.18 11.30 L 27.86 10.58 Z M 26.54 11.30 "/>
 </g>
 </svg>
