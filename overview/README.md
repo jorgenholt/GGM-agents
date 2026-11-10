@@ -45,6 +45,18 @@ The Writing tab is where the thesis is written. Its text lives in `thesis/` in t
 keeps drafts in its shared storage until the sync routine writes them to GitHub. How that works,
 and what happens on a conflict: [`thesis/README.md`](../thesis/README.md).
 
+**Figures.** The figures are TikZ in `thesis/figures/`, which the page can't draw. So
+`render_figures.py` compiles each one to an SVG in `overview/figures/`, and the build embeds them:
+the Writing tab shows the picture under its LaTeX block, and the Typeset view shows it as a
+numbered figure. The cloud routine can't run LaTeX, so after changing a figure, render it locally
+and commit the SVG (needs `brew install tectonic poppler`):
+
+```bash
+python3 overview/render_figures.py
+```
+
+If you forget, the hub still shows the old picture, with a note saying it is out of date.
+
 ## What is *not* in the repo
 
 **Tasks**, **reading status** and **unsynced writing** are stored with the published page on
