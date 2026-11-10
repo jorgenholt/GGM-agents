@@ -476,7 +476,10 @@ def bib_authors(authors):
 
 def bib_entry(key, s):
     def f(v):
-        return v.replace("{", "").replace("}", "")
+        # Braces are dropped; characters LaTeX treats as commands are escaped (a bare _ in
+        # "GGM_public" stopped the bibliography from building).
+        v = v.replace("{", "").replace("}", "")
+        return re.sub(r"(?<!\\)([&%$#_])", r"\\\1", v)
     fields = [("author", bib_authors(s.get("authors", ""))), ("title", "{" + f(s.get("title", "")) + "}")]
     if s.get("year"):
         fields.append(("year", str(s["year"])))
