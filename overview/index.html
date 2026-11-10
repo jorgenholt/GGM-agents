@@ -1497,7 +1497,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
   // inputs a figure, or holds a labelled table, shows its picture below. The picture
   // is never saved into the text.
   function previewKey(tex) {
-    const fig = /\\input\{figures\/([\w-]+)\}/.exec(tex || "");
+    const fig = /\\(?:input|includegraphics(?:\[[^\]]*\])?)\{figures\/([\w-]+)(?:\.\w+)?\}/.exec(tex || "");
     if (fig) return fig[1];
     const tab = /\\begin\{table\*?\}/.test(tex || "") && /\\label\{(tab:[^}]+)\}/.exec(tex);
     return tab ? tab[1] : null;
