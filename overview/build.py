@@ -15,7 +15,7 @@ What it reads:
     docs/questions-for-weekly-meeting.md-> open, parked and resolved questions
     docs/README.md                      -> document index and filing rules
     agents/registry.json (optional)     -> agents, once there are any
-    overview/figures/*.svg              -> figure previews (made by render_figures.py)
+    overview/figures/*.svg              -> figure and table previews (made by render_figures.py)
     git ls-files / git log              -> file tree, last change per file
 
 Nothing from data_2023/ is read or copied: the folder is summarised by
@@ -697,22 +697,23 @@ def parse_agents():
 
 
 def parse_figures():
-    """Rendered previews of thesis/figures/*.tex, embedded so the hub can show them.
+    """Rendered previews of the figures and labelled tables, embedded so the hub can show them.
 
-    render_figures.py writes them locally; the cloud routine can't run LaTeX. A preview
-    whose figure changed since it was rendered is marked stale, and the hub says so.
+    Keyed by figure file name (ch5-hormuz) or table label (tab:agents). render_figures.py
+    writes them locally; the cloud routine can't run LaTeX. A preview whose source changed
+    since it was rendered is marked stale, and the hub says so.
     """
     sys.path.insert(0, str(ROOT / "overview"))
-    from render_figures import fingerprint, figure_sources, OUT as FIG_DIR
+    from render_figures import sources, OUT as FIG_DIR
 
     manifest_path = FIG_DIR / "manifest.json"
     manifest = json.loads(read(manifest_path)) if manifest_path.exists() else {}
     figures = {}
-    for src in figure_sources():
-        svg = FIG_DIR / f"{src.stem}.svg"
+    for name, (stem, _, fp) in sources().items():
+        svg = FIG_DIR / f"{stem}.svg"
         if not svg.exists():
             continue
-        figures[src.stem] = {"svg": read(svg), "stale": manifest.get(src.stem) != fingerprint(src)}
+        figures[name] = {"svg": read(svg), "stale": manifest.get(name) != fp}
     return figures
 
 
@@ -753,7 +754,7 @@ def main():
         f"Wrote {OUT.relative_to(ROOT)}: {len(lit['sources'])} sources in "
         f"{len(lit['sections'])} sections, {len(lit['relations'])} relations, "
         f"{len(data['timeline']['plan'])} plan rows, {len(data['repo']['files'])} files, "
-        f"{len(data['agents'])} agents, {len(data['figures'])} figures, {data['writing']['words']} thesis words\ncontentHash {data['contentHash']}"
+        f"{len(data['agents'])} agents, {len(data['figures'])} figures and tables, {data['writing']['words']} thesis words\ncontentHash {data['contentHash']}"
     )
 
 
