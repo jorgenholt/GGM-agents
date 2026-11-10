@@ -133,7 +133,7 @@
 </g>
 </g>
 </defs>
-<path fill="none" stroke-width="0.87" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -64.03 63.59 L 294.55 63.59 " transform="matrix(0.99, 0, 0, -0.99, 72.51, 71.53)"/>
+<path fill="none" stroke-width="0.87" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -64.03 63.59 L 294.55 63.59 " transform="matrix(0.993505, 0, 0, -0.993505, 72.510155, 71.534835)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
 <use xlink:href="#tab-model-prices-glyph-0-0" x="8.89" y="23.79"/>
 <use xlink:href="#tab-model-prices-glyph-0-1" x="19.70" y="23.79"/>
@@ -179,7 +179,7 @@
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
 <use xlink:href="#tab-model-prices-glyph-0-13" x="356.91" y="23.79"/>
 </g>
-<path fill="none" stroke-width="0.54" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -64.03 39.35 L 294.55 39.35 " transform="matrix(0.99, 0, 0, -0.99, 72.51, 71.53)"/>
+<path fill="none" stroke-width="0.54" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -64.03 39.35 L 294.55 39.35 " transform="matrix(0.993505, 0, 0, -0.993505, 72.510155, 71.534835)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
 <use xlink:href="#tab-model-prices-glyph-1-0" x="8.89" y="47.71"/>
 <use xlink:href="#tab-model-prices-glyph-1-1" x="16.04" y="47.71"/>
@@ -353,5 +353,5 @@
 <use xlink:href="#tab-model-prices-glyph-1-23" x="355.75" y="78.59"/>
 <use xlink:href="#tab-model-prices-glyph-1-8" x="361.24" y="78.59"/>
 </g>
-<path fill="none" stroke-width="0.87" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -64.03 -15.95 L 294.55 -15.95 " transform="matrix(0.99, 0, 0, -0.99, 72.51, 71.53)"/>
+<path fill="none" stroke-width="0.87" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -64.03 -15.95 L 294.55 -15.95 " transform="matrix(0.993505, 0, 0, -0.993505, 72.510155, 71.534835)"/>
 </svg>
