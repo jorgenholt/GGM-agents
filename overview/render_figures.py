@@ -90,13 +90,21 @@ def table_body(block: str) -> str:
     return f"\\begin{{minipage}}{{{TEXTWIDTH}}}{body}\\end{{minipage}}"
 
 
+def preamble() -> str:
+    """The thesis's own preamble (packages, table style, figure style), minus what a
+    standalone picture doesn't need, so previews look like the PDF."""
+    main = (ROOT / "thesis" / "main.tex").read_text(encoding="utf-8")
+    head = main[main.index("\n", main.index("\\documentclass")) + 1 : main.index("\\title")]
+    skip = ("inputenc", "babel", "natbib", "hyperref")
+    lines = [l for l in head.splitlines() if not any(f"{{{p}}}" in l for p in skip)]
+    return "\n".join(lines).replace("\\input{figures/style}", f"\\input{{{STYLE.as_posix()}}}")
+
+
 def render(stem: str, body: str, tmp: Path) -> str:
     tex = tmp / f"{stem}.tex"
     tex.write_text(
         "\\documentclass[11pt,border=8pt]{standalone}\n"
-        "\\usepackage[T1]{fontenc}\\usepackage{lmodern}\n"
-        "\\usepackage{booktabs}\\usepackage{tabularx}\n"
-        f"\\input{{{STYLE.as_posix()}}}\n"
+        f"{preamble()}\n"
         "\\begin{document}\n"
         f"{body}\n"
         "\\end{document}\n",
