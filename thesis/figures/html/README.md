@@ -8,7 +8,7 @@ boxes' real edges. With hand-placed TikZ coordinates, each of those was a guess.
 |---|---|
 | `<name>.html` | one figure; `#fig` is exactly the thesis text width (126.5 mm) |
 | `fig.css` | the shared look: colours (same as `../style.tex`), panels, chips, spacing |
-| `fig.js` | arrows between elements, and the icon set |
+| `fig.js` | arrows between elements, the icon set, and the pixel avatars (`<i data-pixel="analyst">`; agents: `scenario`, `data`, `calibration`, `results`, `agent`; also `code`, `ggm`) |
 | `fonts/` | Latin Modern Sans, the thesis's sans-serif, from the LaTeX distribution (GUST Font License) |
 | `export.py` | prints each page to `thesis/figures/<name>.pdf` with headless Chrome |
 

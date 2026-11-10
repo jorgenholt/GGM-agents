@@ -74,11 +74,15 @@ function pointAt(pts, t) {
   }
 }
 
+// how far (in line widths) the tip runs past the end of the line: (9 - 5) of 10 units of a 5.5-wide marker
+const HEAD_BACK = (9 - 5) / 10 * 5.5;
+
 function marker(svg, color) {
   const id = "head-" + color.replace(/[^\w]/g, "");
   if (!svg.querySelector("#" + id)) {
     const m = document.createElementNS(NS, "marker");
-    Object.entries({ id, viewBox: "0 0 10 10", refX: 8.5, refY: 5, markerWidth: 5.5, markerHeight: 5.5,
+    // the line ends at refX, where the head is already wider than the line; the tip is HEAD_BACK further on
+    Object.entries({ id, viewBox: "0 0 10 10", refX: 5, refY: 5, markerWidth: 5.5, markerHeight: 5.5,
                      orient: "auto-start-reverse", markerUnits: "strokeWidth" }).forEach(([k, v]) => m.setAttribute(k, v));
     const p = document.createElementNS(NS, "path");
     p.setAttribute("d", "M 0 1 L 9 5 L 0 9 L 2.2 5 Z");
@@ -119,6 +123,62 @@ function icons() {
     s.innerHTML = ICONS[i.dataset.icon];
     i.replaceWith(s);
   });
+  document.querySelectorAll("i[data-pixel]").forEach((i) => i.replaceWith(pixels(i.dataset.pixel, i.className)));
+}
+
+// Pixel avatars, written <i data-pixel="analyst"></i>. The analyst is a person; the agents are
+// robots, each with its own hat. One character per pixel on a 14 x 14 grid, "." is empty.
+const PALETTE = {
+  h: "#4A3428", s: "#F2C9A4", e: "#2B2B2B", m: "#A8563F", o: "#E07A3F", O: "#B85E2B",   // the analyst
+  p: "#8B7FF0", P: "#4A3DB8", d: "#2B2150", w: "#FFFFFF", l: "#CFC9FA", y: "#F2C14E",               // the agents
+  c: "#1B8A9A", M: "#2D3E50", g: "#B9C7D6",                                          // code, GGM
+  G: "#4E9A3E", D: "#3E7C31", q: "#A39274", k: "#2B2B2B", S: "#C9A227", u: "#8F7317",   // lessons, heuristics
+};
+const ROBOT = [
+  "...PPPPPPPP...", "...PppppppP...", "...PddddddP...", "..lPdwddwdPl..", "...PddddddP...",
+  "...PppppppP...", "...PPPPPPPP...", ".....PppP.....", "..PPPPPPPPPP..", "..PppppppppP..",
+];
+const HATS = {
+  agent:       ["..............", "..............", "......ll......", "......PP......"],
+  scenario:    ["......Pllll...", "......Plll....", "......P.......", "......P......."],
+  data:        ["..............", "....PPPPPP....", "....PPyyPP....", "..PPPPPPPPPP.."],
+  calibration: ["...ll....ll...", "....P....P....", ".....P..P.....", "......PP......"],
+  results:     ["..............", ".PPPPPPPPPPPP.", "....PPPPPP..l.", "....PPPPPP..l."],
+};
+const SPRITES = {
+  analyst: ["..............", "..............", "....hhhhhh....", "...hhhhhhhh...", "...hssssssh...",
+            "...ssssssss...", "...ssessess...", "...ssssssss...", "...sssmmsss...", "....ssssss....",
+            "......ss......", "..ooooOOoooo..", ".oooooooooooo.", ".oooooooooooo."],
+  code: ["......cc......", "..cc.cccc.cc..", "..cccccccccc..", "...cccccccc...", ".ccccc..ccccc.", ".cccc....cccc.", "cccc......cccc",
+         "cccc......cccc", ".cccc....cccc.", ".ccccc..ccccc.", "...cccccccc...", "..cccccccccc..", "..cc.cccc.cc..", "......cc......"],
+  ggm: ["..............", "..............", ".MMMMMMMMMMMM.", ".MggggggggggM.", ".MggggMMggggM.", ".MggggMMgMMgM.", ".MgMMgMMgMMgM.",
+        ".MgMMgMMgMMgM.", ".MggggggggggM.", ".MMMMMMMMMMMM.", "......MM......", "......MM......", "....MMMMMM....", ".............."],
+  lessons: ["............qq", "...........qqq", "...........qq.", "...DDDDDDDqqq.", "...DGGGGGqqq..", "...DGGwwGqq...", "...DGGGGkGD...", "...DGGGkGGD...", "...DGGGGGGD...", "...DGGGGGGD...", "...DGGGGGGD...", "...DGGGGGGD...", "...DwwwwwwD...", "...DDDDDDDD..."],
+  heuristics: ["..............", "...uuuuuuuu...", "...uwwwwwwu...", "...uwSSSSwu...", "...uwwwwwwu...", "...uwSSSwwu...", "...uwwwwwwu...",
+               "...uwSSSSwu...", "...uwwwwwwu...", "...uwSSwwwu...", "...uwwwwwwu...", "...uwwwwwwu...", "...uuuuuuuu...", ".............."],
+  solving: ["..............", "..............", ".MMMMMMMMMMMM.", ".MggggggggggM.", ".MgMMgMgMMggM.", ".MggggggggggM.", ".MgMgMMMgMggM.",
+            ".MggggggggggM.", ".MgMMMMMwwggM.", ".MggggggggggM.", ".MMMMMMMMMMMM.", "......MM......", "....MMMMMM....", ".............."],
+};
+for (const [k, hat] of Object.entries(HATS)) SPRITES[k] = [...hat, ...ROBOT];
+
+function pixels(name, cls = "") {
+  const rows = SPRITES[name], s = document.createElementNS(NS, "svg");
+  s.setAttribute("viewBox", "0 0 14 14");
+  s.setAttribute("shape-rendering", "crispEdges");
+  s.setAttribute("class", "icon pixel " + cls);
+  // one path per colour; each run of pixels is one rectangle, a hair taller so rows never show a seam
+  const runs = {};
+  rows.forEach((row, y) => {
+    for (let x = 0; x < row.length; ) {
+      const ch = row[x];
+      let n = 1;
+      while (row[x + n] === ch) n++;
+      if (ch !== ".") (runs[ch] ||= []).push(`M${x} ${y}h${n}v1.04h-${n}z`);
+      x += n;
+    }
+  });
+  s.innerHTML = Object.entries(runs).map(([ch, d]) => `<path fill="${PALETTE[ch]}" d="${d.join("")}"/>`).join("");
+  return s;
 }
 
 // The automatic check: text that spills out of its box, labels that overlap boxes
@@ -162,27 +222,48 @@ function check(fig) {
   document.body.dataset.issues = JSON.stringify(unique);
 }
 
+// A digit centred by its line box sits low and a little off, because digits have no descender
+// and uneven side bearings. Measure the ink itself and place it in the middle of the circle.
+function centreNumbers(fig) {
+  const ctx = document.createElement("canvas").getContext("2d");
+  fig.querySelectorAll(".n").forEach((el) => {
+    const cs = getComputedStyle(el);
+    if (cs.borderTopLeftRadius !== "50%") return;
+    const txt = el.textContent.trim(), w = el.clientWidth, h = el.clientHeight;
+    ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    const m = ctx.measureText(txt);
+    const x = (w - m.actualBoundingBoxLeft - m.actualBoundingBoxRight) / 2 + m.actualBoundingBoxLeft;
+    const y = (h - m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2 + m.actualBoundingBoxAscent;
+    el.innerHTML = `<svg width="${w}" height="${h}" style="display:block"><text x="${x}" y="${y}" fill="${cs.color}" ` +
+                   `style="font:${ctx.font}">${txt}</text></svg>`;
+  });
+}
+
 function draw() {
   icons();
+  centreNumbers(document.getElementById("fig"));
   const fig = document.getElementById("fig");
   const svg = document.createElementNS(NS, "svg");
   svg.id = "arrows";
   svg.append(document.createElementNS(NS, "defs"));
   fig.append(svg);
   for (const [from, to, o] of queue) {
-    const color = css(o.color ? `${o.color}` : "ink");
-    const ink = css(o.color ? `${o.color}-ink` : "ink");
+    // every arrow is the same grey, whatever colour the figure asks for
+    const color = css("flow"), ink = css("flow-ink");
     const a = point(from, fig), b = point(to, fig);
     // straight: true lines the end up with the start, for a clean vertical or horizontal arrow
     if (o.straight) { if (a.d[0] === 0) b.x = a.x; else b.y = a.y; }
-    // leave a hair of space between the arrowhead and the box it points at
-    b.x += b.d[0] * 0.5; b.y += b.d[1] * 0.5;
+    // leave a hair of space between the arrowhead and the box it points at, and stop the line
+    // inside the head (see marker), so its corners never show beside the point
+    const w = o.width || 1.1, back = HEAD_BACK * w;
+    b.x += b.d[0] * (0.5 + back); b.y += b.d[1] * (0.5 + back);
+    if (o.both) { a.x += a.d[0] * (0.5 + back); a.y += a.d[1] * (0.5 + back); }
     const pts = route(a, b, typeof o.mid === "string" ? centre(o.mid, fig) : o.mid);
     const path = document.createElementNS(NS, "path");
     path.setAttribute("d", pts.map((p, i) => `${i ? "L" : "M"} ${p.x.toFixed(2)} ${p.y.toFixed(2)}`).join(" "));
     path.setAttribute("fill", "none");
     path.setAttribute("stroke", color);
-    path.setAttribute("stroke-width", o.width || 1.1);
+    path.setAttribute("stroke-width", w);
     path.setAttribute("stroke-linejoin", "round");
     if (o.dashed) path.setAttribute("stroke-dasharray", "3 2");
     if (o.dotted) { path.setAttribute("stroke-dasharray", "0.1 2.2"); path.setAttribute("stroke-linecap", "round"); }

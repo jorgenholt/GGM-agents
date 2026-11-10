@@ -11,12 +11,15 @@
   .yaxis { grid-row: 1; grid-column: 1; display: flex; justify-content: space-between; align-items: center;
            writing-mode: vertical-rl; transform: rotate(180deg); padding: 1mm 0; }
   .yaxis .title, .xaxis .title { font-weight: 700; font-size: 9pt; }
+  /* the titles sit at the middle of their axis, whatever the end labels say */
+  .yaxis { position: relative; }
+  .yaxis .title { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; }
   .ends, .yaxis .end { color: var(--muted); font-size: 7.5pt; }
   .plot { grid-row: 1; grid-column: 2; position: relative; display: flex; flex-direction: column; gap: 3mm;
           padding: 0 0 3mm 3mm; }
   .xaxis { grid-row: 2; grid-column: 2; padding: 1.2mm 0 0 3mm; }
   .xaxis .ends { display: flex; justify-content: space-between; }
-  .xaxis .title { text-align: center; margin-top: 1.2mm; }
+  .xaxis .title { text-align: center; margin: 1.2mm 0 0 -3mm; }
 
   .zone { padding: 2.4mm 3mm 2.8mm; }
   .zone > h2 { margin-bottom: 2.2mm; }
@@ -37,7 +40,7 @@
 <body>
 <div id="fig">
   <div class="map">
-    <div class="yaxis"><span class="end">rule-bound</span><span class="title">Judgment needed</span><span class="end">a view of the market</span></div>
+    <div class="yaxis"><span class="end">Rule-bound</span><span class="title">Judgment needed</span><span class="end">A view of the market</span></div>
     <div class="plot" id="plot">
       <section class="panel zone analyst" id="analyst">
         <h2>Analyst decides</h2>
@@ -69,7 +72,7 @@
     </div>
     <div></div>
     <div class="xaxis">
-      <div class="ends"><span>error is loud: shows at once</span><span>error is quiet: shows only in the conclusions</span></div>
+      <div class="ends"><span>Loud: shows at once</span><span>Quiet: shows only in the conclusions</span></div>
       <div class="title">How quietly an error passes</div>
     </div>
   </div>

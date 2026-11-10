@@ -10,10 +10,12 @@
   .st { display: flex; flex-direction: column; }
   .st > h2 { display: flex; align-items: baseline; gap: 1.6mm; }
   .st > h2 .n { display: inline-flex; align-items: center; justify-content: center; width: 4.2mm; height: 4.2mm; border-radius: 50%;
-                background: var(--c); color: #fff; font-size: 7.5pt; letter-spacing: 0; align-self: center; }
-  .st > h2 small { margin-left: auto !important; }
+                background: var(--c); color: #fff; font-size: 7.5pt; letter-spacing: 0; line-height: 1; align-self: center; }
   .st .body { flex: 1; display: flex; flex-direction: column; gap: 1.8mm; }
-  #s1 .body { justify-content: center; gap: 3mm; }
+  /* step 1: the computer, with the bar and "Solving…" centred under it */
+  #s1 .body { justify-content: center; align-items: center; gap: 1.4mm; text-align: center; }
+  #s1 .body > .icon { width: 17mm; height: 17mm; }
+  #s1 .progress { flex: none; width: 24mm; margin-top: 0.6mm; }
   .line { display: flex; align-items: center; gap: 1.6mm; }
   .line .icon { width: 4.6mm; height: 4.6mm; }
   .progress { flex: 1; height: 1.6mm; border-radius: 0.8mm; background: #E3E6EA; overflow: hidden; }
@@ -45,95 +47,96 @@
   .range .mk.applied { left: 44%; background: var(--code); border: 0.8pt solid #fff; box-shadow: 0 0 0 0.6pt var(--code); }
   .range .mk.rejected { left: 88%; background: #fff; border: 0.9pt solid #A8322D; }
   .range .lab { position: absolute; top: 5.4mm; font-size: 7.5pt; line-height: 1.1; transform: translateX(-50%); }
-  .log { background: #fff; border: var(--hair) solid var(--line); border-radius: 1.3mm; font-size: 7.5pt; }
+  .log { flex: 1; margin-top: 2mm; background: #fff; border: var(--hair) solid var(--line); border-radius: 1.3mm; font-size: 7.5pt; }
   .log .lh { padding: 0.8mm 1.8mm; font-weight: 700; border-bottom: var(--hair) solid var(--line); display: flex; align-items: center; gap: 1.2mm; }
   .log .lh .icon { width: 3.4mm; height: 3.4mm; }
   .log .e { display: grid; grid-template-columns: 9mm 1fr; padding: 0.5mm 1.8mm; }
   .log .e span:first-child { color: var(--muted); }
   .log .e.new { background: color-mix(in srgb, var(--code) 10%, white); font-weight: 700; }
 
-  .hub { position: absolute; left: 50%; top: 50%; width: 9mm; height: 9mm; margin: -4.5mm 0 0 -4.5mm; color: var(--muted); }
-  .hub .icon { width: 100%; height: 100%; color: #C3C9D0; }
 
   /* below the loop */
   .below { display: grid; grid-template-columns: 1fr 1fr; column-gap: 15mm; margin-top: 10mm; }
   .below .panel > h2 { display: flex; align-items: center; gap: 1.4mm; }
-  .below .panel > h2 .icon { width: 3.8mm; height: 3.8mm; }
+  .below .panel > h2 .icon { width: 4.6mm; height: 4.6mm; }
+  .decides div::before { content: "•"; color: var(--analyst); margin-right: 1.2mm; }
   .st .body > .muted.small { margin-top: auto; }
-  .decides { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4mm 2.4mm; }
+  .decides { display: grid; row-gap: 0.3mm; padding-left: 1mm; }
   .decides div { display: flex; align-items: center; gap: 1.2mm; line-height: 1.2; }
   .decides .icon { width: 3.4mm; height: 3.4mm; }
-  .docs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm; }
-  .doc { display: flex; align-items: center; gap: 1.2mm; background: #fff; border-radius: 1.3mm; padding: 1.2mm 1.6mm;
+  .below .panel { display: flex; flex-direction: column; }
+  .docs { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .doc { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.2mm; background: #fff; border-radius: 1.3mm; padding: 1.2mm 1.6mm;
          border: var(--hair) solid color-mix(in srgb, var(--c) 45%, white); }
-  .doc .icon { width: 4mm; height: 4mm; }
+  .doc .icon { width: 7.5mm; height: 7.5mm; }
 </style>
 </head>
 <body>
 <div id="fig">
   <div class="loop">
     <section class="panel model st" id="s1">
-      <h2><span class="n">1</span>Run the model<small>by GGM</small></h2>
+      <h2><span class="n">1</span>Run the model</h2>
       <div class="body">
-        <div class="line"><i data-icon="laptop"></i><b>GGM</b><span class="muted">solving…</span><span class="progress"><span></span></span></div>
-        <div class="line"><i data-icon="clock"></i>a full run: about 24 min</div>
+        <i data-pixel="solving"></i>
+        <span class="progress"><span></span></span>
+        <span class="muted">Solving…</span>
       </div>
     </section>
 
     <section class="panel code st" id="s2">
-      <h2><span class="n">2</span>Deviation report<small>by code</small></h2>
+      <h2><span class="n">2</span>Deviation report</h2>
       <div class="chart" id="chart"></div>
     </section>
 
     <section class="panel code st" id="s4">
-      <h2><span class="n">4</span>Check, apply, log<small>by code</small></h2>
+      <h2><span class="n">4</span>Check, apply, log</h2>
       <div class="body">
         <div class="range">
-          <div class="rail"></div><div class="ok"></div><div class="ttl">allowed range</div>
+          <div class="rail"></div><div class="ok"></div><div class="ttl">Allowed range</div>
           <div class="mk applied"></div><div class="mk rejected"></div>
-          <div class="lab" style="left:44%; color:var(--code-ink)">applied</div>
-          <div class="lab" style="left:88%; color:#A8322D">rejected</div>
+          <div class="lab" style="left:44%; color:var(--code-ink)">Applied</div>
+          <div class="lab" style="left:88%; color:#A8322D">Rejected</div>
         </div>
         <div class="log">
-          <div class="lh"><i data-icon="log" class="code"></i>Calibration log</div>
-          <div class="e"><span>run 6</span><span>B's cost raised</span></div>
-          <div class="e"><span>run 7</span><span>C's cost lowered</span></div>
-          <div class="e new"><span>run 8</span><span>A's cost lowered</span></div>
+          <div class="lh">Calibration log</div>
+          <div class="e"><span>Run 5</span><span>D’s capacity raised</span></div>
+          <div class="e"><span>Run 6</span><span>B's cost raised</span></div>
+          <div class="e"><span>Run 7</span><span>C's cost lowered</span></div>
+          <div class="e new"><span>Run 8</span><span>A's cost lowered</span></div>
         </div>
       </div>
     </section>
 
     <section class="panel agent st" id="s3">
-      <h2><span class="n">3</span>Diagnose<small>by the agent</small></h2>
+      <h2><span class="n">3</span>Diagnosis</h2>
       <div class="body">
-        <div><b>A produces too little.</b> Possible causes:</div>
+        <div><b>A produces too little.</b><br>Possible causes:</div>
         <div class="causes">
-          <div>its cost is too high</div>
-          <div>its capacity is too low</div>
-          <div class="muted">market power (the analyst's call)</div>
+          <div>Its cost is too high</div>
+          <div>Its capacity is too low</div>
+          <div class="muted">Market power (the analyst’s call)</div>
         </div>
-        <div class="proposal"><b>Proposal:</b> lower A's cost one step, because the gap is large.</div>
+        <div class="proposal"><b>Proposal:</b> Lower A’s cost one step,<br>because the gap is large.</div>
       </div>
     </section>
 
-    <div class="hub"><i data-icon="loop"></i></div>
   </div>
 
   <div class="below">
     <section class="panel analyst" id="analyst">
-      <h2><i data-icon="person"></i>The analyst</h2>
+      <h2><i data-pixel="analyst"></i>The analyst</h2>
       <div class="decides">
-        <div><i data-icon="check"></i>corrects a diagnosis</div>
-        <div><i data-icon="check"></i>picks between equal fits</div>
-        <div><i data-icon="check"></i>keeps market power</div>
-        <div><i data-icon="check"></i>accepts the fit</div>
+        <div>Corrects a diagnosis</div>
+        <div>Picks between equal fits</div>
+        <div>Keeps market power</div>
+        <div>Accepts the fit</div>
       </div>
     </section>
     <section class="panel agent" id="inputs">
-      <h2><i data-icon="agent"></i>What the agent reads</h2>
+      <h2><i data-pixel="calibration"></i>What the agent reads</h2>
       <div class="docs">
-        <div class="doc record" id="lessons" data-box><i data-icon="lesson"></i>lessons</div>
-        <div class="doc source" data-box><i data-icon="doc"></i>heuristics</div>
+        <div class="doc record" id="lessons" data-box><i data-pixel="lessons"></i>Lessons</div>
+        <div class="doc source" data-box><i data-pixel="heuristics"></i>Heuristics</div>
       </div>
     </section>
   </div>
@@ -149,16 +152,21 @@
     chart.insertAdjacentHTML("beforeend", `<span>Country ${c}</span><div class="track"><span class="band"></span><span class="zero"></span>` +
       `<span class="bar${Math.abs(v) > tol ? " out" : ""}" style="left:${left}%; width:${w}%"></span></div>`);
   }
-  chart.insertAdjacentHTML("beforeend", `<div class="axis"><span>too low</span><span>tolerance</span><span>too high</span></div>`);
+  chart.insertAdjacentHTML("beforeend", `<div class="axis"><span>Too low</span><span>Tolerance</span><span>Too high</span></div>`);
 
-  arrow("#s1:r", "#s2:l", { color: "model", straight: true, label: "results", side: "above" });
-  arrow("#s2:b", "#s3:t", { color: "code", straight: true, label: "deviations", side: "right" });
-  arrow("#s3:l", "#s4:r", { color: "agent", straight: true, label: "a change", side: "above" });
-  arrow("#s4:t", "#s1:b", { color: "code", straight: true, label: "next run", side: "left" });
-  arrow("#inputs:t", "#s3:b", { color: "agent", straight: true });
-  arrow("#s4:b", "#analyst:t", { color: "analyst", dotted: true, straight: true, label: "follows the log", side: "right" });
-  arrow({ x: 55.75, y: "#lessons", dir: "r" }, "#lessons:l", { color: "analyst", dashed: true, label: "becomes<br>a lesson", side: "above" });
-  document.fonts.ready.then(draw);
+  const f = { color: "flow", straight: true };
+  arrow("#s1:r", "#s2:l", { ...f, label: "Results", side: "above" });
+  arrow("#s2:b", "#s3:t", { ...f, label: "Deviations", side: "right" });
+  arrow("#s3:l", "#s4:r", { ...f, label: "A change", side: "above" });
+  arrow("#s4:t", "#s1:b", { ...f, label: "Next run", side: "left" });
+  arrow("#inputs:t", "#s3:b", f);
+  arrow("#s4:b", "#analyst:t", { ...f, label: "Follows the log", side: "right" });
+  document.fonts.ready.then(() => {
+    // "becomes a lesson" ends at the edge of the panel the lessons sit in, level with the lessons
+    const fr = document.getElementById("fig").getBoundingClientRect(), r = document.getElementById("inputs").getBoundingClientRect();
+    arrow({ x: 55.75, y: "#lessons", dir: "r" }, { x: (r.left - fr.left) / MM, y: "#lessons", dir: "l" }, { ...f, label: "Becomes<br>a lesson", side: "above" });
+    draw();
+  });
 </script>
 </body>
 </html>

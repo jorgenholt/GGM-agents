@@ -17,6 +17,7 @@
   --ink:     #2B2B2B;
   --muted:   #7A808A;
   --line:    #D5D9DE;
+  --flow:    #6B7280;  --flow-ink:  #4B5260;   /* every arrow and its label */
 
   --text-width: 126.5mm;   /* \textwidth of the thesis */
   --gap: 3mm;              /* the one spacing unit everything is built from */
@@ -72,7 +73,7 @@ body { font-family: "LM Sans", "Helvetica Neue", Arial, sans-serif; color: var(-
 /* Arrows are drawn by fig.js into this layer, from the boxes' real positions. */
 #arrows { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
 .alabel {
-  position: absolute; font-size: 7.5pt; line-height: 1.2; white-space: nowrap;
+  position: absolute; font-size: 7.5pt; line-height: 1.2; white-space: nowrap; text-align: center;
   background: #fff; padding: 0 0.8mm;
 }
 .alabel.plain { background: transparent; padding: 0; }

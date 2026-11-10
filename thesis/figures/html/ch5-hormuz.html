@@ -1,54 +1,35 @@
 <!doctype html>
-<!-- Figure 5.6: the Hormuz example as a sequence across the analyst, the four agents, and code with the model. -->
+<!-- Figure 5.6: the Hormuz example, step by step. Every line names who acts; check marks are the analyst's decisions. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>ch5-hormuz</title>
 <link rel="stylesheet" href="fig.css">
 <style>
-  /* every row uses the same six columns, one per lifeline */
-  .cols { display: grid; grid-template-columns: repeat(6, 1fr); column-gap: 2.4mm; }
-
   .title { display: flex; align-items: center; gap: 3mm; padding: 1.8mm 3mm; border-radius: var(--radius);
-           background: color-mix(in srgb, var(--code) 9%, white); margin-bottom: 3mm; }
+           background: color-mix(in srgb, var(--code) 9%, white); margin-bottom: 1.5mm; }
   .title .icon { width: 8mm; height: 8mm; color: var(--model); }
   .title b { display: block; font-size: 9.5pt; }
   .title span { color: var(--muted); }
   .title .closed { margin-left: auto; color: #A8322D; font-weight: 700; font-size: 7.5pt; border: 0.8pt solid #A8322D;
                    border-radius: 1mm; padding: 0.4mm 1.6mm; letter-spacing: 0.05em; text-transform: uppercase; }
 
-  .heads > div { display: flex; align-items: center; justify-content: center; gap: 1.2mm; font-weight: 700; font-size: 7.5pt;
-                 line-height: 1.15; color: var(--c-ink); padding-bottom: 1.6mm; }
-  .heads .icon { width: 4.4mm; height: 4.4mm; }
-
-  .seq { position: relative; }
-  .lifelines { position: absolute; inset: 0; z-index: 0; }
-  .lifelines > div { position: relative; }
-  .lifelines > div::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; border-left: 0.7pt dashed #C3C9D0; }
-
-  .phase { position: relative; border-top: var(--hair) solid var(--line); padding: 1.4mm 0 1.8mm; }
-  .phase > h3 { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 1.4mm; background: #fff;
-                padding-right: 1.4mm; font-size: 7.5pt; font-weight: 700; color: var(--model); text-transform: uppercase; letter-spacing: 0.05em; }
+  .phase { border-top: var(--hair) solid var(--line); padding: 1.6mm 0 1.4mm; }
+  .phase > h3 { display: flex; align-items: center; gap: 1.4mm; font-size: 7.5pt; font-weight: 700; color: var(--model);
+                text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6mm; }
   .phase > h3 .n { display: inline-flex; align-items: center; justify-content: center; width: 4mm; height: 4mm; border-radius: 50%;
-                   background: var(--model); color: #fff; letter-spacing: 0; }
+                   background: var(--model); color: #fff; letter-spacing: 0; line-height: 1; }
   .phase > h3 small { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--muted); font-size: 7.5pt; }
-  .row { position: relative; z-index: 1; margin-top: 1.2mm; align-items: center; }
-  .box { background: #fff; border: var(--hair) solid color-mix(in srgb, var(--c) 55%, white); border-radius: 1.3mm;
-         padding: 1.2mm 1.8mm; font-size: 7.5pt; line-height: 1.28; }
-  .box.tint { background: color-mix(in srgb, var(--c) 8%, white); }
-  .box b { color: var(--c-ink); }
-  .box.side { display: flex; align-items: center; gap: 1.4mm; }
-  .box.side .icon { width: 4mm; height: 4mm; }
-  .m { position: relative; z-index: 1; height: 6mm; }
-  .row + .m { margin-top: 1.6mm; }
-  .phase > h3 + .m.up { margin-top: -4.6mm; }
-  .m.tall { height: 8.6mm; }
-  .say { position: absolute; top: calc(50% + 0.9mm); background: #fff; color: var(--muted); font-size: 7.5pt; line-height: 1.2; padding: 0 1mm; white-space: nowrap; }
-  .m .ok { position: absolute; top: 50%; width: 3.6mm; height: 3.6mm; margin-top: -1.8mm; color: var(--analyst); }
-  .rep { display: flex; align-items: center; gap: 0.8mm; font-size: 7.5pt; color: var(--model); justify-self: end; background: #fff; padding-left: 0.6mm; }
-  .rep .icon { width: 3.6mm; height: 3.6mm; color: var(--model); }
-  .okcell { display: flex; justify-content: center; } .ok1 { transform: translateX(-3.2mm); width: 3.6mm; height: 3.6mm; color: var(--analyst); background: #fff; border-radius: 50%; }
-  .final { font-weight: 700; color: var(--analyst-ink); }
+
+  /* one line per action: who, what, and a check mark where the analyst decides */
+  .say { display: grid; grid-template-columns: 5mm 25mm 1fr 4mm; column-gap: 2mm; align-items: center; padding: 0.9mm 0 0.9mm 5.4mm; }
+  .say > .icon { width: 5mm; height: 5mm; }
+  .say .who { font-weight: 700; font-size: 8pt; color: var(--c-ink); }
+  .say .what { font-size: 8pt; line-height: 1.28; }
+  .say .ok { width: 3.6mm; height: 3.6mm; color: var(--analyst); }
+  .say.analyst .what { color: var(--analyst-ink); }
+  .say .rep { display: inline-flex; align-items: center; gap: 0.6mm; color: var(--muted); margin-left: 1.2mm; }
+  .say .rep .icon { width: 3.2mm; height: 3.2mm; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -56,117 +37,48 @@
   <div class="title">
     <i data-icon="ship"></i>
     <div><b>The Strait of Hormuz stays closed</b><span>What happens to the world gas market over one year?</span></div>
-    <span class="closed">strait closed</span>
+    <span class="closed">Strait closed</span>
   </div>
 
-  <div class="cols heads">
-    <div class="analyst" id="hA"><i data-icon="person"></i>Analyst</div>
-    <div class="agent" id="hS"><i data-icon="agent"></i>Scenario<br>agent</div>
-    <div class="agent" id="hD"><i data-icon="agent"></i>Data<br>agent</div>
-    <div class="agent" id="hC"><i data-icon="agent"></i>Calibration<br>agent</div>
-    <div class="agent" id="hR"><i data-icon="agent"></i>Results<br>agent</div>
-    <div class="code" id="hX"><i data-icon="gear"></i>Code<br>and GGM</div>
-  </div>
+  <section class="phase">
+    <h3><span class="n">1</span>Question</h3>
+    <div class="say analyst"><i data-pixel="analyst"></i><span class="who">Analyst</span><span class="what">Waits about a month to see whether the closure lasts, then decides to start a study.</span><i data-icon="check" class="ok"></i></div>
+  </section>
 
-  <div class="seq">
-    <div class="cols lifelines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <section class="phase">
+    <h3><span class="n">2</span>Scenario</h3>
+    <div class="say analyst"><i data-pixel="analyst"></i><span class="who">Analyst</span><span class="what">Describes the storyline: One year, strait open or closed, and Russian supply also cut.</span><span></span></div>
+    <div class="say agent"><i data-pixel="scenario"></i><span class="who">Scenario agent</span><span class="what">Proposes about 90 nodes instead of 136, with no seasons or storage. Blocks every LNG route out of the Gulf with very large distances, and asks about Gulf market power and pipeline expansion.</span><span></span></div>
+    <div class="say analyst"><i data-pixel="analyst"></i><span class="who">Analyst</span><span class="what">Approves the node structure and the edits.</span><i data-icon="check" class="ok"></i></div>
+    <div class="say code"><i data-pixel="code"></i><span class="who">Code</span><span class="what">Creates the variants. They differ only in the general workbook.</span><span></span></div>
+  </section>
 
-    <section class="phase">
-      <h3><span class="n">1</span>Question</h3>
-      <div class="cols row">
-        <span class="okcell"><i data-icon="check" class="ok1"></i></span>
-        <div class="box analyst tint" data-box style="grid-column: 2 / 7">The closure is in the news. The analysts wait about a month to see whether it lasts, then decide to start.</div>
-      </div>
-    </section>
+  <section class="phase">
+    <h3><span class="n">3</span>Data</h3>
+    <div class="say agent"><i data-pixel="data"></i><span class="who">Data agent</span><span class="what">Maps sources to the new nodes, drafts one year of projections, and proposes an elasticity class for each node.</span><span></span></div>
+    <div class="say code"><i data-pixel="code"></i><span class="who">Code</span><span class="what">Aggregates pipeline capacities and recomputes shipping distances.</span><span></span></div>
+    <div class="say agent"><i data-pixel="data"></i><span class="who">Data agent</span><span class="what">Suggests the official domestic price as the Gulf reference price.</span><span></span></div>
+    <div class="say analyst"><i data-pixel="analyst"></i><span class="who">Analyst</span><span class="what">Replies: That price is subsidised, far below what the model needs.</span><span></span></div>
+    <div class="say agent"><i data-pixel="data"></i><span class="who">Data agent</span><span class="what">Revises the value and proposes a lesson about subsidised prices.</span><span></span></div>
+    <div class="say analyst"><i data-pixel="analyst"></i><span class="who">Analyst</span><span class="what">Approves the lesson. It is applied to the other countries with subsidised prices.</span><i data-icon="check" class="ok"></i></div>
+  </section>
 
-    <section class="phase">
-      <h3><span class="n">2</span>Scenario</h3>
-      <div class="m tall" data-msg="A S analyst" data-label="storyline" data-say="one year; open or closed; Russian supply also cut"></div>
-      <div class="cols row" style="margin-top: 0.4mm">
-        <div class="box agent" data-box style="grid-column: 2 / 7"><b>Proposes:</b> about 90 nodes instead of 136, no seasons or storage;
-          blocks every LNG route from inside the Gulf with very large distances; asks about Gulf market power and pipeline expansion.</div>
-      </div>
-      <div class="m" data-msg="S A agent" data-label="edits + reasons"></div>
-      <div class="m tall" data-msg="A X analyst" data-label="approved: create the variants" data-ok data-say="the variants differ only in the general workbook" data-say-at="end"></div>
-    </section>
+  <section class="phase">
+    <h3><span class="n">4</span>Calibration <small>On the baseline, with the strait open</small></h3>
+    <div class="say agent"><i data-pixel="calibration"></i><span class="who">Calibration agent</span><span class="what">Diagnoses the deviations and proposes one change at a time.</span><span></span></div>
+    <div class="say code"><i data-pixel="code"></i><span class="who">Code and GGM</span><span class="what">Apply the change, run the model and report the new deviations; the two repeat.</span><span></span></div>
+    <div class="say analyst"><i data-pixel="analyst"></i><span class="who">Analyst</span><span class="what">Follows the log, corrects one diagnosis, and accepts the fit.</span><i data-icon="check" class="ok"></i></div>
+  </section>
 
-    <section class="phase">
-      <h3><span class="n">3</span>Data</h3>
-      <div class="cols row">
-        <div class="box agent" data-box id="dbox" style="grid-column: 2 / 5"><b>Rebuilds the general workbook:</b> maps sources to the new nodes;
-          drafts one year of projections; proposes an elasticity class for each node.</div>
-        <div class="box code" data-box id="xbox" style="grid-column: 5 / 7; margin-left: 3.5mm">aggregates capacities; recomputes distances</div>
-      </div>
-      <div class="m" data-msg="D A agent" data-label="Gulf price: official domestic"></div>
-      <div class="m" data-msg="A D analyst" data-label="reply: that price is subsidised"></div>
-      <div class="m" data-msg="D A record" data-label="revised value + proposed lesson" data-ok style="height: 8.6mm">
-        <div class="cols" style="height:100%; align-items:center"><div class="box record tint side" data-box style="grid-column: 4 / 7"><i data-icon="lesson"></i>The lesson is approved, then applied to the other countries with subsidised prices.</div></div>
-      </div>
-    </section>
-
-    <section class="phase">
-      <h3><span class="n">4</span>Calibration <small>on the baseline, strait open</small></h3>
-      <div class="m up" data-msg="C X agent" data-label="proposed change"></div>
-      <div class="m" data-msg="X C code" data-label="deviation report"><div class="cols" style="height:100%; align-items:center"><span class="rep" style="grid-column:6"><i data-icon="loop"></i>repeat</span></div></div>
-      <div class="m" data-msg="A C analyst" data-label="corrects one diagnosis" data-ok></div>
-      <div class="m" data-msg="A C analyst" data-label="accepts the fit" data-ok></div>
-    </section>
-
-    <section class="phase">
-      <h3><span class="n">5</span>Runs and results <small>code runs every variant with the same calibration</small></h3>
-      <div class="m up" data-msg="X R code" data-label="results"></div>
-      <div class="cols row" style="margin-top: 0">
-        <div class="box agent" data-box style="grid-column: 2 / 7"><b>Drafts:</b> where the missing LNG is replaced and which importers lose most; flags odd patterns.</div>
-      </div>
-      <div class="m" data-msg="R A agent" data-label="explanations, with their tables" data-ok></div>
-      <div class="cols row" style="margin-top: 0.6mm">
-        <span></span>
-        <div class="final" style="grid-column: 2 / 7">The analysts decide what the results show and write the findings.</div>
-      </div>
-    </section>
-  </div>
+  <section class="phase">
+    <h3><span class="n">5</span>Runs and results</h3>
+    <div class="say code"><i data-pixel="code"></i><span class="who">Code and GGM</span><span class="what">Run every variant with the same calibration.</span><span></span></div>
+    <div class="say agent"><i data-pixel="results"></i><span class="who">Results agent</span><span class="what">Drafts where the missing LNG is replaced and which importers lose most, with the tables behind it, and flags odd patterns.</span><span></span></div>
+    <div class="say analyst"><i data-pixel="analyst"></i><span class="who">Analysts</span><span class="what">Decide what the results show and write the findings.</span><i data-icon="check" class="ok"></i></div>
+  </section>
 </div>
 
 <script src="fig.js"></script>
-<script>
-  const order = "ASDCRX";
-  document.querySelectorAll(".m[data-msg]").forEach((m, i) => {
-    const [from, to, color] = m.dataset.msg.split(" ");
-    m.id = "msg" + i;
-    const right = order.indexOf(to) > order.indexOf(from);
-    if (m.hasAttribute("data-ok")) {
-      // the check mark sits just left of the analyst's lifeline
-      const ok = document.createElement("i");
-      ok.dataset.icon = "check"; ok.className = "ok";
-      m.append(ok);
-    }
-    if (m.dataset.say) {
-      const say = document.createElement("span");
-      say.className = "say"; say.dataset.box = ""; say.textContent = m.dataset.say; say.dataset.from = from; say.dataset.to = to;
-      m.append(say);
-    }
-    arrow({ x: "#h" + from, y: "#" + m.id, dir: right ? "r" : "l" }, { x: "#h" + to, y: "#" + m.id, dir: right ? "l" : "r" },
-          { color, label: m.dataset.label, side: "above" });
-  });
-  arrow("#dbox:r", "#xbox:l", { color: "agent", straight: true });
-  // place the check marks once the lifelines are known
-  document.fonts.ready.then(() => {
-    icons();
-    const A = document.getElementById("hA").getBoundingClientRect();
-    document.querySelectorAll(".m .ok").forEach((ok) => {
-      const m = ok.parentElement.getBoundingClientRect();
-      ok.style.left = `calc(${A.left + A.width / 2 - m.left}px - 5mm)`;
-    });
-    document.querySelectorAll(".m .say").forEach((say) => {
-      const m = say.parentElement.getBoundingClientRect();
-      const a = document.getElementById("h" + say.dataset.from).getBoundingClientRect();
-      const b = document.getElementById("h" + say.dataset.to).getBoundingClientRect();
-      const xa = a.left + a.width / 2 - m.left, xb = b.left + b.width / 2 - m.left;
-      if (say.parentElement.dataset.sayAt === "end") say.style.left = `${Math.max(xa, xb) - say.offsetWidth}px`;
-      else say.style.left = `${Math.min(xa, xb)}px`;
-    });
-    draw();
-  });
-</script>
+<script>document.fonts.ready.then(draw);</script>
 </body>
 </html>
