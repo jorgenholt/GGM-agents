@@ -1,0 +1,90 @@
+% Figure 5.7: the Hormuz example as a sequence across the analyst, the four agents, and code with the model.
+\begin{tikzpicture}[ggm, x=1cm, y=1cm]
+  \def\LA{1.55}\def\LS{3.6}\def\LD{5.65}\def\LC{7.7}\def\LR{9.75}\def\LX{11.8}
+  % ---------- banner: tanker and a closed strait ----------
+  \fill[ggmCode!10, rounded corners=2mm] (0,11.9) rectangle (12.6,13.25);
+  \fill[ggmSource!35] (0,12.95) .. controls (1.5,12.85) and (2.5,13.15) .. (3.4,12.62) .. controls (3.9,12.35) and (4.6,12.5) .. (5.0,12.62)
+        .. controls (5.6,12.8) and (6.2,13.0) .. (6.6,13.25) -- (0,13.25) -- cycle;
+  \fill[ggmSource!35] (2.4,11.9) .. controls (3.0,12.05) and (3.6,12.3) .. (4.05,12.25) .. controls (4.5,12.2) and (5.4,11.95) .. (6.1,11.9) -- cycle;
+  \draw[red!65!black, line width=1.6pt] (3.85,12.32) -- (3.85,12.52);
+  \draw[red!65!black, line width=1.2pt] (3.68,12.62) -- (4.02,12.78) (3.68,12.78) -- (4.02,12.62);
+  \pic[scale=0.5] at (1.6,12.3) {tanker};
+  \foreach \x in {0.6,1.2,2.2,5.0,5.6} \draw[ggmCode!45, line width=0.6pt] (\x,12.12) .. controls (\x+0.08,12.18) and (\x+0.16,12.06) .. (\x+0.24,12.12);
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmInk, anchor=east] at (12.4,12.8) {The Strait of Hormuz stays closed};
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=east] at (12.4,12.42) {What happens to the world gas market over one year?};
+  % ---------- phase bands ----------
+  \foreach \yt/\yb/\n/\t/\sh in {11.15/10.05/1/Question/4, 9.95/7.4/2/Scenario/0, 7.3/4.9/3/Data/4, 4.8/2.85/4/Calibration/0, 2.75/0.15/5/Runs and results/4} {
+    \fill[ggmModel!\sh, rounded corners=1.5mm] (0,\yb) rectangle (12.6,\yt);
+    \fill[ggmModel] (0.27,\yt-0.24) circle (0.15);
+    \node[text=white, font=\sffamily\tiny\bfseries] at (0.27,\yt-0.24) {\n};
+    \node[font=\sffamily\tiny\bfseries, text=ggmModel, anchor=west, fill=ggmModel!\sh!white, inner sep=0.5mm] at (0.46,\yt-0.24) {\t};
+  }
+  % ---------- lifelines and heads ----------
+  \foreach \x in {\LA,\LS,\LD,\LC,\LR,\LX} \draw[ggmMuted!50, dashed, line width=0.6pt] (\x,11.2) -- (\x,0.2);
+  \fill[white] (0.62,11.25) rectangle (12.6,11.85);
+  \pic[scale=0.5] at (\LA-0.55,11.55) {person};
+  \node[font=\sffamily\tiny\bfseries, text=ggmAnalyst!85!black, anchor=west] at (\LA-0.3,11.55) {Analyst};
+  \foreach \x/\t in {\LS/Scenario, \LD/Data, \LC/Calibration, \LR/Results} {
+    \pic[scale=0.36] at (\x-0.6,11.55) {agent badge};
+    \node[font=\sffamily\tiny\bfseries, text=ggmAgent, anchor=west, align=left] at (\x-0.42,11.55) {\t\\[-0.4mm]agent};
+  }
+  \pic[scale=0.45] at (\LX-0.62,11.55) {gear};
+  \node[font=\sffamily\tiny\bfseries, text=ggmCode, anchor=west, align=left] at (\LX-0.42,11.55) {Code\\[-0.4mm]and GGM};
+  % ---------- helpers ----------
+  % \act{x}{y}{colour}{width}{text}
+  \newcommand{\act}[5]{\node[draw=#3!55, fill=white, line width=0.5pt, rounded corners=1.2mm, text width=#4, align=left,
+      font=\sffamily\tiny, text=ggmInk, inner sep=1.1mm] at (#1,#2) {#5};}
+  % \msg{y}{x from}{x to}{colour}{label}
+  \newcommand{\msg}[5]{\draw[ggm flow=#4, line width=0.8pt] (#2,#1) -- (#3,#1);
+      \node[font=\sffamily\tiny, text=#4!85!black, anchor=south, inner sep=0.6mm, fill=white, fill opacity=0.85, text opacity=1] at ($(#2,#1)!0.5!(#3,#1)$) {#5};}
+  \newcommand{\ok}[2]{\pic[scale=0.62] at (#1-0.32,#2) {check};}
+  % ---------- 1 question ----------
+  \node[draw=ggmAnalyst!55, fill=white, line width=0.5pt, rounded corners=1.2mm, text width=4.2cm, align=left,
+      font=\sffamily\tiny, text=ggmInk, inner sep=1.1mm, anchor=west] at (\LA+0.15,10.45) {The closure is in the news. The analysts wait about a month to see whether it lasts, then decide to start.};
+  \ok{\LA}{10.45}
+  % ---------- 2 scenario ----------
+  \msg{9.55}{\LA}{\LS}{ggmAnalyst}{storyline}
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=north west, text width=1.8cm, inner sep=0] at (\LA+0.12,9.45) {one year; strait open or closed; Russian supply also cut};
+  \node[draw=ggmAgent!55, fill=white, line width=0.5pt, rounded corners=1.2mm, text width=3.75cm, align=left,
+      font=\sffamily\tiny, text=ggmInk, inner sep=1.1mm, anchor=north west] at (\LS+0.12,9.8)
+      {\textbf{Proposes:} about 90 nodes instead of 136, no seasons or storage; blocks every LNG route from inside the Gulf with very large distances; asks about Gulf market power and pipeline expansion.};
+  \msg{8.1}{\LS}{\LA}{ggmAgent}{edits + reasons}
+  \ok{\LA}{8.1}
+  \msg{7.72}{\LA}{\LX}{ggmAnalyst}{approved: create the variants}
+  \node[draw=ggmCode!55, fill=white, line width=0.5pt, rounded corners=1.2mm, text width=1.45cm, align=left,
+      font=\sffamily\tiny, text=ggmInk, inner sep=1.1mm, anchor=south east] at (12.55,7.95) {variants differ only in the general workbook};
+  % ---------- 3 data ----------
+  \node[draw=ggmAgent!55, fill=white, line width=0.5pt, rounded corners=1.2mm, text width=3.0cm, align=left,
+      font=\sffamily\tiny, text=ggmInk, inner sep=1.1mm, anchor=north west] (dbox) at (\LD+0.12,7.15)
+      {\textbf{Rebuilds the general workbook:} maps sources to the new nodes; drafts one year of projections; proposes an elasticity class for each node.};
+  \draw[ggm flow=ggmAgent, line width=0.8pt] (dbox.east |- 6.75,6.75) -- (\LX,6.75);
+  \node[draw=ggmCode!55, fill=white, line width=0.5pt, rounded corners=1.2mm, text width=1.45cm, align=left,
+      font=\sffamily\tiny, text=ggmInk, inner sep=1.1mm, anchor=north east] at (12.55,6.62) {aggregates capacities; recomputes distances};
+  \msg{6.0}{\LD}{\LA}{ggmAgent}{Gulf price: the official domestic price}
+  \msg{5.62}{\LA}{\LD}{ggmAnalyst}{reply: that price is subsidised}
+  \msg{5.24}{\LD}{\LA}{ggmRecord}{revised value + proposed lesson}
+  \ok{\LA}{5.24}
+  \pic[scale=0.42] at (\LD+0.35,5.4) {doc=ggmRecord};
+  \node[font=\sffamily\tiny, text=ggmRecord!80!black, anchor=west, text width=2.9cm, align=left] at (\LD+0.6,5.4) {lesson approved, then applied to the other subsidised countries};
+  % ---------- 4 calibration ----------
+  \node[draw=ggmAgent!55, fill=white, line width=0.5pt, rounded corners=1.2mm, align=left,
+      font=\sffamily\tiny, text=ggmInk, inner sep=1.1mm, anchor=east] at (\LC-0.1,4.3) {baseline, strait open};
+  \msg{4.3}{\LC}{\LX}{ggmAgent}{proposed change}
+  \msg{3.9}{\LX}{\LC}{ggmCode}{deviation report}
+  \draw[ggmModel, line width=0.9pt, -{Stealth[length=1.4mm]}] (\LX+0.42,4.1) ++(90:0.22) arc (90:-220:0.22);
+  \node[font=\sffamily\tiny, text=ggmModel, anchor=north] at (\LX+0.42,3.8) {repeat};
+  \msg{3.48}{\LA}{\LC}{ggmAnalyst}{corrects one diagnosis}
+  \msg{3.1}{\LA}{\LC}{ggmAnalyst}{accepts the fit}
+  \ok{\LA}{3.1}
+  % ---------- 5 runs and results ----------
+  \node[draw=ggmCode!55, fill=white, line width=0.5pt, rounded corners=1.2mm, text width=1.45cm, align=left,
+      font=\sffamily\tiny, text=ggmInk, inner sep=1.1mm, anchor=north east] at (12.55,2.68) {runs each variant with the same calibration};
+  \msg{1.42}{\LX}{\LR}{ggmCode}{results}
+  \node[draw=ggmAgent!55, fill=white, line width=0.5pt, rounded corners=1.2mm, text width=3.5cm, align=left,
+      font=\sffamily\tiny, text=ggmInk, inner sep=1.1mm, anchor=north east] (rbox) at (\LR+0.1,1.32)
+      {\textbf{Drafts:} where the missing LNG is replaced and which importers lose most; flags odd patterns};
+  \draw[ggm flow=ggmAgent, line width=0.8pt] (rbox.west) -- (\LA,0 |- rbox.west);
+  \node[font=\sffamily\tiny, text=ggmAgent!85!black, anchor=south, inner sep=0.6mm] at ($(\LA,0 |- rbox.west)!0.5!(rbox.west)$) {explanations, each pointing to its tables};
+  \pic[scale=0.62] at ($(\LA-0.32,0 |- rbox.west)$) {check};
+  \node[font=\sffamily\tiny\bfseries, text=ggmAnalyst!85!black, anchor=west] at (\LA+0.05,0.36) {the analysts decide what the results show and write the findings};
+\end{tikzpicture}

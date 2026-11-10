@@ -1,0 +1,37 @@
+\section{Working alongside the analyst}
+
+The unit of work between an agent and the analyst is a \emph{suggestion}: a proposed change to a set of cells, such as the capacities of a new pipeline or the reference price of a node.
+Figure \ref{fig:review} shows how a suggestion could look on the analyst's screen and what happens to the analyst's answer.
+
+\begin{figure}[htbp]
+\centering
+\input{figures/ch5-review}
+\caption{A suggestion on the analyst's screen and what happens to the answer. The agent proposes a change with its reasons, source and confidence. The analyst accepts, edits or replies; the reply goes back to the agent, the decision goes to the provenance ledger, and a general rule drawn from it is kept as a lesson for later work. The screen is a sketch of a possible interface, and the example follows Section 5.8.}
+\label{fig:review}
+\end{figure}
+
+\textbf{What a suggestion contains.} Next to the proposed values, the agent states why it proposes them, where they come from and how confident it is.
+Confidence is given in the classes the developers proposed: taken from a recent official source, from an older report, inferred from a similar country and which similarity, or a guess.
+Where there are reasonable alternatives, such as two outlooks that differ, the agent shows them side by side.
+The classes let the analyst review selectively, starting with the guesses, instead of checking every value with equal care.
+
+\textbf{Three answers.} The analyst can accept the suggestion, edit the values, or reply in plain language, for example that a price is too low because the country subsidises domestic gas.
+A reply sends the suggestion back to the agent, which revises it with the new information and suggests again.
+The developers proposed a similar exchange with whole workbooks: the analyst returns an edited workbook with a column of overrides and notes, and the agent takes it into the next round.
+Either way, every decision is written to the provenance ledger, so that each value records who proposed it, who accepted it and on what grounds.
+
+\textbf{Learning from corrections.} A reply often contains a rule that holds beyond the case at hand.
+That official prices in countries with subsidised domestic consumption are far below the willingness to pay the model needs is one the developers named, and one that LLMs handle badly.
+When a reply contains such a rule, the agent proposes it as a lesson, worded as an instruction, and the analyst approves or rewrites it.
+Approved lessons are kept in a plain document and retrieved into the agent's context whenever they are relevant, in the same way that retrieval supplies an LLM with documentation \citep{lewis2020retrieval}.
+Agents that keep a written reflection on each failure and use it on the next attempt have been shown to improve without any retraining \citep{shinn2023reflexion}, and the lessons apply the same idea across a whole study, and from one study to the next.
+
+This is how the system would improve with each working hour.
+Nothing in the language model changes; what grows is a document of rules that the analysts can read, edit and remove.
+Much of the expertise in GGM's data preparation already has this form: rules such as using marketed rather than gross production, or how a country's total is split across its nodes, which the documentation records for a few countries \citep[pp.~24--25]{egging2019global} and the developers otherwise carry in their heads and in earlier spreadsheets.
+Each correction thus also records a piece of that expertise.
+And each correction becomes a test case: a suggestion the analyst rejected, with the reason, is something a later version of the system should get right.
+
+The lessons carry their own risk.
+A wrong lesson would be applied silently to every later case it seems to fit, so lessons need the analyst's approval, a stated scope, and a record of where they have been applied.
+A second risk is that an analyst who accepts most suggestions starts to accept them without reading; Chapter 6 returns to this.

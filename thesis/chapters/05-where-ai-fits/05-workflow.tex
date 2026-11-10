@@ -1,0 +1,34 @@
+\section{The workflow through the system}
+
+Figure \ref{fig:workflow} follows the six steps of the workflow through the system, showing for each step what the analyst, the agents, the tools and the model do, and where the analyst signs off.
+
+\begin{figure}[htbp]
+\centering
+\input{figures/ch5-workflow}
+\caption{The six steps of the workflow, divided between the analyst, the agents, ordinary code and the model. Check marks show where the analyst signs off before work continues; dashed arrows show where a result can send the work back.}
+\label{fig:workflow}
+\end{figure}
+
+\textbf{Set up the scenario.} The analyst states the question and the storyline.
+The scenario agent searches the base workbooks for every row the storyline touches and proposes edits, each with its reason, together with the knock-on choices the analyst should consider: whether expansion limits must be closed so that the model does not rebuild removed capacity, or whether market power still makes sense for a supplier whose exports are set to zero.
+It can also propose a node structure from the statistics and infrastructure data available.
+Code applies the approved edits and shows the difference from the base workbooks.
+The closest precedent is the system of \citet{golden2026agentic}, in which an LLM maps scenario narratives onto the inputs of existing energy-market models.
+
+\textbf{Get source data and prepare the data.} In the system these two steps merge, because the data agent fetches and prepares in one pass.
+Structured downloads are fetched and parsed by code.
+Reports, regulators' pages and papers are read by the agent, which extracts the values and records their source and confidence.
+The agent then maps sources to nodes, and code does everything after the mapping: unit conversion, aggregation of parallel pipelines, shipping distances and consistency checks.
+For the projections and demand parameters, the agent drafts and the analyst decides, in the order the developers suggested: node structure, reference quantities, elasticities and seasonal shares, each reviewed before the next.
+GGM already warns, when loading the data, if a node's projected trade exceeds its transport capacity (Section 3.4); the agent's part is to explain such a warning and propose what to revisit.
+
+\textbf{Calibrate.} The calibration agent works in a loop with the model, described in Section 5.7, and the analyst accepts the result.
+
+\textbf{Run the model.} Code runs the scenario matrix, records the solver status and the inputs behind each result, and needs no agent.
+An LLM can at most help explain a failed run.
+
+\textbf{Read the results.} Code computes the comparisons between scenarios.
+The results agent drafts explanations and flags patterns an experienced analyst would question, such as capacity that is built and then barely used.
+Explaining an energy model's results to people who did not build it is one of the uses already proposed for LLMs in energy-system modelling \citep{forootani2025re}.
+Every number in an explanation comes from the result tables.
+The interpretation, and the decision whether an implausible result calls for a revised storyline, stay with the analyst.

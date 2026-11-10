@@ -1,0 +1,30 @@
+\section{Summary and how to test the agents}
+
+Table \ref{tab:agents} summarises the four agents: what each is given, what it produces, what it must never do, and how one would know that it works.
+The tests are designed so that the master's thesis can run them on the 2023 data without new expert work.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{The four proposed agents and how each could be tested.}
+\label{tab:agents}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Agent & Given & Produces & Never & Works if \\
+\midrule
+Scenario & A storyline; the base workbooks & Proposed edits with reasons; knock-on choices; a node structure & Edits a workbook without approval; decides the storyline & Given the storylines behind the 2023 variants, it proposes the edits that distinguish them, without misses \\
+Data & The node structure; sources; the lessons & Values with source and confidence; mappings; drafts of projections and demand parameters & Computes a number itself; fills a gap without saying so & Its general workbook matches the developers', and every difference is a newer source or a flagged uncertainty \\
+Calibration & Deviation reports; bounds; the documented heuristics; the lessons & Proposed changes with reasons; a log & Changes elasticities or market power; exceeds bounds; declares the fit final & It restores the fit of a deliberately perturbed 2023 scenario, and its diagnoses agree with the documented heuristics \\
+Results & Result tables; comparisons from code; the scenario's inputs & Draft explanations; flags & States a number that is not in the tables & Its flags point to real issues, and its explanations hold when traced to the tables \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+A further test applies to the system as a whole: whether it needs fewer corrections the longer it is used.
+Recording every accepted, edited and rejected suggestion makes this measurable as the share of suggestions accepted unchanged over successive working sessions.
+
+This answers the third research question.
+Agents could take over most of the reading, extraction and mapping in the data work, and support the diagnosis in calibration and the explanation of results.
+Ordinary code should do every computation and every model run.
+The analyst should remain responsible for the question, the storyline and its projections, the acceptance of the calibration, and the interpretation, and the system is designed so that the analyst's corrections improve it over time.
+Chapter 6 discusses the risks of this division and which agent to build first.

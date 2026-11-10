@@ -1,0 +1,37 @@
+\section{The system}
+
+Figure \ref{fig:system} shows the whole system.
+It has five parts, each drawn in its own colour in this and the following figures.
+
+\begin{figure}[p]
+\centering
+\input{figures/ch5-system}
+\caption{The proposed system at work. The analyst works on the workbooks as today, with a panel of suggestions from four agents. The agents use tools written as ordinary code, read from external sources, and write to shared records. GGM runs on the analysts' own machine, and only its results return to the system.}
+\label{fig:system}
+\end{figure}
+
+\textbf{The analyst's workspace.} The analyst works on the three workbooks, as today, but next to them sits a panel of suggestions.
+Each suggestion is a proposed piece of work, such as a set of capacities for new nodes or a change to a production cost, shown with its reasons, sources and confidence.
+The analyst accepts it, edits it, or replies in plain language.
+
+\textbf{Four agents.} Each covers part of the workflow.
+A scenario agent turns a storyline into proposed edits and a node structure.
+A data agent fetches and extracts source data, maps it to nodes, and drafts the projections and demand parameters.
+A calibration agent diagnoses deviations and proposes parameter changes.
+A results agent compares runs and drafts explanations.
+All four can share one underlying language model; they differ in their instructions, their tools and what they are allowed to change.
+
+\textbf{Tools written as ordinary code.} The agents act only through tools: functions that read and write workbooks, convert units, aggregate capacities, compute shipping distances, check the workbooks for consistency, compare versions, compute deviation reports and start model runs.
+These are where every number is computed, and they can be tested once and trusted afterwards.
+
+\textbf{Shared records.} Four records hold the state of a study.
+The workbooks themselves are kept under version control, so every change can be traced and undone.
+A provenance ledger records, for every value, where it came from, who proposed it and who accepted it.
+A set of lessons holds the general rules drawn from the analyst's corrections.
+A run log records which workbooks and which version of the code produced each result.
+
+\textbf{The model on a local machine.} GGM and its solver run where they run today.
+The system starts runs and reads their results, but sends neither the model nor its licensed inputs elsewhere.
+
+Most of this is ordinary software.
+The language model appears only where the analysis of Section 5.2 found reading, mapping, diagnosis or drafting, and everything it produces passes through a tool, a record and, where it matters, the analyst.

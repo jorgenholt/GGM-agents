@@ -1,0 +1,44 @@
+\section{Where the work lies}
+
+The analysis assesses the workflow task by task rather than as a whole.
+Studies of how technology changes work divide jobs into tasks and ask which of them can be automated, because a job is rarely automated as a whole \citep{autor2003skill}.
+\citet{eloundou2024gpts} applied this to LLMs, rating each task of an occupation by whether access to a model alone, or to a model with additional software, could at least halve the time it takes at the same quality.
+Judging tasks one at a time is also a safeguard: in a field experiment with consultants, AI improved work on tasks within its capabilities but made it worse on a task just outside them that looked similar \citep{dellacqua2026navigating}.
+Within each step, the four questions of Section 4.5 decide where each part belongs: whether a rule can compute one correct answer, whether the input is unstructured, whether the result can be checked cheaply, and whether an error would be costly and hard to see.
+
+Table \ref{tab:where-work-lies} gives the result for each step, and Figure \ref{fig:task-map} places the main parts on two of those questions: how much judgment a part needs, and how quietly an error in it would pass.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{What each step of the workflow needs, and where its parts belong.}
+\label{tab:where-work-lies}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Step & Ordinary code & Agent & Person \\
+\midrule
+Set up the scenario & Apply edits; compare workbooks & Find the rows a storyline touches; propose edits and knock-on choices; propose a node structure & Question, storyline and node structure; approve edits \\
+Get source data & Download and parse databases & Extract values from reports; record source and confidence & Choose the anchoring outlook; review by confidence \\
+Prepare the data & Convert, aggregate, split, interpolate, check & Map sources to nodes; draft projections and demand parameters; explain warnings & Review mappings; decide projections and demand parameters \\
+Calibrate & Deviation report; apply changes within bounds; run; log & Diagnose deviations; propose changes with reasons; research starting prices & Accept the calibration; choose between fits; set market power \\
+Run the model & Run the scenario matrix; record inputs and solver status & Explain a failed run & Nothing routinely \\
+Read the results & Compare scenarios; compute balances & Draft explanations; flag implausible patterns & Interpret; decide what to claim \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\input{figures/ch5-task-map}
+\caption{The main parts of the workflow, placed by how much judgment they need and by how quietly an error in them would pass unnoticed. Colours show where each part belongs.}
+\label{fig:task-map}
+\end{figure}
+
+Four findings carry into the design.
+First, ordinary code has a part in every step, and running the model needs nothing else.
+Second, the agent's part is reading, mapping, diagnosing and drafting, never computing: wherever a rule gives one correct answer, code should give it.
+Third, the judgment lies in two places, as Section 3.5 found: the storyline with its projections, and the calibration.
+Neither has a correct answer to check against, so an agent can prepare the material but not decide.
+Fourth, outside these two places the person's role changes rather than disappears.
+In the data steps, the analyst moves from doing the work to reviewing it, which is only an improvement if the review is quicker than the work and catches the errors that matter.
+Much of the design that follows is about making that review quick and reliable.

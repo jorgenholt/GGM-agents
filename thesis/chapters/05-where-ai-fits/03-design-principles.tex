@@ -1,0 +1,16 @@
+\section{Design principles}
+
+Six principles follow from the analysis and from the literature in Chapters 2 and 4.
+
+\begin{enumerate}
+  \item \textbf{The analyst stays in charge.} Agents suggest; the analyst decides. In the levels of autonomy proposed by \citet{feng2025levels}, the analyst acts as a collaborator in the data steps and as an approver in calibration, and never only as an observer.
+  \item \textbf{Every suggestion comes with its reasons.} A suggestion states what the agent proposes, why, from which source, and how confident it is. This is what makes a quick review possible, and it is what the developers asked of an agent.
+  \item \textbf{No number comes from the model's text.} Every value in a workbook or a result comes from a cited source, a function written and reviewed in advance, or a model run, as in the solver-grounded designs of Section 4.5 \citep{rojas2026llms, hu2025natural}.
+  \item \textbf{Workflows where the path is known, an agent only where it is not.} Most steps follow a known order and are built as workflows with an LLM at particular points; only calibration needs an agent that chooses its own next step \citep{schluntz2024building}.
+  \item \textbf{The model runs locally.} GGM runs on the analysts' own machine with its licensed solver, and only results are passed to the agents. This also keeps proprietary source data under the analysts' control (Section 4.4).
+  \item \textbf{Corrections are kept.} When the analyst corrects an agent, the correction is recorded, and a general lesson drawn from it is reused in later work. The system should need fewer corrections the longer it is used.
+\end{enumerate}
+
+The first three principles answer the weaknesses of Section 4.3: confident errors, weak arithmetic and over-trusted explanations.
+The fourth and fifth keep the system simple and cheap to run.
+The sixth is what distinguishes a system that works alongside an analyst from a tool that is used once, and Section 5.6 describes how it would work.

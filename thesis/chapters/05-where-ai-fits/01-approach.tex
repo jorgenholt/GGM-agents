@@ -1,18 +1,16 @@
 \section{Approach}
 
-This chapter brings Chapters 3 and 4 together.
-It follows the six steps of the workflow in Section 3.4, in the order the work is done, and asks the same four questions of each: what happens today, what the step needs, what an agent could do, and where a person stays involved.
+This chapter brings Chapters 3 and 4 together in two parts.
+The first part is an analysis: it takes the six steps of the workflow in Section 3.4 and asks, for each, which parts suit ordinary code, which suit an LLM agent and which should stay with a person.
+The second part is a design: it describes a system of agents, tools and records that would do this work alongside an analyst, and shows how that system would be used.
 
-The method is a task-by-task assessment.
-Studies of how technology changes work divide jobs into tasks and ask which of them can be automated, because a job is rarely automated as a whole \citep{autor2003skill}.
-\citet{eloundou2024gpts} applied this to LLMs, rating each task of an occupation by whether access to a model alone, or to a model with additional software, could at least halve the time it takes at the same quality.
-The distinction between a model alone and a model with software matters here too, since most of what follows depends on the tools the agent is given.
-Judging tasks one at a time is also a safeguard: in a field experiment with consultants, AI improved work on tasks within its capabilities but made it worse on a task just outside them that looked similar \citep{dellacqua2026navigating}.
-Two steps of GGM's workflow can look alike, such as mapping pipelines to nodes and splitting a country's consumption across nodes, and still differ in exactly this way.
+Section 5.2 presents the analysis, in one table and one figure rather than step by step, since Chapter 3 has already described how each step is done today.
+Section 5.3 turns its results into the principles the design follows.
+Section 5.4 gives an overview of the system, and Section 5.5 follows the workflow through it.
+Section 5.6 describes how the analyst and the agents work together: an agent suggests a piece of work with its reasons, the analyst accepts, edits or replies, and the system keeps what it learns from each reply.
+Section 5.7 describes the calibration agent, the one part of the system that needs to choose its own next step.
+Section 5.8 then follows one study through the whole system: a scenario in which the Strait of Hormuz is closed, of the kind the model's developers analysed in 2026.
+Section 5.9 summarises the agents and how each could be tested.
 
-Within each step, the four questions of Section 4.5 decide which part goes to ordinary code, which to an LLM and which to a person.
-To describe how far a part could be automated, the chapter distinguishes, following \citet{parasuraman2000model}, between gathering information, analysing it, deciding and acting, since a step can be automated in one of these functions and not in another.
-
-The description of today's practice draws on the documentation, the code, the 2023 dataset and the working session with Lukas Barner described in Section 3.3.
-What an agent could do is our argument, not something that has been tested; Chapter 6 discusses what this means for the conclusions.
-Each section ends with the person's role, and Section 5.8 summarises the steps and describes each proposed agent.
+The analysis rests on the documentation, the code, the 2023 dataset and the working session with Lukas Barner described in Section 3.3.
+The design is an argument built on that analysis and on the literature in Chapters 2 and 4; it has not been built or tested, which is the task of the master's thesis.

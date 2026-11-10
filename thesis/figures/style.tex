@@ -1,0 +1,121 @@
+% Shared style for the thesis figures: colours, TikZ libraries and small drawn icons.
+% Loaded once in the preamble of main.tex. Each figure lives in its own file in this
+% folder and is pulled into a section with \input{figures/<name>}.
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,shapes.misc,backgrounds,fit,shadows}
+
+% One colour per actor, used the same way in every figure.
+\definecolor{ggmAnalyst}{HTML}{E07A3F}  % the analyst
+\definecolor{ggmAgent}{HTML}{6C5CE7}    % LLM agents
+\definecolor{ggmCode}{HTML}{1B8A9A}     % ordinary code
+\definecolor{ggmModel}{HTML}{2D3E50}    % GGM and the solver
+\definecolor{ggmRecord}{HTML}{4E9A3E}   % shared records: ledger, lessons, logs
+\definecolor{ggmSource}{HTML}{C9A227}   % external sources
+\definecolor{ggmSheet}{HTML}{217346}    % spreadsheet green
+\definecolor{ggmInk}{HTML}{2B2B2B}
+\definecolor{ggmMuted}{HTML}{8A8F98}
+\definecolor{ggmPaper}{HTML}{F7F5F0}
+\definecolor{ggmSkin}{HTML}{E9B48F}
+\definecolor{ggmHair}{HTML}{3B2A25}
+
+\tikzset{
+  ggm/.style={font=\sffamily\footnotesize, line cap=round, line join=round, >={Stealth[length=2.2mm]},
+    /utils/exec={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  ggm card/.style={rounded corners=2.5mm, draw=#1, line width=0.6pt, fill=#1!8, align=center, inner sep=2.5mm},
+  ggm pill/.style={rounded corners=1.6mm, fill=#1, text=white, font=\sffamily\scriptsize\bfseries, inner xsep=2mm, inner ysep=1mm},
+  ggm label/.style={font=\sffamily\scriptsize, text=ggmMuted},
+  ggm title/.style={font=\sffamily\small\bfseries, text=ggmInk},
+  ggm flow/.style={->, line width=0.9pt, draw=#1},
+  ggm flow/.default=ggmInk,
+  ggm soft shadow/.style={drop shadow={shadow xshift=0.6mm, shadow yshift=-0.6mm, opacity=0.18, fill=black}},
+  % --- icons, each roughly one unit tall, origin at the centre ---
+  pics/agent badge/.style={code={
+    \fill[ggmAgent] (0,0) circle (0.5);
+    \fill[white] (0,0.33) to[out=-90,in=180] (0.33,0) to[out=180,in=90] (0,-0.33)
+      to[out=90,in=0] (-0.33,0) to[out=0,in=-90] cycle;
+    \fill[white] (0.27,0.27) circle (0.06);
+  }},
+  pics/gear/.style={code={
+    \foreach \a in {0,45,...,315} \fill[#1,rotate=\a] (-0.075,0.26) rectangle (0.075,0.42);
+    \fill[#1] (0,0) circle (0.31);
+    \fill[white] (0,0) circle (0.12);
+  }},
+  pics/gear/.default=ggmCode,
+  pics/doc/.style={code={
+    \filldraw[draw=#1, fill=white, line width=0.5pt] (-0.35,-0.45) -- (-0.35,0.45) -- (0.17,0.45) -- (0.35,0.27) -- (0.35,-0.45) -- cycle;
+    \filldraw[draw=#1, fill=#1!25, line width=0.5pt] (0.17,0.45) -- (0.17,0.27) -- (0.35,0.27);
+    \foreach \y in {0.15,0,-0.15,-0.3} \draw[#1!70, line width=0.6pt] (-0.22,\y) -- (0.22,\y);
+  }},
+  pics/doc/.default=ggmSource,
+  pics/workbook/.style={code={
+    \filldraw[draw=ggmSheet, fill=white, line width=0.5pt, rounded corners=0.5mm] (-0.4,-0.45) rectangle (0.4,0.45);
+    \fill[ggmSheet] (-0.4,0.25) rectangle (0.4,0.45);
+    \foreach \x in {-0.13,0.13} \draw[ggmSheet!40] (\x,-0.45) -- (\x,0.25);
+    \foreach \y in {0.05,-0.15,-0.35} \draw[ggmSheet!40] (-0.4,\y) -- (0.4,\y);
+    \node[text=white, font=\sffamily\tiny\bfseries] at (0,0.35) {#1};
+  }},
+  pics/workbook/.default={xlsx},
+  pics/database/.style={code={
+    \fill[#1!20] (-0.4,-0.35) rectangle (0.4,0.35);
+    \fill[#1!20] (0,-0.35) ellipse (0.4 and 0.12);
+    \draw[#1, line width=0.6pt] (-0.4,0.35) -- (-0.4,-0.35) arc (180:360:0.4 and 0.12) -- (0.4,0.35);
+    \filldraw[draw=#1, fill=#1!45, line width=0.6pt] (0,0.35) ellipse (0.4 and 0.12);
+    \draw[#1, line width=0.5pt] (-0.4,0.08) arc (180:360:0.4 and 0.12);
+    \draw[#1, line width=0.5pt] (-0.4,-0.14) arc (180:360:0.4 and 0.12);
+  }},
+  pics/database/.default=ggmRecord,
+  pics/laptop/.style={code={
+    \filldraw[fill=ggmModel, draw=ggmModel, rounded corners=0.8mm] (-0.55,-0.05) rectangle (0.55,0.65);
+    \fill[ggmModel!15] (-0.48,0.02) rectangle (0.48,0.58);
+    \filldraw[fill=ggmModel!70, draw=ggmModel] (-0.7,-0.15) -- (0.7,-0.15) -- (0.6,-0.05) -- (-0.6,-0.05) -- cycle;
+  }},
+  pics/person/.style={code={
+    \fill[#1] (0,-0.5) .. controls (-0.42,-0.5) and (-0.42,0.02) .. (0,0.02)
+               .. controls (0.42,0.02) and (0.42,-0.5) .. (0,-0.5);
+    \fill[ggmSkin] (0,0.27) circle (0.21);
+    \fill[ggmHair] (-0.21,0.29) arc (180:0:0.21) -- (0.2,0.33) .. controls (0.05,0.36) and (-0.1,0.3) .. (-0.21,0.25) -- cycle;
+  }},
+  pics/person/.default=ggmAnalyst,
+  pics/clock/.style={code={
+    \filldraw[draw=#1, fill=white, line width=0.7pt] (0,0) circle (0.3);
+    \draw[#1, line width=0.8pt] (0,0) -- (0,0.2) (0,0) -- (0.14,-0.05);
+  }},
+  pics/clock/.default=ggmModel,
+  pics/check/.style={code={
+    \fill[#1] (0,0) circle (0.22);
+    \draw[white, line width=1.3pt] (-0.1,0) -- (-0.02,-0.08) -- (0.11,0.08);
+  }},
+  pics/check/.default=ggmAnalyst,
+  pics/tanker/.style={code={
+    \fill[ggmModel] (-1,0) -- (1.05,0) -- (0.9,-0.28) -- (-0.92,-0.28) -- cycle;
+    \fill[ggmModel!60] (-1,0) rectangle (1.05,0.05);
+    \foreach \x in {-0.55,-0.1,0.35} \fill[white] (\x,0.05) arc (180:0:0.19) -- cycle;
+    \foreach \x in {-0.55,-0.1,0.35} \draw[ggmModel, line width=0.5pt] (\x,0.05) arc (180:0:0.19);
+    \fill[ggmModel] (0.72,0.05) rectangle (0.95,0.32);
+  }},
+}
+
+% An analyst at a desk, seen from the side, facing right. Origin at the seat.
+\tikzset{pics/analyst at desk/.style={code={
+  % chair
+  \fill[ggmModel!35, rounded corners=1mm] (-0.75,0.0) rectangle (-0.6,1.1);
+  \fill[ggmModel!35, rounded corners=0.8mm] (-0.75,-0.05) rectangle (0.15,0.08);
+  \draw[ggmModel!50, line width=1.2pt] (-0.3,-0.05) -- (-0.3,-0.55) (-0.6,-0.6) -- (0.0,-0.6);
+  % legs
+  \draw[ggmModel!80, line width=4.5pt] (-0.2,0.15) -- (0.45,0.15) -- (0.45,-0.55);
+  \fill[ggmInk] (0.38,-0.6) rectangle (0.66,-0.52);
+  % torso
+  \fill[ggmAnalyst] (-0.45,0.1) .. controls (-0.55,0.75) and (-0.4,1.05) .. (-0.12,1.12)
+    .. controls (0.15,1.05) and (0.18,0.6) .. (0.12,0.1) -- cycle;
+  % arm to keyboard
+  \draw[ggmAnalyst!85!black, line width=4pt] (-0.15,0.85) -- (0.15,0.5) -- (0.62,0.6);
+  \fill[ggmSkin] (0.66,0.6) circle (0.06);
+  % head
+  \fill[ggmSkin] (-0.08,1.38) circle (0.21);
+  \fill[ggmHair] (-0.3,1.42) .. controls (-0.28,1.66) and (0.05,1.7) .. (0.12,1.5)
+    .. controls (0.0,1.52) and (-0.15,1.48) .. (-0.18,1.38) .. controls (-0.22,1.3) and (-0.28,1.3) .. (-0.3,1.42);
+  % desk
+  \fill[ggmSource!45!ggmPaper] (0.35,0.62) rectangle (2.4,0.72);
+  \draw[ggmSource!60!black, line width=1.2pt] (0.5,0.62) -- (0.5,-0.6) (2.25,0.62) -- (2.25,-0.6);
+  \fill[ggmModel!60] (0.55,0.72) rectangle (1.05,0.76);
+}}}

@@ -1,0 +1,42 @@
+% Figure 5.1: the main parts of the workflow placed by judgment needed and by how quietly an error passes.
+\begin{tikzpicture}[ggm, x=1.07cm, y=1.0cm]
+  % zones
+  \begin{scope}[on background layer]
+    \fill[ggmCode!12, rounded corners=6mm] (-0.1,-0.1) rectangle (4.3,2.0);
+    \fill[ggmAgent!11, rounded corners=8mm] (1.6,1.5) rectangle (8.9,4.15);
+    \fill[ggmAnalyst!14, rounded corners=8mm] (5.4,3.75) rectangle (10.2,6.3);
+  \end{scope}
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmCode, anchor=south west] at (0.05,-0.05) {ORDINARY CODE};
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmAgent, anchor=north west] at (1.75,4.08) {AGENT PROPOSES, CODE CHECKS};
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmAnalyst!85!black, anchor=north east] at (10.1,6.22) {ANALYST DECIDES};
+  % axes
+  \draw[ggmMuted, line width=0.7pt, -{Stealth[length=2mm]}] (-0.3,-0.3) -- (10.4,-0.3);
+  \draw[ggmMuted, line width=0.7pt, -{Stealth[length=2mm]}] (-0.3,-0.3) -- (-0.3,6.5);
+  \node[ggm label, anchor=north west] at (-0.3,-0.35) {error is loud: shows at once};
+  \node[ggm label, anchor=north east] at (10.4,-0.35) {error is quiet: shows only in the conclusions};
+  \node[font=\sffamily\footnotesize\bfseries, text=ggmInk, anchor=north] at (5.05,-0.75) {How quietly an error passes};
+  \node[font=\sffamily\footnotesize\bfseries, text=ggmInk, rotate=90, anchor=south] at (-0.45,3.1) {Judgment needed};
+  \node[ggm label, rotate=90, anchor=south west] at (-0.75,-0.3) {rule-bound};
+  \node[ggm label, rotate=90, anchor=south east] at (-0.75,6.5) {a view of the market};
+  % points: \pt{x}{y}{colour}{anchor}{label}
+  \newcommand{\pt}[5]{\filldraw[fill=#3, draw=white, line width=0.8pt] (#1,#2) circle (0.12);
+    \node[font=\sffamily\scriptsize, text=ggmInk, anchor=#4, inner sep=2.5pt, align=left] at (#1,#2) {#5};}
+  % code
+  \pt{0.45}{0.45}{ggmCode}{west}{Convert units}
+  \pt{0.55}{1.25}{ggmCode}{west}{Run the model}
+  \pt{2.35}{0.75}{ggmCode}{west}{Compute shipping\\distances}
+  \pt{1.55}{1.65}{ggmCode}{west}{Check workbook\\consistency}
+  % agent
+  \pt{2.0}{3.55}{ggmAgent}{west}{Explain load warnings}
+  \pt{5.3}{3.55}{ggmAgent}{west}{Diagnose deviations}
+  \pt{2.0}{2.6}{ggmAgent}{west}{Extract values\\from reports}
+  \pt{4.4}{2.6}{ggmAgent}{west}{Find the rows a\\storyline touches}
+  \pt{6.75}{2.6}{ggmAgent}{west}{Draft explanations\\of results}
+  \pt{4.4}{1.9}{ggmAgent}{west}{Map sources to nodes}
+  % analyst
+  \pt{6.2}{4.35}{ggmAnalyst}{west}{Market power}
+  \pt{8.35}{4.3}{ggmAnalyst}{west}{Choose between\\equal fits}
+  \pt{6.0}{5.15}{ggmAnalyst}{west}{Storyline and\\projections}
+  \pt{8.3}{5.1}{ggmAnalyst}{west}{Accept the\\calibration}
+  \pt{6.0}{5.85}{ggmAnalyst}{west}{Interpret results}
+\end{tikzpicture}

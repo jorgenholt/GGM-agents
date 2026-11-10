@@ -1,0 +1,100 @@
+% Figure 5.6: the calibration loop -- model run, deviation report, agent diagnosis, bounded change -- and the analyst's checkpoints.
+\begin{tikzpicture}[ggm, x=1cm, y=1cm]
+  % station card: \station{x0}{y0}{x1}{y1}{number}{title}{actor colour}{actor}
+  \newcommand{\station}[8]{%
+    \filldraw[fill=white, draw=#7!45, line width=0.6pt, rounded corners=2.5mm, ggm soft shadow] (#1,#2) rectangle (#3,#4);
+    \fill[#7] (#1+0.35,#4-0.35) circle (0.2);
+    \node[text=white, font=\sffamily\scriptsize\bfseries] at (#1+0.35,#4-0.35) {#5};
+    \node[font=\sffamily\scriptsize\bfseries, text=ggmInk, anchor=west] at (#1+0.62,#4-0.35) {#6};
+    \node[ggm pill=#7, font=\sffamily\tiny\bfseries, inner ysep=0.5mm, inner xsep=1.2mm, anchor=east] at (#3-0.15,#4-0.35) {#8};}
+  \station{0}{4.95}{4.25}{8.6}{1}{Run the model}{ggmModel}{GGM}
+  \station{4.95}{4.95}{9.2}{8.6}{2}{Deviation report}{ggmCode}{code}
+  \station{4.95}{0.3}{9.2}{4.25}{3}{Diagnose}{ggmAgent}{agent}
+  \station{0}{0.3}{4.25}{4.25}{4}{Check, apply, log}{ggmCode}{code}
+  % ---- 1: the model run ----
+  \pic[scale=1.5] at (1.2,6.05) {laptop};
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmModel] at (1.2,6.65) {GGM};
+  \node[font=\sffamily\tiny, text=ggmModel] at (1.2,6.37) {solving\ldots};
+  \pic[scale=0.75] at (3.3,6.95) {clock};
+  \node[font=\sffamily\tiny, text=ggmInk, align=center] at (3.3,6.3) {about 24 min\\for the full model};
+  \node[font=\sffamily\tiny, text=ggmMuted, align=center, text width=3.9cm] at (2.125,5.4) {on the analysts' own machine; only the results leave it};
+  % ---- 2: the deviation report, a signed bar chart ----
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=west] at (5.15,7.85) {production and consumption against reference};
+  \def\zx{7.7}
+  \fill[ggmRecord!14] (\zx-0.3,5.25) rectangle (\zx+0.3,7.6);
+  \node[font=\sffamily\tiny, text=ggmRecord!80!black] at (\zx,5.13) {tolerance};
+  \foreach \i/\c/\v in {0/A/-1.25, 1/B/0.18, 2/C/-0.62, 3/D/0.1, 4/E/0.85, 5/F/-0.15} {
+    \pgfmathsetmacro{\y}{7.4-\i*0.37}
+    \node[font=\sffamily\tiny, text=ggmInk, anchor=east] at (6.3,\y) {Country \c};
+    \pgfmathsetmacro{\out}{abs(\v)>0.3 ? 1 : 0}
+    \ifdim\out pt>0.5pt
+      \fill[ggmAnalyst, rounded corners=0.4mm] (\zx,\y-0.11) rectangle (\zx+\v,\y+0.11);
+    \else
+      \fill[ggmCode!55, rounded corners=0.4mm] (\zx,\y-0.11) rectangle (\zx+\v,\y+0.11);
+    \fi
+  }
+  \draw[ggmInk, line width=0.6pt] (\zx,5.3) -- (\zx,7.6);
+  \node[font=\sffamily\tiny, text=ggmMuted] at (6.7,5.13) {too low};
+  \node[font=\sffamily\tiny, text=ggmMuted] at (8.75,5.13) {too high};
+  % ---- 3: the agent's diagnosis ----
+  \pic[scale=0.42] at (5.35,3.35) {agent badge};
+  \node[draw=ggmAgent!40, fill=ggmAgent!6, rounded corners=1.5mm, text width=3.1cm, align=left, font=\sffamily\tiny,
+        anchor=north west, inner sep=1.4mm] at (5.68,3.6)
+    {\textbf{Country A produces too little.}\\[0.4mm]
+     Possible causes, from the documented heuristics:\\[0.3mm]
+     \textcolor{ggmAgent}{\textbullet} production cost too high\\
+     \textcolor{ggmAgent}{\textbullet} production capacity too low\\
+     \textcolor{ggmMuted}{\textbullet} market power too high \textit{(analyst's call)}};
+  \node[draw=ggmAgent, fill=ggmAgent, text=white, rounded corners=1.5mm, text width=3.75cm, align=left, font=\sffamily\tiny,
+        anchor=south west, inner sep=1.4mm] at (5.15,0.5)
+    {\textbf{Proposal:} lower A's production cost one step. \textbf{Why:} the gap is large and A's reference data are recent.};
+  % inputs to the agent
+  \pic[scale=0.42] at (9.6,2.95) {doc=ggmSource};
+  \node[font=\sffamily\tiny, text=ggmSource!80!black, align=center] at (9.6,2.4) {heuristics};
+  \pic[scale=0.42] at (9.6,1.75) {doc=ggmRecord};
+  \node[font=\sffamily\tiny, text=ggmRecord!80!black, align=center] at (9.6,1.2) {lessons};
+  \draw[ggm flow=ggmMuted, line width=0.6pt] (9.32,2.95) -- (9.22,2.95);
+  \draw[ggm flow=ggmMuted, line width=0.6pt] (9.32,1.75) -- (9.22,1.75);
+  % ---- 4: bounds, apply, log ----
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=west] at (0.2,3.42) {allowed range of the parameter};
+  \fill[ggmRecord!16, rounded corners=0.8mm] (1.0,2.82) rectangle (3.1,3.12);
+  \draw[ggmMuted, line width=1.2pt] (0.3,2.97) -- (3.95,2.97);
+  \draw[ggmRecord!80!black, line width=1pt] (1.0,2.75) -- (1.0,3.19) (3.1,2.75) -- (3.1,3.19);
+  \filldraw[fill=white, draw=ggmCode, line width=1pt] (2.35,2.97) circle (0.11);
+  \pic[scale=0.55] at (2.35,2.58) {check=ggmRecord};
+  \filldraw[fill=white, draw=red!65!black, line width=1pt, densely dashed] (3.6,2.97) circle (0.11);
+  \draw[red!65!black, line width=1pt] (3.5,2.52) -- (3.7,2.72) (3.5,2.72) -- (3.7,2.52);
+  \node[font=\sffamily\tiny, text=red!65!black] at (3.6,2.3) {rejected};
+  \node[font=\sffamily\tiny, text=ggmRecord!80!black] at (2.35,2.27) {applied};
+  % log
+  \fill[ggmModel!6, rounded corners=1mm] (0.2,0.5) rectangle (4.05,1.95);
+  \node[font=\sffamily\tiny\bfseries, text=ggmModel, anchor=west] at (0.3,1.78) {Calibration log};
+  \foreach \i/\t in {0/{\textbf{run 6}\enspace cost of B raised\enspace \textcolor{ggmMuted}{B too high}},
+                     1/{\textbf{run 7}\enspace cost of C lowered\enspace \textcolor{ggmMuted}{C too low}},
+                     2/{\textbf{run 8}\enspace cost of A lowered\enspace \textcolor{ggmMuted}{see diagnosis}}}
+    \node[font=\sffamily\tiny, text=ggmInk, anchor=west, inner sep=0] at (0.32,1.48-\i*0.3) {\t};
+  % ---- loop arrows ----
+  \draw[ggm flow=ggmModel, line width=1.3pt] (4.27,6.55) -- (4.93,6.55);
+  \node[font=\sffamily\tiny, text=ggmModel, anchor=south] at (4.6,6.57) {results};
+  \draw[ggm flow=ggmCode, line width=1.3pt] (7.075,4.93) -- (7.075,4.27);
+  \node[font=\sffamily\tiny, text=ggmCode, anchor=west] at (7.12,4.6) {deviations};
+  \draw[ggm flow=ggmAgent, line width=1.3pt] (4.93,1.4) -- (4.27,1.4);
+  \node[font=\sffamily\tiny, text=ggmAgent, anchor=south] at (4.6,1.42) {change};
+  \draw[ggm flow=ggmCode, line width=1.3pt] (2.125,4.27) -- (2.125,4.93);
+  \node[font=\sffamily\tiny, text=ggmCode, anchor=east] at (2.08,4.6) {next run};
+  % centre: the loop symbol
+  \fill[white] (4.6,4.6) circle (0.55);
+  \draw[ggmModel, line width=1.2pt, -{Stealth[length=1.6mm]}] (4.6,4.6) ++(100:0.36) arc (100:350:0.36);
+  \node[font=\sffamily\tiny\bfseries, text=ggmModel, align=center] at (4.6,4.6) {loop};
+  % ---- the analyst ----
+  \fill[ggmAnalyst!8, rounded corners=2.5mm] (9.95,3.75) rectangle (12.6,8.6);
+  \pic[scale=1.1] at (11.27,7.85) {person};
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmAnalyst!85!black] at (11.27,7.05) {The analyst};
+  \foreach \i/\t in {0/{follows the log and\\corrects diagnoses}, 1/{chooses between\\equal fits}, 2/{keeps market power}, 3/{decides when the\\fit is good enough}} {
+    \pic[scale=0.6] at (10.25,6.55-\i*0.68) {check};
+    \node[font=\sffamily\tiny, text=ggmInk, anchor=west, align=left, inner sep=0] at (10.45,6.55-\i*0.68) {\t};
+  }
+  \draw[ggm flow=ggmAnalyst, dashed, line width=0.8pt, rounded corners=2mm] (10.6,3.73) -- (10.6,3.3) -- (9.95,3.3) -- (9.95,3.6) -- (9.24,3.6);
+  \node[font=\sffamily\tiny, text=ggmAnalyst!85!black, anchor=north] at (11.3,3.68) {corrections};
+  \node[font=\sffamily\tiny, text=ggmAnalyst!85!black, anchor=north] at (11.3,3.43) {become lessons};
+\end{tikzpicture}

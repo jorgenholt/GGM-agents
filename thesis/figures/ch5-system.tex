@@ -1,0 +1,159 @@
+% Figure 5.2: the whole system in place. Coordinates in cm; the page is 12.6 cm wide.
+\begin{tikzpicture}[ggm, x=0.99cm, y=1cm]
+  \newcommand{\frametitle}[3]{\node[font=\sffamily\scriptsize\bfseries, text=#1, anchor=north west, inner sep=1.5mm] at (#2) {#3};}
+  \newcommand{\tinylabel}[2]{\node[font=\sffamily\tiny, text=ggmInk, align=center, anchor=north] at (#1) {#2};}
+
+  % ================= external sources (top) =================
+  \filldraw[draw=ggmSource!70, fill=ggmSource!7, rounded corners=3mm] (0,14.6) rectangle (12.5,16.6);
+  \frametitle{ggmSource!80!black}{0,16.6}{EXTERNAL SOURCES}
+  \foreach \x/\t in {1.55/{ENTSOG, GIE}, 3.75/{EIA}, 5.95/{Global Energy\\Monitor}, 8.15/{Outlooks and\\statistics}, 10.6/{Country studies\\and literature}} {
+    \pic[scale=0.75] at (\x,15.75) {doc};
+    \tinylabel{\x,15.3}{\t}
+  }
+
+  % ================= analyst's workspace (left) =================
+  \filldraw[draw=ggmAnalyst!60, fill=ggmAnalyst!5, rounded corners=3mm] (0,7.9) rectangle (6.75,14.1);
+  \frametitle{ggmAnalyst!85!black}{0,14.1}{THE ANALYST'S WORKSPACE}
+  % floor shadow
+  \fill[ggmModel!10] (2.9,8.15) ellipse (2.6 and 0.12);
+  % chair
+  \fill[ggmModel!40, rounded corners=1mm] (0.35,9.0) rectangle (0.55,10.6);
+  \fill[ggmModel!40, rounded corners=1mm] (0.35,8.95) rectangle (1.45,9.12);
+  \draw[ggmModel!55, line width=1.4pt] (0.9,8.95) -- (0.9,8.35);
+  \draw[ggmModel!55, line width=1.4pt] (0.45,8.3) -- (1.35,8.3);
+  % legs
+  \draw[ggmModel!85, line width=5pt] (0.95,9.18) -- (1.75,9.18) -- (1.75,8.35);
+  \fill[ggmInk, rounded corners=0.5mm] (1.65,8.22) rectangle (2.05,8.36);
+  % torso
+  \fill[ggmAnalyst] (0.6,9.12) .. controls (0.45,10.0) and (0.65,10.55) .. (1.0,10.65)
+     .. controls (1.35,10.55) and (1.45,9.9) .. (1.35,9.12) -- cycle;
+  % arm towards the keyboard
+  \draw[ggmAnalyst!80!black, line width=4.2pt] (1.1,10.25) -- (1.45,9.75) -- (2.05,9.82);
+  \fill[ggmSkin] (2.1,9.82) circle (0.075);
+  % head
+  \fill[ggmSkin] (1.05,10.98) circle (0.25);
+  \fill[ggmHair] (0.79,11.03) .. controls (0.8,11.33) and (1.2,11.38) .. (1.3,11.12)
+     .. controls (1.15,11.14) and (1.0,11.08) .. (0.97,10.97) .. controls (0.9,10.88) and (0.82,10.9) .. (0.79,11.03);
+  % desk
+  \fill[ggmSource!35!white] (1.55,9.62) rectangle (6.55,9.76);
+  \fill[ggmSource!55!black] (1.75,8.3) rectangle (1.85,9.62);
+  \fill[ggmSource!55!black] (6.25,8.3) rectangle (6.35,9.62);
+  \fill[ggmModel!50, rounded corners=0.4mm] (1.95,9.76) rectangle (2.85,9.83);
+  \fill[ggmModel!50] (3.05,9.76) ellipse (0.09 and 0.05);
+  % coffee mug
+  \fill[ggmAnalyst!70] (5.95,9.76) rectangle (6.17,10.0);
+  \draw[ggmAnalyst!70, line width=0.8pt] (6.17,9.92) arc (90:-90:0.06);
+  % monitor
+  \fill[ggmModel!70] (4.0,9.76) -- (4.5,9.76) -- (4.38,10.0) -- (4.12,10.0) -- cycle;
+  \fill[ggmModel, rounded corners=1.2mm] (2.0,9.98) rectangle (6.45,13.55);
+  \fill[white] (2.1,10.1) rectangle (6.35,13.45);
+  % window bar
+  \fill[ggmModel!12] (2.1,13.2) rectangle (6.35,13.45);
+  \foreach \i/\c in {0/ggmAnalyst, 1/ggmSource, 2/ggmRecord} \fill[\c] (2.22+0.14*\i,13.325) circle (0.045);
+  \node[font=\sffamily\tiny, text=ggmModel] at (4.22,13.325) {GGM workbench};
+  % spreadsheet pane
+  \fill[ggmSheet] (2.18,12.88) rectangle (4.18,13.12);
+  \node[font=\sffamily\tiny\bfseries, text=white, anchor=west] at (2.2,13.0) {Sheet: Arcs};
+  \foreach \r in {0,...,9} {
+    \pgfmathsetmacro{\y}{12.88-0.26*(\r+1)}
+    \ifnum\r=4 \fill[ggmAgent!18] (2.18,\y) rectangle (4.18,\y+0.26); \fi
+    \draw[ggmSheet!25] (2.18,\y) -- (4.18,\y);
+    \foreach \c/\w in {0/0.32, 1/0.42, 2/0.28, 3/0.3, 4/0.26} {
+      \pgfmathsetmacro{\x}{2.24+0.4*\c}
+      \pgfmathsetmacro{\ww}{\w*(0.75+0.25*mod(\r*7+\c*3,4)/3)}
+      \fill[ggmModel!25, rounded corners=0.3mm] (\x,\y+0.09) rectangle (\x+\ww,\y+0.17);
+    }
+  }
+  \foreach \c in {1,...,4} \draw[ggmSheet!25] (2.18+0.4*\c,10.28) -- (2.18+0.4*\c,12.88);
+  \draw[ggmSheet!40] (2.18,10.28) rectangle (4.18,12.88);
+  \fill[ggmAgent] (4.12,11.71) circle (0.06);
+  % suggestion card
+  \filldraw[draw=ggmAgent!50, fill=ggmAgent!4, rounded corners=0.8mm] (4.32,10.2) rectangle (6.27,13.1);
+  \fill[ggmAgent, rounded corners=0.8mm] (4.32,12.8) rectangle (6.27,13.1);
+  \fill[ggmAgent] (4.32,12.8) rectangle (6.27,12.9);
+  \pic[scale=0.22] at (4.47,12.95) {agent badge};
+  \node[font=\sffamily\tiny\bfseries, text=white, anchor=west] at (4.55,12.95) {Suggestion};
+  \node[font=\sffamily\tiny\bfseries, text=ggmInk, anchor=west] at (4.36,12.6) {New arc capacity};
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=west] at (4.36,12.33) {Why};
+  \foreach \y/\w in {12.12/1.75, 11.95/1.5, 11.78/1.65} \fill[ggmModel!25, rounded corners=0.3mm] (4.4,\y) rectangle (4.4+\w,\y+0.08);
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=west] at (4.36,11.5) {Source};
+  \fill[ggmModel!25, rounded corners=0.3mm] (4.4,11.25) rectangle (5.9,11.33);
+  \node[fill=ggmRecord, text=white, rounded corners=0.6mm, font=\sffamily\tiny, inner xsep=1mm, inner ysep=0.4mm, anchor=west] at (4.38,10.95) {official, recent};
+  \node[fill=ggmAnalyst, text=white, rounded corners=0.6mm, font=\sffamily\tiny\bfseries, inner xsep=0.5mm, inner ysep=0.5mm] at (4.66,10.47) {Accept};
+  \node[draw=ggmModel!50, text=ggmModel, rounded corners=0.6mm, font=\sffamily\tiny, inner xsep=0.5mm, inner ysep=0.5mm] at (5.3,10.47) {Edit};
+  \node[draw=ggmModel!50, text=ggmModel, rounded corners=0.6mm, font=\sffamily\tiny, inner xsep=0.5mm, inner ysep=0.5mm] at (5.87,10.47) {Reply};
+
+  % ================= agents (right) =================
+  \filldraw[draw=ggmAgent!60, fill=ggmAgent!5, rounded corners=3mm] (7.85,7.9) rectangle (12.5,14.1);
+  \frametitle{ggmAgent}{7.85,14.1}{AGENTS}
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=north east, inner sep=1.5mm] at (12.5,14.1) {one language model, four roles};
+  \foreach \i/\n/\d in {0/{Scenario agent}/{storyline $\to$ edits},
+                        1/{Data agent}/{sources $\to$ sourced values},
+                        2/{Calibration agent}/{deviations $\to$ changes},
+                        3/{Results agent}/{results $\to$ explanations}} {
+    \pgfmathsetmacro{\y}{12.75-1.25*\i}
+    \filldraw[draw=ggmAgent!40, fill=white, rounded corners=2mm, ggm soft shadow] (8.1,\y-0.48) rectangle (12.35,\y+0.48);
+    \pic[scale=0.62] at (8.62,\y) {agent badge};
+    \node[font=\sffamily\scriptsize\bfseries, text=ggmInk, anchor=west] at (9.05,\y+0.17) {\n};
+    \node[font=\sffamily\tiny, text=ggmMuted, anchor=west] at (9.05,\y-0.17) {\d};
+  }
+
+  % suggestion and reply arrows between workspace and agents
+  \draw[ggm flow=ggmAgent, line width=1.1pt] (7.95,12.6) -- (6.5,12.6);
+  \node[font=\sffamily\tiny, text=ggmAgent, align=center, anchor=south] at (7.2,12.65) {suggestion\\+ reasons};
+  \draw[ggm flow=ggmAnalyst, line width=1.1pt] (6.5,11.3) -- (7.95,11.3);
+  \node[font=\sffamily\tiny, text=ggmAnalyst!85!black, align=center, anchor=north] at (7.2,11.25) {accept, edit\\or reply};
+
+  % sources to agents
+  \draw[ggm flow=ggmSource!80!black] (10.2,14.6) -- (10.2,14.15);
+  \node[font=\sffamily\tiny, text=ggmSource!80!black, anchor=west] at (10.25,14.38) {fetch and read};
+
+  % ================= tools (middle band) =================
+  \filldraw[draw=ggmCode!60, fill=ggmCode!6, rounded corners=3mm] (0.75,5.05) rectangle (12.5,7.55);
+  \frametitle{ggmCode}{0.75,7.55}{TOOLS: ORDINARY CODE}
+  \foreach \i/\t in {0/{Read and write\\workbooks}, 1/{Convert and\\aggregate}, 2/{Shipping\\distances}, 3/{Consistency\\checks},
+                     4/{Compare\\versions}, 5/{Deviation\\report}, 6/{Apply changes\\within bounds}, 7/{Start a\\model run}} {
+    \pgfmathsetmacro{\x}{1.0+(mod(\i,4))*2.775+((mod(\i,4)>1) ? 0.45 : 0)}
+    \pgfmathsetmacro{\y}{(\i<4) ? 6.25 : 5.25}
+    \filldraw[draw=ggmCode!35, fill=white, rounded corners=1.5mm] (\x,\y) rectangle (\x+2.575,\y+0.78);
+    \pic[scale=0.48] at (\x+0.35,\y+0.39) {gear};
+    \node[font=\sffamily\tiny, text=ggmInk, align=left, anchor=west] at (\x+0.68,\y+0.39) {\t};
+  }
+  % agents call tools
+  \draw[ggm flow=ggmAgent] (10.2,7.9) -- (10.2,7.6);
+  \node[font=\sffamily\tiny, text=ggmAgent, anchor=west] at (10.25,7.75) {act only through tools};
+
+  % ================= shared records (bottom left) =================
+  \filldraw[draw=ggmRecord!60, fill=ggmRecord!6, rounded corners=3mm] (0.75,0.95) rectangle (7.6,4.65);
+  \frametitle{ggmRecord}{0.75,4.65}{SHARED RECORDS}
+  \foreach \x/\t in {1.55/gen, 2.45/proj, 3.35/calib} \pic[scale=0.95] at (\x,2.95) {workbook=\t};
+  \tinylabel{2.45,2.35}{The three workbooks,\\under version control}
+  \pic[scale=0.95] at (4.75,2.95) {database};
+  \tinylabel{4.75,2.35}{Provenance\\ledger}
+  \pic[scale=1.0] at (5.9,2.95) {doc=ggmRecord};
+  \tinylabel{5.9,2.35}{Lessons}
+  \pic[scale=0.95] at (6.95,2.95) {database=ggmModel};
+  \tinylabel{6.95,2.35}{Run log}
+  \node[font=\sffamily\tiny, text=ggmMuted, align=center] at (4.2,1.3) {every value: where it came from, who proposed it, who accepted it};
+  % tools write to records
+  \draw[ggm flow=ggmCode] (2.45,5.05) -- (2.45,3.55);
+  \draw[ggm flow=ggmCode] (4.75,5.05) -- (4.75,3.55);
+
+  % ================= local machine (bottom right) =================
+  \filldraw[draw=ggmModel!60, fill=ggmModel!6, rounded corners=3mm] (8.1,0.95) rectangle (12.5,4.65);
+  \frametitle{ggmModel}{8.1,4.65}{LOCAL MACHINE}
+  \pic[scale=1.75] at (10.35,2.35) {laptop};
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmModel] at (10.35,3.1) {GGM};
+  \node[font=\sffamily\tiny, text=ggmModel] at (10.35,2.77) {Julia + Gurobi};
+  \node[font=\sffamily\tiny, text=ggmMuted, align=center] at (10.35,1.4) {model and licensed data\\stay on the analysts' machine};
+  \draw[ggm flow=ggmModel] (9.55,5.05) -- (9.55,3.6);
+  \node[font=\sffamily\tiny, text=ggmModel, anchor=east] at (9.5,3.85) {start run};
+  \draw[ggm flow=ggmModel] (11.15,3.6) -- (11.15,5.05);
+  \node[font=\sffamily\tiny, text=ggmModel, anchor=west] at (11.2,3.85) {results only};
+
+  % ================= the analyst's decisions and the lessons =================
+  \draw[ggm flow=ggmAnalyst, line width=1.1pt, rounded corners=3mm] (0.35,8.6) -- (0.35,3.9) -- (0.72,3.9);
+  \node[font=\sffamily\tiny, text=ggmAnalyst!85!black, rotate=90, anchor=south] at (0.3,6.3) {decisions and corrections};
+  \draw[ggm flow=ggmRecord, line width=1.1pt, dashed, rounded corners=3mm] (6.05,3.5) -- (6.675,4.3) -- (6.675,7.72) -- (7.3,7.72) -- (7.3,8.45) -- (7.82,8.45);
+  \node[font=\sffamily\tiny\bfseries, text=ggmRecord, fill=ggmCode!6, inner sep=0.4mm, rotate=90] at (6.675,6.3) {lessons};
+\end{tikzpicture}

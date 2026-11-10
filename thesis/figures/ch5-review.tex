@@ -1,0 +1,123 @@
+% Figure 5.5: one suggestion on the analyst's screen, the analyst's reply, and where the reply goes.
+\begin{tikzpicture}[ggm, x=1cm, y=1cm]
+  \tikzset{ph/.style={line width=1.6pt, draw=ggmMuted!45, line cap=round},
+           tinytext/.style={font=\sffamily\tiny, text=ggmInk, inner sep=0, anchor=west}}
+  % ---------- the monitor ----------
+  \filldraw[fill=ggmModel, draw=ggmModel, rounded corners=2mm] (0,3.0) rectangle (7.7,9.0);
+  \fill[white] (0.14,3.14) rectangle (7.56,8.86);
+  \fill[ggmModel] (3.5,2.55) -- (4.2,2.55) -- (4.05,3.0) -- (3.65,3.0) -- cycle;
+  \fill[ggmModel!70, rounded corners=0.6mm] (2.9,2.45) rectangle (4.8,2.6);
+  % window bar
+  \fill[ggmMuted!20] (0.14,8.56) rectangle (7.56,8.86);
+  \foreach \x/\c in {0.32/ggmAnalyst, 0.5/ggmSource, 0.68/ggmRecord} \fill[\c] (\x,8.71) circle (0.055);
+  \node[font=\sffamily\tiny, text=ggmModel] at (3.85,8.71) {GGM workbench \textperiodcentered{} data step};
+  % --- spreadsheet pane ---
+  \fill[ggmSheet] (0.3,8.1) rectangle (3.6,8.42);
+  \node[font=\sffamily\tiny\bfseries, text=white, anchor=west] at (0.38,8.26) {Sheet: Nodes};
+  \fill[ggmSheet!12] (0.3,7.8) rectangle (3.6,8.1);
+  \node[tinytext] at (0.4,7.95) {Node};
+  \node[tinytext] at (1.43,7.95) {Ref.\ price};
+  \node[tinytext] at (2.58,7.95) {Confid.};
+  \fill[ggmAgent!14] (0.3,6.12) rectangle (3.6,6.54);
+  \foreach \k/\c/\len in {0/ggmRecord/0.55, 1/ggmRecord/0.65, 2/ggmSource/0.75, 4/ggmRecord/0.65, 5/ggmAnalyst/0.75, 6/ggmRecord/0.55, 7/red!65!black/0.65, 8/ggmSource/0.75} {
+    \draw[ph] (0.42,7.59-\k*0.42) -- ++(\len,0);
+    \draw[ph] (1.5,7.59-\k*0.42) -- (2.15,7.59-\k*0.42);
+    \fill[\c] (3.0,7.59-\k*0.42) circle (0.07);
+  }
+  \draw[ph] (0.42,6.33) -- ++(0.65,0);
+  \draw[ggmSheet!35] (0.3,3.98) rectangle (3.6,7.8);
+  \foreach \x in {1.35,2.5} \draw[ggmSheet!35] (\x,3.98) -- (\x,8.1);
+  \foreach \r in {1,...,8} \draw[ggmSheet!25] (0.3,7.8-\r*0.42) -- (3.6,7.8-\r*0.42);
+  % the proposed cell
+  \filldraw[fill=white, draw=ggmAgent, line width=0.9pt, rounded corners=0.5mm] (1.4,6.17) rectangle (2.45,6.49);
+  \draw[line width=1.6pt, draw=ggmAgent!70, line cap=round] (1.5,6.33) -- (2.1,6.33);
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmAgent] at (3.0,6.33) {?};
+  % confidence legend
+  \foreach \c/\t/\x/\y in {ggmRecord/official{,} recent/0.42/3.68, ggmSource/older report/2.15/3.68,
+                           ggmAnalyst/similar country/0.42/3.36, red!65!black/guess/2.15/3.36} {
+    \fill[\c] (\x,\y) circle (0.06);
+    \node[font=\sffamily\tiny, text=ggmMuted, anchor=west, inner sep=0] at (\x+0.12,\y) {\t};
+  }
+  % --- suggestion card ---
+  \filldraw[fill=white, draw=ggmAgent!50, line width=0.6pt, rounded corners=1.5mm, ggm soft shadow] (3.8,3.35) rectangle (7.4,8.42);
+  \fill[ggmAgent, rounded corners=1.5mm] (3.8,8.02) rectangle (7.4,8.42);
+  \fill[ggmAgent] (3.8,8.02) rectangle (7.4,8.2);
+  \pic[scale=0.26] at (4.03,8.22) {agent badge};
+  \node[font=\sffamily\tiny\bfseries, text=white, anchor=west] at (4.17,8.22) {Suggestion \textperiodcentered{} data agent};
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmInk, anchor=west] at (3.95,7.72) {Reference price};
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=west] at (3.95,7.45) {Gulf node, base year};
+  \node[font=\sffamily\tiny\bfseries, text=ggmMuted, anchor=west] at (3.95,7.1) {PROPOSED VALUE};
+  \draw[line width=1.8pt, draw=ggmAgent!70, line cap=round] (4.05,6.86) -- (5.25,6.86);
+  \node[font=\sffamily\tiny\bfseries, text=ggmMuted, anchor=west] at (3.95,6.52) {WHY};
+  \node[font=\sffamily\tiny, text=ggmInk, anchor=north west, text width=3.25cm, inner sep=0] at (3.98,6.36)
+    {The official domestic price, the most recent the country publishes.};
+  \node[font=\sffamily\tiny\bfseries, text=ggmMuted, anchor=west] at (3.95,5.73) {SOURCE};
+  \node[font=\sffamily\tiny, text=ggmInk, anchor=west] at (3.95,5.5) {National regulator, tariff page};
+  \node[font=\sffamily\tiny\bfseries, text=ggmMuted, anchor=west] at (3.95,5.15) {CONFIDENCE};
+  \node[ggm pill=ggmRecord, font=\sffamily\tiny\bfseries, inner ysep=0.6mm, anchor=west] at (3.98,4.87) {official, recent};
+  \node[font=\sffamily\tiny\bfseries, text=ggmMuted, anchor=west] at (3.95,4.5) {ALTERNATIVES};
+  \draw[ph] (4.07,4.27) -- (5.4,4.27); \draw[ph] (4.07,4.05) -- (5.0,4.05);
+  % buttons
+  \node[draw=ggmRecord, text=ggmRecord, rounded corners=0.8mm, font=\sffamily\tiny\bfseries, inner xsep=1mm, inner ysep=0.7mm] at (4.4,3.65) {Accept};
+  \node[draw=ggmMuted, text=ggmModel, rounded corners=0.8mm, font=\sffamily\tiny\bfseries, inner xsep=1mm, inner ysep=0.7mm] at (5.5,3.65) {Edit};
+  \node[fill=ggmAnalyst, text=white, rounded corners=0.8mm, font=\sffamily\tiny\bfseries, inner xsep=1mm, inner ysep=0.7mm] (reply) at (6.67,3.65) {Reply};
+  % mouse pointer on Reply
+  \filldraw[fill=white, draw=ggmInk, line width=0.4pt] (6.92,3.5) -- (6.92,3.17) -- (7.0,3.25) -- (7.06,3.12) -- (7.11,3.15) -- (7.05,3.27) -- (7.16,3.28) -- cycle;
+  % ---------- the analyst and the reply ----------
+  \begin{scope}[shift={(0.75,0.95)}, scale=1.75]
+    \pic {person};
+  \end{scope}
+  \node[draw=ggmAnalyst, fill=ggmAnalyst!8, line width=0.7pt, rounded corners=2mm, text width=4.9cm, align=left,
+        font=\sffamily\scriptsize, text=ggmInk, inner sep=2mm, anchor=west] (bubble) at (1.9,1.2)
+    {\textbf{\color{ggmAnalyst!85!black}Reply:} This price is subsidised. It is far below what consumers would pay, so it is not the willingness to pay the model needs.};
+  \fill[ggmAnalyst!8] (1.92,1.05) -- (1.62,1.15) -- (1.92,1.3) -- cycle;
+  \draw[ggmAnalyst, line width=0.7pt] (1.92,1.05) -- (1.62,1.15) -- (1.92,1.3);
+  \draw[ggm flow=ggmAnalyst, dashed, line width=0.7pt, rounded corners=2mm] (bubble.north east) ++(-0.4,0) -- ++(0,0.45) -| ($(reply.south)+(-0.15,0)$);
+  % ---------- where the answer goes ----------
+  \coordinate (hub) at (8.05,1.2);
+  \draw[ggmAnalyst, line width=1.1pt] (bubble.east) -- (hub);
+  \fill[ggmAnalyst] (hub) circle (0.07);
+  % (a) back to the agent
+  \filldraw[fill=white, draw=ggmAgent!45, rounded corners=2mm, ggm soft shadow] (8.45,7.3) rectangle (12.15,9.0);
+  \pic[scale=0.5] at (8.88,8.55) {agent badge};
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmAgent, anchor=west] at (9.2,8.55) {Back to the agent};
+  \node[font=\sffamily\tiny, text=ggmInk, anchor=north west, text width=3.35cm, inner sep=0] at (8.65,8.12)
+    {The data agent revises the value with the new information and suggests again.};
+  % (b) provenance ledger
+  \filldraw[fill=white, draw=ggmRecord!45, rounded corners=2mm, ggm soft shadow] (8.45,4.75) rectangle (12.15,6.85);
+  \pic[scale=0.55] at (8.88,6.38) {database};
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmRecord!85!black, anchor=west] at (9.2,6.4) {Provenance ledger};
+  \begin{scope}[font=\sffamily\tiny, every node/.style={anchor=base west, inner sep=0}]
+    \fill[ggmRecord!12] (8.62,5.73) rectangle (11.98,5.98);
+    \foreach \x/\t in {8.68/Value, 9.72/By, 10.38/Decision, 11.38/Why} \node[text=ggmRecord!80!black] at (\x,5.81) {\bfseries\t};
+    \node at (8.68,5.51) {Gulf price}; \node at (9.72,5.51) {agent};
+    \node[text=ggmAnalyst!85!black] at (10.38,5.51) {replied}; \node at (11.38,5.51) {subsidy};
+    \node at (8.68,5.23) {Gulf price}; \node at (9.72,5.23) {agent};
+    \node[text=ggmRecord!85!black] at (10.38,5.23) {accepted}; \node at (11.38,5.23) {--};
+    \draw[ggmRecord!25] (8.62,5.41) -- (11.98,5.41);
+    \node[text=ggmMuted] at (8.68,4.93) {who proposed it, who decided, why};
+  \end{scope}
+  % (c) lesson
+  \filldraw[fill=ggmRecord!7, draw=ggmRecord, line width=0.7pt, rounded corners=2mm, ggm soft shadow] (8.45,0.25) rectangle (12.15,4.3);
+  \pic[scale=0.55] at (8.88,3.85) {doc=ggmRecord};
+  \node[font=\sffamily\scriptsize\bfseries, text=ggmRecord!85!black, anchor=west] at (9.2,3.87) {New lesson};
+  \node[font=\sffamily\tiny\itshape, text=ggmInk, anchor=north west, text width=3.35cm, inner sep=0, align=left] at (8.65,3.4)
+    {Official prices in countries that subsidise domestic gas are not the willingness to pay. Flag them and propose alternatives.};
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=west, inner sep=0] at (8.65,2.25) {Scope: reference prices, all nodes};
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=west, inner sep=0] at (8.65,1.95) {Drawn from: the reply above};
+  \pic[scale=0.75] at (8.82,1.42) {check};
+  \node[font=\sffamily\tiny\bfseries, text=ggmAnalyst!85!black, anchor=west, inner sep=0] at (9.05,1.42) {Approved by the analyst};
+  \node[font=\sffamily\tiny, text=ggmMuted, anchor=north west, text width=3.35cm, inner sep=0] at (8.65,1.05)
+    {Kept in a plain document the analysts can read, edit and remove.};
+  % fan-out arrows from the hub
+  \draw[ggm flow=ggmAnalyst, rounded corners=2mm] (hub) -- (8.05,8.15) -- (8.42,8.15);
+  \draw[ggm flow=ggmAnalyst, rounded corners=2mm] (8.05,5.8) -- (8.42,5.8);
+  \draw[ggm flow=ggmAnalyst, rounded corners=2mm] (8.05,2.3) -- (8.42,2.3);
+  \node[font=\sffamily\tiny\bfseries, text=ggmAnalyst!85!black, rotate=90, fill=white, inner sep=0.5mm] at (8.05,4.1) {the reply goes to};
+  % revised suggestion goes back to the screen
+  \draw[ggm flow=ggmAgent, line width=1pt, rounded corners=3mm] (8.45,7.75) -- (7.95,7.75) -- (7.95,6.4) -- (7.45,6.4);
+  \node[font=\sffamily\tiny\bfseries, text=ggmAgent, rotate=90, fill=white, inner sep=0.5mm] at (7.95,7.05) {revised};
+  % lesson retrieved later
+  \draw[ggm flow=ggmRecord, dashed, line width=1pt, rounded corners=3mm] (12.15,2.3) -- (12.45,2.3) -- (12.45,8.15) -- (12.17,8.15);
+  \node[font=\sffamily\tiny\bfseries, text=ggmRecord!85!black, rotate=-90, fill=white, inner sep=0.5mm] at (12.45,5.2) {retrieved for later suggestions};
+\end{tikzpicture}

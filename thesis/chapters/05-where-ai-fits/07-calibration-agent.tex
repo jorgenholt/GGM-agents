@@ -1,0 +1,36 @@
+\section{The calibration agent}
+
+Calibration is the one step whose path cannot be written down in advance: which parameter to change next depends on what the last run showed.
+It therefore needs an agent in the sense of Section 4.1, but one that works inside a harness of ordinary code.
+Figure \ref{fig:calibration} shows the loop.
+
+\begin{figure}[htbp]
+\centering
+\input{figures/ch5-calibration}
+\caption{The calibration loop. Code runs the model and computes how far each country is from its reference values; the agent diagnoses the deviations and proposes a change with its reasons; code checks the change against set bounds, logs it and starts the next run. The analyst decides when the fit is good enough. Countries, deviations and log entries are illustrative.}
+\label{fig:calibration}
+\end{figure}
+
+\textbf{The harness.} After every run, code computes a deviation report: for each country or region, how far production and consumption are from their reference values.
+The 2019 version of the model produced such reports, and the public Julia version does not (Section 3.4), so this is the first tool to write.
+Code also applies the agent's proposed changes, rejects those outside set bounds, logs each change with its reason, and starts the next run on the local machine.
+The bounds come partly from the documentation, which states that capacity slack should be at least a few percent and not more than 7 to 10\% \citep[p.~28]{egging2019global}, and that elasticities are not adjusted in calibration \citep[p.~26]{egging2019global}.
+
+\textbf{The agent's part.} The agent reads the signed deviations and reasons about their likely cause.
+For this it is given the documentation's own diagnostic reasoning, which lists three possible causes when Russia exports too little and six when China consumes too little in a future year, from domestic production and willingness to pay to market power, infrastructure costs and expansion limits \citep[p.~26]{egging2019global}.
+It proposes a change and writes down why.
+This is the design of the grey-box calibration study in Section 2.3, in which an LLM proposes a parameter vector with a rationale and a harness runs the model \citep{gomezguillen2026agentic}.
+The agent also researches the starting values that can be researched, namely reference prices and seasonal price spreads, as suggestions to the analyst before the loop begins.
+
+\textbf{Guarding against known failures.} The hydrology benchmark in Section 2.3 found three recurring failures: stopping too early, proposing implausible values, and diagnosing a problem correctly but adjusting the wrong parameter \citep{li2026hydroagent}.
+The first two are prevented by code, through a stopping rule and the bounds.
+The third can only be caught by reading the agent's reasons, which is why every change is logged with them, and why the analyst's corrections of a diagnosis become lessons in the sense of Section 5.6.
+
+\textbf{The analyst's part.} The analyst decides three things.
+The first is when the fit is good enough, because reproducing the reference values does not show that the parameters behind the fit are right, just as matching an optimisation model's objective does not prove its formulation correct \citep{li2026optargus}.
+The second is the choice between fits of similar quality, which, as Section 2.6 argued, can embody different assumptions about the market.
+The third is market power, which the developers set by judgment; the agent may point out where market power seems to drive a deviation, but does not change it.
+
+What the agent would save is mainly the analyst's attention between runs.
+A run of the full 2023 model took 24 minutes on our laptop (Section 3.5), so a working day allows about twenty runs, and analysts today calibrate two scenarios in parallel to use the waiting time.
+The agent could keep the loop going while the analyst does other work, and present a log of what it tried and why.

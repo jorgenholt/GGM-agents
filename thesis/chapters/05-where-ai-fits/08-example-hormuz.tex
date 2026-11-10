@@ -1,0 +1,44 @@
+\section{Example: a study of the Strait of Hormuz}
+
+To show the parts working together, this section follows one study through the system: what happens to the world gas market if the Strait of Hormuz, through which LNG from the Persian Gulf reaches the rest of the world, stays closed.
+The model's developers carried out such a study in 2026, and the description of its setup here draws on what they showed in the working session.
+How the system would handle it is our illustration; the study itself was done by hand, and no results from it are reported.
+Figure \ref{fig:hormuz} shows the sequence.
+
+\begin{figure}[htbp]
+\centering
+\input{figures/ch5-hormuz}
+\caption{A study of a closed Strait of Hormuz, followed through the system from the question to the findings. Numbers mark the order of events; check marks show the analyst's decisions.}
+\label{fig:hormuz}
+\end{figure}
+
+\textbf{(1) The question.} The closure is in the news, and the analysts consider a study.
+Whether to start is their decision alone: in 2026 the developers waited about a month to see whether the situation would last, because setting up a study is a real cost.
+The system makes that cost smaller, but does not make the decision.
+
+\textbf{(2) The scenario.} The analyst describes the storyline: a one-year analysis of the market with the strait open and closed, and in further variants with Russian supply also cut.
+The scenario agent proposes what that means in the workbooks.
+A one-year question does not need the full model, so it proposes a coarser node structure, about ninety nodes instead of 136, and no seasons or storage, which is what the developers chose.
+For the closure, it lists every LNG route from terminals inside the Gulf and proposes to block them by setting very large shipping distances, the developers' own technique.
+It also raises the knock-on choices: whether Gulf exporters keep their market power when they cannot export by sea, and whether pipelines out of the region should be allowed to expand.
+The analyst approves the node structure and the edits, and code creates the variants, which differ only in the general workbook.
+
+\textbf{(3) The data.} The data agent rebuilds the general workbook for the new node structure.
+Code aggregates pipeline capacities to the coarser nodes and recomputes the shipping distances from the terminal coordinates; the agent maps the sources and flags the cases where a mapping was not obvious.
+For the projections, it drafts one year of reference production and consumption from the anchoring outlook, with sources, and the analyst adjusts the storyline where needed.
+Demand is described by a few elasticity classes rather than consumption sectors, as the developers decided for this study, and the agent proposes a class for each node with its reasons.
+Among its suggestions is a reference price for a Gulf country taken from the official domestic price.
+The analyst replies that the price is subsidised and far below what the model needs.
+The agent revises the suggestion and proposes a lesson; once approved, the lesson is applied to the other countries with subsidised prices before the analyst reaches them.
+
+\textbf{(4) Calibration.} The calibration agent calibrates the baseline, with the strait open, in the loop of Section 5.7.
+With one year and fewer nodes, the loop is shorter than for the full model.
+The analyst follows the log, corrects one diagnosis, and accepts the fit.
+
+\textbf{(5) Runs and results.} Code runs the variants with the same calibration and records their inputs.
+The results agent compares them and drafts explanations of where the missing LNG is replaced and which importers lose most, each pointing to the tables behind it, and flags patterns that look implausible.
+The analysts check the drafts, decide what the results show, and write the findings.
+
+The example also shows where this thesis goes beyond the closest study in the literature.
+\citet{golden2026agentic} applied agents to the same closure, but used each model with the calibration it already had.
+Here the system prepares the data and calibrates the model for the question, which is the part of the work that Section 2.6 found unaddressed.
