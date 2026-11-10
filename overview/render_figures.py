@@ -121,8 +121,11 @@ def render(stem: str, body: str, tmp: Path) -> str:
     svg = tmp / f"{stem}.svg"
     subprocess.run(["pdftocairo", "-svg", tex.with_suffix(".pdf").name, svg.name], cwd=tmp, check=True)
     text = svg.read_text(encoding="utf-8")
-    # Two decimals are plenty on screen and cut the file by about a third.
-    text = re.sub(r"(\d+\.\d\d)\d+", r"\1", text)
+    # Two decimals are plenty for coordinates and cut the file by about a third. Transform
+    # matrices are left alone: their scale factors (e.g. 0.744601) multiply every coordinate
+    # inside them, so rounding them shifts arrowheads off their lines and fills off their boxes.
+    parts = re.split(r"(matrix\([^)]*\))", text)
+    text = "".join(p if p.startswith("matrix(") else re.sub(r"(\d+\.\d\d)\d+", r"\1", p) for p in parts)
     # pdftocairo numbers its ids from 0 in every file; prefix them so two figures on one page don't clash.
     text = re.sub(r'id="([^"]+)"', lambda m: f'id="{stem}-{m[1]}"', text)
     text = re.sub(r'(href|xlink:href)="#([^"]+)"', lambda m: f'{m[1]}="#{stem}-{m[2]}"', text)
