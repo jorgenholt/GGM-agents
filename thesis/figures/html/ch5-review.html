@@ -42,8 +42,8 @@
   .card .val { height: 2.2mm; width: 55%; background: color-mix(in srgb, var(--agent) 55%, white); }
   .pill { justify-self: start; background: color-mix(in srgb, var(--record) 15%, white); color: var(--record-ink);
           border: var(--hair) solid var(--record); border-radius: 3mm; padding: 0.2mm 1.8mm; font-size: 7.5pt; font-weight: 700; }
-  .buttons { display: flex; gap: 1.5mm; margin-top: 0.6mm; }
-  .buttons span { flex: 1; text-align: center; border: 0.8pt solid; border-radius: 1mm; padding: 0.7mm 0; font-size: 7.5pt; font-weight: 700; }
+  .buttons { display: flex; gap: 1.2mm; margin-top: 0.6mm; }
+  .buttons span { flex: 1; text-align: center; border: 0.8pt solid; border-radius: 1mm; padding: 0.7mm 0.6mm; letter-spacing: 0; font-size: 7.5pt; font-weight: 700; }
   .b-accept { color: var(--record-ink); border-color: var(--record) !important; }
   .b-edit { color: var(--model); border-color: var(--muted) !important; }
   .b-reply { background: var(--analyst); color: #fff; border-color: var(--analyst) !important; }
@@ -128,9 +128,8 @@
       <section class="panel record" id="lesson">
         <h2><i data-icon="lesson"></i>A new lesson</h2>
         <div class="lesson-text">Official prices where domestic gas is subsidised are not the willingness to pay. Flag them; propose alternatives.</div>
-        <div class="meta"><span>Scope: all reference prices</span><span>Drawn from: the reply</span>
+        <div class="meta"><span>Scope: all reference prices</span>
           <span class="okay"><i data-icon="check"></i>Analyst approved</span></div>
-        <div class="note">Kept in a plain document the analysts can edit.</div>
       </section>
       <div class="gap"></div>
       <section class="panel record" id="ledger">
@@ -140,7 +139,6 @@
           <tr class="new"><td>price</td><td>replied</td><td>subsidy</td></tr>
           <tr><td>price</td><td>accepted</td><td>–</td></tr>
         </table>
-        <div class="note">Who decided, and why.</div>
       </section>
     </div>
   </div>

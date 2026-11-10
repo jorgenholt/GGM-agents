@@ -137,7 +137,11 @@ function check(fig) {
     const r = el.getBoundingClientRect();
     if (r.left < f.left - 0.5 || r.right > f.right + 0.5 || r.top < f.top - 0.5) issues.push(`${name(el)} is outside the figure`);
   }
-  badges.forEach((b) => (b.style.display = ""));
+  badges.forEach((b) => {
+    b.style.display = "";
+    const r = b.getBoundingClientRect();
+    if (r.left < f.left - 0.5 || r.right > f.right + 0.5 || r.top < f.top - 0.5) issues.push(`a badge sticks out of the figure`);
+  });
   const hit = (a, b, pad = 0) => a.left < b.right - pad && b.left < a.right - pad && a.top < b.bottom - pad && b.top < a.bottom - pad;
   const labels = [...fig.querySelectorAll(".alabel")];
   const solid = [...fig.querySelectorAll(".chip, .card, .cell, .item, .panel > h2, .note, [data-box]")];
