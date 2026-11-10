@@ -76,7 +76,9 @@ Approach agreed 2026-09-30: a general, step-by-step walk through the GGM workflo
 prepare it, set up the scenario, calibrate, run, read the results — asking of each step what happens
 today, what it needs, what an agent could do, and where a person stays involved. Short examples from
 the 2023 data as evidence; a summary figure (format open) and a job description per proposed agent at
-the end. Details in
+the end. **Restructured 2026-11-10:** analysis first (where the work lies, design principles), then the
+system and how it works alongside the analyst, then one worked example (a closed Strait of Hormuz).
+The first full draft is about 16 pages with its six figures, against the 12-page target below. Details in
 [`project-thesis-structure.md`](project-thesis-structure.md#5-where-ai-fits-in-the-ggm-workflow).
 
 ### Proof of concept — not this semester
@@ -174,5 +176,5 @@ length, not because they are wrong; each backs a specific point elsewhere:
 - Precise scope and research question — in discussion with supervisors
 - Chapter 6 (discussion and conclusion, merging the earlier proposed chapters 6–8 on 2026-10-15) — not yet confirmed by supervisors
 - Expected length of the project thesis — targets below assume about 36 pages of main text; confirm with Franziska
-- The format of chapter 5's summary figure
+- Chapter 5's length: about 16 pages with figures against a target of 12 — trim, or move pages from elsewhere
 - Final hand-in date for the master's thesis — not yet recorded here
