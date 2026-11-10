@@ -2,7 +2,7 @@
 
 The hub page can't run LaTeX, so a TikZ figure (thesis/figures/*.tex) or a table
 (a table environment with a \\label in thesis/chapters) would otherwise appear only
-as its source. This script compiles each one on its own and writes
+as its source. Figures exported from HTML (thesis/figures/*.pdf) are converted too. This script compiles each one on its own and writes
 overview/figures/<name>.svg, which build.py embeds in the hub's data file. Run it
 after changing a figure or a table, commit the SVGs, and the next sync shows them:
 
@@ -44,7 +44,8 @@ def fingerprint(text: str) -> str:
 
 
 def figure_sources():
-    return sorted(p for p in FIGS.glob("*.tex") if p != STYLE)
+    """TikZ figures (*.tex) and figures exported from HTML (*.pdf, see thesis/figures/html)."""
+    return sorted(p for p in [*FIGS.glob("*.tex"), *FIGS.glob("*.pdf")] if p != STYLE)
 
 
 def table_sources():
@@ -62,6 +63,10 @@ def sources():
     """Every preview the hub can show: {name: (file stem, LaTeX body, fingerprint)}."""
     out = {}
     for src in figure_sources():
+        if src.suffix == ".pdf":
+            fp = hashlib.sha1(src.read_bytes()).hexdigest()[:12]
+            out[src.stem] = (src.stem, f"\\includegraphics{{{src.as_posix()}}}", fp)
+            continue
         text = src.read_text(encoding="utf-8")
         out[src.stem] = (src.stem, f"\\input{{{src.as_posix()}}}", fingerprint(text))
     for label, block in table_sources().items():
