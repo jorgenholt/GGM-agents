@@ -132,6 +132,7 @@ const PALETTE = {
   h: "#4A3428", s: "#F2C9A4", e: "#2B2B2B", m: "#A8563F", o: "#E07A3F", O: "#B85E2B",   // the analyst
   p: "#8B7FF0", P: "#4A3DB8", d: "#2B2150", w: "#FFFFFF", l: "#CFC9FA", y: "#F2C14E",               // the agents
   c: "#1B8A9A", M: "#2D3E50", g: "#B9C7D6",                                          // code, GGM
+  b: "#3B7DD8", x: "#6B7280",                                                          // the data agent's lens
   G: "#4E9A3E", D: "#3E7C31", q: "#A39274", k: "#2B2B2B", S: "#C9A227", u: "#8F7317",   // lessons, heuristics
 };
 const ROBOT = [
@@ -141,7 +142,6 @@ const ROBOT = [
 const HATS = {
   agent:       ["..............", "..............", "......ll......", "......PP......"],
   scenario:    ["......Pllll...", "......Plll....", "......P.......", "......P......."],
-  data:        ["..............", "....PPPPPP....", "....PPyyPP....", "..PPPPPPPPPP.."],
   calibration: ["...ll....ll...", "....P....P....", ".....P..P.....", "......PP......"],
   results:     ["..............", ".PPPPPPPPPPPP.", "....PPPPPP..l.", "....PPPPPP..l."],
 };
@@ -160,6 +160,10 @@ const SPRITES = {
             ".MggggggggggM.", ".MgMMMMMwwggM.", ".MggggggggggM.", ".MMMMMMMMMMMM.", "......MM......", "....MMMMMM....", ".............."],
 };
 for (const [k, hat] of Object.entries(HATS)) SPRITES[k] = [...hat, ...ROBOT];
+// the data agent holds a magnifying glass with blue bars in the lens instead of wearing a hat
+SPRITES.data = ["..............", "..............", "......ll......", "......PP......",
+  "...PPPPPPPP...", "...PppppppPxx.", "...Pddddddxwbx", "..lPdwddwdxbbx", "...PddddddPxx.",
+  "...PppppppPx..", "...PPPPPPPPx..", ".....PppP..x..", "..PPPPPPPPPP..", "..PppppppppP.."];
 
 function pixels(name, cls = "") {
   const rows = SPRITES[name], s = document.createElementNS(NS, "svg");
