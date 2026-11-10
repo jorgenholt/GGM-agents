@@ -1,3 +1,31 @@
 \section{What should not be automated, and the risks}
 
-% TODO: About 500 words. Calibration acceptance, scenario choice and interpretation stay with people; automation bias and loss of skill (Parasuraman, Bainbridge).
+Three parts of the workflow stay with people in the proposed system: the question and the storyline of a scenario, the acceptance of the calibration, and the interpretation of the results.
+This is not a precaution to be relaxed once the agents prove themselves.
+Each is a judgment for which there is no correct answer to check an agent against: a storyline is a view of how the market could develop, a calibration is one of several fits that reproduce the reference values (Section 2.6), and an interpretation decides what a study shows.
+Calibrating economic models to a benchmark is an established method precisely because the modeller takes responsibility for these choices \citep{kydland1996computational}.
+An agent can prepare each of these decisions, but it cannot be accountable for them.
+
+Keeping a person at these points only helps if the person actually judges.
+People tend to rely on automated advice more than they should, and to check it less the more often it has been right \citep{parasuraman2010complacency}.
+The system is designed to be right most of the time, so its success invites exactly this complacency.
+An analyst who has accepted a hundred well-reasoned suggestions will read the hundred-and-first less carefully.
+Two features of the design work against this.
+The confidence classes direct attention to the values that most need it, so that careful review is asked for where it matters rather than everywhere (Section 5.6).
+And the reasons attached to every suggestion give the analyst something to disagree with, not only a number to accept.
+Neither removes the risk.
+It also means that the measure proposed in Section 5.9, the share of suggestions accepted unchanged, is ambiguous: a rising share may mean that the agents have learned, or that the analyst has stopped looking.
+The master's thesis should therefore also track how often analysts edit or reply, and check a sample of accepted suggestions independently.
+
+A second risk is the loss of skill.
+Automating the routine parts of a job leaves people with the hardest parts and less practice at them \citep{bainbridge1983ironies}, and the same has been observed for generative AI \citep{simkute2024ironies}.
+If the calibration agent does the diagnosis, the analyst gets less practice at diagnosing, which is the skill needed to judge whether the agent's diagnosis is right.
+For GGM this matters more than usual, because the knowledge of how to calibrate the model is held by few people and is largely unwritten (Sections 3.5 and 5.6).
+New analysts would gain most from the system, as in other settings where AI helps the least experienced most \citep{brynjolfsson2025generative}, but they are also the ones least able to notice when it is wrong.
+The lessons partly answer this, because they write down rules that today exist only in the developers' heads, and an analyst can read them.
+Calibrating a scenario by hand from time to time, and comparing the result with the agent's, would keep the skill alive and test the agent at the same time.
+
+A third risk is the task that looks routine but is not.
+AI improves work on tasks within its capabilities and makes it worse on tasks just outside them that look similar \citep{dellacqua2026navigating}.
+Looking up an official gas price looks like any other lookup until the country subsidises domestic gas.
+The lessons cover the cases that have been found; the risk lies in those that have not, and the analyst's review is the only protection against them.
