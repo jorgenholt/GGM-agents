@@ -1,58 +1,55 @@
 % Figure 5.4: the workflow as swimlanes -- who does what in each step, and where the analyst signs off.
 \begin{tikzpicture}[ggm, x=1cm, y=1cm]
-  % geometry: five step columns, four lanes
-  \def\colx#1{1.85+#1*2.14}       % left edge of column #1 (0..4)
-  \def\cw{2.04}                   % column width
-  % lanes: name, colour, bottom y
-  \foreach \yb/\c in {5.3/ggmAnalyst, 3.6/ggmAgent, 1.9/ggmCode, 0.2/ggmModel} {
-    \fill[\c!7, rounded corners=2mm] (0,\yb) rectangle (12.6,\yb+1.5);
-    \fill[\c!18, rounded corners=2mm] (0,\yb) rectangle (1.7,\yb+1.5);
+  % geometry: five step columns of width 2.12, four lanes of height 1.85
+  \def\colx#1{1.5+#1*2.22}
+  \def\cw{2.12}
+  \foreach \yb/\c in {6.0/ggmAnalyst, 4.0/ggmAgent, 2.0/ggmCode, 0/ggmModel} {
+    \fill[\c!7, rounded corners=2mm] (0,\yb) rectangle (12.6,\yb+1.85);
+    \fill[\c!18, rounded corners=2mm] (0,\yb) rectangle (1.35,\yb+1.85);
   }
-  % lane labels with icons
-  \pic[scale=0.62] at (0.85,6.35) {person};
-  \node[font=\sffamily\scriptsize\bfseries, text=ggmAnalyst!85!black] at (0.85,5.65) {Analyst};
-  \pic[scale=0.48] at (0.85,4.65) {agent badge};
-  \node[font=\sffamily\scriptsize\bfseries, text=ggmAgent] at (0.85,3.95) {Agents};
-  \pic[scale=0.62] at (0.85,2.95) {gear};
-  \node[font=\sffamily\scriptsize\bfseries, text=ggmCode] at (0.85,2.25) {Code};
-  \pic[scale=0.62] at (0.85,1.0) {laptop};
-  \node[font=\sffamily\scriptsize\bfseries, text=ggmModel] at (0.85,0.55) {GGM};
+  % lane labels
+  \pic[scale=0.72] at (0.675,7.15) {person};
+  \node[font=\sffamily\footnotesize\bfseries, text=ggmAnalyst!85!black] at (0.675,6.38) {Analyst};
+  \pic[scale=0.55] at (0.675,5.15) {agent badge};
+  \node[font=\sffamily\footnotesize\bfseries, text=ggmAgent] at (0.675,4.38) {Agents};
+  \pic[scale=0.7] at (0.675,3.15) {gear};
+  \node[font=\sffamily\footnotesize\bfseries, text=ggmCode] at (0.675,2.38) {Code};
+  \pic[scale=0.72] at (0.675,1.1) {laptop};
+  \node[font=\sffamily\footnotesize\bfseries, text=ggmModel] at (0.675,0.38) {GGM};
   % step header as chevrons
-  \foreach \i/\n/\t in {0/1/Set up the scenario, 1/2--3/Get and prepare data, 2/4/Calibrate, 3/5/Run the model, 4/6/Read the results} {
+  \foreach \i/\n/\t in {0/1/{Set up the\\scenario}, 1/2--3/{Get and\\prepare data}, 2/4/{Calibrate}, 3/5/{Run the\\model}, 4/6/{Read the\\results}} {
     \pgfmathsetmacro{\xl}{\colx{\i}}
     \pgfmathsetmacro{\xr}{\xl+\cw}
-    \fill[ggmModel!85] (\xl,7.4) -- (\xr-0.02,7.4) -- (\xr+0.16,7.73) -- (\xr-0.02,8.06) -- (\xl,8.06) -- (\xl+0.18,7.73) -- cycle;
-    \node[text=white, font=\sffamily\tiny\bfseries, align=center, text width=1.75cm] at (\xl+\cw/2+0.08,7.73) {\n\enspace\t};
+    \fill[ggmModel!85] (\xl,8.45) -- (\xr-0.02,8.45) -- (\xr+0.08,8.83) -- (\xr-0.02,9.21) -- (\xl,9.21) -- (\xl+0.1,8.83) -- cycle;
+    \node[text=white, font=\sffamily\scriptsize\bfseries, align=center] at (\xl+\cw/2+0.05,8.83) {\n\enspace\t};
   }
-  % cells: \cell{col}{lane centre y}{colour}{name}{text}
-  \newcommand{\cell}[5]{%
-    \node[draw=#3!60, fill=white, line width=0.5pt, rounded corners=1.5mm, text width=1.64cm, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}, align=center,
-          font=\sffamily\tiny, text=ggmInk, inner sep=1.3mm, minimum height=0.95cm] (#4) at ({\colx{#1}+\cw/2},#2) {#5};}
-  \newcommand{\ghost}[5]{%
-    \node[draw=#3!40, dashed, rounded corners=1.5mm, text width=1.64cm, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}, align=center,
-          font=\sffamily\tiny, text=ggmMuted, inner sep=1.3mm, minimum height=0.95cm] (#4) at ({\colx{#1}+\cw/2},#2) {#5};}
-  % analyst lane (y = 6.05)
-  \cell{0}{6.05}{ggmAnalyst}{a0}{states the question and storyline; approves edits}
-  \cell{1}{6.05}{ggmAnalyst}{a1}{decides node structure, projections and elasticities}
-  \cell{2}{6.05}{ggmAnalyst}{a2}{follows the log; accepts the fit}
-  \ghost{3}{6.05}{ggmAnalyst}{a3}{nothing to decide}
-  \cell{4}{6.05}{ggmAnalyst}{a4}{interprets and writes the findings}
-  % agent lane (y = 4.35)
-  \cell{0}{4.35}{ggmAgent}{g0}{finds the rows the storyline touches; proposes edits}
-  \cell{1}{4.35}{ggmAgent}{g1}{reads reports, maps sources to nodes, drafts projections}
-  \cell{2}{4.35}{ggmAgent}{g2}{diagnoses deviations; proposes a change}
-  \ghost{3}{4.35}{ggmAgent}{g3}{at most explains a failed run}
-  \cell{4}{4.35}{ggmAgent}{g4}{drafts explanations; flags odd patterns}
-  % code lane (y = 2.65)
-  \cell{0}{2.65}{ggmCode}{c0}{applies edits; shows the difference}
-  \cell{1}{2.65}{ggmCode}{c1}{downloads, converts, aggregates, checks}
-  \cell{2}{2.65}{ggmCode}{c2}{deviation report; bounds; log}
-  \cell{3}{2.65}{ggmCode}{c3}{runs the scenario matrix; records inputs}
-  \cell{4}{2.65}{ggmCode}{c4}{compares the scenarios}
-  % model lane (y = 0.95)
-  \cell{1}{0.95}{ggmModel}{m1}{loads data; warns on capacity}
-  \cell{2}{0.95}{ggmModel}{m2}{baseline run}
-  \cell{3}{0.95}{ggmModel}{m3}{solves each variant}
+  % cells: \cell{col}{lane centre y}{colour}{name}{text}; all the same size so that rows align
+  \tikzset{cellbase/.style={rounded corners=1.5mm, text width=1.86cm, align=center, font=\sffamily\scriptsize,
+           inner sep=1.3mm, minimum height=1.45cm, line width=0.5pt}}
+  \newcommand{\cell}[5]{\node[cellbase, draw=#3!60, fill=white, text=ggmInk] (#4) at ({\colx{#1}+\cw/2},#2) {#5};}
+  \newcommand{\ghost}[5]{\node[cellbase, draw=#3!40, dashed, text=ggmMuted] (#4) at ({\colx{#1}+\cw/2},#2) {#5};}
+  % analyst lane
+  \cell{0}{6.925}{ggmAnalyst}{a0}{states the question and storyline; approves edits}
+  \cell{1}{6.925}{ggmAnalyst}{a1}{decides nodes, projections and elasticities}
+  \cell{2}{6.925}{ggmAnalyst}{a2}{follows the log; accepts the fit}
+  \ghost{3}{6.925}{ggmAnalyst}{a3}{nothing to decide}
+  \cell{4}{6.925}{ggmAnalyst}{a4}{interprets and writes the findings}
+  % agent lane
+  \cell{0}{4.925}{ggmAgent}{g0}{finds the rows the storyline touches; proposes edits}
+  \cell{1}{4.925}{ggmAgent}{g1}{reads reports, maps sources, drafts projections}
+  \cell{2}{4.925}{ggmAgent}{g2}{diagnoses deviations; proposes a change}
+  \ghost{3}{4.925}{ggmAgent}{g3}{at most explains a failed run}
+  \cell{4}{4.925}{ggmAgent}{g4}{drafts explanations; flags odd patterns}
+  % code lane
+  \cell{0}{2.925}{ggmCode}{c0}{applies edits; shows the difference}
+  \cell{1}{2.925}{ggmCode}{c1}{downloads, converts, aggregates, checks}
+  \cell{2}{2.925}{ggmCode}{c2}{deviation report; bounds; log}
+  \cell{3}{2.925}{ggmCode}{c3}{runs the scenario matrix; records inputs}
+  \cell{4}{2.925}{ggmCode}{c4}{compares the scenarios}
+  % model lane
+  \cell{1}{0.925}{ggmModel}{m1}{loads data; warns on capacity}
+  \cell{2}{0.925}{ggmModel}{m2}{baseline run}
+  \cell{3}{0.925}{ggmModel}{m3}{solves each variant}
   % flows inside the columns
   \draw[ggm flow=ggmAnalyst] (a0) -- (g0);
   \draw[ggm flow=ggmAgent] (g0) -- (c0);
@@ -63,18 +60,17 @@
   \draw[ggm flow=ggmModel, rounded corners=2mm] (m3.east) -| (c4.south);
   \draw[ggm flow=ggmCode] (c4) -- (g4);
   \draw[ggm flow=ggmAgent] (g4) -- (a4);
-  % calibration loop
-  \draw[ggm flow=ggmAgent] (g2) -- (c2);
-  \draw[ggm flow=ggmCode] (c2) -- (m2);
-  \draw[ggm flow=ggmModel, line width=1.1pt, rounded corners=3mm]
-    (m2.west) -- ++(-0.13,0) |- ($(g2.west)+(0,-0.15)$);
-  \node[font=\sffamily\tiny\bfseries, text=ggmModel, fill=ggmCode!7, inner sep=0.3mm, rotate=90] at ($(m2.west)+(-0.13,0.85)$) {repeat};
-  \draw[ggm flow=ggmAgent, densely dotted] (a2) -- (g2);
+  % calibration loop: changes go down on the left, results come back up on the right
+  \draw[ggm flow=ggmAgent] ($(g2.south)+(-0.45,0)$) -- ($(c2.north)+(-0.45,0)$);
+  \draw[ggm flow=ggmCode] ($(c2.south)+(-0.45,0)$) -- ($(m2.north)+(-0.45,0)$);
+  \draw[ggm flow=ggmModel] ($(m2.north)+(0.45,0)$) -- ($(c2.south)+(0.45,0)$);
+  \draw[ggm flow=ggmCode] ($(c2.north)+(0.45,0)$) -- ($(g2.south)+(0.45,0)$);
+  \draw[ggmModel, line width=0.9pt, -{Stealth[length=1.5mm]}] ($(c2.north)!0.5!(g2.south)$) ++(80:0.17) arc (80:-230:0.17);
+  \draw[ggm flow=ggmAnalyst, densely dotted] (a2) -- (g2);
   % sign-off gates
-  \foreach \n in {a0,a1,a2,a4} \pic[scale=0.9] at ($(\n.north east)+(-0.05,-0.05)$) {check};
+  \foreach \n in {a0,a1,a2,a4} \pic[scale=0.95] at ($(\n.north east)+(-0.06,-0.06)$) {check};
   % work can go back
   \draw[ggm flow=ggmAnalyst, dashed, line width=0.8pt, rounded corners=2mm]
-    ($(a4.north)+(0.3,0)$) |- (6,7.08) -| ($(a0.north)+(-0.3,0)$);
-  \node[font=\sffamily\tiny, text=ggmAnalyst!85!black, fill=white, inner sep=0.6mm] at (6.25,7.08) {an implausible result can send the work back to the storyline};
-  \draw[ggm flow=ggmAnalyst, dashed, line width=0.8pt, rounded corners=1.5mm] ($(a2.north)+(-0.2,0)$) |- (5.0,6.76) -| ($(a1.north)+(0.1,0)$);
+    ($(a4.north)+(-0.35,0)$) |- (6,8.13) -| ($(a0.north)+(-0.35,0)$);
+  \node[font=\sffamily\scriptsize, text=ggmAnalyst!85!black, fill=white, inner xsep=1mm, inner ysep=0.4mm] at (6.65,8.13) {an implausible result can send the work back to the storyline};
 \end{tikzpicture}

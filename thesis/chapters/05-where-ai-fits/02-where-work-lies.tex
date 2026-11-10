@@ -13,16 +13,42 @@ Table \ref{tab:where-work-lies} gives the result for each step, and Figure \ref{
 \small
 \caption{What each step of the workflow needs, and where its parts belong.}
 \label{tab:where-work-lies}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\setlength{\belowcaptionskip}{6pt}
+\newcommand{\hdr}[2]{\textcolor{#1}{\rule{1.8mm}{1.8mm}}\enspace\textbf{#2}}
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{2.1cm}*{3}{>{\raggedright\arraybackslash\setlength{\parskip}{2pt}\everypar{\hangindent=0.7em\hangafter=1}}X}@{}}
 \toprule
-Step & Ordinary code & Agent & Person \\
+\textbf{Step} & \hdr{ggmCode}{Ordinary code} & \hdr{ggmAgent}{Agent} & \hdr{ggmAnalyst}{Analyst} \\
 \midrule
-Set up the scenario & Apply edits; compare workbooks & Find the rows a storyline touches; propose edits and knock-on choices; propose a node structure & Question, storyline and node structure; approve edits \\
-Get source data & Download and parse databases & Extract values from reports; record source and confidence & Choose the anchoring outlook; review by confidence \\
-Prepare the data & Convert, aggregate, split, interpolate, check & Map sources to nodes; draft projections and demand parameters; explain warnings & Review mappings; decide projections and demand parameters \\
-Calibrate & Deviation report; apply changes within bounds; run; log & Diagnose deviations; propose changes with reasons; research starting prices & Accept the calibration; choose between fits; set market power \\
-Run the model & Run the scenario matrix; record inputs and solver status & Explain a failed run & Nothing routinely \\
-Read the results & Compare scenarios; compute balances & Draft explanations; flag implausible patterns & Interpret; decide what to claim \\
+Set up the scenario
+  & Apply edits \par Compare workbooks
+  & Find the rows a storyline touches \par Propose edits and knock-on choices \par Propose a node structure
+  & Set the question, storyline and node structure \par Approve edits \\
+\addlinespace[5pt]
+Get source data
+  & Download and parse databases
+  & Extract values from reports \par Record source and confidence
+  & Choose the anchoring outlook \par Review by confidence \\
+\addlinespace[5pt]
+Prepare the data
+  & Convert, aggregate, split, interpolate \par Check consistency
+  & Map sources to nodes \par Draft projections and demand parameters \par Explain warnings
+  & Review mappings \par Decide projections and demand parameters \\
+\addlinespace[5pt]
+Calibrate
+  & Report deviations \par Apply changes within bounds \par Run and log
+  & Diagnose deviations \par Propose changes with reasons \par Research starting prices
+  & Accept the calibration \par Choose between fits \par Set market power \\
+\addlinespace[5pt]
+Run the model
+  & Run the scenario matrix \par Record inputs and solver status
+  & Explain a failed run
+  & \textit{Nothing routinely} \\
+\addlinespace[5pt]
+Read the results
+  & Compare scenarios \par Compute balances
+  & Draft explanations \par Flag implausible patterns
+  & Interpret \par Decide what to claim \\
 \bottomrule
 \end{tabularx}
 \end{table}

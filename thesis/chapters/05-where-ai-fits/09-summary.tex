@@ -8,14 +8,32 @@ The tests are designed so that the master's thesis can run them on the 2023 data
 \small
 \caption{The four proposed agents and how each could be tested.}
 \label{tab:agents}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\setlength{\belowcaptionskip}{6pt}
+\newcommand{\agent}[1]{\textcolor{ggmAgent}{\rule{1.8mm}{1.8mm}}\enspace\textbf{#1}}
+\newcommand{\fld}[1]{\textcolor{ggmMuted}{#1}}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{1.45cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
-Agent & Given & Produces & Never & Works if \\
+\agent{Scenario} & \fld{Given} & A storyline and the base workbooks \\
+ & \fld{Produces} & Proposed edits with reasons, knock-on choices and a node structure \\
+ & \fld{Never} & Edits a workbook without approval, or decides the storyline \\
+ & \fld{Works if} & Given the storylines behind the 2023 variants, it proposes the edits that distinguish them, without misses \\
 \midrule
-Scenario & A storyline; the base workbooks & Proposed edits with reasons; knock-on choices; a node structure & Edits a workbook without approval; decides the storyline & Given the storylines behind the 2023 variants, it proposes the edits that distinguish them, without misses \\
-Data & The node structure; sources; the lessons & Values with source and confidence; mappings; drafts of projections and demand parameters & Computes a number itself; fills a gap without saying so & Its general workbook matches the developers', and every difference is a newer source or a flagged uncertainty \\
-Calibration & Deviation reports; bounds; the documented heuristics; the lessons & Proposed changes with reasons; a log & Changes elasticities or market power; exceeds bounds; declares the fit final & It restores the fit of a deliberately perturbed 2023 scenario, and its diagnoses agree with the documented heuristics \\
-Results & Result tables; comparisons from code; the scenario's inputs & Draft explanations; flags & States a number that is not in the tables & Its flags point to real issues, and its explanations hold when traced to the tables \\
+\agent{Data} & \fld{Given} & The node structure, the sources and the lessons \\
+ & \fld{Produces} & Values with source and confidence, mappings, and drafts of projections and demand parameters \\
+ & \fld{Never} & Computes a number itself, or fills a gap without saying so \\
+ & \fld{Works if} & Its general workbook matches the developers', and every difference is a newer source or a flagged uncertainty \\
+\midrule
+\agent{Calibration} & \fld{Given} & Deviation reports, bounds, the documented heuristics and the lessons \\
+ & \fld{Produces} & Proposed changes with reasons, and a log \\
+ & \fld{Never} & Changes elasticities or market power, exceeds bounds, or declares the fit final \\
+ & \fld{Works if} & It restores the fit of a deliberately perturbed 2023 scenario, and its diagnoses agree with the documented heuristics \\
+\midrule
+\agent{Results} & \fld{Given} & Result tables, comparisons from code and the scenario's inputs \\
+ & \fld{Produces} & Draft explanations and flags \\
+ & \fld{Never} & States a number that is not in the tables \\
+ & \fld{Works if} & Its flags point to real issues, and its explanations hold when traced to the tables \\
 \bottomrule
 \end{tabularx}
 \end{table}
