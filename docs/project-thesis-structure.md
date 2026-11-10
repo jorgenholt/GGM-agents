@@ -46,7 +46,8 @@ it is the actual contribution. Everything else supports it.
 - The literature review is its own chapter, placed second — supervisor feedback, recorded 2026-09-30.
 - No proof of concept this semester; it moves to the master's thesis — our decision, 2026-09-30.
 - Chapter 4 is a general chapter on LLMs; the link to GGM is made in chapter 5 — 2026-09-30.
-- Chapter 5 is a step-by-step walk through the workflow (details below) — agreed 2026-09-30.
+- Chapter 5 is a step-by-step walk through the workflow (details below) — agreed 2026-09-30;
+  **restructured 2026-11-10** into analysis, system design and one worked example.
 
 ---
 
@@ -145,7 +146,27 @@ already covered something, cite back to chapter 2 rather than repeating it.
   chapter 5 to answer "what could an agent do" at each step
 
 ### 5. Where AI fits in the GGM workflow
-**The core contribution.** *Approach agreed 2026-09-30.*
+**The core contribution.** *Approach agreed 2026-09-30; restructured 2026-11-10.*
+
+**Current structure (2026-11-10).** The first draft walked through the steps one by one ("today /
+what an agent could do") and read as repetitive. The chapter now has two parts and an example:
+
+1. Approach — 2. Where the work lies (the analysis: one table and the task map) — 3. Design
+   principles — 4. The system (the master figure) — 5. The workflow through the system (swimlanes)
+   — 6. Working alongside the analyst — 7. The calibration agent — 8. Example: a study of the Strait
+   of Hormuz — 9. Summary and how to test the agents (the job descriptions, as a table)
+
+- **The system works alongside the analyst.** Every agent output is a *suggestion* with reasons,
+  source and confidence class; the analyst accepts, edits or replies in plain language. Replies that
+  hold a general rule become *lessons* — approved by the analyst, kept in a plain document and
+  retrieved into the agent's context — so the system improves with use without retraining.
+  Corrections also become test cases. This came from us, not from the developers.
+- **The Hormuz study is one example section after the theory**, not a thread through every section.
+  No numbers from it: we only saw it on Lukas's screen, and it is his work.
+- **Figures are TikZ**, one file each in `thesis/figures/`, sharing `thesis/figures/style.tex`
+  (loaded in `main.tex`). The hub keeps figures as raw LaTeX blocks, so they survive the sync.
+
+*The plan below is the original one from 2026-09-30, kept for the reasoning.*
 
 Written **generally**, so it holds for any GGM configuration rather than one dataset. The chapter walks
 through the workflow from chapter 3 in the order the work happens:
@@ -170,7 +191,8 @@ illustrate; they are not the backbone.
 **At the end:**
 
 - **A figure that sums it up** — where each step lands, from "automate" to "keep with a person".
-  *Format not settled.* One candidate is a map with each step placed by how well it suits an LLM
+  *Settled 2026-11-10: the task map (judgment needed against how quietly an error passes), plus a
+  master figure of the whole system.* One candidate is a map with each step placed by how well it suits an LLM
   against how much judgment it needs and how quietly mistakes slip through.
 - **A job description for each proposed agent** — what it gets, what it produces, which tools it
   uses, what it must never do (arithmetic in its head, changing calibrated values without sign-off),
