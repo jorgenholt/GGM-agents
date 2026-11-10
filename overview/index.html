@@ -1574,8 +1574,13 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     // Words per chapter
     const byCh = {};
     states.forEach((x) => (byCh[x.chapter] = (byCh[x.chapter] || 0) + x.words));
-    const max = Math.max(1, ...Object.values(byCh));
-    $("#w-bars").innerHTML = D.writing.chapters.map((c) => `<div class="w-bar"><div style="display:flex;justify-content:space-between;gap:6px"><span>${esc(c.n)}. ${esc(c.title)}</span><b class="num">${(byCh[c.key] || 0).toLocaleString("en-GB")}</b></div><div class="track"><div class="fill" style="width:${((byCh[c.key] || 0) / max) * 100}%"></div></div></div>`).join("");
+    // each bar is progress against the chapter's word target (docs/thesis-scope.md, length targets)
+    const TARGET = { 1: 1050, 2: 1950, 3: 1700, 4: 2700, 5: 4700, 6: 1550 };
+    $("#w-bars").innerHTML = D.writing.chapters.map((c) => {
+      const w = byCh[c.key] || 0, t = TARGET[+c.n];
+      const pct = t ? Math.min(100, (w / t) * 100) : 0;
+      return `<div class="w-bar"><div style="display:flex;justify-content:space-between;gap:6px"><span>${esc(c.n)}. ${esc(c.title)}</span><b class="num">${w.toLocaleString("en-GB")}${t ? ` / ${t.toLocaleString("en-GB")}` : ""}</b></div><div class="track" title="${Math.round(pct)}% of the target"><div class="fill" style="width:${pct}%"></div></div></div>`;
+    }).join("");
     renderWordChart(total);
   }
 
