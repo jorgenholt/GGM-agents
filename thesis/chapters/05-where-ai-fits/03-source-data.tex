@@ -1,2 +1,24 @@
 \section{Get source data}
 
+\textbf{Today.} The sources differ by workbook.
+Infrastructure data come from databases: ENTSOG and GIE for Europe, the EIA for the United States and the Global Energy Monitor elsewhere, mostly as downloadable tables.
+The projections are anchored to the aggregates of a published outlook, and split across nodes with national or regional statistics.
+For elasticities and sector and seasonal shares, there is no data set to fetch; estimates come from country studies of varying age, or from earlier GGM work kept in what Lukas Barner called a large number of non-standardised spreadsheets.
+Part of the work is already supported by tools: one developer has a script that extracts pipeline data, and has used AI tools mostly for building the lookup tables that map sources to nodes.
+
+\textbf{What the step needs.} Finding the current edition of each source, reading it in whatever form it comes, and judging how much to trust each value.
+The last of these is the hardest.
+A capacity read from an operator's current database is a different kind of value from a regional consumption share inferred from GDP, and for some regions, such as parts of Russia, the developers describe the split as largely their own estimate.
+Some traps require domain knowledge rather than reading skill: the documentation warns, for instance, that regional shares in the United States must be computed from marketed rather than gross production \citep[p.~24]{egging2019global}.
+
+\textbf{What an agent could do.} Retrieval and extraction suit an LLM well (Section 4.2).
+Where a source is a structured download, ordinary code should fetch and parse it, since the format is stable and the result must be exact.
+Where a source is a report, a regulator's web page or a paper, an agent could find the relevant table, extract the values and record where each came from.
+Lukas Barner's requirement for such an agent was specific: every value should carry its source and a statement of how it was obtained, whether from a recent official source, an older report, an analogy with a similar country (and which similarity), or a guess.
+This turns the agent's output into something a reviewer can check selectively, starting with the guesses, rather than a table of numbers of unknown origin.
+It also follows the design of AutoSAM, which records every value it had to assume (Section 2.2).
+Licensed sources raise a separate question: if their terms do not allow sending them to an external provider, the extraction must run on a local model, as Section 4.4 discussed.
+
+\textbf{Where a person stays involved.} Choosing which outlook anchors the scenario is part of the storyline and stays with the analysts.
+Beyond that, the person's role is to review values by their confidence class rather than one by one.
+The risk to watch is the plausible gap-filler: a value with no source that looks like any other value in the table, which is the hallucination problem of Section 4.3 in its most damaging form.

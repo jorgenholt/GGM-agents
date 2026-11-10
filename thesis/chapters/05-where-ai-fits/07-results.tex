@@ -1,2 +1,21 @@
 \section{Read the results}
 
+\textbf{Today.} The model writes tables of production, consumption, flows, infrastructure investment and prices for every node and period.
+The analysts check them for consistency and plausibility, and an implausible result can send them back to an earlier step: in the working session, the example was a short export boom that the model could not justify building the infrastructure for, which led to a correction of the storyline rather than of the model.
+The results are then interpreted as findings, in journal articles such as the analysis of whether the European Union still needs Russian gas \citep{barner2025russian} and in policy-facing reports \citep{holz2024diw}.
+This step was discussed least in the working session, so its description rests mainly on the documentation and the published studies.
+
+\textbf{What the step needs.} Three things, again of different kinds.
+Comparing scenarios, computing balances and totals, and tracing which flows and investments changed is arithmetic.
+Explaining why a result looks as it does, for instance why prices in one region rise more than in another when a route closes, is reasoning across the model's structure and the scenario's inputs.
+Deciding what the results mean, and what may be claimed from them, is the research itself.
+
+\textbf{What an agent could do.} Code should produce the comparisons: differences between scenarios, utilisation of each arc, and the deviations from the reference values that Section 5.5 already requires.
+An agent could then draft explanations, linking a change in the results to the inputs that changed, and flag patterns that experienced analysts would question, such as capacity that is built and then barely used, or a trade flow that reverses from one period to the next.
+Explaining an energy model's results to people who did not build it is one of the uses of LLMs already proposed for energy-system modelling \citep{forootani2025re}.
+As in the systems of Section 2.4, every number in such an explanation must come from the result tables, never from the model's own text.
+
+\textbf{Where a person stays involved.} The interpretation stays with the analysts.
+Two weaknesses from Section 4.3 make this more than a formality.
+An LLM tends to agree with the view it is presented with, so an agent that knows the storyline may explain away a result that should have prompted a revision.
+And a fluent explanation raises a reader's confidence whether or not it is right, so the agent's drafts are best treated as a list of hypotheses for the analyst to check, each pointing to the tables that support it.

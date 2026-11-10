@@ -1,2 +1,15 @@
 \section{Run the model}
 
+\textbf{Today.} Running GGM is a single command that names the scenario, such as \emph{FFF\_NENO} for the fossil-and-fissile-free climate scenario combined with the new normal geopolitical one; the run script reads the three workbooks, builds the optimisation problem, solves it with Gurobi and writes the result tables.
+Studies are run as a matrix of climate and geopolitical scenarios, or a chosen subset of it.
+
+\textbf{What the step needs.} Nothing that requires judgment: starting the runs, waiting, checking that the solver finished and collecting the output.
+The only skill involved is recognising when a run has failed or returned something unusable, which is visible in the solver's status and log.
+
+\textbf{What an agent could do.} Very little that ordinary code cannot do better.
+A short script can run the whole scenario matrix, record the solver status and the run time for each scenario, and store the results under a name that identifies the workbooks used.
+This is a workflow in the sense of Section 4.1, and making it an agent would add cost and unpredictability for no gain.
+The one place an LLM could help is in explaining a failed run, for example by reading the solver log and the load-time warnings and relating them to the edits made in earlier steps, as OptiChat does for infeasible optimisation models (Section 2.4).
+
+\textbf{Where a person stays involved.} Nowhere routinely.
+The run script should, however, record exactly which workbooks and which version of the code produced each result, so that any result can be traced and reproduced later; since agent-assisted steps cannot be reproduced by re-running a prompt (Section 4.3), the record of inputs carries the reproducibility.

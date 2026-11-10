@@ -1,2 +1,24 @@
 \section{Set up the scenario}
 
+\textbf{Today.} A study starts with a question, such as what happens if Russian gas no longer reaches Europe, or if the Strait of Hormuz is closed.
+The analysts agree on a storyline, decide which node structure the available data can support, and translate the storyline into scenario settings.
+A new study is created by copying the workbooks and run script of an earlier one.
+The 2023 dataset shows what the settings look like in practice.
+Two of its three geopolitical variants each differ from the third in a single sheet: restoring Russian pipeline gas to Europe means changing the capacities of eight pipelines in the arcs sheet, and a European supply disruption means a zero sales limit for Russia in 38 European nodes.
+In other studies, a route is blocked by giving it a very large shipping distance, and market power is adjusted to represent long-term contracts.
+
+\textbf{What the step needs.} Three different things.
+Choosing the question and the storyline is a research decision; the developers stress that scenarios are meant to be coherent and interesting, not likely.
+Translating the storyline into settings needs detailed knowledge of the workbooks: which arcs count as Russian supply to Europe, whether routes through Belarus, Ukraine and Turkey are included, from which model year the change applies, and whether expansion limits must be closed too, since otherwise the model may rebuild the capacity that was removed.
+Choosing the node structure needs knowledge of which statistics exist at which level; the 2023 data use 136 nodes, while the Hormuz study used about ninety.
+
+\textbf{What an agent could do.} The translation is where an agent can help most.
+Given a storyline in plain language and the base workbooks, it could search the sheets for every row the storyline touches and propose a list of edits, each with a reason, together with the knock-on choices a person should consider, such as whether market power still makes sense for a supplier whose exports are set to zero.
+The search through hundreds of rows is irregular reading of the kind Section 4.2 described, and a missed row is a quiet error: the model still solves, and the ban simply leaks.
+Ordinary code would apply the approved edits and produce a comparison of the new workbooks with the base, which shows at a glance that, for instance, only one sheet has changed.
+An agent could also check that the settings are consistent with the storyline, for example flag a scenario of strong climate policy in which gas demand still rises to 2050, and propose a node structure from the statistics and infrastructure data available, which is the first step of the workflow Lukas Barner sketched for an agent.
+The closest precedent is the system of \citet{golden2026agentic}, in which an LLM drafts scenario narratives and maps their assumptions onto the inputs of existing energy-market models, with an analyst approving the result.
+
+\textbf{Where a person stays involved.} The question, the storyline and the node structure stay with the analysts, and so does the decision whether a question justifies a new study at all: for the Hormuz runs, the developers waited about a month to see whether the situation would last.
+The agent proposes edits; a person approves them before they are applied.
+In the terms of \citet{parasuraman2000model}, the agent gathers and analyses, while the decision stays with a person.

@@ -1,2 +1,33 @@
 \section{Prepare the data}
 
+Preparing the data means filling the general and projected workbooks for the agreed node structure.
+The work divides into three parts that call for different answers: the infrastructure data, the reference quantities, and the demand parameters.
+
+\textbf{Infrastructure data.} Today, capacities reported per country pair, state pair or pipeline segment are mapped to model nodes and aggregated, terminals are assigned to nodes, and shipping distances are computed from terminal coordinates.
+Adding a single LNG terminal touches three sheets: a new node, a new arc and new rows of distances.
+The rules are clear but irregular, since each source reports in its own geography; the Global Energy Monitor, for example, splits pipelines into segments at borders, so a capacity sometimes has to be inferred.
+This part fits the division of Section 4.5 almost exactly.
+Matching a source's names for countries, states and facilities to model nodes is irregular reading, which an agent can do and record in a lookup table.
+Everything after the mapping has one correct answer: converting units, summing parallel pipelines, computing distances, and checking that every node in the arcs sheet exists and that every LNG node has distances.
+That belongs in ordinary code, and since its output can be checked cheaply, the part can be largely automated, with a person reviewing the lookup table rather than the values.
+GGM already checks, when loading the data, whether any node's projected exports or imports exceed its transport capacity (Section 3.4).
+What is missing is not the detection but the interpretation and repair: an agent could explain such a warning and propose which capacity or projection to revisit.
+
+\textbf{Reference quantities.} The projected production and consumption for every node and year are the storyline in numbers.
+They are anchored to an outlook, adjusted wherever the analysts disagree with it, and split across nodes with regional statistics or proxies, which takes an experienced analyst about a week (Section 3.3).
+Lukas Barner considered this the part least suited to automation, and the argument of Chapter 4 agrees: there is no correct answer to check against, so question 3 of Section 4.5 fails, and an error, such as a short export boom that the infrastructure cannot justify, appears only in the results.
+An agent can still reduce the work.
+It could assemble the statistics for each node, propose a split with its sources and confidence, and flag nodes where the storyline implies something implausible, which is a check the analysts now make by eye across all nodes.
+Code would do the arithmetic: splitting totals by shares, interpolating between years and checking that the nodes add up to the anchoring aggregates.
+The adjustments themselves, which encode the analysts' view of the market, stay with them.
+This is the case \citet{dellacqua2026navigating} warn about: splitting consumption across nodes looks like the mapping of pipelines, but only the latter has a right answer.
+
+\textbf{Demand parameters.} Elasticities and sector and seasonal shares have no data set behind them.
+Today they are carried over from earlier work, copied from a similar country or rebuilt for a study; for the Hormuz runs, for instance, the sectors were replaced by elasticity classes and seasonality was dropped.
+An agent could search the literature for estimates and propose values by analogy, stating which country it borrowed from and why.
+Because these parameters change little between studies, the value of automating them is small, and a person reviewing a short list of proposals is cheaper than building more.
+
+\textbf{Where a person stays involved.} The workflow Lukas Barner proposed for an agent puts a human review after the node structure, the reference quantities, the elasticities and the seasonal shares, and only the general data without one.
+The analysis here supports that order.
+For the infrastructure data, the person checks the mapping and the flagged exceptions; for the projections and demand parameters, the person decides, and the agent prepares the material and records where it came from.
+He also suggested how the review could work: the agent shows each value with its source and confidence, alternatives side by side, and the reviewer returns an edited workbook with overrides and notes that the agent takes into the next round.
