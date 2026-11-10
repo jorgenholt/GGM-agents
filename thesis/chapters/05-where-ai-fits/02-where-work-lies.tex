@@ -14,8 +14,8 @@ Table \ref{tab:where-work-lies} gives the result for each step, and Figure \ref{
 \caption{What each step of the workflow needs, and where its parts belong.}
 \label{tab:where-work-lies}
 \newcommand{\hdr}[2]{\textcolor{#1}{\rule{1.8mm}{1.8mm}}\enspace\textbf{#2}}
-\setlength{\tabcolsep}{5pt}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{2.1cm}*{3}{>{\raggedright\arraybackslash\setlength{\parskip}{2pt}\everypar{\hangindent=0.7em\hangafter=1}}X}@{}}
+\setlength{\tabcolsep}{6pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{2.1cm}*{3}{>{\raggedright\arraybackslash\setlength{\parskip}{3pt}\everypar{\hangindent=0.7em\hangafter=1}}X}@{}}
 \toprule
 \textbf{Step} & \hdr{ggmCode}{Ordinary code} & \hdr{ggmAgent}{Agent} & \hdr{ggmAnalyst}{Analyst} \\
 \midrule
@@ -23,27 +23,27 @@ Set up the scenario
   & Apply edits \par Compare workbooks
   & Find the rows a storyline touches \par Propose edits and knock-on choices \par Propose a node structure
   & Set the question, storyline and node structure \par Approve edits \\
-\addlinespace[5pt]
+\tabsep
 Get source data
   & Download and parse databases
   & Extract values from reports \par Record source and confidence
   & Choose the anchoring outlook \par Review by confidence \\
-\addlinespace[5pt]
+\tabsep
 Prepare the data
   & Convert, aggregate, split, interpolate \par Check consistency
   & Map sources to nodes \par Draft projections and demand parameters \par Explain warnings
   & Review mappings \par Decide projections and demand parameters \\
-\addlinespace[5pt]
+\tabsep
 Calibrate
   & Report deviations \par Apply changes within bounds \par Run and log
   & Diagnose deviations \par Propose changes with reasons \par Research starting prices
   & Accept the calibration \par Choose between fits \par Set market power \\
-\addlinespace[5pt]
+\tabsep
 Run the model
   & Run the scenario matrix \par Record inputs and solver status
   & Explain a failed run
   & \textit{Nothing routinely} \\
-\addlinespace[5pt]
+\tabsep
 Read the results
   & Compare scenarios \par Compute balances
   & Draft explanations \par Flag implausible patterns

@@ -10,25 +10,24 @@ The tests are designed so that the master's thesis can run them on the 2023 data
 \label{tab:agents}
 \newcommand{\agent}[1]{\textcolor{ggmAgent}{\rule{1.8mm}{1.8mm}}\enspace\textbf{#1}}
 \newcommand{\fld}[1]{\textcolor{ggmMuted}{#1}}
-\setlength{\tabcolsep}{5pt}
-\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{6pt}
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{1.45cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
 \agent{Scenario} & \fld{Given} & A storyline and the base workbooks \\
  & \fld{Produces} & Proposed edits with reasons, knock-on choices and a node structure \\
  & \fld{Never} & Edits a workbook without approval, or decides the storyline \\
  & \fld{Works if} & Given the storylines behind the 2023 variants, it proposes the edits that distinguish them, without misses \\
-\midrule
+\tabsep
 \agent{Data} & \fld{Given} & The node structure, the sources and the lessons \\
  & \fld{Produces} & Values with source and confidence, mappings, and drafts of projections and demand parameters \\
  & \fld{Never} & Computes a number itself, or fills a gap without saying so \\
  & \fld{Works if} & Its general workbook matches the developers', and every difference is a newer source or a flagged uncertainty \\
-\midrule
+\tabsep
 \agent{Calibration} & \fld{Given} & Deviation reports, bounds, the documented heuristics and the lessons \\
  & \fld{Produces} & Proposed changes with reasons, and a log \\
  & \fld{Never} & Changes elasticities or market power, exceeds bounds, or declares the fit final \\
  & \fld{Works if} & It restores the fit of a deliberately perturbed 2023 scenario, and its diagnoses agree with the documented heuristics \\
-\midrule
+\tabsep
 \agent{Results} & \fld{Given} & Result tables, comparisons from code and the scenario's inputs \\
  & \fld{Produces} & Draft explanations and flags \\
  & \fld{Never} & States a number that is not in the tables \\

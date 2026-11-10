@@ -11,6 +11,13 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage[font=small,labelfont=bf,skip=6pt]{caption}
+\usepackage{colortbl}
+% Tables: more air between rows, dark rules only at top and bottom,
+% and \tabsep for a light rule between groups of rows.
+\renewcommand{\arraystretch}{1.3}
+\setlength{\aboverulesep}{0.8ex}
+\setlength{\belowrulesep}{0.9ex}
+\newcommand{\tabsep}{\arrayrulecolor{black!18}\specialrule{0.4pt}{5pt}{6pt}\arrayrulecolor{black}}
 \input{figures/style}
 \usepackage[round,authoryear]{natbib}
 \usepackage[hidelinks]{hyperref}
