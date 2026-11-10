@@ -1,0 +1,160 @@
+<!doctype html>
+<!-- Figure 5.4: a suggestion on the analyst's screen, and where the analyst's answer goes. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ch5-review</title>
+<link rel="stylesheet" href="fig.css">
+<style>
+  .layout { display: grid; grid-template-columns: 1.22fr 1fr; column-gap: 9mm; align-items: start; }
+  .ph { display: block; height: 1.2mm; border-radius: 0.6mm; background: #DDE1E6; }
+  .cap { font-size: 7.5pt; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+
+  /* the analyst's screen */
+  .screen { border: var(--hair) solid #B9C0C8; border-radius: var(--radius); overflow: hidden; background: #F6F7F9; }
+  .bar { display: flex; align-items: center; gap: 1.2mm; background: #E7EAEE; padding: 1.3mm 2mm; font-size: 7.5pt; color: var(--muted); }
+  .bar i, .bar .dot { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: #C3C9D0; }
+  .bar .ttl { margin-left: 1.5mm; }
+  .desk { display: grid; grid-template-columns: 23mm 1fr; gap: 2.6mm; padding: 2.6mm; }
+
+  .sheet { --c: var(--code); font-size: 7.5pt; }
+  .sheet .tab { background: var(--model); color: #fff; font-weight: 700; padding: 0.7mm 1.4mm; border-radius: 1mm 1mm 0 0; }
+  .sheet table { width: 100%; border-collapse: collapse; background: #fff; }
+  .sheet th { text-align: left; font-weight: 400; color: var(--muted); background: #EDF0F3; padding: 0.6mm 1.2mm; }
+  .sheet td { border-top: var(--hair) solid #E3E6EA; padding: 0 1.2mm; height: 4.2mm; vertical-align: middle; }
+  .sheet td:first-child, .sheet th:first-child { width: 42%; }
+  .sheet td:last-child { text-align: center; width: 24%; }
+  .sheet tr.on td { background: color-mix(in srgb, var(--agent) 12%, white); }
+  .sheet tr.on td.v span { display: block; height: 2.8mm; border: 0.9pt solid var(--agent); border-radius: 0.8mm; background: #fff; }
+  .conf { display: inline-block; width: 1.9mm; height: 1.9mm; border-radius: 50%; }
+  .ok-new { background: var(--record); } .older { background: var(--source); } .similar { background: var(--analyst); } .guess { background: #A8322D; }
+  .q { color: var(--agent); font-weight: 700; }
+  .legend { margin-top: 2.2mm; display: grid; row-gap: 0.6mm; color: var(--muted); font-size: 7.5pt; }
+  .legend div { display: flex; align-items: center; gap: 1.2mm; }
+
+  .card { background: #fff; border: var(--hair) solid color-mix(in srgb, var(--agent) 50%, white); border-radius: 1.5mm; overflow: hidden; }
+  .card .head { display: flex; align-items: center; gap: 1.4mm; background: color-mix(in srgb, var(--agent) 13%, white); color: var(--agent-ink); font-weight: 700; font-size: 7.5pt; padding: 1.1mm 2mm; }
+  .card .head .icon { width: 3.6mm; height: 3.6mm; color: var(--agent); }
+  .card .body { padding: 1.8mm 2.2mm 2.2mm; display: grid; row-gap: 1.5mm; }
+  .card .what b { display: block; font-size: 9pt; }
+  .card .what span { color: var(--muted); font-size: 7.5pt; }
+  .card .f { display: grid; row-gap: 0.5mm; }
+  .card .val { height: 2.2mm; width: 55%; background: color-mix(in srgb, var(--agent) 55%, white); }
+  .pill { justify-self: start; background: color-mix(in srgb, var(--record) 15%, white); color: var(--record-ink);
+          border: var(--hair) solid var(--record); border-radius: 3mm; padding: 0.2mm 1.8mm; font-size: 7.5pt; font-weight: 700; }
+  .buttons { display: flex; gap: 1.5mm; margin-top: 0.6mm; }
+  .buttons span { flex: 1; text-align: center; border: 0.8pt solid; border-radius: 1mm; padding: 0.7mm 0; font-size: 7.5pt; font-weight: 700; }
+  .b-accept { color: var(--record-ink); border-color: var(--record) !important; }
+  .b-edit { color: var(--model); border-color: var(--muted) !important; }
+  .b-reply { background: var(--analyst); color: #fff; border-color: var(--analyst) !important; }
+
+  .answer { display: flex; align-items: flex-start; gap: 2.2mm; padding: 0 2.6mm 2.8mm; }
+  .answer > .icon { width: 7mm; height: 7mm; color: var(--analyst); margin-top: 1mm; }
+  .bubble { position: relative; flex: 1; background: color-mix(in srgb, var(--analyst) 9%, white); border: 0.8pt solid var(--analyst);
+            border-radius: 2mm; padding: 1.8mm 2.4mm; line-height: 1.3; }
+  .bubble b { color: var(--analyst-ink); }
+
+  /* where the answer goes */
+  .dest { display: flex; flex-direction: column; }
+  .dest .head { font-size: 7.5pt; color: var(--muted); margin-bottom: 1.6mm; }
+  .dest .panel { padding: 2.2mm 2.6mm 2.6mm; }
+  .dest .panel > h2 { display: flex; align-items: center; gap: 1.4mm; margin-bottom: 1.4mm; }
+  .dest .panel > h2 .icon { width: 3.8mm; height: 3.8mm; }
+  .gapbig { height: 9mm; }
+  .gap { height: 3mm; }
+  .lesson-text { font-weight: 700; line-height: 1.3; }
+  .meta { display: flex; flex-wrap: wrap; gap: 0.6mm 3mm; margin-top: 1.4mm; color: var(--muted); font-size: 7.5pt; }
+  .meta .okay { display: inline-flex; align-items: center; gap: 0.8mm; color: var(--analyst-ink); font-weight: 700; }
+  .meta .okay .icon { width: 3mm; height: 3mm; color: var(--analyst); }
+  .ledger { width: 100%; border-collapse: collapse; background: #fff; font-size: 7.5pt; }
+  .ledger th { text-align: left; padding: 0.6mm 1.4mm; border-bottom: var(--hair) solid var(--record); color: var(--record-ink); }
+  .ledger td { padding: 0.6mm 1.4mm; border-bottom: var(--hair) solid #E3E6EA; }
+  .ledger tr.new td { background: color-mix(in srgb, var(--record) 10%, white); font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="fig">
+  <div class="layout">
+    <div class="screen" id="screen">
+      <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="ttl">Analyst's workspace</span></div>
+      <div class="desk">
+        <div class="sheet">
+          <div class="tab">Sheet: Nodes</div>
+          <table>
+            <tr><th>Node</th><th>Price</th><th>Conf.</th></tr>
+            <tr><td><span class="ph" style="width:80%"></span></td><td><span class="ph"></span></td><td><span class="conf ok-new"></span></td></tr>
+            <tr><td><span class="ph" style="width:95%"></span></td><td><span class="ph"></span></td><td><span class="conf ok-new"></span></td></tr>
+            <tr><td><span class="ph" style="width:70%"></span></td><td><span class="ph"></span></td><td><span class="conf older"></span></td></tr>
+            <tr class="on"><td><span class="ph" style="width:85%"></span></td><td class="v" id="cell"><span></span></td><td class="q" id="qmark">?</td></tr>
+            <tr><td><span class="ph" style="width:90%"></span></td><td><span class="ph"></span></td><td><span class="conf ok-new"></span></td></tr>
+            <tr><td><span class="ph" style="width:75%"></span></td><td><span class="ph"></span></td><td><span class="conf similar"></span></td></tr>
+            <tr><td><span class="ph" style="width:85%"></span></td><td><span class="ph"></span></td><td><span class="conf guess"></span></td></tr>
+            <tr><td><span class="ph" style="width:65%"></span></td><td><span class="ph"></span></td><td><span class="conf older"></span></td></tr>
+          </table>
+          <div class="legend">
+            <span class="cap">Confidence</span>
+            <div><span class="conf ok-new"></span>official, recent</div>
+            <div><span class="conf older"></span>older report</div>
+            <div><span class="conf similar"></span>similar country</div>
+            <div><span class="conf guess"></span>guess</div>
+          </div>
+        </div>
+        <div class="card" id="card">
+          <div class="head"><i data-icon="agent"></i>Data agent suggests</div>
+          <div class="body">
+            <div class="what"><b>Reference price</b><span>Gulf node, base year</span></div>
+            <div class="f"><span class="cap">Proposed value</span><span class="ph val"></span></div>
+            <div class="f"><span class="cap">Why</span><span>The official domestic price, the latest published.</span></div>
+            <div class="f"><span class="cap">Source</span><span>National regulator</span></div>
+            <div class="f"><span class="cap">Confidence</span><span class="pill">official, recent</span></div>
+            <div class="f"><span class="cap">Alternatives</span><span class="ph" style="width:80%"></span><span class="ph" style="width:60%; margin-top:0.6mm"></span></div>
+            <div class="buttons"><span class="b-accept">Accept</span><span class="b-edit">Edit</span><span class="b-reply" id="reply">Reply</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="answer">
+        <i data-icon="person"></i>
+        <div class="bubble" id="bubble"><b>Reply:</b> This price is subsidised. It is far below what consumers would pay, so it is not the willingness to pay the model needs.</div>
+      </div>
+    </div>
+
+    <div class="dest">
+      <div class="head">The answer goes to three places</div>
+      <section class="panel agent" id="back">
+        <h2><i data-icon="agent"></i>Back to the agent</h2>
+        <div>The data agent revises the value and suggests again.</div>
+      </section>
+      <div class="gapbig"></div>
+      <section class="panel record" id="lesson">
+        <h2><i data-icon="lesson"></i>A new lesson</h2>
+        <div class="lesson-text">Official prices where domestic gas is subsidised are not the willingness to pay. Flag them; propose alternatives.</div>
+        <div class="meta"><span>Scope: all reference prices</span><span>Drawn from: the reply</span>
+          <span class="okay"><i data-icon="check"></i>Analyst approved</span></div>
+        <div class="note">Kept in a plain document the analysts can edit.</div>
+      </section>
+      <div class="gap"></div>
+      <section class="panel record" id="ledger">
+        <h2><i data-icon="ledger"></i>The provenance ledger</h2>
+        <table class="ledger">
+          <tr><th>Value</th><th>Decision</th><th>Why</th></tr>
+          <tr class="new"><td>price</td><td>replied</td><td>subsidy</td></tr>
+          <tr><td>price</td><td>accepted</td><td>–</td></tr>
+        </table>
+        <div class="note">Who decided, and why.</div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script src="fig.js"></script>
+<script>
+  arrow("#qmark:r", "#card:l", { color: "agent", straight: true });
+  arrow("#reply:b", "#bubble:t", { color: "analyst", straight: true });
+  // the answer fans out from the bubble
+  for (const to of ["#back:l", "#lesson:l", "#ledger:l"])
+    arrow("#bubble:r", to, { color: "analyst", mid: 69.1 });
+  arrow("#lesson:t@0.82", "#back:b@0.82", { color: "record", dashed: true, label: "retrieved for later suggestions", side: "left" });
+  document.fonts.ready.then(draw);
+</script>
+</body>
+</html>

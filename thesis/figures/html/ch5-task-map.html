@@ -1,0 +1,85 @@
+<!doctype html>
+<!-- Figure 5.1: the main parts of the workflow, placed by judgment needed and by how quietly an error passes. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ch5-task-map</title>
+<link rel="stylesheet" href="fig.css">
+<style>
+  .map { display: grid; grid-template-columns: 7mm 1fr; }
+  /* the y axis: labels run bottom to top */
+  .yaxis { grid-row: 1; grid-column: 1; display: flex; justify-content: space-between; align-items: center;
+           writing-mode: vertical-rl; transform: rotate(180deg); padding: 1mm 0; }
+  .yaxis .title, .xaxis .title { font-weight: 700; font-size: 9pt; }
+  .ends, .yaxis .end { color: var(--muted); font-size: 7.5pt; }
+  .plot { grid-row: 1; grid-column: 2; position: relative; display: flex; flex-direction: column; gap: 3mm;
+          padding: 0 0 3mm 3mm; }
+  .xaxis { grid-row: 2; grid-column: 2; padding: 1.2mm 0 0 3mm; }
+  .xaxis .ends { display: flex; justify-content: space-between; }
+  .xaxis .title { text-align: center; margin-top: 1.2mm; }
+
+  .zone { padding: 2.4mm 3mm 2.8mm; }
+  .zone > h2 { margin-bottom: 2.2mm; }
+  .zone .grid { column-gap: 3mm; row-gap: 2.2mm; }
+  .zone .item { display: flex; align-items: flex-start; gap: 1.6mm; line-height: 1.25; }
+  .zone .item::before { content: ""; flex: none; width: 2.4mm; height: 2.4mm; margin-top: 0.5mm; border-radius: 50%; background: var(--c); }
+  /* the staircase: more judgment higher up, quieter errors further right */
+  #analyst { margin-left: 50%; }
+  #agent   { margin-left: 13%; }
+  #code    { width: 56%; }
+  #code .grid, #analyst .grid { grid-template-columns: 1fr 1fr; }
+  #agent .grid { grid-template-columns: repeat(3, 1fr); }
+  #origin { position: absolute; left: 0; bottom: 0; }
+  #xend { position: absolute; right: 0; bottom: 0; }
+  #yend { position: absolute; left: 0; top: 0; }
+</style>
+</head>
+<body>
+<div id="fig">
+  <div class="map">
+    <div class="yaxis"><span class="end">rule-bound</span><span class="title">Judgment needed</span><span class="end">a view of the market</span></div>
+    <div class="plot" id="plot">
+      <section class="panel zone analyst" id="analyst">
+        <h2>Analyst decides</h2>
+        <div class="grid">
+          <div class="item">Interpret results</div><div></div>
+          <div class="item">Storyline and projections</div><div class="item">Accept the calibration</div>
+          <div class="item">Market power</div><div class="item">Choose between equal fits</div>
+        </div>
+      </section>
+      <section class="panel zone agent" id="agent">
+        <h2>Agent proposes, code checks</h2>
+        <div class="grid">
+          <div class="item">Explain load warnings</div>
+          <div class="item">Find the rows a storyline touches</div>
+          <div class="item">Diagnose deviations</div>
+          <div class="item">Extract values from reports</div>
+          <div class="item">Map sources to nodes</div>
+          <div class="item">Draft explanations of results</div>
+        </div>
+      </section>
+      <section class="panel zone code" id="code">
+        <h2>Ordinary code</h2>
+        <div class="grid">
+          <div class="item">Run the model</div><div class="item">Check workbook consistency</div>
+          <div class="item">Convert units</div><div class="item">Compute shipping distances</div>
+        </div>
+      </section>
+      <i id="origin"></i><i id="xend"></i><i id="yend"></i>
+    </div>
+    <div></div>
+    <div class="xaxis">
+      <div class="ends"><span>error is loud: shows at once</span><span>error is quiet: shows only in the conclusions</span></div>
+      <div class="title">How quietly an error passes</div>
+    </div>
+  </div>
+</div>
+
+<script src="fig.js"></script>
+<script>
+  arrow({ x: "#origin", y: "#origin", dir: "r" }, { x: "#xend", y: "#xend", dir: "l" }, { color: "muted", width: 0.8 });
+  arrow({ x: "#origin", y: "#origin", dir: "t" }, { x: "#yend", y: "#yend", dir: "b" }, { color: "muted", width: 0.8 });
+  document.fonts.ready.then(draw);
+</script>
+</body>
+</html>

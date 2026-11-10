@@ -1,0 +1,94 @@
+<!doctype html>
+<!-- Figure 5.3: the workflow as swimlanes: who does what in each step, and where the analyst signs off. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ch5-workflow</title>
+<link rel="stylesheet" href="fig.css">
+<style>
+  .lanes { display: grid; grid-template-columns: 15mm repeat(5, 1fr); column-gap: 1.8mm; row-gap: 2.2mm; }
+  /* step header */
+  .step { grid-row: 1; background: var(--model); color: #fff; font-weight: 700; font-size: 7.5pt; line-height: 1.2;
+          text-align: center; padding: 1.3mm 2.4mm 1.3mm 3mm; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3mm;
+          clip-path: polygon(0 0, calc(100% - 2mm) 0, 100% 50%, calc(100% - 2mm) 100%, 0 100%, 2mm 50%); }
+  .step .n { opacity: 0.75; white-space: nowrap; }
+  .backgap { grid-row: 2; grid-column: 1 / -1; height: 5.5mm; }
+  /* lanes */
+  .lane { grid-column: 1 / -1; border-radius: var(--radius); background: color-mix(in srgb, var(--c) 7%, white); }
+  .who { grid-column: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1mm;
+         font-weight: 700; font-size: 7.5pt; color: var(--c-ink); border-radius: var(--radius) 0 0 var(--radius);
+         background: color-mix(in srgb, var(--c) 16%, white); }
+  .who .icon { width: 5.5mm; height: 5.5mm; }
+  .cell { position: relative; margin: 2.2mm 0; min-height: 13.5mm; display: flex; align-items: center; justify-content: center;
+          text-align: center; background: #fff; border: var(--hair) solid color-mix(in srgb, var(--c) 50%, white);
+          border-radius: 1.3mm; padding: 1.4mm 1.6mm; font-size: 8pt; line-height: 1.22; }
+  .cell.idle { background: transparent; border-style: dashed; color: var(--muted); }
+  .cell .badge { position: absolute; top: -1.7mm; right: -1.4mm; width: 3.6mm; height: 3.6mm; color: var(--analyst); }
+  .r3 { grid-row: 3; } .r4 { grid-row: 4; } .r5 { grid-row: 5; } .r6 { grid-row: 6; }
+  .c1 { grid-column: 2; } .c2 { grid-column: 3; } .c3 { grid-column: 4; } .c4 { grid-column: 5; } .c5 { grid-column: 6; }
+</style>
+</head>
+<body>
+<div id="fig">
+  <div class="lanes">
+    <div class="step c1"><span class="n">Step 1</span><span>Set up the scenario</span></div>
+    <div class="step c2"><span class="n">Step 2–3</span><span>Get and prepare data</span></div>
+    <div class="step c3"><span class="n">Step 4</span><span>Calibrate</span></div>
+    <div class="step c4"><span class="n">Step 5</span><span>Run the model</span></div>
+    <div class="step c5"><span class="n">Step 6</span><span>Read the results</span></div>
+    <div class="backgap" id="backline"></div>
+
+    <div class="lane analyst r3"></div>
+    <div class="who analyst r3"><i data-icon="person"></i>Analyst</div>
+    <div class="cell analyst r3 c1" id="a0">states the question and storyline; approves edits<i data-icon="check" class="badge"></i></div>
+    <div class="cell analyst r3 c2" id="a1">decides nodes, projections and elasticities<i data-icon="check" class="badge"></i></div>
+    <div class="cell analyst r3 c3" id="a2">follows the log; accepts the fit<i data-icon="check" class="badge"></i></div>
+    <div class="cell analyst idle r3 c4" id="a3">nothing to decide</div>
+    <div class="cell analyst r3 c5" id="a4">interprets and writes the findings<i data-icon="check" class="badge"></i></div>
+
+    <div class="lane agent r4"></div>
+    <div class="who agent r4"><i data-icon="agent"></i>Agents</div>
+    <div class="cell agent r4 c1" id="g0">finds the rows the storyline touches; proposes edits</div>
+    <div class="cell agent r4 c2" id="g1">reads reports, maps sources, drafts projections</div>
+    <div class="cell agent r4 c3" id="g2">diagnoses deviations; proposes a change</div>
+    <div class="cell agent idle r4 c4" id="g3">at most explains a failed run</div>
+    <div class="cell agent r4 c5" id="g4">drafts explanations; flags odd patterns</div>
+
+    <div class="lane code r5"></div>
+    <div class="who code r5"><i data-icon="gear"></i>Code</div>
+    <div class="cell code r5 c1" id="c0">applies edits; shows the difference</div>
+    <div class="cell code r5 c2" id="c1">downloads, converts, aggregates, checks</div>
+    <div class="cell code r5 c3" id="c2">deviation report; bounds; log</div>
+    <div class="cell code r5 c4" id="c3">runs the scenario matrix; records inputs</div>
+    <div class="cell code r5 c5" id="c4">compares the scenarios</div>
+
+    <div class="lane model r6"></div>
+    <div class="who model r6"><i data-icon="laptop"></i>GGM</div>
+    <div class="cell model r6 c2" id="m1">loads data; warns on capacity</div>
+    <div class="cell model r6 c3" id="m2">baseline run</div>
+    <div class="cell model r6 c4" id="m3">solves each variant</div>
+  </div>
+</div>
+
+<script src="fig.js"></script>
+<script>
+  const down = (a, b, c, at) => arrow(`#${a}:b${at ? "@" + at : ""}`, `#${b}:t`, { color: c, straight: true });
+  const up = (a, b, c, at) => arrow(`#${a}:t${at ? "@" + at : ""}`, `#${b}:b`, { color: c, straight: true });
+  down("a0", "g0", "analyst"); down("g0", "c0", "agent");
+  arrow("#a1:b", "#g1:t", { color: "analyst", straight: true, both: true });
+  arrow("#g1:b", "#c1:t", { color: "agent", straight: true, both: true });
+  down("c1", "m1", "code");
+  // calibration loop: changes go down on the left, results come back up on the right
+  down("g2", "c2", "agent", 0.28); down("c2", "m2", "code", 0.28);
+  up("m2", "c2", "model", 0.72); up("c2", "g2", "code", 0.72);
+  up("g2", "a2", "agent");
+  down("c3", "m3", "code");
+  arrow("#m3:r", "#c4:b", { color: "model" });
+  up("c4", "g4", "code"); up("g4", "a4", "agent");
+  // work can go back
+  arrow("#a4:t@0.3", "#a0:t@0.3", { color: "analyst", dashed: true, mid: "#backline", at: 0.5, side: "above",
+        label: "an implausible result can send the work back to the storyline", plain: false });
+  document.fonts.ready.then(draw);
+</script>
+</body>
+</html>

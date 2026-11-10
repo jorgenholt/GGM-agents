@@ -8,7 +8,8 @@
 // The path runs straight if the two ends line up, otherwise with right-angle bends.
 // Options: color (a name from fig.css), dashed, both (heads at both ends), straight,
 // label, at (0..1 along the path, default 0.5), side (above, below, left, right),
-// mid (where to put the bend, in mm from the figure's left or top).
+// mid (where to put the bend: mm from the figure's left or top, or "#id" to bend at its centre),
+// dotted, width.
 
 const MM = 96 / 25.4;
 const NS = "http://www.w3.org/2000/svg";
@@ -18,7 +19,19 @@ function css(name) {
   return getComputedStyle(document.documentElement).getPropertyValue(`--${name}`).trim() || name;
 }
 
+function centre(sel, fig) {
+  const f = fig.getBoundingClientRect(), r = document.querySelector(sel).getBoundingClientRect();
+  return { x: r.left - f.left + r.width / 2, y: r.top - f.top + r.height / 2 };
+}
+
 function point(spec, fig) {
+  // { x: "#a", y: "#b", dir: "r" }: x of a's centre, y of b's centre, pointing right (for lifelines)
+  if (typeof spec === "object") {
+    const x = typeof spec.x === "number" ? spec.x * MM : centre(spec.x, fig).x;
+    const y = typeof spec.y === "number" ? spec.y * MM : centre(spec.y, fig).y;
+    const d = { t: [0, -1], b: [0, 1], l: [-1, 0], r: [1, 0] }[spec.dir || "r"];
+    return { x: x + (spec.dx || 0) * MM, y: y + (spec.dy || 0) * MM, d };
+  }
   const [, id, side, at] = /^(#[\w-]+):([trbl])(?:@([\d.]+(?:mm)?))?$/.exec(spec) || [];
   if (!id) throw new Error(`Bad arrow end: ${spec}`);
   const el = document.querySelector(id);
@@ -33,15 +46,16 @@ function point(spec, fig) {
 }
 
 function route(a, b, mid) {
+  // mid: where to bend, as mm from the figure's edge or as the centre of an element
   const ah = a.d[0] !== 0, bh = b.d[0] !== 0;
   if (ah && bh) {
     if (Math.abs(a.y - b.y) < 0.5) return [a, { x: b.x, y: a.y }];
-    const mx = mid != null ? mid * MM : (a.x + b.x) / 2;
+    const mx = mid == null ? (a.x + b.x) / 2 : typeof mid === "object" ? mid.x : mid * MM;
     return [a, { x: mx, y: a.y }, { x: mx, y: b.y }, b];
   }
   if (!ah && !bh) {
     if (Math.abs(a.x - b.x) < 0.5) return [a, { x: a.x, y: b.y }];
-    const my = mid != null ? mid * MM : (a.y + b.y) / 2;
+    const my = mid == null ? (a.y + b.y) / 2 : typeof mid === "object" ? mid.y : mid * MM;
     return [a, { x: a.x, y: my }, { x: b.x, y: my }, b];
   }
   return ah ? [a, { x: b.x, y: a.y }, b] : [a, { x: a.x, y: b.y }, b];
@@ -89,6 +103,11 @@ const ICONS = {
   log: '<circle cx="12" cy="12" r="9.5" fill="#fff" stroke="currentColor" stroke-width="1.8"/><path d="M12 6.5V12l3.8 2.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
   lesson: '<path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8V17h7.6v-2.7A6.5 6.5 0 0 0 12 2.5z" fill="#fff" stroke="currentColor" stroke-width="1.6"/><path d="M9 19.5h6M10 22h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
   laptop: '<rect x="4" y="4" width="16" height="11" rx="1.2" fill="#fff" stroke="currentColor" stroke-width="1.8"/><path d="M1.5 18.5h21l-1.2 2H2.7z"/>',
+  check: '<circle cx="12" cy="12" r="11"/><path d="M6.8 12.4l3.4 3.4 7-7.3" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>',
+  clock: '<circle cx="12" cy="12" r="9.5" fill="#fff" stroke="currentColor" stroke-width="1.8"/><path d="M12 6.5V12l3.8 2.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  loop: '<path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M20.5 3.2v6h-6z"/>',
+  ship: '<path d="M2 15h20l-2.6 4.6H4.6z"/><rect x="5" y="10.5" width="11" height="4.5" rx="0.6"/><rect x="15" y="7" width="4" height="8"/><circle cx="7.5" cy="10.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12.5" cy="10.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.4"/>',
+  database: '<ellipse cx="12" cy="5.5" rx="8" ry="3" fill="#fff" stroke="currentColor" stroke-width="1.6"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13" fill="#fff" stroke="currentColor" stroke-width="1.6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" fill="none" stroke="currentColor" stroke-width="1.6"/>',
   chat: '<path d="M3 4.5h18v11.5H9.5L5 20v-4H3z" fill="#fff" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 8.8h10M7 12h6" stroke="currentColor" stroke-width="1.5"/>',
 };
 function icons() {
@@ -100,6 +119,43 @@ function icons() {
     s.innerHTML = ICONS[i.dataset.icon];
     i.replaceWith(s);
   });
+}
+
+// The automatic check: text that spills out of its box, labels that overlap boxes
+// or each other, and anything outside the figure. Problems go to the console and
+// to <body data-issues>, which export.py prints.
+function check(fig) {
+  const issues = [];
+  const name = (el) => el.id ? "#" + el.id : `${el.className.baseVal ?? el.className} "${el.textContent.trim().slice(0, 30)}"`;
+  const f = fig.getBoundingClientRect();
+  const boxes = [...fig.querySelectorAll(".panel, .chip, .card, .cell, .item, .note, .alabel, [data-box]")];
+  // badges sit on a box's corner on purpose, so leave them out of the spill check
+  const badges = [...fig.querySelectorAll(".badge")];
+  badges.forEach((b) => (b.style.display = "none"));
+  for (const el of boxes) {
+    if (el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 1) issues.push(`text spills out of ${name(el)}`);
+    const r = el.getBoundingClientRect();
+    if (r.left < f.left - 0.5 || r.right > f.right + 0.5 || r.top < f.top - 0.5) issues.push(`${name(el)} is outside the figure`);
+  }
+  badges.forEach((b) => (b.style.display = ""));
+  const hit = (a, b, pad = 0) => a.left < b.right - pad && b.left < a.right - pad && a.top < b.bottom - pad && b.top < a.bottom - pad;
+  const labels = [...fig.querySelectorAll(".alabel")];
+  const solid = [...fig.querySelectorAll(".chip, .card, .cell, .item, .panel > h2, .note, [data-box]")];
+  for (const l of labels) {
+    const r = l.getBoundingClientRect();
+    for (const o of [...solid, ...labels]) {
+      if (o === l) continue;
+      if (hit(r, o.getBoundingClientRect(), 0.5)) issues.push(`label ${name(l)} overlaps ${name(o)}`);
+    }
+    for (const p of fig.querySelectorAll(".panel")) {
+      const q = p.getBoundingClientRect();
+      const crosses = hit(r, q) && !(r.left >= q.left && r.right <= q.right && r.top >= q.top && r.bottom <= q.bottom);
+      if (crosses) issues.push(`label ${name(l)} crosses the border of ${name(p)}`);
+    }
+  }
+  const unique = [...new Set(issues)];
+  unique.forEach((i) => console.warn("figure check:", i));
+  document.body.dataset.issues = JSON.stringify(unique);
 }
 
 function draw() {
@@ -117,7 +173,7 @@ function draw() {
     if (o.straight) { if (a.d[0] === 0) b.x = a.x; else b.y = a.y; }
     // leave a hair of space between the arrowhead and the box it points at
     b.x += b.d[0] * 0.5; b.y += b.d[1] * 0.5;
-    const pts = route(a, b, o.mid);
+    const pts = route(a, b, typeof o.mid === "string" ? centre(o.mid, fig) : o.mid);
     const path = document.createElementNS(NS, "path");
     path.setAttribute("d", pts.map((p, i) => `${i ? "L" : "M"} ${p.x.toFixed(2)} ${p.y.toFixed(2)}`).join(" "));
     path.setAttribute("fill", "none");
@@ -125,6 +181,7 @@ function draw() {
     path.setAttribute("stroke-width", o.width || 1.1);
     path.setAttribute("stroke-linejoin", "round");
     if (o.dashed) path.setAttribute("stroke-dasharray", "3 2");
+    if (o.dotted) { path.setAttribute("stroke-dasharray", "0.1 2.2"); path.setAttribute("stroke-linecap", "round"); }
     path.setAttribute("marker-end", marker(svg, color));
     if (o.both) path.setAttribute("marker-start", marker(svg, color));
     svg.append(path);
@@ -142,6 +199,7 @@ function draw() {
       l.style.left = `${pos[0]}px`; l.style.top = `${pos[1]}px`;
     }
   }
+  check(fig);
   // Size the printed page to the figure, so the PDF has no margins.
   const r = fig.getBoundingClientRect();
   const s = document.createElement("style");

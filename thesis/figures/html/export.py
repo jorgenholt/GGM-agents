@@ -11,7 +11,10 @@ web server because browsers won't load fonts or scripts from file:// pages.
 """
 
 import functools
+import html
 import http.server
+import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -43,7 +46,18 @@ def export(name: str, port: int):
              f"--print-to-pdf={pdf}", f"http://127.0.0.1:{port}/{name}.html"],
             check=True, capture_output=True,
         )
-    print(f"{pdf.relative_to(OUT.parent.parent)}  {pdf.stat().st_size // 1024} KB")
+        dom = subprocess.run(
+            [CHROME, "--headless=new", "--disable-gpu", f"--user-data-dir={profile}", "--virtual-time-budget=4000",
+             "--dump-dom", f"http://127.0.0.1:{port}/{name}.html"],
+            check=True, capture_output=True, text=True,
+        ).stdout
+    m = re.search(r'data-issues="([^"]*)"', dom)
+    issues = json.loads(html.unescape(m[1])) if m else ["the page never finished drawing"]
+    print(f"{pdf.relative_to(OUT.parent.parent)}  {pdf.stat().st_size // 1024} KB  "
+          + ("clean" if not issues else f"{len(issues)} problem(s):"))
+    for i in issues:
+        print("   -", i)
+    return not issues
 
 
 def main(names):
@@ -54,8 +68,9 @@ def main(names):
         sys.exit(f"No such figure: {', '.join(sorted(missing))}")
     server = serve()
     try:
-        for name in todo:
-            export(name, server.server_address[1])
+        clean = [export(name, server.server_address[1]) for name in todo]
+        if not all(clean):
+            sys.exit("Fix the problems above before committing.")
     finally:
         server.shutdown()
 
