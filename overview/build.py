@@ -651,7 +651,11 @@ def parse_writing(sources):
     main_tex = (ROOT / "thesis" / "main.tex").read_text(encoding="utf-8")
     def tex_arg(cmd):
         m = re.search(r"\\" + cmd + r"\{([^}]*)\}", main_tex)
-        return sync.unescape_text(m.group(1)).replace("\\and", "and").strip() if m else ""
+        if not m:
+            return ""
+        # a \\ line break (e.g. title and subtitle) becomes a newline for the hub
+        text = re.sub(r"\s*\\\\\s*", "\n", m.group(1))
+        return sync.unescape_text(text).replace("\\and", "and").strip()
 
     # Words per chapter at the end of each day that changed the thesis.
     history, seen = [], set()

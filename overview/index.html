@@ -2039,7 +2039,7 @@ pre.schema { background: var(--sunk); border-radius: var(--r); padding: 12px; ov
     const words = docOutline().reduce((a, c) => a + c.secs.reduce((b, x) => b + x.words, 0), 0);
     const note = `<p class="muted small" style="max-width:780px;margin:0 auto 10px">A preview of how the PDF will read: ${words.toLocaleString("en-GB")} words. Layout, fonts and page breaks will differ in the real PDF.${hidden ? ` ${hidden} TODO note${hidden > 1 ? "s" : ""} hidden, as LaTeX hides comments.` : ""} Click a section heading to edit it.</p>`;
     return note + `<div class="desk"><article class="sheet" lang="en">
-      <h1 class="ts-title">${esc(D.writing.title || "Project thesis")}</h1>
+      <h1 class="ts-title">${(D.writing.title || "Project thesis").split("\n").map(esc).join("<br>")}</h1>
       <p class="ts-author">${esc(D.writing.author || "")}</p><p class="ts-date">${esc(D.writing.date || "")}</p>
       ${toc}${body}<div class="refs" id="ts-refs"><h2>References</h2>${refs || `<p class="empty-sec">Nothing cited yet.</p>`}</div></article></div>`;
   }
