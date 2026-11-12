@@ -6,22 +6,24 @@ The answer depends on the part of a step, not on the step as a whole.
 Agents suit the parts that involve reading and judging unstructured material: finding the rows a storyline touches, extracting values from reports, mapping sources to nodes, diagnosing deviations in calibration, and drafting explanations of results.
 Ordinary code should do every computation and every model run, because a rule gives one correct answer and an LLM's arithmetic cannot be trusted.
 People should remain responsible for the question and storyline, the acceptance of the calibration, and the interpretation, because these are judgments with no correct answer to check against.
+Most of the effort lies in preparing the data, which is also where agents fit best.
 
-Calibration is where the thesis goes beyond the existing literature.
+Calibration marks the limit of what agents can take over, and is where the thesis goes beyond the existing literature.
 Studies of agent-assisted calibration have dealt with physical parameters that can be measured; GGM's parameters carry economic meaning, are not observed, and can be combined in several ways to reproduce the same reference values.
 The thesis argues that an agent can still do much of the work, by diagnosing deviations with the documentation's own reasoning and proposing changes within bounds set by code, but that accepting a calibration remains an economic judgment that a person must make.
 
 On this basis the thesis proposed a system of four agents that work alongside the analyst.
 Each suggestion comes with its reasons, source and confidence, every number comes from a source, a reviewed function or a model run, and the analyst's corrections are kept as lessons that the agents reuse, so that the system should need fewer corrections the longer it is used.
+These principles do not depend on GGM, and could carry over to other policy models maintained by small teams.
 
 Several questions can only be answered by building the system.
 Whether an agent can diagnose GGM's deviations as well as the documentation's heuristics suggest is open, as is whether reviewing its suggestions is faster than doing the work, whether lessons accumulate into something useful, and what all of this costs.
 
 \textbf{What to build first.} The master's thesis should begin with the calibration harness: the deviation report, the code that applies changes within bounds, and the log.
 It is ordinary code, the public Julia version lacks it (Section 3.4), and it is useful to the analysts even without an agent.
-The calibration agent should come next, for three reasons.
+The calibration agent should come next, not because calibration is where most of the work lies, but for three practical reasons.
 It addresses the gap identified in Section 2.6; it can be tested on the 2023 data without new expert work, by perturbing a calibrated scenario and asking the agent to restore the fit; and it is the step the developers describe as the most time-consuming trial and error.
-The data agent should follow, since the volume of the work lies in the data, and it can be tested against the developers' own general workbook.
+The data agent should follow; it addresses the largest share of the work, and it can be tested against the developers' own general workbook.
 The scenario and results agents can be built last, as they depend on the other two.
 
 \textbf{How to evaluate it.} For the calibration agent, the tests are whether it restores a perturbed fit, how many model runs it needs, and whether its diagnoses agree with the documented heuristics.

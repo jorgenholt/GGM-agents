@@ -5,6 +5,14 @@ Using agents around existing models is therefore not new.
 The evidence, however, is thinner than these capabilities suggest: it comes mostly from single cases evaluated by their own authors, and results on real systems are weaker than on synthetic ones.
 Three things are missing.
 
+\textbf{A view of the whole workflow.} Most studies automate and evaluate one task in isolation.
+Few ask, for a single model, which steps suit an agent, ordinary code or a person, although agents should be assessed task by task before claims about whole workflows are made \citep{chen2025scienceagentbench}.
+This thesis provides such a view for one model.
+
+\textbf{The middle of the workflow for energy-market models.} No study found applies agents to preparing the data for, or calibrating, an equilibrium model of an energy market.
+The closest work operates such models as they are \citep{golden2026agentic}.
+This matters because preparing the data and calibrating the model are where most of the work and the judgment lie.
+
 \textbf{Calibration where the parameters carry economic judgment.} In the calibration studies above, the parameters are physical quantities that can be checked against measurements.
 GGM is calibrated by adjusting production costs, reference prices and market power until the model reproduces reference production and consumption, which for future years are themselves taken from published outlooks \citep[p.~26]{egging2019global}.
 None of these parameters is observed, and different combinations can reproduce the same reference values.
@@ -13,13 +21,5 @@ Two equally good fits can thus embody different assumptions about how the market
 In economics, calibrating an equilibrium model to a benchmark is an established practice whose parameter choices are open to debate \citep{dawkins2001calibration}, and \citet{hansen1996empirical} argue that such parameters must be justified and tested for their influence on the results.
 Recent work on AI in economics recognises that outputs of this kind lack a machine-readable signal of correctness \citep{zhu2026pai}.
 What it means for an agent to calibrate such a model has not been examined.
-
-\textbf{The middle of the workflow for energy-market models.} No study found applies agents to preparing the data for, or calibrating, an equilibrium model of an energy market.
-The closest work operates such models as they are \citep{golden2026agentic}.
-This matters because it is here that the judgments described above are made.
-
-\textbf{A view of the whole workflow.} Most studies automate and evaluate one task in isolation.
-Few ask, for a single model, which steps suit an agent, ordinary code or a person, although agents should be assessed task by task before claims about whole workflows are made \citep{chen2025scienceagentbench}.
-This is the scope of the thesis, not its contribution.
 
 % TODO: Confirm with Lukas that the base-year reference values are historical statistics.
