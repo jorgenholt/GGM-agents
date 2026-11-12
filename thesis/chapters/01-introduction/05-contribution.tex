@@ -1,8 +1,10 @@
 \section{Contribution and structure}
 
-The contribution is a map of the GGM workflow and a design built on it.
-The map shows, for each step, what an agent could do, what ordinary code should do, and where a person should stay involved.
-The design is a system of four agents, for the data, the scenario, the calibration and the results, that work alongside the analyst, propose each change with its reasons, source and confidence, and learn from the analyst's corrections; it is the starting point for the master's thesis.
+The contribution is a design and a plan for an AI agent system built around the GGM workflow, and the considerations that shape it.
+The design rests on an analysis of the workflow, informed by conversations with the people who develop and use GGM, that shows for each step what an agent could do, what ordinary code should do, and where a person should stay involved.
+The proposed system has four agents, for the data, the scenario, the calibration and the results, that work alongside the analyst, propose each change with its reasons, source and confidence, and learn from the analyst's corrections.
+The design is assessed against explicit criteria: every number can be traced, nothing reaches the model unchecked, and calibration changes only with the analyst's approval.
+The plan sets out how the system is to be built and evaluated in the master's thesis.
 
 The analysis leads to three findings.
 First, the line between agent, code and person runs within the steps of the workflow rather than between them: most steps combine reading and judging unstructured material, which suits an agent, with computation, which belongs in code, and with decisions that stay with a person.
@@ -12,5 +14,5 @@ The principles behind the design, that every number comes from a source, a revie
 
 Chapter 2 reviews the literature and states the gap.
 Chapter 3 describes GGM and its workflow, and Chapter 4 what LLM agents can and cannot do.
-Chapter 5, the core of the thesis, brings the two together: it first analyses where the work in the workflow lies, then describes the proposed system and how it works with the analyst, and ends with an example, a study of a closed Strait of Hormuz followed through the system.
+Chapter 5, the core of the thesis, brings the two together: it first analyses where the work in the workflow lies, then describes the proposed system and how it works with the analyst, assesses it against the criteria, and ends with an example, a study of a closed Strait of Hormuz followed through the system.
 Chapter 6 discusses the risks, what should not be automated and the limitations of the analysis, and sets out the plan for the master's thesis.
